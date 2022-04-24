@@ -1,0 +1,27 @@
+/.quarto/
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.bash_history
+.cache/
+/docs/**/*git-lfs/**
+.httr-oauth
+.config/
+.local/
+
+# ignore everything in posts except
+# Rmd, qmd files
+posts/**
+!posts/*.qmd
+!posts/*.R
+
+# ignore everything in drafts except
+# Rmd, qmd files
+_drafts/*
+!_drafts/*.Rmd
+!_drafts/*.qmd
+!_drafts/*.R
+
+_freeze/*
+_site/*
