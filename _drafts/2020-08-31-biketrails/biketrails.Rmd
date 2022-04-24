@@ -1,0 +1,110 @@
+---
+title: "Mountainbike Trails around Wädenswil"
+author: "Nils Ratnaweera"
+date: "2020-06-06T23:00:00+01:00"
+categories: ["R"]
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+if(is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))){
+  setwd("content/post/2020_06_07_biketrails")
+}
+knitr::opts_knit$set(eval = FALSE)
+```
+
+```{r}
+
+library(raster)
+library(sf)
+library(tidyverse)
+
+library(rayshader)
+library(lazyraster)
+library(geoviz)
+```
+
+```{r}
+# dem <- mapzen_dem(47.19552, 8.67463, 5)
+# writeRaster(dem, "dem.tif")
+```
+
+
+```{r}
+dem <- raster("dem.tif")
+
+dem_mat <- raster_to_matrix(dem)
+```
+
+```{r}
+dem_mat %>%
+  sphere_shade(texture = "desert") %>%
+  add_water(detect_water(dem_mat)) %>%
+  plot_3d(dem_mat,zscale = 15,theta = 160, phi = 30,zoom = 0.5, baseshape = "circle")
+```
+
+
+```{r}
+
+coords_to_xy <- function(x, y, elevation){
+  ex <- extent(elevation)
+  x = ((x-ex@xmin)/(ex@xmax-ex@xmin))*ncol(elevation)
+  y = (1-(y-ex@ymin)/(ex@ymax-ex@ymin))*nrow(elevation)
+  out <- c(x,y)
+  names(out) <- c("x","y")
+  return(out)
+}
+
+
+```
+
+```{r}
+route <- st_read("route.gpkg")
+
+route2 <- route %>%
+  st_coordinates() %>%
+  as_tibble() %>%
+  rename(long = X, lat = Y)
+
+add_gps_to_rayshader(dhm,
+                     route2$lat, 
+                     route2$long,
+                     alt = 1000,
+                     clamp_to_ground = TRUE,
+                     raise_agl = 10,
+                     line_width = 1.5,
+                     lightsaber = TRUE,
+                     colour = "red",
+                     zscale = zscale,
+                     ground_shadow = FALSE)
+
+```
+
+```{r}
+render_label(heightmap = dhm_mat, x = start[1], y = start[2],text = "Waedenswil",z = 20000,zscale = zscale,freetype = FALSE)
+render_label(heightmap = dhm_mat, x = end[1], y = end[2],text = "Hoehrohnen @ 1229 MASL",z = 500,zscale = zscale,freetype = FALSE)
+```
+
+
+
+```{r}
+
+dir <- list.dirs("C:/Users/rata/Dropbox/Biketreff_ASVZ/Tracks",recursive = FALSE) 
+path <- "C:/Users/rata/Dropbox/Biketreff_ASVZ/Tracks"
+
+list.files(path, ".gpx",recursive = TRUE,full.names = TRUE) %>%
+  map(function(x){
+  lay <- st_layers(x)
+  laysel <- lay$name[lay$geomtype == "Point" & lay$features>0]
+  print(laysel)
+    x %>%
+      st_read(laysel) %>%
+      transmute(name = basename(x))
+  }) %>%
+  do.call(rbind, .) %>%
+  group_by(name) %>%
+  summarise(do_union = FALSE) %>%
+  st_cast("LINESTRING") %>%
+  tm_shape() + tm_lines()
+
+```
+

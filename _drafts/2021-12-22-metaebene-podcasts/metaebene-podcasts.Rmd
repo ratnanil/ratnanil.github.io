@@ -1,0 +1,231 @@
+---
+title: "Metaebene-Podcasts"
+description: |
+  A short description of the post.
+author:
+  - name: Nils Ratnaweera
+    url: {}
+date: 2021-12-22
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(lubridate)
+library(tidyverse)
+library(ggstream)
+
+feeds <- read_csv("feed_dfr.csv")
+transcripts <- read_csv("transcripts.csv")
+load("rss_additional.Rda")
+
+get_duration <- function(x){
+  res <- str_match(x, "(\\d{2})\\:(\\d{2})\\:(\\d{2})")[,-1]
+  res_int <- as.integer(res)
+  res_int[1]*3600+res_int[2]*60+res_int[3]
+}
+
+clean_names <- function(str){
+  str %>%
+    str_replace("_", " ") %>%
+    str_to_title() %>%
+    str_replace("Ukw", "UKW")
+}
+```
+
+
+
+```{r}
+
+feeds2 <- left_join(feeds, rss_additional, by = c(item_guid = "guid", "podcast"))
+
+
+
+
+feeds2 <- feeds2 %>%
+  mutate(
+    duration_seconds = map_dbl(duration, get_duration)
+  )
+
+
+feeds_smry <- feeds2 %>%
+  mutate(time = year(item_pub_date)+(month(item_pub_date-1))/12) %>%
+  group_by(podcast, time) %>%
+  summarise(duration_h = sum(duration_seconds)/3600)
+
+feeds_smry2 <- feeds_smry %>%
+  summarise(
+    min_time = min(time)-6/12,
+    max_time = max(time)+6/12,
+    duration_h = 0
+  ) %>%
+  pivot_longer(ends_with("time"),values_to ="time") %>%
+  select(-name) %>%
+  bind_rows(feeds_smry) %>%
+  ungroup()
+
+
+feeds_smry %>%
+  mutate(podcast = clean_names(podcast)) %>%
+  ggplot(aes(time, duration_h, fill = podcast)) +
+  geom_stream(colour = "black",extra_span = .1, true_range = "none") +
+  scale_fill_manual(values = RColorBrewer::brewer.pal(4, "Set2")) +
+  scale_x_continuous(breaks = function(x){seq(floor(x[1]), ceiling(x[2]), 2)}) +
+  theme_minimal() +
+  labs(x = "", y = "Episoden Dauer") +
+  theme(panel.grid.minor.x = element_blank(), legend.title = element_blank())
+
+```
+
+
+```{r}
+feeds2 %>%
+  mutate(
+    year = year(item_pub_date),
+    quarter = lubridate::quarter(item_pub_date),
+    time = paste(year, quarter),
+    podcast = clean_names(podcast)
+    ) %>%
+  group_by(podcast, year, quarter, time) %>%
+  summarise(duration_h = sum(duration_seconds)/3600) %>% 
+  ggplot(aes(as.factor(quarter), duration_h, fill = podcast, colour = podcast)) +
+  geom_col() +
+  facet_grid(~year, scales = "free_x", space = "free_x") +
+  scale_fill_manual(values = RColorBrewer::brewer.pal(4, "Set2"))  +
+  scale_colour_manual(values = RColorBrewer::brewer.pal(4, "Set2"))  +
+  theme_classic() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+
+
+ggplot(feeds2, aes(item_pub_date, duration_seconds/3600)) +
+  geom_point()
+  
+library(zoo)
+feeds2_complete <- feeds2 %>%
+  transmute(podcast, item_pub_date = as.Date(item_pub_date), duration_h = duration_seconds/3600) %>%
+  arrange(podcast, item_pub_date) %>%
+  split(.$podcast) %>%
+  map_dfr(function(x){
+    complete(x, podcast, item_pub_date = full_seq(item_pub_date, 1), fill = list(duration_h = 0))
+  }) %>%
+  group_by(podcast) %>%
+  mutate(duration_ave = rollmean(duration_h, 90,fill = NA)) %>%
+  filter(!is.na(duration_ave))
+
+
+feeds2_complete$pub_int <- as.integer(feeds2_complete$item_pub_date)
+library(mgcv)
+feeds2_pred <- feeds2_complete %>%
+  split(.$podcast) %>%
+  map_dfr(function(x){
+    fit <- gam(duration_ave~s(pub_int, bs = "tp"), data = x,span = 10)
+
+    x$pred <- predict(fit)
+    x
+  })
+
+
+feeds2_pred <- feeds2_pred %>%
+  mutate(
+    podcast = clean_names(podcast),
+    podcast = fct_reorder(podcast, item_pub_date, min,na.rm = TRUE, .desc = TRUE),
+    podcast = fct_relevel(podcast, "UKW")
+         )
+
+ggplot(feeds2_pred, aes(item_pub_date, pred, fill = podcast)) + 
+  geom_area(position = "stack") +
+  geom_line(aes(y = duration_ave), colour = "black") +
+  facet_wrap(~podcast)
+
+ggplot(feeds2_pred, aes(item_pub_date, pred, fill = podcast)) + 
+  geom_area(position = "stack") 
+```
+
+
+```{r}
+feed2 <- feeds %>%
+  select(starts_with("item")) %>%
+  select(-item_category, -item_author)
+
+transcripts2 <- transcripts %>%
+  filter(!is.na(voice)) %>%
+  filter(podcast %in% c("forschergeist", "raumzeit")) %>%
+  group_by(podcast, guid, voice, speaker) %>%
+  summarise(dur = as.integer(difftime(end, start, units = "secs"))) %>%
+  mutate(voice = str_replace(voice, "^tim$|tim-pritlove", "timpritlove")) %>%
+  ungroup() %>%
+  group_nest(guid) %>%
+  mutate(
+    data = map(data, function(x){
+      x$voice_int <- as.integer(fct_relevel(as.factor(x$voice), "timpritlove"))
+      x
+    }),
+  ) %>%
+  unnest(data) %>%
+  filter(max(voice_int)<=2)   %>%
+  group_by(podcast, guid, voice, voice_int) %>%
+  summarise(
+    dur = sum(dur),
+  ) %>%
+  group_by(guid) %>%
+  mutate(dur_perc = dur/sum(dur))
+
+transcripts3 <- feeds2 %>%
+  select(guid = item_guid, podcast, persons, duration_seconds,item_pub_date) %>%
+  unnest(persons) %>%
+  filter(!grepl("Pritlove", persons)) %>%
+  right_join(filter(transcripts2, voice != "timpritlove"), by = c("podcast", "guid"))
+
+transcripts3 %>%
+  ggplot(aes(item_pub_date, dur_perc, colour = podcast))+
+  geom_point()
+  
+
+# https://www.canva.com/colors/color-palettes/rosettes-and-cream/
+bg <- "#fae8e0"
+sec <- "#ef7c8e"
+transcripts3 %>%
+  mutate(
+    facet = case_when(
+      row_number()<=10~"top 10",
+      row_number()-n()-1>=-10~"bottom10"
+    ),
+    facet = fct_rev(facet)
+  ) %>%
+  filter(!is.na(facet)) %>%
+  ggplot(aes(dur_perc.2, item_title)) +
+  geom_col(fill = "#d8a7b1") +
+  geom_col(aes(x = dur_perc.1), fill = "#b6e2d3") +
+  scale_x_continuous(limits = c(-1,1), labels = scales::percent_format()) +
+  geom_vline(xintercept = seq(-1,1,0.25), colour = bg) +
+  geom_text(aes(x = 1, label = voice.2),hjust = 0) +
+  coord_cartesian(clip = "off") +
+  facet_wrap(~facet,scales = "free_y", ncol = 1) +
+  labs(y = "",x = "Zeitlicher Anteil am Gespräch")+
+  theme(panel.background = element_rect(fill = bg),plot.margin = margin(0,70,0,0), plot.background = element_rect(fill = "#fae8e0"), panel.grid = element_blank(), axis.ticks.y = element_blank(), strip.background = element_rect(fill = sec))
+```
+
+
+
+
+```{r}
+
+library(ggstream)
+library(lubridate)
+feeds %>%
+  select(guid = item_guid, item_pub_date) %>%
+  right_join(transcripts2, by = "guid") %>%
+  mutate(time = year(item_pub_date)+(month(item_pub_date-1))/12) %>%
+  group_by(podcast, time) %>%
+  summarise(dur = max(end_dec)) %>%
+  ggplot(aes(time, dur, fill = podcast)) +
+  geom_stream()
+  
+```
+

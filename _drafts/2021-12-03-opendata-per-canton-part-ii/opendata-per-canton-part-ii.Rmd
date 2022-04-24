@@ -1,0 +1,276 @@
+---
+title: "Opendata per Canton Part II"
+description: |
+  A short description of the post.
+author:
+  - name: Nils Ratnaweera
+    url: {}
+date: 2021-12-03
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(code_folding = TRUE)
+
+```
+
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+kantons_namen <- read_csv("kantons_namen.csv")
+
+kantons_namen <- kantons_namen %>%
+  mutate(kanton = str_match(deutsch, "(Kanton|Staat)\\s(.+)")[,3])
+
+
+opendata_swiss_orgs <- read_csv("data/opendata-swiss-orgs.csv")
+
+kantone <- opendata_swiss_orgs %>%
+  filter(politische_ebene == "Kanton")
+
+kantone <- kantone %>%
+  mutate(is_mother = name %in% .$group_name) %>%
+  mutate(
+    group_name = replace_na(group_name,""),
+    mother = map_chr(group_name,function(x){ifelse(is.na(x),NA_character_,display_name.de[x== name])})
+    ) %>% 
+  filter(!(is_mother & package_count == 0))
+
+```
+
+
+```{r}
+kantone_join <- kantone %>%
+  mutate(
+    kanton1 = str_match(display_name.de,"[kK]anton[s]?\\s(.+)")[,2],
+    kanton2 = str_match(mother,"[kK]anton[s]?\\s(.+)")[,2],
+    kanton = coalesce(kanton1, kanton2),
+    kanton = str_remove(kanton, " - CC GEO"),
+    kanton = str_replace(kanton, "St.Gallen","St. Gallen")
+    ) %>%
+  select(-c(kanton1, kanton2)) %>%
+  full_join(kantons_namen, "kanton") 
+
+
+kantone_join2 <- kantone_join %>%
+  group_by(abk, title.de) %>%
+  summarise(
+    package_count = sum(package_count, na.rm = TRUE),
+    wappen = list.files("wappen",abk, full.names = TRUE),
+    ) %>%
+  arrange(abk, desc(package_count)) %>%
+  group_by(abk) %>%
+  mutate(
+    labelpos = cumsum(package_count)- package_count,
+    labelpos2 = (labelpos*2 + package_count)/1.1
+    ) %>%
+  ungroup() %>%
+  mutate(
+    title.de = str_replace(title.de, "Amt für Raumentwicklung und Geoinformation \\(AREG\\)", "AREG"),
+    title.de = str_replace(title.de, "Kantons?", "Kt."),
+    title.de = fct_reorder(title.de, package_count),
+    abk = fct_reorder(abk, package_count, sum),
+    abk_int = ifelse(package_count> 0,as.integer(abk),NA),
+  )
+
+
+wappen_df <- kantone_join2 %>%
+  mutate(y = as.integer(abk)) %>% 
+  group_by(abk, wappen, y) %>% summarise() %>% ungroup()
+
+```
+
+
+
+```{r fig.height=10, fig.width=10}
+library(cowplot)
+
+wappen_dim <- 12
+ggplot(kantone_join2, aes(package_count, abk, group = title.de, fill = abk_int)) +
+  geom_col(colour = "black") +
+  coord_cartesian(expand = FALSE,xlim = c(-20,NA)) +
+  pmap(select(wappen_df, wappen, y), function(wappen, y){draw_image(wappen, x = -5, y = y, width = wappen_dim, height = wappen_dim,hjust = 1,vjust = 0.5)}) +
+  scale_fill_gradientn(colours = RColorBrewer::brewer.pal(9, "Spectral")) +
+  geom_text(data = ~filter(., package_count > 100, !abk %in% c("BE", "GR")), aes(x = labelpos, label = title.de), hjust = 0, nudge_x = 5) +
+  ggrepel::geom_text_repel(data = ~filter(., package_count > 100, abk %in% c("BE", "GR")), aes(x = labelpos2, label = title.de), hjust = 0, nudge_x = 50, nudge_y = -.5, segment.curvature = -.1) +
+  theme_minimal() +
+  theme(legend.position = "none", axis.title.y = element_blank(), panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank()) +
+  labs(title = "Öffentlich verfügbare Datensätze der Kantone auf opendata.swiss",
+       subtitle = "Organisationen (aggregiert nach Kantone)",
+       x = "Anzahl Datensätze ('packages')",
+       caption = "Stand: 5. Dezember 2021.\nDaten mittels der CKAN API ermittelt und den Kantonen zugewiesen.\nOrganisationen mit > 100 Datensätze sind namentlich erwähnt")
+
+```
+
+
+```{r}
+library(geofacet)
+library(ggwaffle)
+
+kantone_join2 <- kantone_join2 %>%
+  mutate(
+    code = abk,
+    name = abk
+  )
+
+
+dat2 <- kantone_join2 %>%
+  mutate(title.de = fct_explicit_na(title.de, na_level = "")) %>%
+  mutate(
+    package_count = ceiling(package_count/10),
+    n = map(package_count, ~rep(1, .x)),
+    code = as.character(code),
+    title.de = as.character(title.de),
+    ) %>%
+  unnest(n) %>% 
+  mutate(
+    title.de = fct_lump(title.de,4, other_level = "zzz andere"),
+    title.de = as.character(title.de)
+    ) %>% 
+  group_by(code) %>%
+  group_nest() %>%
+  mutate(waff = map(data, ~waffle_iron(.x, aes_d(group = title.de), rows = 10))) %>%
+  unnest(waff) %>%
+  mutate(
+    group = fct_recode(group, andere = "zzz andere"),
+    group = fct_relevel(group, "andere", after = Inf)
+    )
+mt <- crossing(
+  x = seq(range(dat2$x)[1], range(dat2$x)[2]),
+  y = seq(range(dat2$y)[1], range(dat2$y)[2]),
+  val = 1
+)
+c(RColorBrewer::brewer.pal(5, "Dark2")) -> cols
+colour <- "white"
+lwd = .5
+```
+
+
+```{r, layout = "l-screen", fig.height=5}
+ggplot(dat2, aes(y, x)) +
+  geom_tile(data = mt, colour = colour, lwd = lwd, fill = "grey", alpha = 0.3) +
+  geom_tile(aes(fill = group), colour = "white",lwd = lwd) +
+  scale_fill_manual(values =  cols) +
+  coord_equal(expand = FALSE) +
+  # theme_minimal() +
+  theme(legend.position = "bottom", panel.background = element_blank(),strip.text.x = element_text(margin = margin(1,0,1,0, "mm")),
+        axis.text = element_blank(), axis.ticks = element_blank(), axis.title = element_blank(), legend.title = element_blank()) +
+  facet_geo(facets = ~code, grid = "ch_cantons_grid2")
+
+```
+
+
+```{r}
+library(sf)
+ch <- read_sf("data/swissBOUNDARIES3D_1_3_TLM_LANDESGEBIET.shp") %>%
+  filter(NAME == "Schweiz")
+
+cellsize <- 4200
+gri <- st_make_grid(ch,cellsize = c(cellsize,cellsize),square = TRUE)[ch]
+gri_inter <- st_intersection(gri, ch)
+gri_inter <- gri_inter %>%
+  st_as_sf() %>%
+  mutate(area = as.numeric(st_area(.)))
+if(FALSE){
+} else{
+  # gri_inter <- gri[ch]
+  covered <-gri_inter$area/(cellsize^2)>.3
+  gri_inter <- gri %>%
+    st_as_sf() %>%
+    mutate(area = as.numeric(st_area(.))) %>%
+    filter(covered)
+}
+
+nrow(gri_inter)
+
+coords <- st_coordinates(st_centroid(gri_inter))
+
+gri_inter$col <- as.integer(as.factor(coords[,1]))
+gri_inter$row <- as.integer(as.factor(coords[,2]))
+
+
+package_per_kanton <- kantone_join2 %>%
+  group_by(abk) %>% 
+  summarise(n = sum(package_count)) %>%
+  filter(n>0) %>%
+  arrange(desc(n)) %>%
+  mutate(perc = n/sum(n),
+         area = perc * sum(gri_inter$area),
+         area_cumsum = cumsum(area)
+         )
+gri_inter$cumsum_area <- cumsum(gri_inter$area)
+
+package_per_kanton$to <- map_int(package_per_kanton$area_cumsum, ~which.min(abs(gri_inter$cumsum_area - .x)))
+package_per_kanton$from <- lag(package_per_kanton$to+1, default = 1)
+
+package_per_kanton_lng <- package_per_kanton %>%
+  select(abk, from, to, n, perc) %>%
+  rowwise() %>%
+  mutate(f = map2(from,to, ~seq(from,to))) %>%
+  unnest(f)
+
+
+gri_inter <- gri_inter %>%
+  st_as_sf() %>%
+  mutate(row = row,col = col)
+
+gri_inter <- gri_inter %>%
+  mutate(i = as.integer(as.factor(row*(10^ceiling(log10(max(row)))) + col)))
+
+
+gri_inter_join <- gri_inter %>%
+  left_join(package_per_kanton_lng, by = c(i = "f"))
+
+gri_label <- gri_inter_join %>%
+  group_by(abk) %>%
+  filter(i == max(i))
+
+gri_inter_join_summ <- gri_inter_join %>%
+  group_by(abk, n, perc) %>%
+  summarise()
+
+gri_inter_join_summ2 <- map(seq_len(nrow(gri_inter_join_summ)), ~st_bbox(gri_inter_join_summ[.x,])) %>%
+  do.call(rbind, .) %>%
+  as_tibble() %>%
+    bind_cols(gri_inter_join_summ)
+
+gri_inter_join_summ2 <- gri_inter_join_summ2 %>%
+  mutate(ylim = map2_dbl(ymin, ymax, ~mean(c(.x,.y))))
+
+
+
+```
+
+
+
+```{r, layout = "l-page"}
+
+
+
+bg_col <-"#073B4C"
+lwd = .2
+ggplot(gri_inter_join, aes(fill = abk)) + 
+  geom_sf(colour = bg_col, lwd = lwd) +
+  # geom_sf(data = gri_inter_join_summ, fill = NA, colour = "lightgrey", lwd = lwd) +
+  scale_fill_manual("",values = RColorBrewer::brewer.pal(nrow(package_per_kanton), "Spectral")) +
+  geom_label(data = gri_inter_join_summ2, aes(xmax+4000, ylim, label = paste0(abk, " (", round(perc*100), "%)"), fill = abk), inherit.aes = FALSE,label.padding = unit(0.1, "lines"), size = 2) +
+  theme_void() +
+  labs(title = "Kantonale Datensätze auf www.opendata.swiss",
+       subtitle = "1 Quadrat ≈ 1 Datensatz")+
+  theme(legend.position = "none",plot.background = element_rect(fill = bg_col),
+                panel.background = element_rect(fill = bg_col,color = NA),
+                plot.margin = margin(10,10,10,10),
+        title = element_text(size = 8,colour = "#66C2A5")
+        )
+
+cellsize^2/sum(gri_inter$area)*sum(package_per_kanton$n)
+
+nrow(gri_inter_join)/sum(package_per_kanton$n)
+```
+

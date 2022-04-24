@@ -1,0 +1,57 @@
+---
+title: "Visualizing the bounding boxes of local projections with projDB"
+author: "Nils Ratnaweera"
+date: "2020-06-10T19:00:00+01:00"
+categories: ["R"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+
+```
+
+```{r}
+library(tidyverse)
+library(sf)
+
+library(rnaturalearthdata)
+library(rnaturalearth)
+world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+
+
+db <- src_sqlite("proj.db") %>%
+  tbl("area") %>%
+  collect()
+
+db_sf <- db %>%
+  na.omit() %>%
+  filter(auth_name == "EPSG") %>%
+  mutate(geom = purrr::pmap(list(south_lat,north_lat,west_lon,east_lon),function(ymin,ymax,xmin,xmax){st_polygon(list(matrix(c(xmin,ymin,xmax,ymin,xmax,ymax,xmin,ymax,xmin,ymin),ncol = 2,byrow = TRUE)))})) %>%
+  st_as_sf(crs = 4326) %>%
+  ungroup() %>%
+  mutate(area = units::set_units(st_area(.),"km2")) %>%
+  arrange(area)
+
+ggplot(db_sf) + 
+  geom_sf(data = world, aes(fill = continent)) +
+  geom_sf(fill = NA) +
+  theme(legend.position = "none")
+
+db_sf %>%
+  mutate(a = str_match(name,"(\\w+)\\s-")[,2]) %>%
+  ggplot() +
+  geom_sf(data = world, aes(fill = continent)) +
+  geom_sf(aes(colour = a), fill = NA) +
+  theme(legend.position = "none")
+
+
+db_sf %>% 
+  filter(st_within(st_sfc(st_point(c(8.26139,47.01659)),crs = 4326),., sparse = FALSE)[1,]) %>%
+  ggplot() + 
+  geom_sf(data = world) +
+  geom_sf(aes(fill = name), alpha = 0.1) +
+  theme(legend.position = "none")
+```
+

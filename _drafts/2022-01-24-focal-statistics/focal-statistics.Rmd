@@ -1,0 +1,72 @@
+---
+title: "Focal Statistics"
+description: |
+  A short description of the post.
+author:
+  - name: Nils Ratnaweera
+    url: {}
+date: 2022-01-24
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r}
+library(terra)
+library(tidyverse)
+library(tmap)
+library(sf)
+library(raster)
+
+radius <- (20/pi)^0.5*1000
+cellsize <- 200
+
+extent <- ceiling(radius/cellsize) * cellsize
+
+myrast <- rast(resolution = 200, xmin = -extent, ymin = -extent, xmax = extent, ymax = extent)
+
+as(raster::rasterToPolygons(as(myrast, "Raster")), "sf") -> mydf_poly
+
+circ <- mydf_poly %>%
+  st_union() %>%
+  st_centroid() %>%
+  st_buffer(radius)
+
+
+mydf_poly$intersects <- st_intersects(mydf_poly, circ, sparse = FALSE)
+mydf_poly$within <- st_within(mydf_poly, circ, sparse = FALSE)
+mydf_poly$centeroids <- st_intersects(st_centroid(mydf_poly), circ, sparse = FALSE)
+
+
+op_exp <- tribble(
+  ~operation, ~beschreibung,
+  "centeroids", "Alle Zellen wo der Mittelpunkt (centeroid) innerhalb des Radius liegt",
+  "within","Alle Zellen, die vollständig innerhalb des Radius liegen",
+  "intersects", "Alle Zellen, welche den Suchkreis berühren"
+)
+
+mydf_long <- mydf_poly %>%
+  pivot_longer(c("intersects", "within", "centeroids"),names_to = "operation",values_to = "selected") %>%
+  left_join(op_exp, by = "operation")
+
+
+mydf_smry <- mydf_long %>%
+  group_by(beschreibung, selected) %>%
+  summarise(n = n())
+
+ggplot(mydf_long)  +
+  geom_sf(aes(fill =selected)) +
+  geom_sf(data = filter(mydf_smry, selected), fill = NA, colour = "white") +
+  geom_sf(data = circ, fill = NA, colour = "black", lwd = 1) +
+  geom_sf_label(data = filter(mydf_smry, selected),aes(label = paste("Anzahl Zellen:",n))) +
+  scale_fill_discrete("Zelle mitberücksichtigt?",breaks = c(0,1), labels = c("nein","ja")) +
+  theme(legend.position = "bottom",axis.title = element_blank(), panel.grid = element_blank()) +
+  facet_wrap(~beschreibung) +
+  labs(title = "Focal statistics: Welche Zellen werden berücksichtigt?")
+  
+
+
+
+```
+

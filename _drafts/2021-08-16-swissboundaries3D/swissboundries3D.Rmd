@@ -1,0 +1,78 @@
+# Swissboundries3D
+
+```{r}
+swissboundries <- "swissBOUNDARIES3D/swissBOUNDARIES3D.gpkg"
+```
+
+What layers are available in the geopackage?
+```{r}
+layers <- st_layers(swissboundries)
+
+layers
+
+layernames <- layers$name %>% set_names(.)
+
+conn <- DBI::dbConnect(RSQLite::SQLite(),swissboundries)
+```
+
+
+What columns / fields do these layers have?
+```{r}
+imap(layernames, ~dbListFields(conn, .x))
+```
+
+What other tables are available in this Geopackage / SQLite Database?
+```{r}
+dbListTables(conn)
+
+dbReadTable(conn, "gpkg_contents")
+```
+
+
+What are all the names of "Gemeinden"?
+```{r}
+dbGetQuery(conn, "SELECT DISTINCT NAME FROM hoheitsgebiet") %>%
+  pull(NAME) %>%
+  paste(collapse = ", ")
+```
+
+What are all the names of "Bezirke"?
+
+```{r}
+dbGetQuery(conn, "SELECT DISTINCT NAME FROM bezirksgebiet") %>%
+  pull(NAME) %>%
+  paste(collapse = ", ")
+```
+
+What are all the names of "Kantone"?
+
+```{r}
+dbGetQuery(conn, "SELECT DISTINCT NAME FROM kantonsgebiet") %>%
+  pull(NAME) %>%
+  paste(collapse = ", ")
+```
+
+Choose all "Gemeinden" which touch the Gemeinde Winterthur:
+```{r}
+winterthur_touches <- st_read(swissboundries, "hoheitsgebiet", query = "SELECT gemeinden.NAME AS name, gemeinden.geom AS geom FROM (SELECT * FROM hoheitsgebiet WHERE NAME = 'Winterthur') winterthur, hoheitsgebiet AS gemeinden WHERE st_touches(gemeinden.geom, winterthur.geom)")
+
+
+ggplot(winterthur_touches) +
+  geom_sf(aes(fill = name)) +
+  geom_sf_label(aes(label = name)) +
+  theme_void() +
+  theme(legend.position = "none")
+
+```
+
+Choose all "Gemeinden" within the "Bezirk" of Surselva
+```{r}
+gemeinden_surselva <- st_read(swissboundries, query = "SELECT gemeinden.NAME as name, gemeinden.geom as geom FROM (SELECT * FROM 'bezirksgebiet' WHERE NAME = 'Surselva') surselva, 'hoheitsgebiet' as gemeinden WHERE st_contains(surselva.geom, gemeinden.geom)")
+
+ggplot(gemeinden_surselva) +
+  geom_sf(aes(fill = name)) +
+  geom_sf_label(aes(label = name)) +
+  theme_void() +
+  theme(legend.position = "none")
+```
+

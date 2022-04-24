@@ -1,0 +1,24 @@
+---
+title: "R Usergroup Zurich"
+description: |
+  Swisstopo challenge
+author:
+  - name: Nils Ratnaweera
+date: 2021-10-27
+output:
+  distill::distill_article:
+    self_contained: false
+preview: https://raw.githubusercontent.com/ratnanil/r-usergroup-swisstopo/main/images/overlay.png
+---
+
+After a long time the Zurich R User Group meets up again physically. The organisers posted the following message on their board:
+
+<div style = "text-align: center;">
+<img src = "challenge2.png" alt = "The swisstopo map Challenge Since March 2021 high quality maps from swisstopo are available as Open Government Data (OGD) (https://www.geo.admin.ch/en/home.detail.news.html/geo-internet/news2021/news20210301.html). Have you used these in R? Have you interacted with the API from R? We are interested to know more! Let us know until the day before the meetup if you want to give a 3min presentation with your solution!" style = "width: 50%;">
+</div>
+
+Since I regularly do things with these datasets in R, I decided to present some of my use cases. Here are the slides for this talk:I 
+
+- Full screen: [ratnanil.github.io/r-usergroup-swisstopo](https://ratnanil.github.io/r-usergroup-swisstopo/)
+- Repo (not much R-code here): [github.com/ratnanil/r-usergroup-swisstopo](https://github.com/ratnanil/r-usergroup-swisstopo)
+<iframe src="https://ratnanil.github.io/r-usergroup-swisstopo/" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="600px" allowfullscreen></iframe>

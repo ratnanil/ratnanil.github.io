@@ -1,0 +1,297 @@
+---
+title: "Analysing a 10 year old Podcast"
+author: "Nils Ratnaweera"
+date: "2020-03-01T22:00:00+01:00"
+categories: ["R"]
+tags: ["podcast","R"]
+---
+
+```{r}
+library(tidyverse)
+library(ggrepel)
+library(scales)
+library(tidytext)
+library(lubridate)
+
+theme_set(theme_minimal())
+```
+
+
+```{r, include = FALSE}
+folgenuebersicht <- read_csv("folgenuebersicht.csv")
+```
+
+
+
+```{r, cache = TRUE}
+head(folgenuebersicht)
+```
+
+
+### Number of Episodes per Year
+
+The podcast has had different phases over the years and the number of podcast's released each year varies significantly. The first Episode was released end of 2010. In 2011, Tim Pritlove published 25 episodes, the highest number of episodes he would ever publish thereafter. His project was initially funded externally and when the sponsors ended their contact in 2013, Tim took a break to regroup and find a different method to finance his podcast. He found a way and as of 2015, has be been steadily growing the number of episodes published each year.
+
+```{r, echo = FALSE}
+
+folgenuebersicht %>%
+  group_by(year = year(date)) %>%
+  count() %>%
+  ggplot(aes(year,n)) + 
+  geom_bar(stat = "identity") +
+  scale_x_continuous(breaks = 2010:2020) +
+  labs(x = "Year",y = "Number of Episodes")
+```
+
+
+### Episode duration
+
+What is remarkable about this podcast, is that Tim takes as much time as he needs with each guest, and doesn't really keep an eye on the time. In his `r nrow(folgenuebersicht)` podcasts to date he has spent over `r floor(sum(folgenuebersicht$duration)/60)` hours speaking to his guests, which means an avarage of `r floor(sum(folgenuebersicht$duration)/nrow(folgenuebersicht))` minutes per episode.
+
+The podcast's duration can vary significantly, and I had wondered if there was some trend over time. Apparently, this does not seem to be the case, as shown in the following graph:
+
+```{r, echo = FALSE}
+
+folgenuebersicht_filter_high <- filter(folgenuebersicht,duration > 150)
+folgenuebersicht_filter_low <- filter(folgenuebersicht,duration < 50)
+
+folgenuebersicht %>%
+  {
+  ggplot(.,aes(date, duration,label = title_clean)) +
+      geom_point() +
+      geom_point(data = folgenuebersicht_filter_high, colour = "red") +
+      geom_point(data = folgenuebersicht_filter_low, colour = "red") +
+      # geom_hline(yintercept = mean(.$duration)) +
+      geom_label_repel(
+        data = folgenuebersicht_filter_high,
+        min.segment.length = 0,
+        nudge_y = 170-folgenuebersicht_filter_high$duration,
+        force = 10) +
+      geom_label_repel(data = folgenuebersicht_filter_low,min.segment.length = 0) +
+      expand_limits(y = c(0,200))+
+      labs(x = "Release Date",y = "Episode Duration (in Minutes)")
+  }
+```
+
+The two very short episodes are small housekeeping / information podcasts of which Tim has only produced two.
+
+
+## Listener interaction
+
+
+I was interested to know how intense the interaction was in regard to each podcast. I found two metrics with which this can be quantified: 
+
+- The replies posted on the [podcat's website](https://raumzeit-podcast.de/)
+- Twitter metrics (retweets, favourites, replies) of tweets Tim Pritlove posted after the appearance of a podcast with the user handle \@raumzeit.
+
+
+### Website replies
+
+Again, using `rvest` I scraped the website to retrieve the replies for each podcast. 
+
+
+```{r, include = FALSE}
+replies <- read_csv("replies.csv")
+```
+
+
+I was expecting some podcasts to have a high listener interaction and much discussion over time while others probabbly provoked little or no listener interaction. Old episodes have had a longer time period for such interaction, and so i wanted to visualize the intensity of the interaction (i.e. replies) in such a way, that this aspect becomes apparent.
+
+```{r, echo = FALSE}
+# https://stackoverflow.com/a/43626186/4139249
+
+
+folgen_replies <- left_join(folgenuebersicht,replies,by = "item_link")
+
+c_trans <- function(a, b, breaks = b$breaks, format = b$format) {
+  a <- as.trans(a)
+  b <- as.trans(b)
+
+  name <- paste(a$name, b$name, sep = "-")
+
+  trans <- function(x) a$trans(b$trans(x))
+  inv <- function(x) b$inverse(a$inverse(x))
+
+  trans_new(name, trans, inverse = inv, breaks = breaks, format=format)
+
+}
+
+rev_date <- c_trans("reverse", "time")
+```
+
+
+```{r, echo = FALSE}
+
+ggplot(folgen_replies, aes(rz_folge,reply_date,colour = factor(rz_folge),label = title_clean)) +
+  geom_line()+
+  geom_point(colour = "white", size = 3) +
+  geom_point() +
+  scale_colour_viridis_d() +
+  scale_y_continuous(trans = rev_date)+
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank()) +
+  labs(y = "Date of Reply", x = "Episode Number",title = "")
+```
+
+
+```{r}
+folgen_replies_smry <- folgen_replies %>%
+  group_by_at(1:6) %>%
+  count(name = "Replies") %>%
+  arrange(-Replies) %>%
+  ungroup() %>%
+  mutate(
+    title_clean = fct_reorder(title_clean,Replies)
+    )
+```
+
+
+```{r}
+folgen_replies_smry %>%
+  head(20) %>%
+  ggplot(aes(title_clean,Replies)) +
+  geom_col() +
+  ggplot2::coord_flip() +
+  labs(y = "# Replies",x = "")
+```
+
+
+```{r}
+
+folgen_replies_smry_filter <- filter(folgen_replies_smry, Replies > 40)
+
+folgen_replies_smry %>%
+  ggplot(aes(date,Replies, label = title_clean)) +
+  geom_point() +
+  geom_point(data = folgen_replies_smry_filter, colour = "red") +
+  geom_label_repel(data = folgen_replies_smry_filter,min.segment.length = 0) +
+  geom_smooth(method = "loess",se = FALSE) +
+  labs(y = "# Replies",x = "Release Date")
+```
+
+
+```{r}
+
+folgen_replies_unnest <- folgen_replies %>%
+  unnest_tokens(word,comment)
+
+
+stopwords <- tidytext::get_stopwords("de")
+
+folgen_replies_unnest <- folgen_replies_unnest %>%
+  anti_join(stopwords, by = "word")
+
+
+# folgen_replies_unnest %>%
+#   group_by(rz_folge,title_clean,word) %>%
+#   count() %>%
+#   filter(n > 10) %>%
+#   bind_tf_idf(word,rz_folge,n) %>%
+#   group_by(rz_folge) %>%
+#   arrange(rz_folge,desc(tf_idf)) %>%
+#   filter(n() == 1)
+  
+
+```
+
+
+```{r}
+
+sent <- c(
+  # positive Wörter
+  readLines("SentiWS_v2.0/SentiWS_v2.0_Positive.txt",
+            encoding = "UTF-8"),
+  # negative Wörter
+  readLines("SentiWS_v2.0/SentiWS_v2.0_Negative.txt",
+            encoding = "UTF-8")
+) %>% lapply(function(x) {
+  # Extrahieren der einzelnen Spalten
+  res <- strsplit(x, "\t", fixed = TRUE)[[1]]
+  return(data.frame(words = res[1], value = res[2],
+                    stringsAsFactors = FALSE))
+}) %>%
+  bind_rows %>% 
+  mutate(words = gsub("\\|.*", "", words) %>% tolower,
+         value = as.numeric(value)) %>% 
+  # manche Wörter kommen doppelt vor, hier nehmen wir den mittleren Wert
+  group_by(words) %>% summarise(value = mean(value)) %>% ungroup
+
+
+
+folgen_replies_unnest <- inner_join(folgen_replies_unnest,sent,by = c("word" = "words"))
+
+folgen_reply_sent <- folgen_replies_unnest %>%
+  group_by_at(1:7) %>%
+  summarise(value = mean(value)) %>%
+  group_by_at(1:6) %>%
+  summarise(
+    median = median(value),
+    q25 = quantile(value,0.25),
+    q75 = quantile(value,0.75),
+    n = n(),
+  ) 
+ggplot(folgen_reply_sent, aes(n,median,ymin = q25,ymax = q75, colour = factor(rz_folge))) +
+  # geom_point() +,
+  geom_pointrange() +
+  geom_hline(yintercept = 0) +
+  labs(x = "Number of replies",y = "Mean sentiment") +
+  lims(y = c(-1,1)) +
+  theme(legend.position = "none")
+
+folgen_reply_sent_fil <- folgen_reply_sent %>%
+  filter(median > 0.3 | median< -0.1)
+
+folgen_reply_sent %>%
+  ggplot(aes(factor(rz_folge),median,label = title_clean)) +
+  geom_point() +
+  # geom_label_repel(data = folgen_reply_sent_fil,nudge_y = folgen_reply_sent_fil$value) +
+  scale_y_continuous(limits = c(-1,1)) +
+  labs(x = "Raumzeit-Folge",y = "Mittleres 'sentiment'")
+
+
+folgen_replies_unnest %>%
+  group_by(word,value) %>%
+  count() %>%
+  arrange(desc(value))
+
+folgen_replies_unnest %>%
+  filter(title_clean == "Mars Express") %>%
+  pull(word)
+
+```
+
+
+### Twitter Data
+
+```{r}
+raumtweets_folgen <- read_csv("raumtweets_folgen.csv")
+
+
+```
+
+
+```{r}
+
+raumtweets_folgen_filter <- filter(raumtweets_folgen,retweet_count>30)
+
+ggplot(raumtweets_folgen, aes(created_at,retweet_count,label = title_clean)) +
+  geom_point() +
+  theme(legend.position = "none") +
+  geom_point(data = raumtweets_folgen_filter,colour = "red") +
+  geom_smooth(method = "loess",se = FALSE) +
+  geom_label_repel(data = raumtweets_folgen_filter,nudge_x = 5,nudge_y = 5) +
+  labs(x = "Tweet Date", y = "Retweet Count")
+
+raumtweets_folgen_filter <- filter(raumtweets_folgen,favorite_count>70)
+ggplot(raumtweets_folgen, aes(created_at,favorite_count,label = title_clean)) +
+  geom_point() +
+  geom_point(data = raumtweets_folgen_filter, colour = "red") +
+  geom_smooth(method = "loess",se = FALSE)  +
+  geom_label_repel(data = raumtweets_folgen_filter, nudge_x = 5,nudge_y = 5) +
+  labs(x = "Tweet Date", y = "Favourites Count")
+
+```
+
+

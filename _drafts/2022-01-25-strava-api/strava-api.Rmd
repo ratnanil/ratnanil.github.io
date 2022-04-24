@@ -1,0 +1,103 @@
+---
+title: "Strava API"
+description: |
+  A short description of the post.
+author:
+  - name: Nils Ratnaweera
+    url: {}
+date: 2022-01-25
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r}
+library(httr)
+library(tidyverse)
+library(sf)
+library(tmap)
+library(glue)
+library(jsonlite)
+source("decodeLine.R")
+
+```
+
+
+```{r}
+
+mytok2 <- readRDS(".httr-oauth")[[1]]
+
+resp <- GET("https://www.strava.com/api/v3/athlete", config(token = mytok2))
+
+rawToChar(resp$content) %>% jsonlite::fromJSON()
+
+resp <- GET("https://www.strava.com/api/v3/athlete/activities?", config(token = mytok2))
+
+activities <- rawToChar(resp$content) %>% jsonlite::fromJSON()
+
+activities %>%
+  select(name, map) %>%
+  unnest(map) %>%
+  select(name, summary_polyline, id) %>%
+  pmap(function(name, summary_polyline, id){
+    decoded <- decodeLine(summary_polyline)
+    decoded
+    st_as_sf(decoded, coords = c("lon", "lat"), crs = 4326) %>%
+      mutate(name = name, id = id)
+  }) %>%
+  do.call("rbind", .) -> summary_polyline
+
+tm_shape(sf_obj) + tm_dots()
+
+activities_list <- activities %>%
+  filter(grepl("Heimweg", name)) %>%
+  select(id) %>%
+  head(1) %>%
+  pmap(function(id){
+    id
+    # resp <- GET(glue("https://www.strava.com/api/v3/activities/{id}/streams?keys=&key_by_type=true"), config(token = mytok))
+    
+    # fromJSON(rawToChar(resp$content))
+    resp <- GET(glue("https://www.strava.com/api/v3/activities/{id}/streams?keys=latlng,time&key_by_type=true"), config(token = mytok))
+    
+    stream <- rawToChar(resp$content) %>%
+      fromJSON()
+    
+    
+    sf_obj <- cbind(stream$time$data,stream$latlng$data) %>%
+      as.data.frame() %>%
+      st_as_sf(coords = c("V3","V2")) %>%
+      mutate(id = id) %>%
+      rename(time = V1)
+    sf_obj
+    
+  })
+
+
+
+activities <- activities %>%
+  filter(name == "Heimweg") %>%
+  mutate(
+    start_date_local = as.POSIXct(start_date_local,
+                                   format = "%Y-%m-%dT%H:%M:%SZ"),
+    average_speed = average_speed*3.6
+  )
+
+activities2 <-  activities %>%
+  transmute(
+    start_date_local = as.Date(start_date_local),
+    average_speed
+    )
+
+
+ggplot(activities2, aes(start_date_local, average_speed)) + 
+  geom_line(data = mutate(data.frame(spline(activities2, n=nrow(activities2)*1)), start_date_local = as.Date(x,origin = "1970-01-01"),average_speed = y) ) +
+  geom_point() +
+  labs(x = "Date", y = "Average Speed (km/h)") +
+  scale_y_continuous(expand = c(0.1,.9)) +
+  theme_classic()
+
+
+```
+

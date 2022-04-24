@@ -1,0 +1,77 @@
+---
+title: Orienting maps away from north in R (ggplot / tmap)
+author: Nils
+date: '2020-06-23'
+slug: orienting-maps-created-with-ggplot
+draft: true
+categories:
+  - R
+  - sf
+tags:
+  - GIS
+  - sf
+  - R
+---
+
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, warning = FALSE, message = FALSE, out.width="100%")
+```
+
+
+I recently mad a map of a river segment which had a northwest to southeast orientation, and thus was oriented "diagonally" when looking towards north. The map had lots of white, unused space, and since orientation towards north did not matter in that perticular case, I wanted to orient my image so that the river was "horizontal" and takes up less space in my document. 
+
+After some research, I found no elegant solution to do this with `ggplot` or `tmap`. I therefore did it in an inelegant, "hacky" way that I want to document quickly for future use.
+
+In this example, I use the lake of zurich from the Corine Land Cover dataset (2018), which I downloaded from [here](https://www.wsl.ch/de/projekte/corine-schweiz.html) (after downloading the dataset, I exported the lake into a .gpkg file).
+
+This is what the original plot looks like:
+
+```{r}
+
+library(sf)
+library(tidyverse)
+library(knitr)
+
+
+lake_zurich <- read_sf("zuerichsee.gpkg")
+
+ggplot(lake_zurich) + 
+  geom_sf() +
+  theme_void()
+
+ggsave("zuerichsee.png")
+
+```
+
+To rotate the map, I first saved it as a png and the read imported that image with the library `magick`. I can then simply rotate the image to the angle that I want and then need to trim the image using `image_trim`. 
+```{r}
+
+library(magick)
+
+myplot <- image_read("zuerichsee.png")
+
+myplot_rotated <- myplot %>%
+  image_rotate(-30) %>%
+  image_trim()
+
+
+myplot_rotated
+```
+
+To add a north arrow, I looked for a nice northarrow image on the web, imported it with `image_read` and made a composite image out of the two images.
+
+```{r}
+
+north_arrow <- image_read("north_arrow.png")%>%
+                    image_rotate(-30) %>%
+                    image_trim() %>%
+                    # adjust geometry and position so it fits nicely
+                    image_resize(geometry = "150x")
+
+image_composite(myplot_rotated, north_arrow)
+
+
+```
+
+Note that this approach only works since I used `theme_void`. It will not work if you want graticules, the background grid anything else that gives away the original orientation!

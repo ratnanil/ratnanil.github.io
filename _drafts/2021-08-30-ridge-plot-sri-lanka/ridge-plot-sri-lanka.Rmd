@@ -1,0 +1,95 @@
+---
+title: "Ridge Plot Sri Lanka"
+description: |
+  A short description of the post.
+author:
+  - name: Nils Ratnaweera
+date: 2021-08-30
+draft: true
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r, include=FALSE}
+code_folding <- function(text){paste("show code for:",text)}
+```
+
+
+```{r, code_folding = code_folding("load necessary libraries")}
+library(terra)
+library(sf)
+library(dplyr)
+library(readr)
+library(ggplot2)
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+knitr::purl("../2021-08-13-minimalistic-topography/minimalistic-topography.Rmd",output = "minimalistic-topography.R")
+
+read_lines("minimalistic-topography.R")[9:113] %>% # terrible to hardcode this
+  write_lines("minimalistic-topography.R")
+```
+
+
+```{r code_folding = code_folding("sourcing functions from my other blogpost"),code=readLines("minimalistic-topography.R")}
+
+```
+
+
+```{r, code_folding = code_folding("prepare geodata (vector)")}
+tmp <- tempdir()
+
+boundary_dir <- file.path(tmp, "boundary")
+unzip("data-git-lfs/original/lka_adm_slsd_20200305_shp.zip", exdir = boundary_dir)
+
+sl_boundary <- read_sf(
+  file.path(boundary_dir, "lka_admbnda_adm0_slsd_20200305.shp")
+  )
+```
+
+<!-- https://download.geoservice.dlr.de/TDM90/ -->
+
+```{r, code_folding = code_folding("prepare geodata (raster)"), eval = FALSE}
+list.files("data-git-lfs", pattern = "^TDM.+\\.zip$", full.names = TRUE) %>%
+  map(~unzip(.x, exdir = dem_dir))
+
+dhm_mosaic <- file.path(list.files(dem_dir, full.names = TRUE), "DEM") %>%
+  list.files(pattern = "\\.tif", full.names = TRUE) %>%
+  map(~terra::rast(.x)) %>%
+  terra::src() %>% 
+  terra::mosaic()
+
+
+dhm_masked <- terra::mask(dhm_mosaic,as(sl_boundary, "SpatVector"))
+
+terra::NAflag(dhm_masked) <- -32767
+
+dhm_cropped <- terra::crop(dhm_masked, sl_boundary)
+
+terra::writeRaster(dhm_cropped, "data-git-lfs/processed/dhm_cropped.tif")
+```
+
+```{r, include=FALSE}
+dhm_cropped <- rast("data-git-lfs/processed/dhm_cropped.tif")
+```
+
+
+```{r, layout = "l-body-outset", code_folding = code_folding("create ridges and visualize data")}
+mymask <- st_bbox_rast(dhm_cropped) %>%
+  st_buffer(5000) %>%
+  st_difference(st_transform(sl_boundary, st_crs(dhm_cropped)))
+
+sf_obj <- create_ridges(dhm = dhm_cropped,fac = 2,n_lines = 100, geom_type = "LINESTRING")
+
+bgcol <- "skyblue2"
+ggplot(sf_obj) +
+  geom_sf(fill = "black") +
+  geom_sf(data = mymask, color = NA, fill = bgcol) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = bgcol)) +
+  coord_sf(xlim = c(77, 84))
+
+```
+

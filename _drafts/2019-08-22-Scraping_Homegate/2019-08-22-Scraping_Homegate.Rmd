@@ -1,0 +1,230 @@
+---
+title: "Scraping real estate data"
+author: "Nils Ratnaweera"
+date: "2019-08-22T22:00:00+01:00"
+categories: ["R"]
+tags: ["webscraping","R"]
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+
+library(tidyverse)
+# library(xml2)
+library(rvest)
+# library(magrittr)
+# library(tmaptools)
+# library(sf)
+# library(pander)
+# library(DT)
+# library(DBI)
+# library(httr)
+# library(jsonlite)
+library(lubridate)
+
+
+
+scrape_page <- function(url){
+
+  webpage <- read_html(url)
+
+  data <- webpage %>%
+    html_nodes(".ResultListPage_stickyParent_3ocYo.ResultListPage_resultListPage_dpaLE") %>%
+    html_nodes(".anchored")%>%
+    # head(1) -> x
+  map_dfr(function(x){
+    data <- x %>% 
+      html_nodes("li") %>%
+      map_dfr(function(x){
+      key <- x %>%
+        html_nodes(".key") %>%
+        html_text() %>%
+        ifelse(length(.) == 0,"",.)
+      
+      if(key == "Adresse"){
+        val <- x%>%
+          html_nodes(".value") %>%
+          xml_find_all(".//text()") %>%
+          html_text()
+        key <- c("Strasse","PLZ_Ort")
+      }else{
+        val <- x %>%
+          html_nodes(".value") %>%
+          html_text() %>%
+          ifelse(length(.) == 0,"",.)
+      }
+      
+      tibble(key = key, value = val) %>%
+        filter(key != "",key !="Sonstiges",key != "Kontakt")
+  })
+    
+    preis = html_nodes(x, ".item-content-label") %>%
+      html_text(trim = TRUE) #%>% str_remove_all("[\r\n]") %>% str_remove_all("-|'|–|\\.")
+    
+    link = html_nodes(x,".detail-page-link.box-row--link") %>%
+      html_attr("href")
+    
+    title <- html_nodes(x, ".item-content") %>%
+      html_nodes(".item-title") %>%
+      html_text()
+  
+    description1 <- html_nodes(x, ".item-content") %>%
+      html_nodes(".item-description-long") %>%
+      html_text() 
+    
+    description2 <- html_nodes(x, ".item-content") %>%
+      html_nodes(".item-description") %>%
+      html_text() 
+    
+    description <- ifelse(length(description1)>0,description1,description2)
+
+    data %>%
+      spread(key,value) %>%
+        mutate(
+          link = link,
+          preis = preis,
+          title = title,
+          description_short = description,
+          scrapetime_utc = with_tz(Sys.time(),"UTC")
+          ) 
+
+  }) %>%
+  janitor::clean_names()
+  return(data)
+}
+
+
+
+scrape_plz <- function(plz,method = "mieten"){
+  
+  stopifnot(method %in% c("kaufen","mieten"))
+  stopifnot(grepl("\\d{4}",plz))
+  url <- paste0("https://www.homegate.ch/",method,"/immobilien/plz-",plz,"/trefferliste?tab=list&o=sortToplisting-desc")
+  
+  paginator_counter <- read_html(url) %>%
+    html_nodes(".paginator-counter") 
+  
+  if(length(paginator_counter)>0){
+    to <- paginator_counter %>%
+    html_nodes("span") %>%
+    extract2(2) %>%
+    html_text() %>%
+    parse_number()
+  
+  data <- 1:to %>%
+    map_dfr(~scrape_page(paste0(url,"&ep=",.x)))
+  } else{
+    data <- tibble(.rows = 1) %>%
+      mutate(scrapetime_utc = with_tz(Sys.time(),"UTC"))
+  }
+  
+  data$angebot <- method
+  data$scrape_plz <- plz
+  
+  return(data)
+  
+}
+
+# umlaute <- "[^(ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\\d\\s\\.\\-\\/\\+)]"
+
+
+
+
+# conn = dbConnect(
+#   RPostgreSQL::PostgreSQL(),
+#   host = "000.00.000.00", 
+#   dbname = "immodata",
+#   user = "user",
+#   password = "password"
+# )
+
+```
+
+
+
+```{r}
+# scrape_log <- tbl(conn,"scrape_raw_4") %>%
+#   group_by(scrape_plz) %>%
+#   summarise(
+#     last_scrape = max(scrapetime_utc, na.rm = TRUE)
+#   )
+  
+  
+# PLZ <- tbl(conn,"PLZO_PLZ") %>%
+#   select(PLZ) %>%
+#   group_by(PLZ) %>%
+#   summarise()
+
+
+
+
+# plz_next_up <- left_join(PLZ,scrape_log,by = c("PLZ" = "scrape_plz")) %>%
+#   mutate(
+#     never_scraped = is.na(last_scrape)
+#   ) %>%
+#   arrange(desc(never_scraped),last_scrape,PLZ) %>%
+#   head(10) %>%
+#   collect() %>%
+#   mutate(
+#     last_scrape = with_tz(last_scrape,"UTC"),
+#     days_since_last = as.numeric(difftime(with_tz(Sys.time(),"UTC"),last_scrape, units = "days"))
+#     )
+
+```
+
+```{r}
+# plz_next_up <- plz_next_up %>%
+#   filter(days_since_last>7 | is.na(days_since_last))
+# 
+# plz_next_up
+# 
+# 
+# run_scrape <- nrow(plz_next_up)>0
+
+```
+
+
+```{r}
+
+
+
+data_raw <- c(8820,8805) %>%
+  map_dfr(function(x){
+    data_mieten <- tryCatch(scrape_plz(x,"mieten"), error = function(e) tibble(.rows = 1))
+    Sys.sleep(1)
+    data_kaufen <- tryCatch(scrape_plz(x,"kaufen"), error = function(e) tibble(.rows = 1))
+    bind_rows(data_mieten,data_kaufen)
+  }) %>%
+  janitor::clean_names()
+
+data_raw$rows <- NULL
+
+
+dbWriteTable(conn, "scrape_raw_4", data_raw, row.names=FALSE, append=TRUE)
+
+
+DT::datatable(data_raw)
+
+
+dbDisconnect(conn)
+
+
+```
+
+```{r, results='asis'}
+pandoc.p(paste("Um",Sys.time(),"wurde der scrape job erfolgreich mit folgenden Postleitzahlen durchgeführt: ",paste(plz_next_up$PLZ,collapse = ", "),". Anzahl Zeilen: ",nrow(data_raw)))
+
+duration <- round(difftime(Sys.time(),start),2)
+pandoc.p(paste("Der ganze Prozess dauerte:",duration,attr(duration,"units")))
+```
+
+
+
+
+
+

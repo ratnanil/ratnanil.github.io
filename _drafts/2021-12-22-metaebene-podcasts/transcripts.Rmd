@@ -1,0 +1,64 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(stopwords)
+
+transcripts <- read_csv("transcripts.csv")
+feed_dfr <- read_csv("feed_dfr.csv")
+
+```
+
+
+```{r}
+transcripts_unnested <- transcripts %>%
+  group_by(podcast, guid) %>%
+  unnest_tokens("word", text)
+
+stopwords_de <- tibble(word = stopwords::stopwords("de"))
+transcripts_unnested <- anti_join(transcripts_unnested, stopwords_de, by = "word")
+
+
+podcast_tf_idf <- transcripts_unnested %>%
+  group_by(podcast, guid) %>%
+  count(word) %>% 
+  bind_tf_idf(word, guid, n)
+
+podcast_tf_idf %>%
+  group_by(podcast) %>%
+  slice_max(tf_idf, n = 15) %>%
+  ungroup() %>%
+  ggplot(aes(tf_idf, fct_reorder(word, tf_idf), fill = podcast)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~podcast, ncol = 2, scales = "free") +
+  labs(x = "tf-idf", y = NULL)
+
+```
+
+
+```{r}
+
+
+podcast_tf_idf2 <- podcast_tf_idf %>%
+  left_join(select(feed_dfr, pub_date = item_pub_date, guid = item_guid), by = "guid") %>%
+  filter(podcast %in% c("ukw", "logbuch_netzpolitik"))
+  
+
+podcast_tf_idf2 %>%
+  filter(!word %in% c("äh")) %>%
+  group_by(podcast) %>%
+  slice_max(tf_idf, n = 10) %>%
+  select(podcast, word) %>%
+  left_join(podcast_tf_idf2, by = c("podcast", "word")) %>%
+  ggplot(aes(pub_date, tf, colour = word)) + 
+  geom_line() +
+  facet_wrap(~podcast, scales = "free")
+
+  
+```
+
+

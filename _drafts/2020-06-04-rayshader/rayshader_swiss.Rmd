@@ -1,0 +1,304 @@
+---
+title: "Using rayshader to visualize Lake Zurich"
+author: "Nils Ratnaweera"
+date: "2020-06-06T23:00:00+01:00"
+categories: ["R"]
+---
+
+## The evolution of a rayshader viz
+
+
+## Preperation 
+
+
+```{r}
+
+library(terra)
+library(rayshader)
+
+```
+
+
+The function returns a classical raster dataset in WGS84.
+```{r, echo = FALSE}
+dem <- terra::rast("data-git-lfs/DHM25_MM_ASCII_GRID/ASCII_GRID_1part/dhm25_grid_raster.asc")
+
+```
+
+
+
+
+```{r}
+
+dem2 <- terra::aggregate(dem,100)
+
+dem_mat <- raster_to_matrix(raster::raster(dem2))
+
+```
+
+In order to use the `landsat` dataset as an overlay, we need to convert our raster dataset in the following manner:
+
+- rescale the values to 0 - 1 (instead of 0 - 255)
+- add a fourth layer to represent alpha
+- convert the 4 layers into a 3-dimensional matrix
+- transpose each matrix, since since rasters and matrices are oriented differently in R
+
+```{r}
+landsat_mat_list <- lapply(as.list(landsat), function(x){t(raster_to_matrix(x)/255)})
+landsat_mat_list[[4]] <- t(raster_to_matrix(raster(nrows = nrow(landsat), ncols = ncol(landsat), ext = extent(landsat), resolution = raster::res(landsat), vals = 0.9)))
+
+library(abind)
+landsat_mat <- do.call(abind,list(landsat_mat_list,along = 3))
+```
+
+## Create a minimalistic 3D plot
+
+Now we can create a hillshade with the function `sphere_shade()` and use this within `plot_3d` to create the first 3D visualization of the data.
+```{r, eval = eval}
+hill <- dem_mat %>%
+  sphere_shade() 
+
+rgl::clear3d()
+
+plot_3d(hillshade = hill,heightmap = dem_mat)
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot("step_01.png",title_text = "1: Minimal Rayshader Viz")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_01.png", error = FALSE)
+```
+
+## Adjusting hight exaggeration
+
+Next, we see that the elevation of the mountains is overly exaggerated. We can adjust this by changing `zscale`, which has a default value of 1. Since our is 25x25 Meters, a `zscale` of 1 means that elevation is exaggerated by factor 25 $$\text{exaggeration factor} = \frac{\text{cellsize}}{\text{zscale}}$$. 
+
+By trial and error, I found that a `zscale` of 15 visualizes my area of interest nicely, which is an exaggeration factor of 1.6. 
+
+```{r, eval = eval}
+rgl::clear3d()
+
+zscale <- 15
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000,600), zscale = zscale)
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_02.png"),title_text = "2: Adjust zscale")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_02.png", error = FALSE)
+```
+
+## Adjust Point of View
+
+Much better. I now want to rotate the map and view it from the north. I can do this by chaning the `theta` value:
+
+```{r, eval = eval, echo = FALSE}
+rgl::clear3d()
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000,600), zscale = zscale, theta = 160)
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_03.png"),title_text = "3: Change viewing direction")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_03.png", error = FALSE)
+```
+
+
+To zoom *in*, I can *decerase* the `zoom` value:
+
+```{r, eval = eval}
+rgl::clear3d()
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000,600), zscale = zscale, theta = 160, zoom = 0.5)
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_04.png"),title_text = "4: Change zoom")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_04.png", error = FALSE)
+```
+
+
+
+To change the "azimuth" (viewing angle), I can adjust `phi`:
+```{r, eval = eval, echo = FALSE}
+rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000,600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35)
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_05.png"),title_text = "5: Change azimuth")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_05.png", error = FALSE)
+```
+
+
+## Change shape of base
+
+To change the shape of the base, I adjust `baseshape` 
+```{r, eval = eval}
+rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000, 600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35, baseshape = "circle")
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_06.png"),title_text = "6: Change base shape")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_06.png", error = FALSE)
+```
+
+## Add image overlay
+
+To now add the landsat image as an overlay, we have to extend our hillshade object: 
+
+```{r, eval = eval}
+hill <- add_overlay(hill, landsat_mat)
+
+rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000, 600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35, baseshape = "circle")
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_07.png"),title_text = "7: Add overlay")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_07.png", error = FALSE)
+```
+
+## Add shadow and shade
+
+
+To add some "ambient_shade", we can again use `add_shadow`, this time with `ambient_shade`:
+
+```{r, eval = eval}
+hill <- add_shadow(hillshade = hill, shadowmap = ambient_shade(dem_mat),max_darken = 0)
+
+rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000, 600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35, baseshape = "circle")
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_08.png"),title_text = "8: Add shade")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_08.png", error = FALSE)
+```
+
+
+To add shadow, we extend the hillshade with the `add_shadow` and `rayshade` functions:
+
+```{r, eval = eval}
+hill <- add_shadow(hillshade = hill, shadowmap = ray_shade(dem_mat), max_darken = 0.5)
+
+rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000, 600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35, baseshape = "circle")
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_09.png"),title_text = "9: Add shadow")
+```
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_09.png", error = FALSE)
+```
+
+
+## Add labelling
+
+```{r, echo = FALSE}
+positions <- tribble(
+  ~label, ~x, ~y,
+  "Lake Zurich", 697379, 231030,
+  "Sihlsee", 701419, 222170.14,
+  "Aegerisee", 689299, 219950,
+  "Zugersee", 679239, 223810,
+  "Greifensee", 692759, 246530,
+  "Pfaeffikersee", 701339, 245610
+)
+
+positions
+```
+
+
+Say we have a dataframe of locations that we want to add as labels. Typically, we have the locations in the same coordinate system as our original DEM. Until a few days ago, we have to know the relative coordinates of our matrix to add these labels to our plot. This changed in the newest version, but since I don't have that version yet I will use my custom fuction here: 
+
+```{r, eval = eval}
+# x, y: specify x, y-coordinates in the CRS of the original DEM
+# elevation: original DEM
+
+coords_to_xy <- function(x, y, elevation){
+  ex <- extent(elevation)
+  x = ((x-ex@xmin)/(ex@xmax-ex@xmin))*ncol(elevation)
+  y = (1-(y-ex@ymin)/(ex@ymax-ex@ymin))*nrow(elevation)
+  out <- c(x,y)
+  names(out) <- c("x","y")
+  return(out)
+}
+
+# Using this function, we can convert real world x, y coordinates to the matrix' 
+# coordinate system
+
+pmap(positions, function(label, x, y){
+  coords_new <- coords_to_xy(x,y, dem2)
+  render_label(heightmap = dem_mat,text = label,x = coords_new[1],y = coords_new[2],5000,zscale = zscale,freetype = FALSE)
+})
+```
+
+
+```{r, eval = eval, echo = FALSE}
+render_snapshot(file.path(here_img,"step_10.png"), title_text = "10: Add labels")
+```
+
+
+```{r, eval = !eval, echo = FALSE, out.width="100%"}
+include_graphics("/img/2020_06_04_rayshader/step_10.png", error = FALSE)
+```
+
+
+```{r, eval = eval, echo = FALSE}
+library(magick)
+files <- list.files(here_img,pattern = "step_\\d+.png",full.names = TRUE)
+
+steps <- image_read(files)
+image_animate(steps,1) %>%
+  image_write(file.path(here_img, "steps_01-10.gif"))
+
+```
+
+
+  

@@ -1,0 +1,127 @@
+---
+title: "Optimizing the RStudio Viewer for sf objects"
+author: "Nils Ratnaweera"
+date: "2020-04-09T12:15:00+01:00"
+categories: ["R", "sf", "RStudio"]
+tags: ["podcast","R"]
+---
+
+## TL;DR
+
+Looking at `sf` objects with the `View()` function in RStudio can be a little sluggish, since the Viewer unnecessarily attempts to display the geometry column. You can change the default behaviour of `View` by creating an `sf`-method in which the geometry column gets dropped before showing it in the viewer. This can significantly speed up the visual exploration of your `sf` objects.
+
+
+## Console vs. View()
+
+The `View` function is a handy way to look at your tabular data in R, and is probably my most used function during an R Session. `sf` objects however, are best viewed in the console. As seen below, printing the sf object to the console prints some metadata like geometry type, the bbox and CRS. But more importantly, printing to the console is `much faster` than the RStudio Viewer. The latter is slow, partially because of it tries to display the content of the geometry column. This is unnecessary, since the content is a huge list column containing the coordinates of our features, and is not perticularly human readable.
+
+```{r,message=FALSE}
+library(sf)
+
+nc <- read_sf(system.file("shape/nc.shp", package="sf"))[,"NAME"]
+```
+
+
+```{r, eval = FALSE}
+View(nc)
+```
+
+![](/img/viewer_sf_normal.jpg)
+
+For this reason, I usually use the console to have a look at my `sf` objects. But sometimes I want to explore my datasets interactively: Filter for certain words, sort by various columns etc. The RStudio Viewer is much more handy for this. So I decided to optimize my `View`-function to mimic the built in print method. It's important however:
+
+- that the `View`-function still works normally on non-`sf` objects
+- that I don't have to write a custom function (like `View_sf()`) so that the correct function is invoked when interacting with the RStudio GUI (clicking on the object in the "Environment" pane, Ctrl + click within the "Source" pane).
+
+## On the nature of View(), generics and methods
+
+For this case, it would be ideal if `View` was a generic, similar to `print` or `mean`. 
+
+(I'm not sure if I've got the terminology right, but you can read up on this stuff in Hadley's [amazing Advanced R Book](https://adv-r.hadley.nz/s3.html#s3-arguments)).
+
+If View were a generic, we could just define a custom method to said generic and *voilà*. Unfortunately, it's not that simple and we have to turn `View` into a generic with `UseMethod()`:
+
+(Hadley states in his book that writing a method is considered "exceedingly bad manners" if you don't own the generic or the class. But since I'm doing this in my own, private R-Session this is probably OK)
+
+```{r}
+View <- function(x, title) {
+  UseMethod("View")
+}
+```
+
+Next we can define a default method for `View`. We can't use `utils::View` for this, since [Rstudio overrides `View` on the search path](https://stackoverflow.com/q/41532300/4139249) (within the package `utils` environment). Since it's not overwritten in the utils namespace, we can use `get`. 
+
+```{r}
+View.default <- function(...) {
+  get('View', as.environment('package:utils'))(...)
+}
+```
+
+## Creating your own method
+
+Now we are free to design our own Version of `View`, and save it as `View.sf`. This convention will tell `R` to invoke *our* custom function whenever an object has the class `sf`. In the first approach, we'll just drop the geometry column and then call `View.default`.
+
+```{r}
+View.sf <- function(x, title = NULL) {
+  require(sf)
+  x <- st_drop_geometry(x)             # Drop the geometry Column
+
+  View(x = x) 
+}
+```
+
+
+
+```{r, eval = FALSE}
+View(nc)
+```
+
+
+![](/img/viewer_sf_custom1.jpg)
+
+## Fixing some details
+
+This is already pretty good, but we can see that the title displayed above the Viewer is "x". Also, we don't really know what geometry type our features are. So let's enhance `View` a little bit:
+
+- Grab the object name and use this as a title
+- Instead of dropping the geometry column completely, populate a column (of the same name) containing the geometry types
+
+```{r}
+
+View.sf <- function(x, title = NULL) {
+  require(sf)
+  if(is.null(title)){                   # If no title is provided...
+    title <- deparse(substitute(x))     # ... use the name of the object
+  }
+  
+  colnames_before <- colnames(x)        # save colnames before dropping geometry-col
+  geometries <- st_geometry_type(x)     # save geometry types in a variable
+  
+  x <- st_drop_geometry(x)              # drop geometry column
+  colnames_after <- colnames(x)         # colnammes after dropping geometry-col
+  # determine the geometry column by looking at the difference before/after
+  geometry_colname <- colnames_before[!colnames_before %in% colnames_after]
+  
+  
+  # create a new column (with the same name as the dropped col) containing the 
+  # geomeetry types
+  x[,geometry_colname] <- geometries
+  
+  View(x = x,title = title) 
+}
+```
+
+
+```{r, eval = FALSE}
+View(nc)
+```
+
+![](/img/viewer_sf_custom2.jpg)
+
+We can now see the geometry type of each feature and the title matches the variable name.
+
+## Make this the default behaviour
+
+Using `View()` on `sf`-objects should now be much faster and more lightweight. To use this custom Version of `View()` in every R Session, you can add the above code lines to your [.Rprofile](https://rstats.wtf/r-startup.html#rprofile). Edit your Rprofile by typing `usethis::edit_r_profile()` into the console if you have the package `usethis`, or [locating the file manually](https://stackoverflow.com/q/13735745/4139249) if you don't.
+
+
