@@ -1,0 +1,25 @@
+---
+title: "To talk of many things"
+title-block-banner: true
+---
+
+<style>
+h1{
+  display: none
+}
+</style>
+
+Hi there 👋 
+
+My Name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of Applied Sciences. I'm a Data Scientist who love his job of working with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `SQL`.
+
+
+<!-- I understand something better once I try to explain it. This is one of my motivations to start blogging: to learn more on the topics I'm interested in.  -->
+
+<!-- Also, writing helps me complete the thought process of half baked ideas. And last but not least, I want to join the vibrant community of `R` users, open source enthusiasts, spatial people, python lovers, linux advocates and data scientists. -->
+
+
+<div style = "text-align: center">
+<img src = "images/portrait.jpeg" style = "max-width: 200px;   border-radius: 50%;">
+</div>
+
