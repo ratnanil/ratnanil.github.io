@@ -37,7 +37,7 @@
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "Through the looking glass",
+    "title": "Through the looking glass 🔭",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\n\n\n\n\nFederalism at its best: How the open data policy is handled across cantons\n\n\n\n\n\n\nDec 1, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nWhat changed when switching from Switzerland’s old coordinate system to the new one?\n\n\n\n\n\n\nNov 5, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nComparing the performance of different methods to do a “point in polygon operation” with sf.\n\n\n\n\n\n\nOct 22, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nA beautiful way to visualize topography, inspired by Carla Martínez Sastre\n\n\n\n\n\n\nAug 13, 2021\n\n\n\n\n\n\nNo matching items"
   },
@@ -51,14 +51,14 @@
   {
     "objectID": "portfolio.html",
     "href": "portfolio.html",
-    "title": "Through the looking glass",
+    "title": "Through the looking glass 🔭",
     "section": "",
     "text": "No matching items"
   },
   {
     "objectID": "Readme.html",
     "href": "Readme.html",
-    "title": "Through the looking glass",
+    "title": "Through the looking glass 🔭",
     "section": "",
     "text": "Currently, the site is only available in the automatically geranerted github-pages url (see above).\nTo publish this website, run following command in the commandline (after building the site of course):\nghp-import -n -p _site/"
   },
