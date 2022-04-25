@@ -28,5 +28,5 @@ My Name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of
 </div>
 
 
-https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow
-https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com
+<!-- https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow -->
+<!-- https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com -->

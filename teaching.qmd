@@ -10,20 +10,20 @@ Most of our teaching materials are available online on github repos. Check them 
     <td><img src = "images/arc2r.svg" width="120px"></td>
     <td>
     An introduction to Spatial R for ArcGIS users <br>
-    https://arc2r.github.io/book
+    <a href="https://arc2r.github.io/book">arc2r.github.io/book</a>
   </tr>
   <tr>
     <td><img src = "images/coding_in_GIS.png" width="120px"></td>
     <td>
     An introduction to GIS in Python for Environmental Scientists (Bachelor Students) <br>
-    https://modul-agi.github.io/
+    <a href="https://modul-agi.github.io/">modul-agi.github.io</a>
     </td> 
   </tr>
   <tr>
     <td><img src = "images/research-methods.png" width="120px"></td>
     <td>
     Teaching R, the tidyverse, data processing, data visualization and statistics  <br>
-    https://researchmethods-zhaw.github.io/
+    <a href="https://researchmethods-zhaw.github.io/">researchmethods-zhaw.github.io</a>
     </td> 
   </tr>
 
@@ -31,7 +31,7 @@ Most of our teaching materials are available online on github repos. Check them 
     <td><img src = "images/patterns-and-trends.png" width="120px"></td>
     <td>
     Computational Movement Analysis: Detecting Patterns and Trends in Environmental Data. A course taught by Prof. Dr. Patrick Laube, I was responsible for creating the R-exercises. <br>
-    https://computationalmovementanalysis.github.io/
+    <a href="https://computationalmovementanalysis.github.io/">computationalmovementanalysis.github.io</a>
     </td> 
   </tr>
   </tr>

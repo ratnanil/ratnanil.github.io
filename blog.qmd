@@ -2,8 +2,8 @@
 listing:
   contents: blog
   sort: "date desc"
-  type: grid
+  type: default
   categories: false
-page-layout: full
+page-layout: article
 title-block-banner: true
 ---
