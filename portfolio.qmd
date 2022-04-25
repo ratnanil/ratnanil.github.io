@@ -1,0 +1,9 @@
+---
+listing:
+  contents: portfolio
+  sort: "date desc"
+  type: grid
+  categories: false
+page-layout: full
+title-block-banner: true
+---

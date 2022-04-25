@@ -9,10 +9,14 @@ h1{
 }
 </style>
 
-Hi there 👋 
+<div style="width: 80%; text-align: center">
 
-My Name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of Applied Sciences. I'm a Data Scientist who love his job of working with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `SQL`.
 
+<h3> Hi there 👋  </h3>
+
+My Name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of Applied Sciences. I'm a Data Scientist who love his job of working with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
+
+<div>
 
 <!-- I understand something better once I try to explain it. This is one of my motivations to start blogging: to learn more on the topics I'm interested in.  -->
 
@@ -23,3 +27,6 @@ My Name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of
 <img src = "images/portrait.jpeg" style = "max-width: 200px;   border-radius: 50%;">
 </div>
 
+
+https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow
+https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com

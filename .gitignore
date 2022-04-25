@@ -12,9 +12,9 @@
 
 # ignore everything in posts except
 # Rmd, qmd files
-posts/**
-!posts/*.qmd
-!posts/*.R
+blog/**
+!blog/*.qmd
+!blog/*.R
 
 # ignore everything in drafts except
 # Rmd, qmd files
