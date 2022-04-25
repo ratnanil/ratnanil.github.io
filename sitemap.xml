@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nils.ratnaweera.net/posts/2021-11-05-warping-switzerland-back-into-shape/stormy-transformations.html</loc>
-    <lastmod>2022-04-24T20:18:19.945Z</lastmod>
+    <loc>https://nils.ratnaweera.net/blog/2021-11-05-warping-switzerland-back-into-shape/stormy-transformations.html</loc>
+    <lastmod>2022-04-25T20:35:38.216Z</lastmod>
   </url>
   <url>
-    <loc>https://nils.ratnaweera.net/posts/2021-10-22-benchmarking-binary-predicates/benchmarking_binary_predicates.html</loc>
-    <lastmod>2022-04-24T20:18:20.697Z</lastmod>
+    <loc>https://nils.ratnaweera.net/blog/2021-10-22-benchmarking-binary-predicates/benchmarking_binary_predicates.html</loc>
+    <lastmod>2022-04-25T20:35:38.964Z</lastmod>
   </url>
   <url>
-    <loc>https://nils.ratnaweera.net/posts/2021-12-01-opendata-per-canton/opendata-per-canton.html</loc>
-    <lastmod>2022-04-24T20:18:21.313Z</lastmod>
+    <loc>https://nils.ratnaweera.net/blog/2021-12-01-opendata-per-canton/opendata-per-canton.html</loc>
+    <lastmod>2022-04-25T20:35:39.592Z</lastmod>
   </url>
   <url>
-    <loc>https://nils.ratnaweera.net/posts/2021-08-13-minimalistic-topography/minimalistic-topography.html</loc>
-    <lastmod>2022-04-24T20:18:21.905Z</lastmod>
+    <loc>https://nils.ratnaweera.net/blog/2021-08-13-minimalistic-topography/minimalistic-topography.html</loc>
+    <lastmod>2022-04-25T20:35:40.188Z</lastmod>
   </url>
   <url>
     <loc>https://nils.ratnaweera.net/blog.html</loc>
-    <lastmod>2022-04-24T20:18:22.221Z</lastmod>
+    <lastmod>2022-04-25T20:35:40.504Z</lastmod>
   </url>
   <url>
     <loc>https://nils.ratnaweera.net/teaching.html</loc>
-    <lastmod>2022-04-24T20:18:22.465Z</lastmod>
+    <lastmod>2022-04-25T20:35:40.748Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nils.ratnaweera.net/portfolio.html</loc>
+    <lastmod>2022-04-25T20:35:41.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nils.ratnaweera.net/Readme.html</loc>
+    <lastmod>2022-04-25T20:35:41.236Z</lastmod>
   </url>
   <url>
     <loc>https://nils.ratnaweera.net/index.html</loc>
-    <lastmod>2022-04-24T20:18:22.705Z</lastmod>
+    <lastmod>2022-04-25T20:35:41.472Z</lastmod>
   </url>
 </urlset>
