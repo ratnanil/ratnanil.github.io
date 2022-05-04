@@ -5,3 +5,8 @@
 .navbar-title{
   font-variant:small-caps
 }
+
+.navbar-brand > img{
+  max-height: 100px;
+  padding: 0;
+}
