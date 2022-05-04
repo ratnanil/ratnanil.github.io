@@ -1,22 +1,39 @@
 ---
-title: "To talk of many things"
-title-block-banner: true
+title: "Ratnaweera XYZ"
+title-block-banner: false
 ---
 
 <style>
 h1{
   display: none
 }
+
+body{
+  background-image: url("images/pexels-kasuma-134074.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#welcome {
+  text-align: center;
+  color: #073642;
+  background-color: rgba(178,193,196, 0.6);
+  border-radius: 10px;
+  padding: 0 2px 2px 2px;
+  margin: 0 0 20px 0;
+}
+
 </style>
 
-<div style="width: 80%; text-align: center">
-
+<div id="welcome">
 
 <h3> Hi there 👋  </h3>
 
-My Name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of Applied Sciences. I'm a Data Scientist who love his job of working with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
-
-<div>
+<p>
+My Name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of Applied Sciences. I love my Data Scientist job of working with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
+</p>
+</div>
 
 <!-- I understand something better once I try to explain it. This is one of my motivations to start blogging: to learn more on the topics I'm interested in.  -->
 
