@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.135">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Through the looking glass 🔭 – readme</title>
+  <title>readme</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -59,7 +59,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Through the looking glass 🔭</span>
+    <img src="./images/mylogo.png" alt="">
   </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -102,8 +102,7 @@
 <main class="content" id="quarto-document-content">
 <section id="publishing-notes" class="level2">
 <h2 class="anchored" data-anchor-id="publishing-notes">Publishing notes</h2>
-<p>Currently, the site is only available in the automatically geranerted github-pages url (see above).</p>
-<p>To publish this website, run following command in the commandline (after building the site of course):</p>
+<p>This site has github pages activated via the <code>gh-pages</code> branch, and a CNAME entry pointing to <code>nils.ratnaweera.net</code>. I completely omit using netlify, since this just creates additional overhead without much gain. To publish the website, I need to push the content of the <code>_site/</code> folder to the <code>gh-pages</code> branch. This is automated with the <code>ghp-import</code> tool using the following command:</p>
 <pre><code>ghp-import -n -p _site/</code></pre>
 
 

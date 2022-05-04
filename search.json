@@ -37,7 +37,7 @@
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "Through the looking glass 🔭",
+    "title": "",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\n\n\n\n\nFederalism at its best: How the open data policy is handled across cantons\n\n\n\n\n\n\nDec 1, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nWhat changed when switching from Switzerland’s old coordinate system to the new one?\n\n\n\n\n\n\nNov 5, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nComparing the performance of different methods to do a “point in polygon operation” with sf.\n\n\n\n\n\n\nOct 22, 2021\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nA beautiful way to visualize topography, inspired by Carla Martínez Sastre\n\n\n\n\n\n\nAug 13, 2021\n\n\n\n\n\n\nNo matching items"
   },
@@ -51,22 +51,22 @@
   {
     "objectID": "portfolio.html",
     "href": "portfolio.html",
-    "title": "Through the looking glass 🔭",
+    "title": "",
     "section": "",
     "text": "No matching items"
   },
   {
     "objectID": "Readme.html",
     "href": "Readme.html",
-    "title": "Through the looking glass 🔭",
+    "title": "",
     "section": "",
-    "text": "Currently, the site is only available in the automatically geranerted github-pages url (see above).\nTo publish this website, run following command in the commandline (after building the site of course):\nghp-import -n -p _site/"
+    "text": "This site has github pages activated via the gh-pages branch, and a CNAME entry pointing to nils.ratnaweera.net. I completely omit using netlify, since this just creates additional overhead without much gain. To publish the website, I need to push the content of the _site/ folder to the gh-pages branch. This is automated with the ghp-import tool using the following command:\nghp-import -n -p _site/"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "To talk of many things",
+    "title": "Ratnaweera XYZ",
     "section": "",
-    "text": "My Name is Nils Ratnaweera and I’m a Research Fellow at the Zurich University of Applied Sciences. I’m a Data Scientist who love his job of working with environmental data using mainly open source tools such as R, python, gdal, ogr2ogr, PostgresSQL, PostGIS."
+    "text": "My Name is Nils Ratnaweera and I’m a Research Fellow at the Zurich University of Applied Sciences. I love my Data Scientist job of working with environmental data using mainly open source tools such as R, python, gdal, ogr2ogr, PostgresSQL, PostGIS."
   }
 ]
