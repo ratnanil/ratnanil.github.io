@@ -2,10 +2,11 @@ project:
   type: website
   
 website:
-  title: "Through the looking glass 🔭"
+  title: "Ratnaweera-XYZ"
   site-url: https://nils.ratnaweera.net
   description: "Nils' Blog on R, Python and spatial stuff"
   navbar:
+    logo: images/mylogo.png
     search: true
     left:
       - text: "Home"
