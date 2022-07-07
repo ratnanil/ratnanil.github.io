@@ -5,23 +5,13 @@
 .Ruserdata
 .bash_history
 .cache/
-/docs/**/*git-lfs/**
 .httr-oauth
 .config/
 .local/
 
 # ignore everything in posts except
 # Rmd, qmd files
-blog/**
-!blog/*.qmd
-!blog/*.R
-
-# ignore everything in drafts except
-# Rmd, qmd files
-_drafts/*
-!_drafts/*.Rmd
-!_drafts/*.qmd
-!_drafts/*.R
+/**/git-lsf/**
 
 _freeze/*
 _site/*
