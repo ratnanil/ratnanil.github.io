@@ -1,0 +1,88 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+
+```{r}
+sdg_indicator_values <- dm_squash_to_tbl(database, start = sdg_inicator_values)
+sdg_indicator_values <- sdg_indicator_values %>%
+  mutate(area_fid = as.integer(area_fid)) %>%
+  left_join(world_by_sdg_regions_dfr, by = c(area_fid = "geoAreaCode"))
+
+
+# every indicator has a sdg_item
+sdg_indicator_values %>%  filter(is.na(item_desc))
+
+# The following sdg_indicator_fids are not listed in sdg_indicators
+# i fixed it, so the following codes does not work anymore
+# sdg_indicator_values %>%  
+#   filter(is.na(indicator_desc)) %>%
+#   pull(indicator_fid) %>%
+#   unique()
+#   
+# dm_zoom_to(database, sdg_indicators) %>%
+#   filter(str_detect(indicator_fid, "^2.5.1"))
+# # what is coded as "2.5.1.a" and "2.5.1.b" in "sdg_indicator_items" is simply "2.5.1" in "sdg_indicators"
+# 
+# dm_zoom_to(database, sdg_indicators) %>%
+#   filter(str_detect(indicator_fid, "^5.a.1"))
+
+```
+
+
+```{r}
+#| fig-cap: Number of datapoints per year. It's not clearly visible, but we have datapoints of the area "world" before 2000
+
+sdg_indicator_values %>%
+  group_by(year) %>%
+  count() %>%
+  ggplot(aes(year, n)) + 
+  geom_col() +
+  labs(title = "Number of Values per Year for all SDG Goals")
+```
+
+
+```{r}
+sdg_indicator_values %>%
+  filter(year > 2000) %>%
+  group_by(year, goal_short_desc) %>%
+  count() %>%
+  ggplot(aes(year, n)) + 
+  geom_col() +
+  facet_wrap(~goal_short_desc) +
+  labs(title = "Number of Values per Year per SDG Goal", subtitle = "since year 2000")
+
+```
+
+
+```{r}
+
+sdg_indicator_values %>%
+  filter(!is.na(region)) %>% 
+  filter(year > 2000) %>%
+  group_by(region, year, goal_short_desc) %>%
+  count() %>%
+  ggplot(aes(year, n)) + 
+  geom_col() +
+  facet_grid(goal_short_desc~region) +
+  labs(title = "Number of Values per Year per SDG Goal", subtitle = "since year 2000")
+```
+
+
+
+```{r}
+sdg_indicator_values %>%
+  filter(!is.na(region)) %>% 
+  filter(year > 2000) %>%
+  filter(goal_fid == 2) %>%
+  group_by(region, year, goal_short_desc, area_fid, area_desc) %>%
+  summarise()
+  count() %>%
+  ggplot(aes(year, n)) + 
+  geom_col() +
+  facet_grid(goal_short_desc~region) +
+  labs(title = "Number of Values per Year per SDG Goal", subtitle = "since year 2000")
+```
+

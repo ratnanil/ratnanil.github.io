@@ -1,0 +1,570 @@
+---
+title: "Making sense of data with dm"
+description: |
+  What
+date: 2022-07-07
+# image: "preview.png"
+draft: true
+---
+
+```{css, echo = FALSE}
+
+.sdg-images{
+  display: grid; 
+  grid-template-columns: auto auto auto auto auto auto;
+}
+
+.sdg-images>img{
+  width: 100%;
+  padding: 3px;
+  border: 1px solid #ADB5BD;
+}
+```
+
+
+
+I have a confession to make: I love cleaning data. While I seem to hear a lot of people complaining that 80% of all Data Science work is *just cleaning data*, this is a part of my work that I enjoy very much. Part of what makes data cleaning in R or Python so enjoyable is rather that *just* cleaning the data, I'm building a little machine (my script), that can clean up this data countless times.
+
+Data cleaning also has a lot to do with understanding the data. While a good way to understand data is by visualizing it, another is by *normalizing* the data. And this approach has become extremely easy and rewarding with the [`dm` package by the Cynkra group](https://www.cynkra.com). Let me share my latest experience with `dm` when trying to wrap my head around the data provided by the UN regarding the [Sustainable Development Goals](https://sdgs.un.org/) (SDG). 
+
+
+# What are the SDGs?
+
+The Sustainable Development Goals are a collection of 17 goals designed to achieve *a better and more sustainable future for all*. The SDGs were set up in 2015 by the United Nations General Assembly as the future global development framework to succeed the Millennium Development Goals which were ended in 2015. These include goals such as ending world hunger, achieving gender equality and so on. You can read up on all 17 Goals on the dedicated website here: [sdgs.un.org](https://sdgs.un.org).
+
+These goals has varying number of targets which in turn are monitored by indicators. I used the SDG API download these indicator values and will use the `dm` package to normalize and understand the dataset. 
+
+<div class="sdg-images">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-01.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-02.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-03.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-04.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-05.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-06.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-07.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-08.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-09.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-10.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-11.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-12.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-13.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-14.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-15.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-16.png">
+<img src="E-Transparent-Inverted-Icons/SDG_Icons_Inverted_Transparent_WEB-17.png">
+<div>
+
+<br><br>
+
+# Getting the data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "loading the necessary libraries"
+library(dm)
+library(dplyr)
+library(readr)
+library(purrr)
+library(tibble)
+library(stringr)
+# yes I could have just loaded the tidyverse, but I'm trying to avoid this practice
+library(httr)
+```
+
+
+Let's start with something simple, the 17 SDGs. Using the package `httr` I can `GET` the 17 SDGs as [described in the docs](https://unstats.un.org/SDGAPI/swagger/). `GET` returns many things, I'm mostly interested in the `content`.
+
+
+
+
+```{r, eval = FALSE}
+sdg_goal_list <- GET("https://unstats.un.org/SDGAPI/v1/sdg/Goal/List") |> 
+  content()
+```
+
+```{r, eval = FALSE, echo = FALSE}
+save(sdg_goal_list, file = "data/sdg_goal_list.Rda")
+```
+
+```{r, echo = FALSE}
+# yes I'm cheating, for two reasons: 
+# 1) I dont want to call the API every time I make minor changes to this blogpost
+# 2) I want to be able to re-knit this blogpost even if the API changes / dies
+load("data/sdg_goal_list.Rda")
+```
+
+
+Typically, such an API all will return a JSON, which is automatically converted into a named list:
+
+```{r}
+head(sdg_goal_list, 1)
+```
+
+To turn this into a data.frame, I can simply call `purrr::map_dfr()` on the list. But I don't want a simple data.frame, I want to create a data*base*, which just takes an additional step, which is calling the function `dm` on the data.frame.
+
+
+```{r}
+sdg_goals <- map_dfr(sdg_goal_list, ~.x)
+
+database <- dm(sdg_goals)
+
+database
+```
+
+# Not much pain, but not much pain either. What do we gain from createding this `dm` object? 
+
+Well, now we can start adding restriction on our data and making quality checks. For example, I would expect each *Goal Number* (column `code`) to be unique. I can check this with `check_key()` and if my  assumtion is true (which it is), I can use it as a primary key. 
+
+```{r}
+
+# the test is performed on the dataframe:
+check_key(sdg_goals, code)
+
+# specifying a primary key is done in the "database" 
+database <- database |> 
+  dm_add_pk(sdg_goals, code)
+```
+
+# Maybe `check_key` was useful, but what did `dm_add_pk` give us?
+
+You'll see soon enough! First, let's import the "SDG Targets"
+
+```{r, eval = FALSE}
+sdg_target_list <- GET("https://unstats.un.org/SDGAPI/v1/sdg/Target/List") |> 
+  content()
+```
+
+```{r, eval = FALSE, echo = FALSE}
+save(sdg_target_list, file = "data/sdg_target_list.Rda")
+```
+
+```{r, echo = FALSE}
+load("data/sdg_target_list.Rda")
+```
+
+
+
+```{r}
+sdg_targets <- map_dfr(sdg_target_list, ~.x)
+
+sdg_targets
+```
+
+So apparently, the unique identifier for each target is a composite of the goal number and the target number, separated by a decimal point (e.g. Goal 1 has multiple targets, 1.1, 1.2, 1.3...). I'm not a database expert, but this seems redundant, since I have the Goal Number in a separate column already. Let me clean this up:
+
+
+```{r}
+sdg_targets <- sdg_targets |>
+  mutate(
+    target_id = str_split_fixed(code, "\\.", 2)[,2], # split by "." and take the 2nd element
+    .keep = "unused", # love this new option, which drops the "code"-column
+    .after = 1        # also love this option, to add the new column to the left
+    )
+```
+
+Now, I can check if the composition of `goal` and `target_id` is unique and if so, I'll add the data.frame to the existing `database` with the mentioned columns as a primary key. 
+
+```{r}
+check_key(sdg_targets, goal, target_id)
+# is unique, since no output is returned
+
+database <- database |> 
+  dm_add_tbl(sdg_targets) |> 
+  dm_add_pk(sdg_targets, c(goal, target_id))
+```
+
+Now comes the part where `dm` really begins to shine. Since each target is associated with a goal, we can first check and then specify this relationship in the most elegant manner.
+
+```{r}
+# check is performed on the data.frames
+examine_cardinality(sdg_goals, code, sdg_targets, goal)
+```
+
+Since the cardinality 1:n seems reasonable, we can specify the relationship between the two tables in our database by defining a "foreign key" from `sdg_targets` to `sdg_goals`.
+
+```{r}
+database <- database |> 
+  dm_add_fk(sdg_targets, goal, sdg_goals)
+```
+
+# This is getting more and more complicated, what do we gain from all this?!
+
+For one, we can get an overview of our mini database using the `dm_draw()` function. 
+
+```{r}
+dm_draw(database, view_type = "all")
+```
+
+<br><br>
+
+That alone was worth it, wasn't it? But of course, this is not the only trick up `dm`'s sleeve: Now that the relationship between the two tables is specified, you can omit the `by = ` statement when joining the two tables. You first need to `zoom` to the first table and then simply call the second one. 
+
+```{r, message=FALSE}
+dm_zoom_to(database, sdg_targets) |> 
+  left_join(sdg_goals)
+```
+
+
+Of course, we could have performed this join without the help of `dm`. However, as our data structure becomes more and more complicated, keeping our stuff in a database helps us keep an overview of data data and our data clean. Let me illustrate by loading the rest of the data from the API.
+
+
+```{r}
+database <- database |>
+  dm_rename(sdg_goals, goals_id = code) |>
+  dm_rename(sdg_targets, goal_id = goal)
+```
+
+
+```{r, eval = FALSE}
+sdg_indicator_list <- GET("https://unstats.un.org/SDGAPI/v1/sdg/Indicator/List") |>
+    content() 
+```
+
+
+```{r, eval = FALSE, echo = FALSE}
+save(sdg_indicator_list, file = "data/sdg_indicator_list.Rda")
+```
+
+```{r, echo = FALSE}
+load("data/sdg_indicator_list.Rda")
+```
+
+
+```{r}
+sdg_indicators <- map_dfr(sdg_indicator_list , ~.x)
+
+sdg_indicators <- sdg_indicators |>
+  select(-goal, -target) |>
+  separate(code, c("goal_id","target_id","indicator_id"),sep = "\\.") |> 
+  select(-series) |>
+  group_by(across()) |>
+  summarise() |>
+  ungroup()
+  
+
+check_key(sdg_indicators, goal_id, target_id, indicator_id)
+# all good
+
+database <- database |> 
+  dm_add_tbl(sdg_indicators) |>
+  dm_add_pk(sdg_indicators, c(goal_id, target_id, indicator_id)) |> 
+  dm_add_fk(sdg_indicators, c(goal_id, target_id), sdg_targets)
+
+sdg_items <- read_csv("SDG_BulkDownloads_E_All_Data_(Normalized)/SDG_BulkDownloads_E_All_Data_(Normalized).csv", name_repair = ~str_replace_all(str_to_lower(.), " ", "_"))
+
+sdg_items
+```
+
+The table above contains nearly 160k observations. Each observation is a measurement of a specific indicator (e.g. *Number of undernourished people*) made in a specific area (e.g. *Afghanistan*) for a specific year (e.g. *2001*). The table contains additional information such as the indicator it concerns and the unit it is measured in, but this information is unique to the item code (1:1 relationship), so I will separated it out. 
+
+```{r}
+sdg_items_codes <- sdg_items |>
+  select(item_code, item, element_code, unit) |>
+  # flag and note are NOT unique to item_code
+  group_by(across()) |>
+  summarise() |>
+  ungroup()
+
+# this should return an empty tibble
+sdg_items_codes |> 
+  group_by(item_code) |> 
+  add_count() |> 
+  filter(n>1) 
+# but it does not, since there was one coding error which must be fixed. 
+# Item code "AG_PRD_FIESMSN_" lacks information on sex, which is typically
+# stored as _M and _F. Will fix this manually here:
+sdg_items$item_code[sdg_items$item_code == "AG_PRD_FIESMSN_" & str_detect(sdg_items$item, "\\(female\\)")] <- "AG_PRD_FIESMSN_F"
+sdg_items$item_code[sdg_items$item_code == "AG_PRD_FIESMSN_" & str_detect(sdg_items$item, "\\(male\\)")] <- "AG_PRD_FIESMSN_M"
+
+sdg_items_codes <- sdg_items |>
+  select(item_code, item, element_code, unit) |>
+  # flag and note are NOT unique to item_code
+  group_by(across()) |>
+  summarise() |>
+  ungroup()
+
+sdg_items_codes <- sdg_items_codes |> 
+  mutate(target = str_extract(item, "\\d{1,2}\\..\\..")) |> 
+  separate(target, c("goal_id","target_id","indicator_id"),sep = "\\.") 
+
+
+sdg_items <- sdg_items |>
+  select(
+    -area,           # since we have area_code
+    -item,           # since we have item_code
+    -element_code,   # since we have item_code
+    -unit,           # since we have item_code
+    -element,        # since it's always "value"
+    -year_code,      # since year == year_code
+  )
+ 
+database <- dm::dm_add_tbl(database, sdg_items, sdg_items_codes) |> 
+  dm_add_pk(sdg_items, c(item_code, year)) |> 
+  dm_add_pk(sdg_items_codes, item_code) |> 
+  dm_add_fk(sdg_items, item_code, sdg_items_codes) |> 
+  dm_add_fk(sdg_items_codes, c(goal_id, target_id, indicator_id), sdg_indicators)
+```
+
+
+Next I want to add country information on each code. For this, I will not use the data provided by the API, since I don't really like the format it's provided in. Instead, I will use the csv file which can be downloaded [here](https://unstats.un.org/unsd/methodology/m49/).
+
+```{r}
+area_codes <- read_delim("data/UNSD — Methodology.csv", ";", name_repair = ~str_remove_all(str_replace_all(str_to_lower(.x), "\\s|-", "_"), "\\(|\\)")) 
+
+area_codes
+```
+
+It turns out, that many of the area codes are actually aggregated countries, e.g. area code 1 represents the entire world. 
+
+```{r}
+
+area_codes_country <- mutate(area_codes, area_code = m49_code, .keep = "unused", .before = 1)
+
+area_levels <- c("global", "region","sub_region","intermediate_region") 
+area_levels <- set_names(accumulate(area_levels, function(x, y){c(x,y)}), area_levels)
+
+area_codes_higher_levels <- imap(area_levels, function(x,y){
+  main <- tail(x, 1)
+  area_codes |> 
+    select(starts_with(main) | matches(paste0("^", x, "_code$"))) |> 
+    # rename_with(~str_replace(., paste0(x,"_"), "area_")) |> 
+    group_by(across()) |> 
+    summarise() |> 
+    na.omit()
+})
+
+
+database <- dm_add_tbl(database, area_codes_country, 
+           area_codes_global = area_codes_higher_levels$global,
+           area_codes_region = area_codes_higher_levels$region,
+           area_codes_sub_region = area_codes_higher_levels$sub_region,
+           area_codes_intermediate_region = area_codes_higher_levels$intermediate_region,
+           ) |> 
+  dm_add_pk(area_codes_country, area_code) |> 
+  dm_add_pk(area_codes_global, global_code) |> 
+  dm_add_pk(area_codes_region, region_code) |> 
+  dm_add_pk(area_codes_sub_region, sub_region_code) |> 
+  dm_add_pk(area_codes_intermediate_region, intermediate_region_code) |> 
+  dm_add_fk(sdg_items, area_code, area_codes_country) |> 
+  dm_add_fk(sdg_items, area_code, area_codes_global) |> 
+  dm_add_fk(sdg_items, area_code, area_codes_region) |> 
+  dm_add_fk(sdg_items, area_code, area_codes_sub_region) |> 
+  dm_add_fk(sdg_items, area_code, area_codes_intermediate_region) 
+
+
+```
+
+
+```{r}
+dm_draw(database, view_type = "all")
+```
+
+
+
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
+# alles ab hier wird nicht mehr ausgeführt und ist noch "legcy code" welchen ich
+# evt noch implementieren werde
+```
+
+
+```{r}
+sdg_goals <- sdg_goal_dfr |>
+  rename(id = code) |>
+  rename_all(~paste("goal",., sep = "_")) |>
+  mutate(goal_id = as.integer(goal_id))
+
+
+sdg_targets <- sdg_target_dfr |>
+  mutate(
+    goal_id = as.integer(goal), 
+    target_id = code, 
+    target_title = title,
+    target_description = description,
+    target_uri = uri,
+    .keep = "unused",  # drop the old column names
+    )
+```
+
+
+
+```{r, echo = FALSE}
+load("data/sdg_indicator_list.Rda")
+```
+
+
+```{r}
+sdg_indicators_dfr$series <- NULL # this column does not seem to add much
+
+sdg_indicators <- sdg_indicators_dfr |>
+  mutate(
+    goal_id = as.integer(goal), 
+    target_id = target, 
+    indicator_id = code, 
+    indicator_description = description,
+    indicator_uri = uri,
+    .keep = "unused", 
+    .before = 1
+    )
+
+```
+
+
+
+```{r}
+dm(sdg_goals, sdg_targets, sdg_indicators) |>   
+  dm_add_pk(sdg_goals, goal_id) |>    
+  dm_add_pk(sdg_targets, target_id) |>    
+  dm_add_pk(sdg_indicators, indicator_id) |>    
+  dm_add_fk(sdg_targets, goal_id, sdg_goals) |>
+  dm_add_fk(sdg_indicators, target_id, sdg_targets) |>
+  dm_draw(view_type = "all")
+```
+
+
+```{r}
+items <- read_csv("SDG_BulkDownloads_E_All_Data_(Normalized)/SDG_BulkDownloads_E_All_Data_(Normalized).csv") |>
+  janitor::clean_names()
+
+unique(items$element)              # element is always "Value"
+items$element <- NULL              # so remove it
+
+all(items$year_code == items$year) # year_code allways maches year
+items$year_code <- NULL
+
+items$area <- NULL                 # I cat get the area via area_code
+
+indicator_id <- str_extract(items$item, "^\\d{1,2}\\.\\w\\.\\d")
+unique(indicator_id)              # looks ok
+
+items$indicator_id <- indicator_id
+
+# remove different units (this is redundant information)
+items$item <- str_remove_all(items$item, "\\(millions\\)|\\(%\\)|\\(thousands of .+\\)|\\[US\\$\\/m3\\]") |>
+  str_trim()
+
+# CONTINUE HERE!
+split(items$item, items$item_code) |>
+  lapply(function(x){unique(x)}) |>
+  lengths() 
+
+items2 <- items |>
+  mutate(
+    item = str_trim(str_remove_all(item, "\\(millions\\)|\\(%\\)|\\(thousands of .+\\)")),
+    sex = str_extract(item, "(fe)?male")
+  ) 
+
+```
+
+
+```{r}
+```
+
+
+
+
+
+
+
+
+```{r}
+geoarea_dfr <- map_dfr(geoarea_list, ~as.data.frame(as.list(.x)))
+
+geoarea_dfr2 <- list()
+geoarea_dfr2[[1]] <- geoarea_tree
+
+setnames2 <- function(mylist){
+  if(is.list(mylist)){
+    mylist$name <- mylist$geoAreaName
+    mylist <- map(mylist, ~setnames2(.x))
+  }
+  return(mylist)
+}
+
+geoarea_tree2 <- list(geoAreaName = "world", children = geoarea_tree)
+geoarea_tree3 <- setnames2(geoarea_tree2)
+radialNetwork(geoarea_tree3)
+diagonalNetwork(geoarea_tree3)
+diagonalNetwork(geoarea_tree3$children[[1]],width = 1800, height = 3000)
+diagonalNetwork(geoarea_tree3$children[[2]])
+diagonalNetwork(geoarea_tree3$children[[3]])
+diagonalNetwork(geoarea_tree3$children[[4]])
+diagonalNetwork(geoarea_tree3$children[[5]])
+diagonalNetwork(geoarea_tree3$children[[6]])
+diagonalNetwork(geoarea_tree3$children[[7]])
+
+
+geoarea_dt <- data.tree::FromListSimple(geoarea_tree3)
+geoarea_dt_dfr <- ToDataFrameTree(geoarea_dt, "level", "geoAreaCode", "geoAreaName", "type")
+
+
+world_by_sdg_regions <- geoarea_tree3$children[[1]]$children
+names(world_by_sdg_regions) <- sapply(world_by_sdg_regions, function(x){x$name})
+
+getstuff <- function(x){
+  if(is.null(x$children)){
+    return(x[["geoAreaCode"]])
+  } else{
+    map(x$children, getstuff)
+  }
+}
+
+world_by_sdg_regions_dfr <- imap(world_by_sdg_regions, function(x,y){
+  getstuff(x)
+})  |>
+  imap(~unlist(.x)) |>
+  imap_dfr(~tibble(region = .y, geoAreaCode = .x))
+
+```
+
+
+
+
+
+```{r}
+sdg_targets <-get_SDGs_goals()
+
+sdg_targets1 <- sdg_targets |>
+  select(-indicators) |>
+  transmute(goal_fid = as.integer(goal), target_fid = code, target_desc = description, target_uri = uri)
+```
+
+
+
+
+
+```{r}
+sdg_indicators <-  sdg_targets |>
+  transmute(target_fid = code, indicators) |>
+  unnest(indicators) |>
+  transmute(target_fid, indicator_fid = code, indicator_desc = description, indicator_tier = tier, indicator_uri = uri)
+
+# either we change the two unmatching indicator_fids here or in the other table
+sdg_indicators_no_unmatching <- filter(sdg_indicators, !str_detect(indicator_fid, "^2.5.1|^5.a.1"))
+
+sdg_indicators_unamching1 <- filter(sdg_indicators, str_detect(indicator_fid, "^5.a.1")) |>
+  separate_rows(indicator_desc, sep = "; and ")  |>
+  mutate(letter = str_extract(indicator_desc, "\\([a-z]\\)")) |>
+  mutate(indicator_fid = paste0(indicator_fid, letter)) |>
+  select(-letter)
+
+sdg_indicators_unamching2 <- filter(sdg_indicators, str_detect(indicator_fid, "^2.5.1")) |>
+  mutate(a = str_remove(indicator_desc, "and \\(b\\) animal"), b = str_remove(indicator_desc, "\\(a\\) plant")) |>
+  pivot_longer(a:b) |>
+  mutate(indicator_fid = paste(indicator_fid, name, sep = ".")) |>
+  mutate(indicator_desc = value) |>
+  select(-value, -name)
+
+
+sdg_indicators2 <- bind_rows(sdg_indicators_no_unmatching, 
+      sdg_indicators_unamching1, 
+      sdg_indicators_unamching2)
+  
+# filter(sdg_indicators, str_detect(indicator_fid, "^2.5.1"))
+filter(sdg_indicators, !str_detect(indicator_fid, "^2.5.1|^5.a.1"))
+# filter(sdg_indicators, str_detect(indicator_desc, "\\(a\\)")) |>pull(indicator_desc)
+
+```
