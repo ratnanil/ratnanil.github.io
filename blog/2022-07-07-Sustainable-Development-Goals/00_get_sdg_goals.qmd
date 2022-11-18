@@ -358,7 +358,10 @@ database <- dm_add_tbl(database, area_codes_country,
 
 
 ```{r}
-dm_draw(database, view_type = "all")
+database |> 
+  dm_set_colors("#ffa07a" = sdg_items,
+                "#00e0e0" = starts_with("area_codes")) |> 
+  dm_draw(view_type = "keys_only")
 ```
 
 

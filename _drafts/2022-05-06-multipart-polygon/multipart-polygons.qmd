@@ -1,0 +1,67 @@
+---
+title: "Untitled"
+---
+
+
+```{r}
+library(sf)
+library(tidyverse)
+
+
+make_polygon <- function(x, y, w, h){
+    matrix(
+        c(
+            x, y,
+            x+w, y,
+            x+w, y+h,
+            x, y+h,
+            x, y
+        ),
+        ncol = 2,
+        byrow = TRUE
+    ) %>%
+    list() %>% st_polygon()
+}
+
+p1 <- make_polygon(0, 0, 1, 1)
+p2 <- make_polygon(1, 0, 1, 1)
+p3 <- make_polygon(2, 2, 1, 1)
+
+
+polys <- st_as_sfc(list(p1, p2, p3))
+
+polys <- st_as_sf(polys) %>%
+    mutate(grp = c(1,2,1))
+
+
+polys_mult <- group_by(polys, grp) %>%
+    summarise() 
+
+
+lapply(seq_along(polys_mult), function(i){
+    st_cast(polys_mult[i, ], "POLYGON", warn = FALSE)
+}) %>%
+    do.call(rbind, .) 
+
+
+plot(polys)
+
+mygroup <- polys$group
+
+polys %>%
+    split(mygroup) %>%
+    imap(function(i, grp){st_union(i) %>% st_sfc() %>% st_sf() %>% mutate(grp =grp)}) %>%
+    do.call(rbind, .) %>%
+    st_cast("POLYGON")
+
+
+st_write(polys, "polys.gpkg", append = FALSE)
+
+polygon_dissolve <- st_read("polys_dissolve.gpkg")
+
+st_cast(polygon_dissolve, "POLYGON")
+
+
+plot(polygon_dissolve[1,])
+```
+
