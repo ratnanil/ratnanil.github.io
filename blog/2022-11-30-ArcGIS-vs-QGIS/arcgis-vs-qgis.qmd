@@ -3,7 +3,6 @@ title: "Geospatial Software for Teaching: ArcGIS or QGIS?"
 description: |
   Every year, we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data. For each of these courses we have to decide on software to implement these concepts. As a publicly funded institution I feel an obligation to use Free and OpenSource Software in the classroom. Also, I believe that it's important to use software that is non-discriminatory towards any of the major operating systems Windows, Linux and Mac. From the selection of software that meet these criteria, my clear favorite is QGIS. In this blogpost I want to make a case for using QGIS (or OpenSource Software in general) to teach geospatial courses and specifically illustrate this with data gathered to compare ArcGIS and QGIS.
 date: 2022-02-07
-freeze: false
 format:
   html:
     code-fold: true
@@ -116,7 +115,6 @@ vlines <- tibble(y =  seq(0, 600, 100), xend = arcgis_qgis_roll$month[map_int(y,
 To take out some of the noise, I smoothed the monthly counts by taking the mean over a moving window of 1 year. 
 
 
-
 ```{r}
 #| code-summary: Visualizing data from gis.stackexchange.com
 #| column: page
@@ -180,7 +178,6 @@ ggplot(arcgis_qgis_roll, aes(month, roll, color = group)) +
                                 hjust = .5, margin = margin(t = 30, b = 0)),
     legend.position = "none"
   )
-
 ```
 
 ```{r}
@@ -191,7 +188,7 @@ ggsave(here("blog","2022-11-30-ArcGIS-vs-QGIS", "preview.png"), height = 10, wid
 ```
 
 
-The data from gis.stackexchange.com shows that both ArcGIS and QGIS have grown in popularity since 2011. ArcGIS has hit a peak aroudn 2014, 2015 with the release of ArcGIS pro and has since been on a decline. The number of QGIS questions have overtaken those of ArcGIS end of 2016 and QGIS has been dominating the portal ever since. 
+The data from gis.stackexchange.com shows that both ArcGIS and QGIS have grown in popularity since 2011. ArcGIS has hit a peak around 2014, 2015 with the release of ArcGIS pro and has since been on a decline. The number of QGIS questions have overtaken those of ArcGIS end of 2016 and QGIS has been dominating the portal ever since. 
 
 However, an argument can be made that the number of questions regarding a software does not reflect popularity, on the contrary it could be a sign of ambiguity: QGIS might provoke more questions in it use while the use of ArcGIS is more clear and straightforward. Or at least, that quetions regarding ArcGIS are not posted on gis.stackexchange.com, but on a different, ESRI hosted plattform.
 
@@ -199,9 +196,11 @@ This is why I've additionally looked at a different datasource, namely Google Tr
 
 I downloaded these normalized values for the search terms ArcGIS and QGIS for the maximum time range (2004 to current), the geographic exentent of switzerland and no other restrictions. As before, I smoothed the monthly values with a moving window of 1 year.
 
-```{r}
-#| code-summary: Preparing Google Trend data
+This data seems to show that QGIS has overtaken ArcGIS in terms of popularity. However, an argument can be made that the number of questions regarding a software does not reflect popularity, but inversely is a sign of ambiguity: QGIS might provoke more questions in it use while the use of ArcGIS is more clear and straightforward. This is why I've additionally looked at a different datasource, namely Google Trends.
 
+
+```{r}
+#| code-summary: Visualizing data from Google Trends
 google_trends_ch <- read_csv(here("blog","2022-11-30-ArcGIS-vs-QGIS", "google-trends-CH.csv"),skip = 1)
 google_trends_world <- read_csv(here("blog","2022-11-30-ArcGIS-vs-QGIS", "google-trends-World.csv"),skip = 1)
 
