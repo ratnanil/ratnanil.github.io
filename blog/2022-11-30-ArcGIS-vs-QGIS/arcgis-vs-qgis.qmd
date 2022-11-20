@@ -2,7 +2,7 @@
 title: "Geospatial Software for Teaching: ArcGIS or QGIS?"
 description: |
   Every year, we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data. For each of these courses we have to decide on software to implement these concepts. As a publicly funded institution I feel an obligation to use Free and OpenSource Software in the classroom. Also, I believe that it's important to use software that is non-discriminatory towards any of the major operating systems Windows, Linux and Mac. From the selection of software that meet these criteria, my clear favorite is QGIS. In this blogpost I want to make a case for using QGIS (or OpenSource Software in general) to teach geospatial courses and specifically illustrate this with data gathered to compare ArcGIS and QGIS.
-date: 2022-02-07
+date: 2022-11-20
 format:
   html:
     code-fold: true
@@ -322,6 +322,6 @@ It must be said that neither datasource can *accurately* reflect the softwares p
 
 I would like to finish off by providing you with very insightful talk given by David Abernathy at the  NC GIS Conference 2017. He talks about his University's transition from ArcGIS to FOSS, and makes several highly interesting points. If you've made it till here, please watch his video!
 
-<div style="margin:0 auto">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/S8dei0PP9SU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S8dei0PP9SU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
 </div>
