@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+
+<body>
+    <div id="results"></div>
+    <script>
+  // Create a non-dom allocated Audio element
+var au = document.createElement('audio');
+
+// Define the URL of the MP3 audio file
+au.src = "https://forschergeist.de/podlove/file/2340/s/feed/c/mp3/fg089-geometrie-und-visualisierung.mp3";
+
+// Once the metadata has been loaded, display the duration in the console
+au.addEventListener('loadedmetadata', function(){
+    // Obtain the duration in seconds of the audio file (with milliseconds as well, a float value)
+    var duration = au.duration;
+
+    console.log("The duration of the song is of: " + duration + " seconds");
+
+},false);
+</script>
+</body>
+
+</html>

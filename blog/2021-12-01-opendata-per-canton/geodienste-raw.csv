@@ -1,0 +1,1243 @@
+x,verfugbarkeit,kantonale_vollstandigkeit,services
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+AI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+AR,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/av
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+BL,"Registrierung erforderlich
+             Frei erhältlich",Ja,/services/av
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+FR,"Frei erhältlich
+             Frei erhältlich",Nein,/services/av
+GE,"Im Aufbau
+             Im Aufbau",Nein,/services/av
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+GR,"Frei erhältlich
+             Frei erhältlich",Nein,/services/av
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/av
+LU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/av
+NE,"Registrierung erforderlich
+             Freigabe erforderlich",Nein,/services/av
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/av
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/av
+SG,"Frei erhältlich
+             Frei erhältlich",Nein,/services/av
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+SZ,"Frei erhältlich
+             Frei erhältlich",Nein,/services/av
+TG,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/av
+TI,"Im Aufbau
+             Im Aufbau",Nein,/services/av
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+VD,"Frei erhältlich
+             Freigabe erforderlich",Nein,/services/av
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/av
+LI,"Freigabe erforderlich
+             Im Aufbau",Ja,/services/av
+AG,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/fruchtfolgeflaechen
+AI,"Im Aufbau (erhältlich ab 01.10.2021)
+             Im Aufbau (erhältlich ab 01.10.2021)",Nein,/services/fruchtfolgeflaechen
+AR,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/fruchtfolgeflaechen
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+GE,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/fruchtfolgeflaechen
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+GR,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/fruchtfolgeflaechen
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/fruchtfolgeflaechen
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/fruchtfolgeflaechen
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/fruchtfolgeflaechen
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/fruchtfolgeflaechen
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/fruchtfolgeflaechen
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+SO,"Im Aufbau (erhältlich ab 01.07.2021)
+             Im Aufbau (erhältlich ab 01.07.2021)",Nein,/services/fruchtfolgeflaechen
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+TI,"Im Aufbau
+             Im Aufbau",Nein,/services/fruchtfolgeflaechen
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/fruchtfolgeflaechen
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/fruchtfolgeflaechen
+LI,"keine Daten
+             keine Daten",-,/services/fruchtfolgeflaechen
+AG,"Im Aufbau
+             Frei erhältlich",Ja,/services/gefahrenkarten
+AI,"Im Aufbau (erhältlich ab 01.04.2021)
+             Frei erhältlich",Ja,/services/gefahrenkarten
+AR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/gefahrenkarten
+BE,"Im Aufbau
+             Frei erhältlich",Ja,/services/gefahrenkarten
+BL,"Im Aufbau
+             Frei erhältlich",Ja,/services/gefahrenkarten
+BS,"Im Aufbau (erhältlich ab 01.10.2021)
+             Im Aufbau (erhältlich ab 01.10.2021)",Nein,/services/gefahrenkarten
+FR,"Im Aufbau (erhältlich ab 01.07.2020)
+             Frei erhältlich",Ja,/services/gefahrenkarten
+GE,"Im Aufbau
+             Frei erhältlich",Ja,/services/gefahrenkarten
+GL,"Im Aufbau
+             Frei erhältlich",Ja,/services/gefahrenkarten
+GR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/gefahrenkarten
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/gefahrenkarten
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/gefahrenkarten
+NE,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/gefahrenkarten
+NW,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/gefahrenkarten
+OW,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/gefahrenkarten
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/gefahrenkarten
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/gefahrenkarten
+SO,"Im Aufbau (erhältlich ab 01.04.2019)
+             Frei erhältlich",Ja,/services/gefahrenkarten
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/gefahrenkarten
+TG,"Im Aufbau
+             Frei erhältlich",Ja,/services/gefahrenkarten
+TI,"Im Aufbau
+             Registrierung erforderlich",Ja,/services/gefahrenkarten
+UR,"Im Aufbau (erhältlich ab 01.01.2020)
+             Freigabe erforderlich",Ja,/services/gefahrenkarten
+VD,"Im Aufbau
+             Freigabe erforderlich",Ja,/services/gefahrenkarten
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/gefahrenkarten
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/gefahrenkarten
+ZH,"Im Aufbau
+             Frei erhältlich",Ja,/services/gefahrenkarten
+LI,"Im Aufbau (erhältlich ab 01.07.2019)
+             Freigabe erforderlich",Ja,/services/gefahrenkarten
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+AI,"keine Daten
+             keine Daten",-,/services/kantonale_ausnahmetransportrouten
+AR,"keine Daten
+             keine Daten",-,/services/kantonale_ausnahmetransportrouten
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+GR,"keine Daten
+             keine Daten",-,/services/kantonale_ausnahmetransportrouten
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/kantonale_ausnahmetransportrouten
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kantonale_ausnahmetransportrouten
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/kantonale_ausnahmetransportrouten
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kantonale_ausnahmetransportrouten
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kantonale_ausnahmetransportrouten
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+TI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+UR,"keine Daten
+             keine Daten",-,/services/kantonale_ausnahmetransportrouten
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kantonale_ausnahmetransportrouten
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kantonale_ausnahmetransportrouten
+LI,"keine Daten
+             keine Daten",-,/services/kantonale_ausnahmetransportrouten
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+AI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+AR,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kataster_belasteter_standorte
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+BL,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/kataster_belasteter_standorte
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/kataster_belasteter_standorte
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kataster_belasteter_standorte
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/kataster_belasteter_standorte
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kataster_belasteter_standorte
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kataster_belasteter_standorte
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+TI,"Registrierung erforderlich
+             Registrierung erforderlich",Ja,/services/kataster_belasteter_standorte
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/kataster_belasteter_standorte
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/kataster_belasteter_standorte
+ZH,"Im Aufbau (erhältlich ab 01.10.2021)
+             Im Aufbau (erhältlich ab 01.10.2021)",Nein,/services/kataster_belasteter_standorte
+LI,"keine Daten
+             keine Daten",-,/services/kataster_belasteter_standorte
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+AI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+AR,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+TI,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+VS,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_bewirtschaftungseinheit
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_bewirtschaftungseinheit
+LI,"keine Daten
+             keine Daten",-,/services/lwb_bewirtschaftungseinheit
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+AI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+AR,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+TI,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+VS,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_biodiversitaetsfoerderflaechen
+LI,"keine Daten
+             keine Daten",-,/services/lwb_biodiversitaetsfoerderflaechen
+AG,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+AI,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+AR,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_elemente_mit_landschaftsqualitaet
+BE,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+BL,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+BS,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_elemente_mit_landschaftsqualitaet
+FR,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_elemente_mit_landschaftsqualitaet
+GE,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+GL,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_elemente_mit_landschaftsqualitaet
+JU,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_elemente_mit_landschaftsqualitaet
+LU,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+NE,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_elemente_mit_landschaftsqualitaet
+NW,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+OW,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+SG,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_elemente_mit_landschaftsqualitaet
+SH,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+SO,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+SZ,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_elemente_mit_landschaftsqualitaet
+TI,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+UR,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+VD,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_elemente_mit_landschaftsqualitaet
+VS,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+ZG,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_elemente_mit_landschaftsqualitaet
+LI,"keine Daten
+             keine Daten",-,/services/lwb_elemente_mit_landschaftsqualitaet
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+AI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+AR,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_nutzungsflaechen
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_nutzungsflaechen
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_nutzungsflaechen
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/lwb_nutzungsflaechen
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_nutzungsflaechen
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_nutzungsflaechen
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+TI,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_nutzungsflaechen
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_nutzungsflaechen
+VS,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_nutzungsflaechen
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_nutzungsflaechen
+LI,"keine Daten
+             keine Daten",-,/services/lwb_nutzungsflaechen
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+AI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+AR,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_ln_sf
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_ln_sf
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_ln_sf
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/lwb_perimeter_ln_sf
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_ln_sf
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_ln_sf
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+TI,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_ln_sf
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_ln_sf
+VS,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_ln_sf
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_ln_sf
+LI,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_ln_sf
+AG,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+AI,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+AR,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_terrassenreben
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_terrassenreben
+BL,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+BS,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+FR,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+GE,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+GL,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+GR,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+JU,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+LU,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/lwb_perimeter_terrassenreben
+NW,"Frei erhältlich
+             Freigabe erforderlich",-,/services/lwb_perimeter_terrassenreben
+OW,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_perimeter_terrassenreben
+SH,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+SO,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+SZ,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+TG,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+TI,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_terrassenreben
+UR,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_terrassenreben
+VS,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_perimeter_terrassenreben
+ZG,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+ZH,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+LI,"keine Daten
+             keine Daten",-,/services/lwb_perimeter_terrassenreben
+AG,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/lwb_rebbaukataster
+AI,"keine Daten
+             keine Daten",-,/services/lwb_rebbaukataster
+AR,"keine Daten
+             keine Daten",-,/services/lwb_rebbaukataster
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+GL,"keine Daten
+             keine Daten",-,/services/lwb_rebbaukataster
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_rebbaukataster
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_rebbaukataster
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/lwb_rebbaukataster
+NW,"keine Daten
+             keine Daten",-,/services/lwb_rebbaukataster
+OW,"keine Daten
+             keine Daten",-,/services/lwb_rebbaukataster
+SG,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/lwb_rebbaukataster
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+SO,"Frei erhältlich
+             Frei erhältlich",Nein,/services/lwb_rebbaukataster
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+TI,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_rebbaukataster
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/lwb_rebbaukataster
+VS,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/lwb_rebbaukataster
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/lwb_rebbaukataster
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/lwb_rebbaukataster
+LI,"keine Daten
+             keine Daten",-,/services/lwb_rebbaukataster
+AG,"Im Aufbau
+             Im Aufbau",Nein,/services/leitungskataster
+AI,"Im Aufbau (erhältlich ab 01.04.2022)
+             Im Aufbau (erhältlich ab 01.04.2022)",Nein,/services/leitungskataster
+AR,"Im Aufbau (erhältlich ab 01.01.2024)
+             Im Aufbau (erhältlich ab 01.01.2024)",Nein,/services/leitungskataster
+BE,"keine Daten
+             keine Daten",-,/services/leitungskataster
+BL,"keine Daten
+             keine Daten",-,/services/leitungskataster
+BS,"keine Daten
+             keine Daten",-,/services/leitungskataster
+FR,"keine Daten
+             keine Daten",-,/services/leitungskataster
+GE,"Im Aufbau (erhältlich ab 01.10.2023)
+             Im Aufbau (erhältlich ab 01.10.2023)",Nein,/services/leitungskataster
+GL,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/leitungskataster
+GR,"Im Aufbau (erhältlich ab 01.01.2024)
+             Im Aufbau (erhältlich ab 01.01.2024)",Nein,/services/leitungskataster
+JU,"Im Aufbau
+             Im Aufbau",Nein,/services/leitungskataster
+LU,"Freigabe erforderlich
+             Freigabe erforderlich",Nein,/services/leitungskataster
+NE,"Im Aufbau (erhältlich ab 01.01.2024)
+             Im Aufbau (erhältlich ab 01.01.2024)",Nein,/services/leitungskataster
+NW,"Im Aufbau (erhältlich ab 01.04.2023)
+             Im Aufbau (erhältlich ab 01.04.2023)",Nein,/services/leitungskataster
+OW,"Im Aufbau (erhältlich ab 01.04.2023)
+             Im Aufbau (erhältlich ab 01.04.2023)",Nein,/services/leitungskataster
+SG,"Im Aufbau
+             Im Aufbau",Nein,/services/leitungskataster
+SH,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/leitungskataster
+SO,"Frei erhältlich
+             Im Aufbau (erhältlich ab 01.01.2024)",Ja,/services/leitungskataster
+SZ,"keine Daten
+             keine Daten",-,/services/leitungskataster
+TG,"Im Aufbau (erhältlich ab 01.04.2022)
+             Im Aufbau (erhältlich ab 01.04.2022)",Nein,/services/leitungskataster
+TI,"keine Daten
+             keine Daten",-,/services/leitungskataster
+UR,"Im Aufbau
+             Im Aufbau",Nein,/services/leitungskataster
+VD,"Im Aufbau (erhältlich ab 01.01.2024)
+             Im Aufbau (erhältlich ab 01.01.2024)",Nein,/services/leitungskataster
+VS,"keine Daten
+             keine Daten",-,/services/leitungskataster
+ZG,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/leitungskataster
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/leitungskataster
+LI,"keine Daten
+             keine Daten",-,/services/leitungskataster
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+AI,"Im Aufbau (erhältlich ab 01.07.2021)
+             Im Aufbau (erhältlich ab 01.07.2021)",Nein,/services/npl_laermempfindlichkeitsstufen
+AR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_laermempfindlichkeitsstufen
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+GE,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/npl_laermempfindlichkeitsstufen
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+GR,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_laermempfindlichkeitsstufen
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/npl_laermempfindlichkeitsstufen
+LU,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_laermempfindlichkeitsstufen
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/npl_laermempfindlichkeitsstufen
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/npl_laermempfindlichkeitsstufen
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/npl_laermempfindlichkeitsstufen
+SG,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_laermempfindlichkeitsstufen
+SH,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_laermempfindlichkeitsstufen
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+SZ,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_laermempfindlichkeitsstufen
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+TI,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_laermempfindlichkeitsstufen
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_laermempfindlichkeitsstufen
+VD,"Im Aufbau (erhältlich ab 01.10.2021)
+             Im Aufbau (erhältlich ab 01.10.2021)",Nein,/services/npl_laermempfindlichkeitsstufen
+VS,"keine Daten
+             keine Daten",-,/services/npl_laermempfindlichkeitsstufen
+ZG,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_laermempfindlichkeitsstufen
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_laermempfindlichkeitsstufen
+LI,"keine Daten
+             keine Daten",-,/services/npl_laermempfindlichkeitsstufen
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_nutzungsplanung
+AI,"Im Aufbau (erhältlich ab 01.10.2021)
+             Im Aufbau (erhältlich ab 01.10.2021)",Nein,/services/npl_nutzungsplanung
+AR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_nutzungsplanung
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_nutzungsplanung
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_nutzungsplanung
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_nutzungsplanung
+FR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_nutzungsplanung
+GE,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_nutzungsplanung
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_nutzungsplanung
+GR,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_nutzungsplanung
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/npl_nutzungsplanung
+LU,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_nutzungsplanung
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/npl_nutzungsplanung
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/npl_nutzungsplanung
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/npl_nutzungsplanung
+SG,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_nutzungsplanung
+SH,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_nutzungsplanung
+SO,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_nutzungsplanung
+SZ,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_nutzungsplanung
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_nutzungsplanung
+TI,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_nutzungsplanung
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_nutzungsplanung
+VD,"Im Aufbau (erhältlich ab 01.10.2021)
+             Im Aufbau (erhältlich ab 01.10.2021)",Nein,/services/npl_nutzungsplanung
+VS,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_nutzungsplanung
+ZG,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_nutzungsplanung
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_nutzungsplanung
+LI,"keine Daten
+             keine Daten",-,/services/npl_nutzungsplanung
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+AI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+AR,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/planerischer_gewaesserschutz
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/planerischer_gewaesserschutz
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/planerischer_gewaesserschutz
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/planerischer_gewaesserschutz
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/planerischer_gewaesserschutz
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/planerischer_gewaesserschutz
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+TI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/planerischer_gewaesserschutz
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planerischer_gewaesserschutz
+LI,"keine Daten
+             keine Daten",-,/services/planerischer_gewaesserschutz
+AG,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/planungszonen
+AI,"Im Aufbau (erhältlich ab 01.04.2021)
+             Im Aufbau (erhältlich ab 01.04.2021)",Nein,/services/planungszonen
+AR,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/planungszonen
+BE,"keine Daten
+             keine Daten",-,/services/planungszonen
+BL,"Im Aufbau (erhältlich ab 01.10.2022)
+             Im Aufbau (erhältlich ab 01.10.2022)",Nein,/services/planungszonen
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planungszonen
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planungszonen
+GE,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/planungszonen
+GL,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/planungszonen
+GR,"Im Aufbau (erhältlich ab 01.10.2022)
+             Im Aufbau (erhältlich ab 01.10.2022)",Nein,/services/planungszonen
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/planungszonen
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/planungszonen
+NE,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/planungszonen
+NW,"Im Aufbau (erhältlich ab 01.04.2021)
+             Im Aufbau (erhältlich ab 01.04.2021)",Nein,/services/planungszonen
+OW,"Im Aufbau (erhältlich ab 01.04.2021)
+             Im Aufbau (erhältlich ab 01.04.2021)",Nein,/services/planungszonen
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planungszonen
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planungszonen
+SO,"Im Aufbau
+             Im Aufbau",Nein,/services/planungszonen
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planungszonen
+TG,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/planungszonen
+TI,"Im Aufbau
+             Im Aufbau",Nein,/services/planungszonen
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/planungszonen
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/planungszonen
+VS,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/planungszonen
+ZG,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/planungszonen
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/planungszonen
+LI,"keine Daten
+             keine Daten",-,/services/planungszonen
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+AI,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+AR,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/richtplanung_erneuerbare_energien
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+BS,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+FR,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+GE,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+GR,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+JU,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/richtplanung_erneuerbare_energien
+NE,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+NW,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+OW,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+SG,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+TI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+UR,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+VD,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/richtplanung_erneuerbare_energien
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+LI,"Im Aufbau
+             Im Aufbau",Nein,/services/richtplanung_erneuerbare_energien
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+AI,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_waldgrenzen
+AR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_waldgrenzen
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+FR,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_waldgrenzen
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+GR,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_waldgrenzen
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/npl_waldgrenzen
+LU,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_waldgrenzen
+NE,"Registrierung erforderlich
+             Registrierung erforderlich",Ja,/services/npl_waldgrenzen
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/npl_waldgrenzen
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/npl_waldgrenzen
+SG,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_waldgrenzen
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+SO,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_waldgrenzen
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+TI,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_waldgrenzen
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+VD,"Im Aufbau (erhältlich ab 01.10.2021)
+             Im Aufbau (erhältlich ab 01.10.2021)",Nein,/services/npl_waldgrenzen
+VS,"keine Daten
+             keine Daten",-,/services/npl_waldgrenzen
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldgrenzen
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_waldgrenzen
+LI,"keine Daten
+             keine Daten",-,/services/npl_waldgrenzen
+AG,"Im Aufbau (erhältlich ab 01.07.2021)
+             Im Aufbau (erhältlich ab 01.07.2021)",Nein,/services/stromversorgungssicherheit_netzgebiete
+AI,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/stromversorgungssicherheit_netzgebiete
+AR,"Im Aufbau (erhältlich ab 01.01.2024)
+             Im Aufbau (erhältlich ab 01.01.2024)",Nein,/services/stromversorgungssicherheit_netzgebiete
+BE,"Im Aufbau (erhältlich ab 01.04.2022)
+             Im Aufbau (erhältlich ab 01.04.2022)",Nein,/services/stromversorgungssicherheit_netzgebiete
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+BS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+FR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/stromversorgungssicherheit_netzgebiete
+GE,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/stromversorgungssicherheit_netzgebiete
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+GR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+JU,"Im Aufbau
+             Im Aufbau",Nein,/services/stromversorgungssicherheit_netzgebiete
+LU,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/stromversorgungssicherheit_netzgebiete
+NE,"Registrierung erforderlich
+             Registrierung erforderlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+TI,"Registrierung erforderlich
+             Registrierung erforderlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+UR,"Im Aufbau (erhältlich ab 01.04.2022)
+             Im Aufbau (erhältlich ab 01.04.2022)",Nein,/services/stromversorgungssicherheit_netzgebiete
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/stromversorgungssicherheit_netzgebiete
+VS,"Im Aufbau (erhältlich ab 01.01.2023)
+             Im Aufbau (erhältlich ab 01.01.2023)",Nein,/services/stromversorgungssicherheit_netzgebiete
+ZG,"Im Aufbau (erhältlich ab 01.07.2023)
+             Im Aufbau (erhältlich ab 01.07.2023)",Nein,/services/stromversorgungssicherheit_netzgebiete
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/stromversorgungssicherheit_netzgebiete
+LI,"keine Daten
+             keine Daten",-,/services/stromversorgungssicherheit_netzgebiete
+AG,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+AI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldabstandslinien
+AR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/npl_waldabstandslinien
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldabstandslinien
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldabstandslinien
+BS,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+FR,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_waldabstandslinien
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldabstandslinien
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldabstandslinien
+GR,"Im Aufbau (erhältlich ab 01.01.2019)
+             Im Aufbau (erhältlich ab 01.01.2019)",Nein,/services/npl_waldabstandslinien
+JU,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+LU,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/npl_waldabstandslinien
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/npl_waldabstandslinien
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/npl_waldabstandslinien
+SG,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_waldabstandslinien
+SH,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+SO,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_waldabstandslinien
+SZ,"Frei erhältlich
+             Frei erhältlich",Nein,/services/npl_waldabstandslinien
+TG,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+TI,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldabstandslinien
+VD,"Im Aufbau (erhältlich ab 01.10.2021)
+             Im Aufbau (erhältlich ab 01.10.2021)",Nein,/services/npl_waldabstandslinien
+VS,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/npl_waldabstandslinien
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/npl_waldabstandslinien
+LI,"keine Daten
+             keine Daten",-,/services/npl_waldabstandslinien
+AG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+AI,"Im Aufbau (erhältlich ab 01.07.2021)
+             Im Aufbau (erhältlich ab 01.07.2021)",Nein,/services/waldreservate
+AR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/waldreservate
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+BS,"Im Aufbau
+             Im Aufbau",Nein,/services/waldreservate
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+GE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+GR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/waldreservate
+JU,"Freigabe erforderlich
+             Freigabe erforderlich",Ja,/services/waldreservate
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/waldreservate
+NE,"Frei erhältlich
+             Registrierung erforderlich",Ja,/services/waldreservate
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/waldreservate
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/waldreservate
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+SH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+SO,"Im Aufbau
+             Im Aufbau",Nein,/services/waldreservate
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+TG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+TI,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+VD,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/waldreservate
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+ZH,"Frei erhältlich
+             Frei erhältlich",Ja,/services/waldreservate
+LI,"keine Daten
+             keine Daten",-,/services/waldreservate
+AG,"keine Daten
+             keine Daten",-,/services/wildruhezonen
+AI,"keine Daten
+             keine Daten",-,/services/wildruhezonen
+AR,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/wildruhezonen
+BE,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+BL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+BS,"keine Daten
+             keine Daten",-,/services/wildruhezonen
+FR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+GE,"keine Daten
+             keine Daten",-,/services/wildruhezonen
+GL,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+GR,"Im Aufbau
+             Im Aufbau",Nein,/services/wildruhezonen
+JU,"keine Daten
+             keine Daten",-,/services/wildruhezonen
+LU,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/wildruhezonen
+NE,"keine Daten
+             keine Daten",-,/services/wildruhezonen
+NW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/wildruhezonen
+OW,"Frei erhältlich
+             Freigabe erforderlich",Ja,/services/wildruhezonen
+SG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+SH,"keine Daten
+             keine Daten",-,/services/wildruhezonen
+SO,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+SZ,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+TG,"keine Daten
+             keine Daten",-,/services/wildruhezonen
+TI,"Im Aufbau
+             Im Aufbau",Nein,/services/wildruhezonen
+UR,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+VD,"Im Aufbau (erhältlich ab 01.01.2022)
+             Im Aufbau (erhältlich ab 01.01.2022)",Nein,/services/wildruhezonen
+VS,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+ZG,"Frei erhältlich
+             Frei erhältlich",Ja,/services/wildruhezonen
+ZH,"Im Aufbau
+             Im Aufbau",Nein,/services/wildruhezonen
+LI,"keine Daten
+             keine Daten",-,/services/wildruhezonen

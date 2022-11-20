@@ -4,6 +4,7 @@ listing:
   sort: "date desc"
   type: default
   categories: false
+  max-description-length: 100
 page-layout: article
 title-block-banner: true
 ---

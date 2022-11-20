@@ -1,0 +1,187 @@
+---
+title: "Using rayshader to visualize Lake Zurich"
+author: "Nils Ratnaweera"
+date: "2020-06-06T23:00:00+01:00"
+categories: ["R"]
+---
+
+
+
+<div id="the-evolution-of-a-rayshader-viz" class="section level2">
+<h2>The evolution of a rayshader viz</h2>
+<p><img src="/img/2020_06_04_rayshader/steps_01-10.gif" /></p>
+</div>
+<div id="preperation" class="section level2">
+<h2>Preperation</h2>
+<p>I’ve long wanted to try out the <a href="https://www.rayshader.com/"><code>rayshader</code></a> package, and here’s my blogpost visualizing Lake Zurich, the area where I live and work. In this blogpost, I’m using the <a href="https://cran.r-project.org/package=geoviz"><code>geoviz</code></a> package to get a DEM with a 50m resolution and “landsat” imagery with a 25m resolution obtained through the <a href="https://shop.swisstopo.admin.ch/en/products/free/free_geodata">swisstopo website</a>.</p>
+<pre class="r"><code>
+library(raster)
+library(sf)
+library(tidyverse)
+
+library(rayshader)
+library(lazyraster)
+library(geoviz)</code></pre>
+<pre class="r"><code>dem &lt;- mapzen_dem(47.19552, 8.67463, 10)</code></pre>
+<p>The function returns a classical raster dataset in WGS84.</p>
+<pre class="r"><code>plot(dem)</code></pre>
+<p><img src="/post/2020_06_04_rayshader/rayshader_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>After downloading the landsat dataset, I can import it with the fuction <code>brick</code> from <code>raster</code>.</p>
+<pre class="r"><code>landsat &lt;- brick(file.path(here_post, &quot;LandsatMos25.tif&quot;))
+crs(landsat) &lt;- st_crs(21781)$proj4string</code></pre>
+<p>The two datasets, <code>dem</code> and <code>landsat</code> are in different coordinate systems and I need to reproject one into the other. If given the choice I prefer to work in a local, projected coordinate system and so will use <code>landsat</code>’s CRS (EPSG 21781).</p>
+<pre class="r"><code>dem &lt;- projectRaster(dem, crs = crs(landsat),method = &quot;bilinear&quot;)
+dem
+## class      : RasterLayer 
+## dimensions : 806, 801, 645606  (nrow, ncol, ncell)
+## resolution : 52, 51.8  (x, y)
+## extent     : 674880.9, 716532.9, 209721.6, 251472.4  (xmin, xmax, ymin, ymax)
+## crs        : +proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=600000 +y_0=200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs 
+## source     : memory
+## names      : dem_mapzen 
+## values     : 387.7736, 2247.872  (min, max)</code></pre>
+<p>Due to the reprojection process, the DEM now has a funky resolution and extent. Since this would cause problems later on I will create a new, clean raster dataset and extract the values from the DEM.</p>
+<pre class="r"><code>
+# Round xmin / ymin to the next higher multiple of 25
+xmn &lt;- ceiling(extent(dem)@xmin/25)*25
+ymn &lt;- ceiling(extent(dem)@ymin/25)*25
+
+# Round xmax / ymax to the next lower multiple of 25
+xmx &lt;- floor(extent(dem)@xmax/25)*25
+ymx &lt;- floor(extent(dem)@ymax/25)*25
+
+# Create an empty raster with the right resolution and extent
+dem2 &lt;- raster(res = res(landsat),xmn = xmn, xmx = xmx, ymn = ymn, ymx = ymx)
+
+# use values of dem to populate the new raster
+dem2 &lt;- raster::resample(dem,dem2)
+
+dem2
+## class      : RasterLayer 
+## dimensions : 1669, 1665, 2778885  (nrow, ncol, ncell)
+## resolution : 25, 25  (x, y)
+## extent     : 674900, 716525, 209725, 251450  (xmin, xmax, ymin, ymax)
+## crs        : NA 
+## source     : memory
+## names      : dem_mapzen 
+## values     : 387.7736, 2244.172  (min, max)</code></pre>
+<p>Now I need to convert the raster to a matrix so that I can use it in <code>rayshader</code>. The <code>raster</code> package provides an <code>as.matrix()</code> method for rasters, but <code>rayshader</code> has a custom function for this. Also, I can <code>crop</code> the landsat image to the extent of the DEM.</p>
+<pre class="r"><code>dem_mat &lt;- raster_to_matrix(dem2)
+
+landsat &lt;- crop(landsat, dem2)
+
+plotRGB(landsat)</code></pre>
+<p><img src="/post/2020_06_04_rayshader/rayshader_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>In order to use the <code>landsat</code> dataset as an overlay, we need to convert our raster dataset in the following manner:</p>
+<ul>
+<li>rescale the values to 0 - 1 (instead of 0 - 255)</li>
+<li>add a fourth layer to represent alpha</li>
+<li>convert the 4 layers into a 3-dimensional matrix</li>
+<li>transpose each matrix, since since rasters and matrices are oriented differently in R</li>
+</ul>
+<pre class="r"><code>landsat_mat_list &lt;- lapply(as.list(landsat), function(x){t(raster_to_matrix(x)/255)})
+landsat_mat_list[[4]] &lt;- t(raster_to_matrix(raster(nrows = nrow(landsat), ncols = ncol(landsat), ext = extent(landsat), resolution = raster::res(landsat), vals = 0.9)))
+
+library(abind)
+landsat_mat &lt;- do.call(abind,list(landsat_mat_list,along = 3))</code></pre>
+</div>
+<div id="create-a-minimalistic-3d-plot" class="section level2">
+<h2>Create a minimalistic 3D plot</h2>
+<p>Now we can create a hillshade with the function <code>sphere_shade()</code> and use this within <code>plot_3d</code> to create the first 3D visualization of the data.</p>
+<pre class="r"><code>hill &lt;- dem_mat %&gt;%
+  sphere_shade() 
+
+rgl::clear3d()
+
+plot_3d(hillshade = hill,heightmap = dem_mat, windowsize = c(1000,600))</code></pre>
+<p><img src="/img/2020_06_04_rayshader/step_01.png" width="100%" /></p>
+</div>
+<div id="adjusting-hight-exaggeration" class="section level2">
+<h2>Adjusting hight exaggeration</h2>
+<p>Next, we see that the elevation of the mountains is overly exaggerated. We can adjust this by changing <code>zscale</code>, which has a default value of 1. Since our is 25x25 Meters, a <code>zscale</code> of 1 means that elevation is exaggerated by factor 25 <span class="math display">\[\text{exaggeration factor} = \frac{\text{cellsize}}{\text{zscale}}\]</span>.</p>
+<p>By trial and error, I found that a <code>zscale</code> of 15 visualizes my area of interest nicely, which is an exaggeration factor of 1.6.</p>
+<pre class="r"><code>rgl::clear3d()
+
+zscale &lt;- 15
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000,600), zscale = zscale)</code></pre>
+<p><img src="/img/2020_06_04_rayshader/step_02.png" width="100%" /></p>
+</div>
+<div id="adjust-point-of-view" class="section level2">
+<h2>Adjust Point of View</h2>
+<p>Much better. I now want to rotate the map and view it from the north. I can do this by chaning the <code>theta</code> value:</p>
+<p><img src="/img/2020_06_04_rayshader/step_03.png" width="100%" /></p>
+<p>To zoom <em>in</em>, I can <em>decerase</em> the <code>zoom</code> value:</p>
+<pre class="r"><code>rgl::clear3d()
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000,600), zscale = zscale, theta = 160, zoom = 0.5)</code></pre>
+<p><img src="/img/2020_06_04_rayshader/step_04.png" width="100%" /></p>
+<p>To change the “azimuth” (viewing angle), I can adjust <code>phi</code>:</p>
+<p><img src="/img/2020_06_04_rayshader/step_05.png" width="100%" /></p>
+</div>
+<div id="change-shape-of-base" class="section level2">
+<h2>Change shape of base</h2>
+<p>To change the shape of the base, I adjust <code>baseshape</code></p>
+<pre class="r"><code>rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000, 600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35, baseshape = &quot;circle&quot;)</code></pre>
+<p><img src="/img/2020_06_04_rayshader/step_06.png" width="100%" /></p>
+</div>
+<div id="add-image-overlay" class="section level2">
+<h2>Add image overlay</h2>
+<p>To now add the landsat image as an overlay, we have to extend our hillshade object:</p>
+<pre class="r"><code>hill &lt;- add_overlay(hill, landsat_mat)
+
+rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000, 600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35, baseshape = &quot;circle&quot;)</code></pre>
+<p><img src="/img/2020_06_04_rayshader/step_07.png" width="100%" /></p>
+</div>
+<div id="add-shadow-and-shade" class="section level2">
+<h2>Add shadow and shade</h2>
+<p>To add some “ambient_shade”, we can again use <code>add_shadow</code>, this time with <code>ambient_shade</code>:</p>
+<pre class="r"><code>hill &lt;- add_shadow(hillshade = hill, shadowmap = ambient_shade(dem_mat),max_darken = 0)
+
+rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000, 600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35, baseshape = &quot;circle&quot;)</code></pre>
+<p><img src="/img/2020_06_04_rayshader/step_08.png" width="100%" /></p>
+<p>To add shadow, we extend the hillshade with the <code>add_shadow</code> and <code>rayshade</code> functions:</p>
+<pre class="r"><code>hill &lt;- add_shadow(hillshade = hill, shadowmap = ray_shade(dem_mat), max_darken = 0.5)
+
+rgl::clear3d()
+
+plot_3d(hillshade = hill, heightmap = dem_mat, windowsize = c(1000, 600), zscale = zscale, theta = 160, zoom = 0.5, phi = 35, baseshape = &quot;circle&quot;)</code></pre>
+<p><img src="/img/2020_06_04_rayshader/step_09.png" width="100%" /></p>
+</div>
+<div id="add-labelling" class="section level2">
+<h2>Add labelling</h2>
+<pre><code>## # A tibble: 6 x 3
+##   label              x       y
+##   &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Lake Zurich   697379 231030 
+## 2 Sihlsee       701419 222170.
+## 3 Aegerisee     689299 219950 
+## 4 Zugersee      679239 223810 
+## 5 Greifensee    692759 246530 
+## 6 Pfaeffikersee 701339 245610</code></pre>
+<p>Say we have a dataframe of locations that we want to add as labels. Typically, we have the locations in the same coordinate system as our original DEM. Until a few days ago, we have to know the relative coordinates of our matrix to add these labels to our plot. This changed in the newest version, but since I don’t have that version yet I will use my custom fuction here:</p>
+<pre class="r"><code># x, y: specify x, y-coordinates in the CRS of the original DEM
+# elevation: original DEM
+
+coords_to_xy &lt;- function(x, y, elevation){
+  ex &lt;- extent(elevation)
+  x = ((x-ex@xmin)/(ex@xmax-ex@xmin))*ncol(elevation)
+  y = (1-(y-ex@ymin)/(ex@ymax-ex@ymin))*nrow(elevation)
+  out &lt;- c(x,y)
+  names(out) &lt;- c(&quot;x&quot;,&quot;y&quot;)
+  return(out)
+}
+
+# Using this function, we can convert real world x, y coordinates to the matrix&#39; 
+# coordinate system
+
+pmap(positions, function(label, x, y){
+  coords_new &lt;- coords_to_xy(x,y, dem2)
+  render_label(heightmap = dem_mat,text = label,x = coords_new[1],y = coords_new[2],5000,zscale = zscale,freetype = FALSE)
+})</code></pre>
+<p><img src="/img/2020_06_04_rayshader/step_10.png" width="100%" /></p>
+</div>

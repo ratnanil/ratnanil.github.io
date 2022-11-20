@@ -1,0 +1,27 @@
+abk,kanton,kantons_nummer,bei_tritt,hauptort7_regierungssitz,ein_wohner131_dezember_2020,flache_km2,mitglieder_standerat2,ein_wohner_dichte3,amtssprache,iso,deutsch,franzosisch,italienisch,ratoromanisch,schweizerdeutsch
+ZH,Kanton Zürich Zürich,1,1351,Zürich,1'553'423,1728.94,2,898,Deutsch,ZH,Kanton Zürich,Zurich,Zurigo,Turitg,Züri
+BE,Kanton Bern Bern,2,1353,Bern,1'043'132,5959.51,2,175,"Deutsch, Französisch",BE,Kanton Bern,Canton de Berne,Berna,Berna,Bärn
+LU,Kanton Luzern Luzern,3,1332,Luzern,416'347,1493.52,2,279,Deutsch,LU,Kanton Luzern,Lucerne,Lucerna,Lucerna,Lozäärn
+UR,Kanton Uri Uri,4,5 1291,Altdorf,36'819,1076.54,2,34,Deutsch,UR,Kanton Uri,Uri,Uri,Uri,"Üüri, Ürnerland"
+SZ,Kanton Schwyz Schwyz,5,5 1291,Schwyz,162'157,907.88,2,179,Deutsch,SZ,Kanton Schwyz,Schwyz (Schwytz*)),Svitto,Sviz,Schwyz
+OW,Kanton Obwalden Obwalden,6,5 1291,Sarnen,38'108,490.58,1,78,Deutsch,OW,Kanton Obwalden,Obwald,Obvaldo,Sursilvania,Obwaldä
+NW,Kanton Nidwalden Nidwalden,7,5 1291,Stans,43'520,275.85,1,158,Deutsch,NW,Kanton Nidwalden,Nidwald,Nidvaldo,Sutsilvania,"Nidwaldä, Nidwaudä"
+GL,Kanton Glarus Glarus,8,1352,Glarus,40'851,685.31,2,60,Deutsch,GL,Kanton Glarus,Glaris,Glarona,Glaruna,"Glaris, Glarnerland"
+ZG,Kanton Zug Zug,9,1352,Zug,128'794,238.73,2,539,Deutsch,ZG,Kanton Zug,Zoug,Zugo,Zug,Zùùg
+FR,Kanton Freiburg Freiburg,10,1481,Freiburg,325'496,1671.42,2,195,"Französisch, Deutsch",FR,Staat Freiburg,État de Fribourg,Friburgo,Friburg,Frybùrg
+SO,Kanton Solothurn Solothurn,11,1481,Solothurn,277'462,790.45,2,351,Deutsch,SO,Kanton Solothurn,Soleure,Soletta,Soloturn,Soledùùrn
+BS,Kanton Basel-Stadt Basel-Stadt,12,1501,Basel,196'735,36.95,1,5324,Deutsch,BS,Kanton Basel-Stadt,Bâle-Ville,Basilea Città,Basilea-Citad,Baaselstadt
+BL,Kanton Basel-Landschaft Basel-Landschaft,13,1501,Liestal,290'969,517.67,1,562,Deutsch,BL,Kanton Basel-Landschaft,Bâle-Campagne,Basilea Campagna,Basilea-Champagna,Baaselbiet
+SH,Kanton Schaffhausen Schaffhausen,14,1501,Schaffhausen,83'107,298.42,2,278,Deutsch,SH,Kanton Schaffhausen,Schaffhouse,Sciaffusa,Schaffusa,Schafuuse
+AR,Kanton Appenzell Ausserrhoden Appenzell Ausserrhoden,15,1513,"(Herisau)4,7",55'309,242.84,1,228,Deutsch,AR,Kanton Appenzell Ausserrhoden,Appenzell Rhodes-Extérieures,Appenzello Esterno,Appenzell Dadora,Appezäll Osserode
+AI,Kanton Appenzell Innerrhoden Appenzell Innerrhoden,16,1513,Appenzell,16'293,172.48,1,94,Deutsch,AI,Kanton Appenzell Innerrhoden,Appenzell Rhodes-Intérieures,Appenzello Interno,Appenzell Dadens,Appezöll Innerode
+SG,Kanton St. Gallen St. Gallen,17,1803,St. Gallen,514'504,2028.20,2,254,Deutsch,SG,Kanton St. Gallen,Saint-Gall,San Gallo,Son Gagl,Sanggale
+GR,Kanton Graubünden Graubünden,18,1803,Chur,200'096,7105.30,2,28,"Deutsch, Rätoromanisch, Italienisch",GR,Kanton Graubünden,Grisons,Cantone dei Grigioni,Chantun Grischun,"Graubünda, Bündnerland"
+AG,Kanton Aargau Aargau,19,1803,Aarau,694'072,1403.80,2,494,Deutsch,AG,Kanton Aargau,Argovie,Argovia,Argovia,"Aargou, Aargau, Aargöi"
+TG,Kanton Thurgau Thurgau,20,1803,Frauenfeld,282'909,994.33,2,285,Deutsch,TG,Kanton Thurgau,Thurgovie,Turgovia,Turgovia,"Tùùrgi, Tùùrgau"
+TI,Kanton Tessin Tessin,21,1803,Bellinzona,350'986,2812.16,2,125,Italienisch,TI,Kanton Tessin,Tessin,Repubblica e Cantone Ticino,Tessin,Tessin
+VD,Kanton Waadt Waadt,22,1803,Lausanne,814'762,3212.02,2,254,Französisch,VD,Kanton Waadt,Canton de Vaud,Vaud,Vad,Wadt
+VS,Kanton Wallis Wallis,23,1815,Sitten,348'503,5224.63,2,67,"Französisch, Deutsch",VS,Kanton Wallis,État du Valais,Vallese,Vallais,Wallis
+NE,Kanton Neuenburg Neuenburg,24,1815,Neuenburg,175'894,802.16,2,219,Französisch,NE,Kanton Neuenburg,République et Canton de Neuchâtel,Neuchâtel,Neuchâtel,"Nöieburg, Nüüeburg"
+GE,Kanton Genf Genf,25,1815,Genf,506'343,282.49,2,1792,Französisch,GE,Kanton Genf,République et Canton de Genève,Ginevra,Genevra,"Gämf, Gänf"
+JU,Kanton Jura Jura,26,6 1979,Delsberg,73'709,838.51,2,88,Französisch,JU,Kanton Jura,République et Canton du Jura,Giura,Giura,Jura

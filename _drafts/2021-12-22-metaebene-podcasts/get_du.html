@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+
+<body>
+    <div id="results"></div>
+    <script>
+        getData();
+
+    
+        async function getData() {
+
+            const response = await fetch('enclosures.csv');
+            const data = await response.text();
+
+            // split into rows and remove first line (header) with slice
+            const rows = data.split("\n").slice(1,2);
+
+            
+            var durations = []
+            // apply a function to each row
+            rows.forEach(elt => {
+
+                const row = elt.split(",");
+
+                const url = row[0]
+                var au = document.createElement('audio');
+                au.src = url
+
+                au.addEventListener('loadedmetadata', function(){
+                    // Obtain the duration in seconds of the audio file (with milliseconds as well, a float value)
+                    var duration = au.duration
+
+                    durations.push(duration)
+                    document.getElementById('results').append(duration,",")
+
+                },false);
+            });
+
+            console.log(durations)
+
+
+        }
+    </script>
+</body>
+
+</html>
+
