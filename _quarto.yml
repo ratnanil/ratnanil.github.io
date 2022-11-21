@@ -27,3 +27,7 @@ format:
   html:
     theme: solar
     css: styles.css
+    comments:
+      utterances:
+        repo: ratnanil/ratnanil.github.io-utterances
+    

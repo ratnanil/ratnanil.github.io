@@ -1,6 +1,7 @@
 library(tidyverse)
 library(xml2)
 
+# https://archive.org/details/stackexchange
 xml_posts <- xml2::read_xml("blog/2022-11-30-ArcGIS-vs-QGIS/posts/Posts.xml") 
 
 # https://stackoverflow.com/questions/1390568/how-can-i-match-on-an-attribute-that-contains-a-certain-string
