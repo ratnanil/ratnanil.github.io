@@ -12,6 +12,6 @@
 # ignore everything in posts except
 # Rmd, qmd files
 /**/git-lsf/**
-
+**/*_files/
 _freeze/*
 _site/*
