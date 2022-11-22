@@ -1,7 +1,7 @@
 ---
 title: "Teaching geospatial: ArcGIS or QGIS?"
 description: |
-  Every year, we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data analysis and modelling. For each of these courses, we have to decide on software with which to implement these concepts. As a publicly funded institution I feel an obligation to use Free and OpenSource Software in the classroom. Also, I believe that it's important to use software that works on any of the major operating systems Windows, Linux and Mac. In this blogpost I want to make a case for using QGIS to teach geospatial courses and illustrate this with data gathered to compare the popularity of ArcGIS vs QGIS.
+  Every year, we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data analysis and modelling. For each of these courses, we must decide on software with which to implement these concepts. As a publicly funded institution I feel an obligation to use Free and OpenSource Software in the classroom. Also, I believe that it's important to use software that works on any of the major operating systems Windows, Linux and Mac. In this blogpost I want to make a case for using QGIS to teach geospatial courses and illustrate this with data gathered to compare the popularity of ArcGIS vs QGIS.
 date: 2022-11-20
 format:
   html:
@@ -16,22 +16,36 @@ image: preview.png
 The opinions expressed in this post are my own and do not necessarily reflect those of my employer.
 :::
 
-ArcGIS was considered to be the "industry standard" for a long time. Therefore, our Uni started out using ESRI products when initially developing the fist geospatial courses (I'm trying hard to [omit the term GIS](https://twitter.com/edzerpebesma/status/1278447470226411525)). Since ESRI has implemented an attractive pricing model for universities and students, there is a low entry barrier to using their products in academia. However, using a commercial product has a number of downsides: Once students are done with their studies, they will pay the debt for the years of using ArcGIS for free. And I do not only mean this monetarily (even thought the license fees are considerable): The proprietary nature of the software makes them dependent on ESRI for all updates, support, and fixes. The suite of ESRI products that are exclusively interoperable makes vendor lock-in a big issue, they become less flexible.
+ArcGIS was considered to be the "industry standard" for a long time. Therefore, our Uni started out using ESRI products when initially developing the first geospatial courses (I'm trying hard to [omit the term GIS](https://twitter.com/edzerpebesma/status/1278447470226411525)). Since ESRI has implemented an attractive pricing model for universities and students, there is a low entry barrier to using their products in academia. However, using a commercial product has several downsides: Once students are done with their studies, they will pay the debt for the years of using ArcGIS for free. And I do not mean this strictly monetarily (even though the license fees are considerable): The proprietary nature of the software makes them dependent on ESRI for all updates, support, and fixes. The suite of ESRI products that are exclusively interoperable makes vendor lock-in a big issue, they become less flexible.
 
-On the other hand, using a Free and OpenSource Software (FOSS) like QGIS has number of advantages: QGIS is maintained by the community, so bugs are usually discovered and fixed very quickly (if they aren't one can hire a maintainer to do so). Similarly, new features can be implemented very easily, e.g by creating a QGIS Plugin.  QGIS invites tinkering with the software and taking a peek behind the scenes. There is *a lot* that speaks for using FOSS in general, and in an academic setting specifically (see *reproducibility*). I won't go further into these reasons here, this blogpost is about something else. Instead, I will refer you to the articles written by Richard Stallman and the Free Software Foundation on <https://www.gnu.org/education/>
+On the other hand, using Free and OpenSource Software (FOSS) like QGIS has number of advantages: QGIS is maintained by the community, so bugs are usually discovered and fixed very quickly (if they aren't one can hire a maintainer to do so). Similarly, new features can be implemented very easily, e.g. by creating a QGIS Plugin.  QGIS invites tinkering with the software and peeking behind the scenes. There is *a lot* that speaks for using FOSS in general, and in an academic setting specifically (see *reproducibility*). I won't go further into these reasons here; this blogpost is about something else. Instead, I will refer you to the articles written by Richard Stallman and the Free Software Foundation on <https://www.gnu.org/education/>
 
-![](meme-0.jpg)
+::: {layout-ncol=2}
 
-My favorite software for geospatial are R (`sf`, `terra`, `stars`) and Python (`geopandas`, `rasterio`, `xarray`). Depending on the audience, these skript based tools can be overwhelming and the wrong tool for the job. In the last couple of years, we have started implementing QGIS in new courses or when overhauling existing ones. From the feedback I get from our students who used both software, they actually prefer working with QGIS. The main reasons being that in their view, QGIS runs more stable and they enjoy the prospect that they can use it after they've completed their studies.
+![](button1.png)
+
+![](button2.png)
+
+:::
+
+My favorite software for geospatial are R (`sf`, `terra`, `stars`) and Python (`geopandas`, `rasterio`, `xarray`), which [we teach on a bachelor and master level](./teaching.html). Depending on the audience, these script based tools can be overwhelming and the wrong tool for the job. In the last couple of years, we have started implementing QGIS in new courses or when overhauling existing ones. From the feedback I get from our students who used both software, they prefer working with QGIS. The main reasons being that in their view, QGIS runs more stable and they enjoy the prospect that they can use it after they've completed their studies.
 
 
-ArcGIS vs. QGIS is an ongoing debate on social media. In this discussion, many people make the valid point that you don't have to choose and can use both software. Another point often made, is that you should teach *concepts*, not *software.* I fully agree with both statements, however not choosing a software is a bit impractical in an education setting. In this blogpost I will therefore continue to focus on the ArcGIS vs. QGIS debate. 
+ArcGIS vs. QGIS is an ongoing debate on social media. In this discussion, many people make the valid point that you don't have to choose and can use both software. Another point often made is that you should teach *concepts*, not *software.* I fully agree with both statements, however not choosing a specific software is a bit impractical in an education setting. In this blogpost I will therefore continue to focus on the ArcGIS vs. QGIS debate. 
 
-![](meme1.jpg)
 
-The big *pro* argument for using ArcGIS seems to be: *ArcGIS is the industry standard, therfore the students need to learn ArcGIS*. 
+
+::: {layout-ncol=2}
+
+![](button3.png)
+
+![](button4.png)
+
+:::
+
+The big *pro* argument for using ArcGIS seems to be *ArcGIS is the industry standard, therfore the students need to learn ArcGIS*. 
 This seems to be a classical chicken-egg problem: Do we teach software $X$ because it's the industry standard, or is software $X$ the industry standard because it's what we teach? 
-Be it as it may, I've started digging into this premis of this argument to find data to compare the popularity of ArcGIS vs. QGIS. So far, I've only found two datasets on this topic (if you have more, please get in touch (&#114;&#97;&#116;&#97;&#64;&#104;&#97;&#119;.&#99;&#104;) or write into the comment section below).
+Be it as it may, I've started digging into this premise of this argument to find data to compare the popularity of ArcGIS vs. QGIS. So far, I've only found two datasets on this topic (if you have more, please get in touch (&#114;&#97;&#116;&#97;&#64;&#122;&#104;&#97;&#119;.&#99;&#104;) or write into the comment section below).
 
 1. The tags from questions on [gis.stackexchange.com](https://gis.stackexchange.com/) (downloaded [here](https://archive.org/details/stackexchange) on the 17.11.2022)
 2. Google Trends search data (downloaded [here](https://trends.google.com/trends/explore?date=all&geo=CH&q=%2Fm%2F082gc5,QGIS) on the 17.11.2022)
@@ -53,7 +67,7 @@ library(colorspace)
 ```
 
 
-The website gis.stackexchange.com is a community within the stackexchange network, where questions sourrounding GIS can be placed. Each question can be attributed with up to 5 tags to categorize the question and make it easier to find. To compare ArcGIS and QGIS, I counted the number of times a variant of the tag ArcGIS was used compared to the number of times a variant of the tag QGIS was used. There are 77 different tags containing ArcGIS, including `[arcgis-desktop]`, `[arcgis-10.0]`, `[arcgis-pro]` and so on. Since QGIS has less products, there are only 50 different tags containing QGIS, including `[qgis]`, `[pyqgis]`, `[qgis-3]` and others.
+The website gis.stackexchange.com is a community within the Stackexchange network, where questions surrounding GIS can be placed. Each question can be attributed with up to 5 tags to categorize the question and make it easier to find. To compare ArcGIS and QGIS, I counted the number of times a variant of the tag ArcGIS was used compared to the number of times a variant of the tag QGIS was used. There are 77 different tags containing ArcGIS, including `[arcgis-desktop]`, `[arcgis-10.0]`, `[arcgis-pro]` and so on. Since QGIS has less products, there are only 50 different tags containing QGIS, including `[qgis]`, `[pyqgis]`, `[qgis-3]` and others.
 
 
 ```{r}
@@ -116,7 +130,7 @@ vlines <- tibble(y =  seq(0, 600, 100), xend = arcgis_qgis_roll$month[map_int(y,
 ```
 
 
-To take out some of the noise, I smoothed the monthly counts by taking the mean over a moving window of 1 year. The visualisation technique is heavily inspired by Cedric Scherre's 2021 [#30DayChartChallenge (Day 4)](https://www.cedricscherer.com/2021/05/09/contributions-30daychartchallenge-2021/).
+To take out some of the noise, I smoothed the monthly counts by taking the mean over a moving window of 1 year. The visualization technique is heavily inspired by Cedric Scherer's [2021 #30DayChartChallenge (Day 4)](https://www.cedricscherer.com/2021/05/09/contributions-30daychartchallenge-2021/).
 
 
 ```{r}
@@ -193,11 +207,11 @@ ggsave(here("blog","2022-11-30-ArcGIS-vs-QGIS", "preview.png"), height = 10, wid
 ```
 
 
-The data from gis.stackexchange shows that both ArcGIS and QGIS have grown in popularity since 2011. ArcGIS has hit a peak around 2014, 2015 with the release of ArcGIS pro and has since been on a decline. The number of QGIS questions have overtaken those of ArcGIS towards the end of 2016 and QGIS has been dominating the portal ever since. 
+The data from gis.stackexchange shows that both ArcGIS and QGIS have grown in popularity since 2011. ArcGIS hit a peak around 2014, 2015 with the release of ArcGIS pro and has since been on a decline. The number of QGIS questions has overtaken those of ArcGIS towards the end of 2016 and QGIS has been dominating the portal ever since. 
 
-This data seems to clearly show that QGIS is more popular than ArcGIS. However, an argument can be made that the number of questions regarding a software does not reflect popularity. On the contrary, more questions could be a sign of ambiguity: QGIS might provoke more questions in it use, while the use of ArcGIS is more straightforward. Or maybe, questions regarding ArcGIS are not posted on gis.stackexchange.com, but on a different plattform, e.g. [community.esri.com](https://community.esri.com/).
+This data seems to clearly show that QGIS is more popular than ArcGIS. However, an argument can be made that the number of questions regarding a program does not reflect it's popularity. On the contrary, more questions could be a sign of ambiguity: QGIS might provoke more questions in its use, while the use of ArcGIS is more straightforward. Or maybe, questions regarding ArcGIS are not posted on gis.stackexchange.com, but on a different platform, e.g. [community.esri.com](https://community.esri.com/).
 
-This is why I've additionally looked at a different datasource, namely Google Trends. Google Trends provides access to a sample of search requests made to Google. This allows us to analyze interest in a particular topic worldwide or for a specific country. Google Trends normalizes search data from 0 to 100 to make comparisons between terms easier. Each data point is divided by the total searches in the selected geographic extent and time range to compare relative popularity. 
+Therefore, I've additionally looked at a different data source, namely Google Trends. Google Trends provides access to a sample of search requests made to Google. This allows us to analyze interest in a particular topic worldwide or for a specific country. Google Trends normalizes search data from 0 to 100 to make comparisons between terms easier. Each data point is divided by the total searches in the selected geographic extent and time range to compare relative popularity. 
 
 I downloaded these normalized values for the search terms *ArcGIS* and *QGIS* for the maximum time range (2004 to current) in the geographic extent *Switzerland.* As before, I smoothed the monthly values with a moving window of 1 year.
 
@@ -271,7 +285,7 @@ ggplot(filter(google_trends_roll, Region == "Switzerland"), aes(Month, roll, col
 ```
 
 
-This data range back further than the data from gis.stackexchange.com. But similarly, both terms seem to have gained in popularity since around 2010 and *ArcGIS* hits a plateau around 2015. QGIS continues to gain in popularity and nearly catches up with the number of ArcGIS queries end of 2019. With the beginning of the pandemic, the search term ArcGIS spikes. I'm guessing this has to do with searches related to the ArcGIS Covid dashboard. Interestingly, in the most recent years QGIS seems to have overtaken ArcGIS in the number of times it was search on google.
+This data range back further than the data from gis.stackexchange.com. But similarly, both terms seem to have gained in popularity since around 2010 and *ArcGIS* hits a plateau around 2015. QGIS continues to gain in popularity and nearly catches up with the number of ArcGIS queries at the end of 2019. With the beginning of the pandemic, the search term ArcGIS spikes. I'm guessing this has to do with searches related to the ArcGIS Covid dashboard. Interestingly, in the most recent years QGIS seems to have overtaken ArcGIS in the number of times it was searched on Google.
 
 QGIS is evidently very popular in Switzerland. The worldwide data shows very similar trends, but the offset between ArcGIS and QGIS is larger. 
 
@@ -321,10 +335,11 @@ ggplot(filter(google_trends_roll, Region == "Worldwide"), aes(Month, roll, color
 ```
 
 
-It must be said that neither datasource can *accurately* reflect the real-world popularity of ArcGIS and QGIS. For instance, they do not show many users or companies use the respective software or how much money it generates. Nonetheless, the data has convinced me even more that the time is right to bet on QGIS and exclusively use FOSS in the classroom. 
+It must be said that neither data source can *accurately* reflect the real-world popularity of ArcGIS or QGIS. For instance, they do not show many users or companies use the respective software or how much money it generates. Nonetheless, the data has convinced me even more that the time is right to bet on QGIS and exclusively use FOSS in the classroom. 
 
-I would like to finish off by providing you with very insightful talk given by David Abernathy at the  NC GIS Conference 2017. He talks about his University's transition from ArcGIS to FOSS, and makes several highly interesting points. If you've made it till here, please watch his video!
+I would like to finish off by providing you with a very insightful talk given by David Abernathy at the  NC GIS Conference 2017. He talks about his university's transition from ArcGIS to FOSS and makes several highly interesting points. If you've made it up to here, please watch his video!
 
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/S8dei0PP9SU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+
+<div class="youtube-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S8dei0PP9SU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
