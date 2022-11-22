@@ -31,11 +31,9 @@ ArcGIS vs. QGIS is an ongoing debate on social media. In this discussion, many p
 
 The big *pro* argument for using ArcGIS seems to be: *ArcGIS is the industry standard, therfore the students need to learn ArcGIS*. 
 This seems to be a classical chicken-egg problem: Do we teach software $X$ because it's the industry standard, or is software $X$ the industry standard because it's what we teach? 
-Be it as it may, I've started digging into this premis of this argument to find data to compare the popularity of ArcGIS vs. QGIS. So far, I've only found two datasets on this topic (if you have more, please get in touch[^contact] or write into the comment section below).
+Be it as it may, I've started digging into this premis of this argument to find data to compare the popularity of ArcGIS vs. QGIS. So far, I've only found two datasets on this topic (if you have more, please get in touch (&#114;&#97;&#116;&#97;&#64;&#104;&#97;&#119;.&#99;&#104;) or write into the comment section below).
 
-[^contact]: rata__at__zhaw.ch
-
-1. The tags from gis.stackexchange.com (downloaded [here](https://archive.org/details/stackexchange) on the 17.11.2022)
+1. The tags from questions on [gis.stackexchange.com](https://gis.stackexchange.com/) (downloaded [here](https://archive.org/details/stackexchange) on the 17.11.2022)
 2. Google Trends search data (downloaded [here](https://trends.google.com/trends/explore?date=all&geo=CH&q=%2Fm%2F082gc5,QGIS) on the 17.11.2022)
 
 I've downloaded, processed and visualized this data with R. You can display the code for these steps below, or just look at the results.
@@ -55,7 +53,7 @@ library(colorspace)
 ```
 
 
-The website <gis.stackexchange.com> is a community within the stackexchange network, where questions sourrounding GIS can be placed. Each question can be attributed with up to 5 tags to categorize the question and make it easier to find. To compare ArcGIS and QGIS, I counted the number of times a variant of the tag ArcGIS was used compared to the number of times a variant of the tag QGIS was used. There are 77 different tags containing ArcGIS, including `[arcgis-desktop]`, `[arcgis-10.0]`, `[arcgis-pro]` and so on. Since QGIS has less products, there are only 50 different tags containing QGIS, including `[qgis]`, `[pyqgis]`, `[qgis-3]` and others.
+The website gis.stackexchange.com is a community within the stackexchange network, where questions sourrounding GIS can be placed. Each question can be attributed with up to 5 tags to categorize the question and make it easier to find. To compare ArcGIS and QGIS, I counted the number of times a variant of the tag ArcGIS was used compared to the number of times a variant of the tag QGIS was used. There are 77 different tags containing ArcGIS, including `[arcgis-desktop]`, `[arcgis-10.0]`, `[arcgis-pro]` and so on. Since QGIS has less products, there are only 50 different tags containing QGIS, including `[qgis]`, `[pyqgis]`, `[qgis-3]` and others.
 
 
 ```{r}
@@ -197,7 +195,7 @@ ggsave(here("blog","2022-11-30-ArcGIS-vs-QGIS", "preview.png"), height = 10, wid
 
 The data from gis.stackexchange shows that both ArcGIS and QGIS have grown in popularity since 2011. ArcGIS has hit a peak around 2014, 2015 with the release of ArcGIS pro and has since been on a decline. The number of QGIS questions have overtaken those of ArcGIS towards the end of 2016 and QGIS has been dominating the portal ever since. 
 
-This data seems to clearly show that QGIS is more popular than ArcGIS. However, an argument can be made that the number of questions regarding a software does not reflect popularity. On the contrary, more questions could be a sign of ambiguity: QGIS might provoke more questions in it use, while the use of ArcGIS is more straightforward. Or maybe, questions regarding ArcGIS are not posted on <gis.stackexchange.com>, but on a different plattform, e.g. <community.esri.com>.
+This data seems to clearly show that QGIS is more popular than ArcGIS. However, an argument can be made that the number of questions regarding a software does not reflect popularity. On the contrary, more questions could be a sign of ambiguity: QGIS might provoke more questions in it use, while the use of ArcGIS is more straightforward. Or maybe, questions regarding ArcGIS are not posted on gis.stackexchange.com, but on a different plattform, e.g. [community.esri.com](https://community.esri.com/).
 
 This is why I've additionally looked at a different datasource, namely Google Trends. Google Trends provides access to a sample of search requests made to Google. This allows us to analyze interest in a particular topic worldwide or for a specific country. Google Trends normalizes search data from 0 to 100 to make comparisons between terms easier. Each data point is divided by the total searches in the selected geographic extent and time range to compare relative popularity. 
 
@@ -273,7 +271,7 @@ ggplot(filter(google_trends_roll, Region == "Switzerland"), aes(Month, roll, col
 ```
 
 
-This data range back further than the data from gis.stackexchange.com. But similarly, both Terms seem to have gained in popularity since around 2010 and *ArcGIS* hits a plateau around 2015. QGIS continues to gain in popularity and nearly catches up with the number of ArcGIS queries end of 2019. With the beginning of the pandemic, the search term ArcGIS spikes. I'm guessing this has to do with searches related to the ArcGIS Covid dashboard. Interestingly, in the most recent years QGIS seems to have overtaken ArcGIS in the number of times it was search on google.
+This data range back further than the data from gis.stackexchange.com. But similarly, both terms seem to have gained in popularity since around 2010 and *ArcGIS* hits a plateau around 2015. QGIS continues to gain in popularity and nearly catches up with the number of ArcGIS queries end of 2019. With the beginning of the pandemic, the search term ArcGIS spikes. I'm guessing this has to do with searches related to the ArcGIS Covid dashboard. Interestingly, in the most recent years QGIS seems to have overtaken ArcGIS in the number of times it was search on google.
 
 QGIS is evidently very popular in Switzerland. The worldwide data shows very similar trends, but the offset between ArcGIS and QGIS is larger. 
 

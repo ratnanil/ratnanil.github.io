@@ -24,4 +24,3 @@ All preview images should have an aspect ratio of 3:2 (width:height). When worki
 I've had too many repos that have become huge because I thoughlessly committed large files. Using `git lfs` as a workaround was not very satisfactory either, since it's not easy to free up the quota of `git lsf` my simply deleting files from the history (you have to delete the whole repo intead!). I'm still looking into this, I think good practice for now would be to simply put all large files in subdirectories containing a `.gitingore` file containing a `*`.
 
 
-&#114;&#97;&#116;&#97;&#114;&#104;&#97;&#119;.&#99;&#104;
