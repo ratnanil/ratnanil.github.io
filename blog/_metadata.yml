@@ -8,3 +8,9 @@ title-block-banner: true
 
 # can I add an author for all posts?
 author: "Nils Ratnaweera"
+
+format:
+  html:
+    comments:
+      utterances:
+        repo: ratnanil/ratnanil.github.io-utterances

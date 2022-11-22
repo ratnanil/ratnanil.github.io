@@ -3,7 +3,7 @@ project:
   
 website:
   title: "Ratnaweera-XYZ"
-  site-url: https://nils.ratnaweera.net
+  site-url: https://ratnaweera.xyz
   description: "Nils' Blog on R, Python and spatial stuff"
   navbar:
     logo: images/mylogo.png
@@ -27,7 +27,4 @@ format:
   html:
     theme: solar
     css: styles.css
-    comments:
-      utterances:
-        repo: ratnanil/ratnanil.github.io-utterances
     
