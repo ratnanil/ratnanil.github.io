@@ -8,6 +8,9 @@
 .httr-oauth
 .config/
 .local/
+.ipython/
+.wget-hsts
+.sudo_as_admin_successful
 
 # ignore everything in posts except
 # Rmd, qmd files
@@ -15,3 +18,5 @@
 **/*_files/
 _freeze/*
 _site/*
+
+/.luarc.json
