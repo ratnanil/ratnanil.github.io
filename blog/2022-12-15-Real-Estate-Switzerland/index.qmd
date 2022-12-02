@@ -1,0 +1,136 @@
+---
+title: "Real Estate in Switzerland"
+draft: false
+freeze: false
+filters:
+  - shinylive
+execute: 
+  error: false
+---
+
+If you want to buy real estate in switzerland, you need to fulfill two specific criteria. For example:
+
+- Condition 1: Belehnungsgrad. You need to come up with 20% of the money needed to finance the full price of the real estate, whereas 10% needs to be "hard cash", the other 10% can be money in your Pensionskasse
+- Condition 2: Tragbarkeit. The hypothetical costs must not exceed 33% of your yearly income.
+
+## Condition 1: Belehnungsgrad
+
+Hard cash is money in the form of money on a bank deposit, 3a-Insurance or Erbvorbezug. The question often is: how much hard cash do I need, given a specific price and the money in my Pensionskasse? Let's build a python function to answer this question:
+
+```{python}
+def get_hard_cash1(price, pensionskasse):
+  pensionskasse_frac = pensionskasse/price
+  if pensionskasse_frac >= 0.1:
+    hard_cash = price*0.1
+  else:
+    hard_cash = (0.2-pensionskasse_frac)*price
+    
+  return(hard_cash)
+    
+
+get_hard_cash1(800000,100000)
+```
+
+
+## Condition 2: Tragbarkeit
+
+However, the function abvove does not take condition 2 into consideration. Condition 2 limits the height of your mortgage based on your salary. The hypothetical costs should not exceed 33% of your yearly income.
+
+These hypothetical costs consist of:
+
+1. The interest on your mortgage (*kalkulatorischer zins*): This is not the actual interest on your mortgage (since this might change in the future) but a fixed interest of 5%. Let's call the price of the house $\alpha$, which makes the interest $\alpha \times 5\%$.
+2. Repayment of your mortgage (*amortisation*): Traditionally, you are required to pay back your "second mortgage" (normally 15% of your full morgage) within 15 years. This means you pay back 1% of your full morgage anually, in other words $\alpha \times 1\%$
+3. Ancillary costs (*nebenkosten*): These are calculated to be 1% of your house price (not your morgage). Let's call the house price $\beta$, so this amounts to $\beta \times 1%$
+
+If we call the salary $\gamma$, then condition 2 can be formulated as follows:
+
+
+$$ \gamma \times 33\% \leq \alpha \times 5\% + \alpha \times 1\% + \beta \times 1\%$$
+
+We need to solve this above equation to find out the minimal hard cash needed, which is hidden in $\alpha$, the mortgage. 
+
+\begin{align}
+0.33\gamma &= 0.05\alpha + 0.01\alpha + 0.01\beta \\
+0.33\gamma - 0.01\beta &= 0.06\alpha \\
+\alpha &= \frac{0.33\gamma - 0.01\beta}{0.06} \\
+\end{align}
+
+We can further simplify $\alpha$, the mortgage, as being the price ($\beta$), minus pensionskasse ($\delta$) minus hard cash ($\epsilon$)
+
+\begin{align}
+\alpha &= \frac{0.33\gamma - 0.01\beta}{0.06} \\
+\beta - \delta - \epsilon &= \frac{0.33\gamma - 0.01\beta}{0.06} \\
+\epsilon &= \beta - \delta  - \frac{0.33\gamma - 0.01\beta}{0.06} \\
+
+\end{align}
+
+
+Now that we have solved it for the $\epsilon$, we can translate the formula into a python function:
+
+```{python}
+
+def get_hard_cash2(price, annual_salary, pensionskasse, deckungsgrad_limit = 0.33):
+  hard_cash = price - pensionskasse - (deckungsgrad_limit*annual_salary-0.01*price)/0.06
+  return(hard_cash)
+
+get_hard_cash2(800000, 130000, 100000, 0.33)
+```
+
+
+## Bringing it together
+
+Since both conditions must be met, we can combine both functions into one, so that for any given situation, we know the minimum amount of hard cash necessary. 
+
+
+```{python}
+
+def get_hard_cash(price, annual_salary, pensionskasse, deckungsgrad_limit = 0.33):
+  hard_cash1 = get_hard_cash1(price, pensionskasse)
+  hard_cash2 = get_hard_cash2(price, annual_salary, pensionskasse, deckungsgrad_limit = deckungsgrad_limit)
+  return(max(hard_cash1, hard_cash2))
+
+```
+
+
+```{python}
+x = [x for x in range(100000, 1000000, 50000)]
+
+y_33 = [get_hard_cash(x, 130000, 100000, 0.33) for x in x]
+y_30 = [get_hard_cash(x, 130000, 100000, 0.30) for x in x]
+y_36 = [get_hard_cash(x, 130000, 100000, 0.36) for x in x]
+
+
+import plotly.express as px
+import plotly.graph_objects as go
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=x, y=y_30,name = ".30"))
+fig.add_trace(go.Scatter(x=x, y=y_33,name = ".33"))
+fig.add_trace(go.Scatter(x=x, y=y_36,name = ".36"))
+fig.update_layout(hovermode='x unified', title = "How much hard cash do I need?")
+```
+
+
+<!--
+```{shinylive-python}
+#| standalone: true
+
+# from shiny import *
+
+# app_ui = ui.page_fluid(
+#     ui.input_numeric("n", "from", 0),
+#     ui.input_numeric("to", "to", 1000000),
+#     ui.output_text_verbatim("txt"),
+# )
+
+# def server(input, output, session):
+#     @output
+#     @render.text
+#     def txt():
+#         return f"The value of n*2 is {input.n() * 2}. WOW!!"
+
+# app = App(app_ui, server)
+
+```
+
+-->

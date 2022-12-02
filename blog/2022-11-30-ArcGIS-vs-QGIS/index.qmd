@@ -1,7 +1,7 @@
 ---
 title: "Teaching geospatial: ArcGIS or QGIS?"
 description: |
-  Every year, we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data analysis and modelling. For each of these courses, we must decide on software with which to implement these concepts. As a publicly funded institution I feel an obligation to use Free and OpenSource Software in the classroom. Also, I believe that it's important to use software that works on any of the major operating systems Windows, Linux and Mac. In this blogpost I want to make a case for using QGIS to teach geospatial courses and illustrate this with data gathered to compare the popularity of ArcGIS vs QGIS.
+  Every year we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data analysis and modelling. For each of these courses, we must decide on software with which to implement these concepts. As a publicly funded institution I feel an obligation to use Free and Open Source Software in the classroom. Also, I believe that it's important to use software that runs on any of the major operating systems Windows, Linux and Mac. In this blogpost I want to make a case for using the Open Source Software QGIS and illustrate this with data gathered to compare the popularity of ArcGIS vs QGIS.
 date: 2022-11-20
 format:
   html:
@@ -9,6 +9,8 @@ format:
 execute: 
   warning: false
 image: preview.png
+twitter-card: 
+  image: "preview.png"
 ---
 
 ::: {.callout-note}
