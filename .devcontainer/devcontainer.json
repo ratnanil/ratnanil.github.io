@@ -1,0 +1,26 @@
+{
+    "image": "sandbox",
+    "customizations": {
+      // Configure properties specific to VS Code.
+      "vscode": {
+        // Set *default* container specific settings.json values on container create.
+        "settings": { 
+          "r.bracketedPaste": true,
+          "r.plot.useHttpgd": true,
+          "[r]": {
+            "editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
+          }
+        },
+        
+        // Add the IDs of extensions you want installed when the container is created.
+        "extensions": [
+          "reditorsupport.r",
+          "rdebugger.r-debugger",
+          "ritwickdey.LiveServer",
+          "quarto.quarto",
+          "sumneko.lua",
+          "ms-python.python"
+        ]
+      }
+    }
+  }
