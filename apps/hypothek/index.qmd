@@ -8,10 +8,93 @@ execute:
   error: false
 ---
 
+
+
 If you want to buy real estate in switzerland, you need to fulfill two specific criteria. For example:
 
 - Condition 1: Belehnungsgrad. You need to come up with 20% of the money needed to finance the full price of the real estate, whereas 10% needs to be "hard cash", the other 10% can be money in your Pensionskasse
 - Condition 2: Tragbarkeit. The hypothetical costs must not exceed 33% of your yearly income.
+
+
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 600
+
+import numpy as np
+
+from shiny import *
+from shinywidgets import output_widget, register_widget
+import plotly.graph_objs as go
+
+
+def get_hard_cash1(price, pensionskasse):
+  pensionskasse_frac = pensionskasse/price
+  if pensionskasse_frac >= 0.1:
+    hard_cash = price*0.1
+  else:
+    hard_cash = (0.2-pensionskasse_frac)*price
+    
+  return(hard_cash)
+
+def get_hard_cash2(price, annual_salary, pensionskasse, deckungsgrad_limit = 0.33):
+  hard_cash = price - pensionskasse - (deckungsgrad_limit*annual_salary-0.01*price)/0.06
+  return(hard_cash)
+
+def get_hard_cash(price, annual_salary, pensionskasse, deckungsgrad_limit = 0.33):
+  hard_cash1 = get_hard_cash1(price, pensionskasse)
+  hard_cash2 = get_hard_cash2(price, annual_salary, pensionskasse, deckungsgrad_limit = deckungsgrad_limit)
+  return(max(hard_cash1, hard_cash2))
+
+app_ui = ui.page_fluid(
+    ui.row(
+        ui.input_numeric("f","Price from",100000,min = 1),
+        ui.input_numeric("t","Price to",1000000, min = 1),
+    ),
+    ui.row(
+        ui.input_numeric("pk","Pensionskasse",100000, min = 0),
+        ui.input_numeric("salary","Salary",130000, min = 0),
+    ),
+    ui.row(
+        output_widget("scatterplot"),
+    )
+)
+
+
+
+
+def server(input, output, session):
+
+    @reactive.Calc
+    def price():
+        by = (input.t()-input.f())/100
+        return([x for x in range(input.f(),input.t(),int(by))])
+
+    @reactive.Calc
+    def cash():
+        cash = {str(perc): [get_hard_cash(x, input.salary(), input.pk(), perc) for x in price()] for perc in [0.30,0.33,0.36]}
+        return(cash)
+
+    scatterplot = go.FigureWidget(
+        layout={"showlegend": False, "hovermode": "x unified"},
+    )
+    
+    register_widget("scatterplot", scatterplot)
+
+    @reactive.Effect
+    def _():
+        scatterplot.data = []
+        scatterplot.add_scatter(x=price(), y=cash()["0.33"], mode="markers+lines",name = "33%")
+        scatterplot.add_scatter(x=price(), y=cash()["0.3"], mode="markers+lines", name = "30%")
+        scatterplot.add_scatter(x=price(), y=cash()["0.36"], mode="markers+lines", name = "36%")
+    
+
+
+
+
+app = App(app_ui, server)
+
+```
+
 
 ## Condition 1: Belehnungsgrad
 
@@ -111,26 +194,5 @@ fig.update_layout(hovermode='x unified', title = "How much hard cash do I need?"
 ```
 
 
-<!--
-```{shinylive-python}
-#| standalone: true
 
-# from shiny import *
 
-# app_ui = ui.page_fluid(
-#     ui.input_numeric("n", "from", 0),
-#     ui.input_numeric("to", "to", 1000000),
-#     ui.output_text_verbatim("txt"),
-# )
-
-# def server(input, output, session):
-#     @output
-#     @render.text
-#     def txt():
-#         return f"The value of n*2 is {input.n() * 2}. WOW!!"
-
-# app = App(app_ui, server)
-
-```
-
--->

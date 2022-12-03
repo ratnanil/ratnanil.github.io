@@ -17,6 +17,10 @@ website:
         file: blog.qmd
       - text: "Teaching Materials"
         file: teaching.qmd
+      - text: "Apps"
+        menu:
+          - text: "Real Estate Calculator"
+            file: "apps/hypothek/index.qmd"
     right: 
       - href: github.com/ratnanil/
         icon: github
