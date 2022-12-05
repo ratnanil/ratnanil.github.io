@@ -1,7 +1,7 @@
 ---
 title: "Real Estate in Switzerland"
 draft: false
-freeze: false
+freeze: true
 filters:
   - shinylive
 execute: 
@@ -10,12 +10,12 @@ execute:
 
 
 
-If you want to buy real estate in switzerland, you need to fulfill two specific criteria. For example:
+In Switzerland, when you buy residential property, you need to fulfill two specific conditions.
 
-- Condition 1: Belehnungsgrad. You need to come up with 20% of the money needed to finance the full price of the real estate, whereas 10% needs to be "hard cash", the other 10% can be money in your Pensionskasse
-- Condition 2: Tragbarkeit. The hypothetical costs must not exceed 33% of your yearly income.
+- Condition 1: Equity ratio (*Belehnungsgrad*). You can take out a mortgage amounting to max. 80% of the value of the property. The remaining 20% must be available as "equity capital", of which at least 10% must be cash assets. The remaining 10% may be drawn from the pension fund (*Pensionskasse*).
+- Condition 2: Affordability (*Tragbarkeit*). The running costs must not exceed 33% of your gross income.
 
-
+:::{.column-page}
 ```{shinylive-python}
 #| standalone: true
 #| viewerHeight: 600
@@ -27,7 +27,7 @@ from shinywidgets import output_widget, register_widget
 import plotly.graph_objs as go
 
 
-def get_hard_cash1(price, pensionskasse):
+def get_cash_assets1(price, pensionskasse):
   pensionskasse_frac = pensionskasse/price
   if pensionskasse_frac >= 0.1:
     hard_cash = price*0.1
@@ -36,23 +36,24 @@ def get_hard_cash1(price, pensionskasse):
     
   return(hard_cash)
 
-def get_hard_cash2(price, annual_salary, pensionskasse, deckungsgrad_limit = 0.33):
-  hard_cash = price - pensionskasse - (deckungsgrad_limit*annual_salary-0.01*price)/0.06
-  return(hard_cash)
+def get_cash_assets2(price, annual_gross_income, pensionskasse, deckungsgrad_limit = 0.33):
+    hard_cash = price - pensionskasse - (deckungsgrad_limit*annual_gross_income-0.01*price)/0.06
+    return(hard_cash)
 
-def get_hard_cash(price, annual_salary, pensionskasse, deckungsgrad_limit = 0.33):
-  hard_cash1 = get_hard_cash1(price, pensionskasse)
-  hard_cash2 = get_hard_cash2(price, annual_salary, pensionskasse, deckungsgrad_limit = deckungsgrad_limit)
-  return(max(hard_cash1, hard_cash2))
+
+def get_cash_assets(price, annual_gross_income, pensionskasse, deckungsgrad_limit = 0.33):
+    hard_cash1 = get_cash_assets1(price, pensionskasse)
+    hard_cash2 = get_cash_assets2(price, annual_gross_income, pensionskasse, deckungsgrad_limit = deckungsgrad_limit)
+    return(max(hard_cash1, hard_cash2))
 
 app_ui = ui.page_fluid(
     ui.row(
-        ui.input_numeric("f","Price from",100000,min = 1),
-        ui.input_numeric("t","Price to",1000000, min = 1),
+        ui.input_slider("p", "Price Range", value=[100000, 1000000], min=50000, max=3000000, step = 100000),
+
     ),
     ui.row(
-        ui.input_numeric("pk","Pensionskasse",100000, min = 0),
-        ui.input_numeric("salary","Salary",130000, min = 0),
+        ui.input_numeric("pk","Pension Fund",100000, min = 0),
+        ui.input_numeric("income","Annual gross income",130000, min = 0),
     ),
     ui.row(
         output_widget("scatterplot"),
@@ -66,12 +67,12 @@ def server(input, output, session):
 
     @reactive.Calc
     def price():
-        by = (input.t()-input.f())/100
-        return([x for x in range(input.f(),input.t(),int(by))])
+        by = (input.p()[1]-input.p()[0])/100
+        return([x for x in range(input.p()[0],input.p()[1],int(by))])
 
     @reactive.Calc
     def cash():
-        cash = {str(perc): [get_hard_cash(x, input.salary(), input.pk(), perc) for x in price()] for perc in [0.30,0.33,0.36]}
+        cash = {str(int(perc*100)): [get_cash_assets(x, input.income(), input.pk(), perc) for x in price()] for perc in [0.33,0.36]}
         return(cash)
 
     scatterplot = go.FigureWidget(
@@ -83,25 +84,25 @@ def server(input, output, session):
     @reactive.Effect
     def _():
         scatterplot.data = []
-        scatterplot.add_scatter(x=price(), y=cash()["0.33"], mode="markers+lines",name = "33%")
-        scatterplot.add_scatter(x=price(), y=cash()["0.3"], mode="markers+lines", name = "30%")
-        scatterplot.add_scatter(x=price(), y=cash()["0.36"], mode="markers+lines", name = "36%")
+        for key, val in cash().items():
+          scatterplot.add_scatter(x=price(), y=val, mode="lines",name = key+"%")
+
     
 
 
 
 
 app = App(app_ui, server)
-
 ```
 
+:::
 
-## Condition 1: Belehnungsgrad
+## Condition 1: Equity ratio (*Belehnungsgrad*)
 
-Hard cash is money in the form of money on a bank deposit, 3a-Insurance or Erbvorbezug. The question often is: how much hard cash do I need, given a specific price and the money in my Pensionskasse? Let's build a python function to answer this question:
+As mentioned, the bank will provide you with maximum 80% of the money needed to buy the residential property. The remaining 20% must be available as "equity capital", of which at least 10% must be cash assets. The remaining 10% may be drawn from the pension fund (*Pensionskasse*). Cash assets is money can be money on a bank deposit, in a 3rd pillar (*3a Säule*) or a gift / inheritance. 
 
 ```{python}
-def get_hard_cash1(price, pensionskasse):
+def get_cash_assets1(price, pensionskasse):
   pensionskasse_frac = pensionskasse/price
   if pensionskasse_frac >= 0.1:
     hard_cash = price*0.1
@@ -109,28 +110,19 @@ def get_hard_cash1(price, pensionskasse):
     hard_cash = (0.2-pensionskasse_frac)*price
     
   return(hard_cash)
-    
 
-get_hard_cash1(800000,100000)
 ```
 
 
-## Condition 2: Tragbarkeit
+## Condition 2: Affordability (*Tragbarkeit*)
 
-However, the function abvove does not take condition 2 into consideration. Condition 2 limits the height of your mortgage based on your salary. The hypothetical costs should not exceed 33% of your yearly income.
+While condition 1 limits the height of your mortgabe based on the price of the property, condition 2 is limiting based on your yearly income. This condition states that the running costs of your house should not exceed 33% of your gross income (which I will call $\gamma$). The running costs are based on the height of your mortgage (which I will call $\alpha$) and the price of your property (which I will call $\beta$):
 
-These hypothetical costs consist of:
+1. The imputed interest (*Kalkulatorischer Zins*): This is not the *actual* interest on your mortgage (since this might change in the future) but a fixed interest of 5%. Formally:  $\alpha \times 5\%$.
+2. Amortisation costs (*Amortisationskosten*): Traditionally, you are required to pay back your "second mortgage" (normally 15% of your full morgage) within 15 years. Formally: $\alpha \times 1\%$
+3. Ancillary costs (*Nebenkosten*): These are calculated to be 1% of your house price (not your morgage). Formally: $\beta \times 1\%$
 
-1. The interest on your mortgage (*kalkulatorischer zins*): This is not the actual interest on your mortgage (since this might change in the future) but a fixed interest of 5%. Let's call the price of the house $\alpha$, which makes the interest $\alpha \times 5\%$.
-2. Repayment of your mortgage (*amortisation*): Traditionally, you are required to pay back your "second mortgage" (normally 15% of your full morgage) within 15 years. This means you pay back 1% of your full morgage anually, in other words $\alpha \times 1\%$
-3. Ancillary costs (*nebenkosten*): These are calculated to be 1% of your house price (not your morgage). Let's call the house price $\beta$, so this amounts to $\beta \times 1%$
-
-If we call the salary $\gamma$, then condition 2 can be formulated as follows:
-
-
-$$ \gamma \times 33\% \leq \alpha \times 5\% + \alpha \times 1\% + \beta \times 1\%$$
-
-We need to solve this above equation to find out the minimal hard cash needed, which is hidden in $\alpha$, the mortgage. 
+Putting it all together, condition 2 can be formulated as $\gamma \times 33\% \leq \alpha \times 5\% + \alpha \times 1\% + \beta \times 1\%$. Since I'm mostly intered in the minimal cash assets needed, I need to solve this function for $\alpha$, the mortgage:
 
 \begin{align}
 0.33\gamma &= 0.05\alpha + 0.01\alpha + 0.01\beta \\
@@ -152,11 +144,9 @@ Now that we have solved it for the $\epsilon$, we can translate the formula into
 
 ```{python}
 
-def get_hard_cash2(price, annual_salary, pensionskasse, deckungsgrad_limit = 0.33):
-  hard_cash = price - pensionskasse - (deckungsgrad_limit*annual_salary-0.01*price)/0.06
+def get_cash_assets2(price, annual_gross_income, pensionskasse, deckungsgrad_limit = 0.33):
+  hard_cash = price - pensionskasse - (deckungsgrad_limit*annual_gross_income-0.01*price)/0.06
   return(hard_cash)
-
-get_hard_cash2(800000, 130000, 100000, 0.33)
 ```
 
 
@@ -167,31 +157,15 @@ Since both conditions must be met, we can combine both functions into one, so th
 
 ```{python}
 
-def get_hard_cash(price, annual_salary, pensionskasse, deckungsgrad_limit = 0.33):
-  hard_cash1 = get_hard_cash1(price, pensionskasse)
-  hard_cash2 = get_hard_cash2(price, annual_salary, pensionskasse, deckungsgrad_limit = deckungsgrad_limit)
+def get_cash_assets(price, annual_gross_income, pensionskasse, deckungsgrad_limit = 0.33):
+  hard_cash1 = get_cash_assets1(price, pensionskasse)
+  hard_cash2 = get_cash_assets2(price, annual_gross_income, pensionskasse, deckungsgrad_limit = deckungsgrad_limit)
   return(max(hard_cash1, hard_cash2))
 
 ```
 
 
-```{python}
-x = [x for x in range(100000, 1000000, 50000)]
 
-y_33 = [get_hard_cash(x, 130000, 100000, 0.33) for x in x]
-y_30 = [get_hard_cash(x, 130000, 100000, 0.30) for x in x]
-y_36 = [get_hard_cash(x, 130000, 100000, 0.36) for x in x]
-
-
-import plotly.express as px
-import plotly.graph_objects as go
-
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=x, y=y_30,name = ".30"))
-fig.add_trace(go.Scatter(x=x, y=y_33,name = ".33"))
-fig.add_trace(go.Scatter(x=x, y=y_36,name = ".36"))
-fig.update_layout(hovermode='x unified', title = "How much hard cash do I need?")
-```
 
 
 
