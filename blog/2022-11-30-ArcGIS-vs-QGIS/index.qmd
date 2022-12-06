@@ -61,6 +61,7 @@ I've downloaded, processed and visualized this data with R. You can display the 
 library(here)
 library(tidyverse)
 library(lubridate)
+#install.packages("ggfx")
 library(ggfx)
 library(ggtext)
 library(ragg)
@@ -337,7 +338,7 @@ ggplot(filter(google_trends_roll, Region == "Worldwide"), aes(Month, roll, color
 ```
 
 
-It must be said that neither data source can *accurately* reflect the real-world popularity of ArcGIS or QGIS. For instance, they do not show many users or companies use the respective software or how much money it generates. Nonetheless, the data has convinced me even more that the time is right to bet on QGIS and exclusively use FOSS in the classroom. 
+It must be said that neither data source can *accurately* reflect the real-world popularity of ArcGIS or QGIS. For instance, they do not show many users or companies use the respective software or how much money it generates. Nonetheless, the data has convinced me even more that the time is right to bet on QGIS and ~~exclusively~~ use FOSS in the classroom *preferably and whenever possible* (edited due to valid [feedback by \@sfkeller](https://twitter.com/sfkeller/status/1599371466583117826?s=20&t=QyTc6DnJ08v80AsN89jYng)). 
 
 I would like to finish off by providing you with a very insightful talk given by David Abernathy at the  NC GIS Conference 2017. He talks about his university's transition from ArcGIS to FOSS and makes several highly interesting points. If you've made it up to here, please watch his video!
 
@@ -345,3 +346,38 @@ I would like to finish off by providing you with a very insightful talk given by
 <div class="youtube-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/S8dei0PP9SU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+
+<br>
+<br>
+<br>
+
+**Edit (2022-12-07)**
+
+And lastly, since someone had do do it, a poem of the battle between ArcGIS and QGIS, written by [chatGPT from openai.com](https://openai.com)
+
+<blockquote>
+In ArcGIS and QGIS, two titans of their trade,<br>
+A battle rages, with maps and data as their blade,<br>
+Each strives to outdo the other, to claim the victory,<br>
+And prove their worth to all who seek the truth in geography.<br>
+<br>
+ArcGIS, with its sleek design and user-friendly interface,<br>
+Makes mapping and analysis a breeze, and leaves no trace,<br>
+Of confusion or frustration, for its tools are intuitive,<br>
+And its functions diverse, enabling users to create maps that are creative.<br>
+<br>
+QGIS, on the other hand, is open-source and free,<br>
+A favorite among those who seek to break the mold,<br>
+Its capabilities are vast, and its potential immense,<br>
+And with its support for numerous plugins, it can be tailored to fit any role.<br>
+<br>
+But as the battle rages on, with each program giving its all,<br>
+It becomes clear that there can be only one winner, after all,<br>
+And in the end, the victor is not ArcGIS nor QGIS,<br>
+But rather the one who uses their tools with skill and expertise.<br>
+<br>
+So let us all embrace these powerful programs,<br>
+And use them wisely, to unlock the mysteries of the land,<br>
+For in the end, it is not the tool, but the user's hand,<br>
+That shapes the world, and reveals its hidden secrets for all to understand.<br>
+</blockquote>
