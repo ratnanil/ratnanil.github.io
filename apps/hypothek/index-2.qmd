@@ -1,0 +1,136 @@
+---
+title: "Real Estate in Switzerland"
+execute: 
+  echo: false
+---
+
+In Switzerland, when you buy residential property, you need to fulfill two specific conditions.
+
+- Condition 1: Equity ratio (*Belehnungsgrad*). You can take out a mortgage amounting to max. 80% of the value of the property. The remaining 20% must be available as "equity capital", of which at least 10% must be cash assets. The remaining 10% may be drawn from the pension fund (*Pensionskasse*).
+- Condition 2: Affordability (*Tragbarkeit*). The running costs must not exceed 33% of your gross income.
+
+
+```{ojs}
+import {vl} from "@vega/vega-lite-api-v5"
+```
+
+```{ojs}
+vl.render({ spec: spec })
+```
+
+
+```{ojs}
+
+spec = ({
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Plots a function using a generated sequence.",
+    "width": "container",
+    "height": 300,
+    "data": {
+        "sequence": { "start": 50000, "stop": 1000000, "step": 10000, "as": "price" }
+    },
+    "transform": [
+        {
+            "calculate": "if(pk/datum.price>=0.1, datum.price*0.1,(0.2-(pk/datum.price))*datum.price)",
+            "as": "condition1"
+        },
+        {
+            "calculate": "datum.price-pk-(ratio*income-0.01*datum.price)/0.06",
+            "as": "condition_temp"
+        },
+        {
+            "calculate": "if(datum.condition_temp>0, datum.condition_temp, 0)",
+            "as": "condition2"
+        },
+        {
+            "calculate": "max(datum.condition1, datum.condition2)",
+            "as": "condition_both"
+        },
+    ],
+    "params": [
+        { "name": "pk", "value": 50000, "bind": { "input": "number", "name": "Pension", "step": 5000 } },
+        { "name": "income", "value": 100000, "bind": { "input": "number", "name": "Income", "step": 5000 } },
+        { "name": "ratio", "value": 0.33, "bind": { "input": "range", "name": "Equity ratio", "min": 0.30, "max": 0.40, "step": 0.01 } },
+    ],
+    "layer": [
+
+        {
+            "mark": {
+                "type": "point",
+                "fill": "red",
+                "stroke": false,
+                "tooltip": true
+            },
+            "encoding": {
+                "x": { "field": "price", "type": "quantitative", "title": "Price" },
+                "y": { "field": "condition_both", "type": "quantitative", "title": "Cash needed" },
+                "opacity": {
+                    "condition": { "value": 1, "param": "hover", "empty": false },
+                    "value": 0
+                },
+                "tooltip": [
+                    { "field": "price", "type": "quantitative", "title": "Price" },
+                    { "field": "condition_both", "type": "quantitative", "title": "Cash", },
+
+                ]
+            },
+            "params": [{
+                "name": "hover",
+                "select": {
+                    "type": "point",
+                    "nearest": true,
+                    "on": "mouseover",
+                    "clear": "mouseout",
+                    "encodings": ["x"]
+                }
+            }]
+
+
+        },
+        {
+            "mark": "rule",
+            "encoding": {
+                "x": { "field": "price", "type": "quantitative" },
+                "opacity": {
+                    "value": 0,
+                    "condition": { "value": 0.3, "param": "hover", "empty": false }
+
+                },
+
+            },
+
+        },
+        {
+            "mark": { "type": "rule" },
+            "encoding": {
+                "y": { "field": "condition_both", "type": "quantitative" },
+                "opacity": {
+                    "value": 0,
+                    "condition": { "value": 0.3, "param": "hover", "empty": false }
+
+                },
+
+            },
+
+        },
+        {
+            "transform": [
+                { "fold": ["condition1", "condition2"] },
+                { "calculate": "{'condition1': 'Deckungsgrad', 'condition2': 'Tragbarkeit'}[datum.key]", "as": "key" }
+            ],
+            "mark": { "type": "line", "color": "orange" },
+            "encoding": {
+                "x": { "field": "price", "type": "quantitative" },
+                "y": { "field": "value", "type": "quantitative" },
+                "color": { "field": "key", "type": "nominal" }
+            },
+
+
+        },
+
+    ],
+    "config": {}
+});
+```
+
+
