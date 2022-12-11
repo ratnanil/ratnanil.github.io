@@ -1,117 +1,204 @@
 ---
-title: "Real Estate in Switzerland"
-draft: false
-freeze: true
-filters:
-  - shinylive
+title: "Eigenheim Rechner"
+subtitle: "Wie viel Eigenkapital brauche ich?"
 execute: 
-  error: false
+  echo: false
 ---
 
+Wenn man in der Schweiz ein Eigentum erwerben möchte, müssen zwei Voraussetzungen erfüllt sein: Einerseits muss der **Deckungsgrad** gegeben sein: Die Höhe der Hypothek darf maximal 20% des Kaufpreises betragen. <!-- Die restlichen 20% müssen in Form von Eigenkapital verfügbar sein: Die hälfte davon, also 10%, müssen in Form von Barvermögen vorhanden sein, die fehldnen 10% können von der Peensionskasse hizugezogen werden. -->
+Zudem darf die **Tragbarkeit** nicht überschrittn werden: Die Laufkosten der Immobilie dürfen nicht höher als etwa[^1] 33% des Einkommens betragen.
 
+Beide Voraussetzungen können als Funktionen gesehen werden, welche in Abhängigkeit vom Jahreseinkommen, dem verfübaren Pensionskassenguthaben und vor allem dem Kaufpreis das minimal benötigte Eigenkapital beschreibt. Da beide Bedigungen erfüllt sein müssen gilt dann jeweils der höhere der beiden Werte. 
 
-In Switzerland, when you buy residential property, you need to fulfill two specific conditions.
-
-- Condition 1: Equity ratio (*Belehnungsgrad*). You can take out a mortgage amounting to max. 80% of the value of the property. The remaining 20% must be available as "equity capital", of which at least 10% must be cash assets. The remaining 10% may be drawn from the pension fund (*Pensionskasse*).
-- Condition 2: Affordability (*Tragbarkeit*). The running costs must not exceed 33% of your gross income.
-
-:::{.column-page}
-```{shinylive-python}
-#| standalone: true
-#| viewerHeight: 600
-
-import numpy as np
-
-from shiny import *
-from shinywidgets import output_widget, register_widget
-import plotly.graph_objs as go
-
-
-def get_cash_assets1(price, pensionskasse):
-  pensionskasse_frac = pensionskasse/price
-  if pensionskasse_frac >= 0.1:
-    hard_cash = price*0.1
-  else:
-    hard_cash = (0.2-pensionskasse_frac)*price
-    
-  return(hard_cash)
-
-def get_cash_assets2(price, annual_gross_income, pensionskasse, deckungsgrad_limit = 0.33):
-    hard_cash = price - pensionskasse - (deckungsgrad_limit*annual_gross_income-0.01*price)/0.06
-    return(hard_cash)
-
-
-def get_cash_assets(price, annual_gross_income, pensionskasse, deckungsgrad_limit = 0.33):
-    hard_cash1 = get_cash_assets1(price, pensionskasse)
-    hard_cash2 = get_cash_assets2(price, annual_gross_income, pensionskasse, deckungsgrad_limit = deckungsgrad_limit)
-    return(max(hard_cash1, hard_cash2))
-
-app_ui = ui.page_fluid(
-    ui.row(
-        ui.input_slider("p", "Price Range", value=[100000, 1000000], min=50000, max=3000000, step = 100000),
-
-    ),
-    ui.row(
-        ui.input_numeric("pk","Pension Fund",100000, min = 0),
-        ui.input_numeric("income","Annual gross income",130000, min = 0),
-    ),
-    ui.row(
-        output_widget("scatterplot"),
-    )
-)
+Mit der nachstehenden Applikation kann dieser Wert **mit den eignen Voraussetzungen** ermittelt werden. Geben Sie ihr Jahreseinkommen sowie das verfügbare Pensionskassenguthaben ein um zu ermitteln, wie viel Eigenkapitel Sie bei welchem Kaufpreis benötigen. 
 
 
 
+[^1]: Diese Grenze ist nicht ganz fix und wird im Einzelfall geprüft.
 
-def server(input, output, session):
-
-    @reactive.Calc
-    def price():
-        by = (input.p()[1]-input.p()[0])/100
-        return([x for x in range(input.p()[0],input.p()[1],int(by))])
-
-    @reactive.Calc
-    def cash():
-        cash = {str(int(perc*100)): [get_cash_assets(x, input.income(), input.pk(), perc) for x in price()] for perc in [0.33,0.36]}
-        return(cash)
-
-    scatterplot = go.FigureWidget(
-        layout={"showlegend": False, "hovermode": "x unified"},
-    )
-    
-    register_widget("scatterplot", scatterplot)
-
-    @reactive.Effect
-    def _():
-        scatterplot.data = []
-        for key, val in cash().items():
-          scatterplot.add_scatter(x=price(), y=val, mode="lines",name = key+"%")
-
-    
-
-
-
-
-app = App(app_ui, server)
+```{ojs}
+import {vl} from "@vega/vega-lite-api-v5"
 ```
 
-:::
+<style>
+ .vega-bind label{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+.vega-bind{
+            background-color: #073b4c;
+            padding-left: 10px;
+            padding-right: 10px;
+
+        }
+
+input{
+    background-color: grey;
+}
+</style>
+
+```{ojs}
+
+vl.render({ spec: spec })
+    .then((chart) => {
+    setTimeout(() => window.dispatchEvent(new Event("resize")), 1);
+    return chart;
+  })
+```
+
+
+```{ojs}
+
+
+spec = ({
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Plots a function using a generated sequence.",
+    "width": "container",
+    "height": 300,
+    "data": {
+        "sequence": { "start": 1, "stop": 100, "step": 1, "as": "index" }
+    },
+    "transform": [
+        {
+            "calculate": "datum.index*maxprice/100",
+            "as": "price"
+        },
+        {
+            "calculate": "if(pk/datum.price>=0.1, datum.price*0.1,(0.2-(pk/datum.price))*datum.price)",
+            "as": "condition1"
+        },
+        {
+            "calculate": "datum.price-pk-(ratio/100*income-0.01*datum.price)/0.06",
+            "as": "condition_temp"
+        },
+        {
+            "calculate": "if(datum.condition_temp>0, datum.condition_temp, null)",
+            "as": "condition2"
+        },
+        {
+            "calculate": "ceil(max(datum.condition1, datum.condition2)/1000)*1000",
+            "as": "condition_both"
+        },
+    ],
+    "params": [
+        { "name": "maxprice", "value": 1000000, "bind": { "input": "number", "name": "Maximaler Kaufpreis", "step": 100000 } },
+        { "name": "pk", "value": 50000, "bind": { "input": "number", "name": "Pensionskassenguthaben", "step": 5000 } },
+        { "name": "income", "value": 100000, "bind": { "input": "number", "name": "Jahreseinkommen", "step": 5000 } },
+        { "name": "ratio", "value": 33, "bind": { "input": "range", "name": "Tragbarkeit (in %)", "min": 30, "max": 40, "step": 1 } },
+    ],
+    "layer": [
+
+        {
+            "mark": {
+                "type": "point",
+                "fill": "red",
+                "stroke": false,
+                "tooltip": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "price", 
+                    "type": "quantitative",
+                    "title": "Kaufpreis (CHF)",
+
+                    },
+                "y": {
+                    "field": 
+                    "condition_both", 
+                    "type": "quantitative", 
+                    "title": "Benötigtes Eigenkapital (CHF)",
+                    },
+                "opacity": {
+                    "condition": { "value": 1, "param": "hover", "empty": false },
+                    "value": 0
+                },
+                "tooltip": [
+                    { "field": "price", "type": "quantitative", "title": "Price" },
+                    { "field": "condition_both", "type": "quantitative", "title": "Cash", },
+
+                ]
+            },
+            "params": [{
+                "name": "hover",
+                "select": {
+                    "type": "point",
+                    "nearest": true,
+                    "on": "mouseover",
+                    "clear": "mouseout",
+                    "encodings": ["x"]
+                }
+            }]
+
+
+        },
+        {
+            "mark": { "type": "rule", "color": "#fafbfb"},
+            "encoding": {
+                "x": { "field": "price", "type": "quantitative" },
+                "opacity": {
+                    "value": 0,
+                    "condition": { "value": 0.3, "param": "hover", "empty": false }
+
+                },
+
+            },
+
+        },
+        {
+            "mark": { "type": "rule", "color": "#fafbfb"},
+            "encoding": {
+                "y": { "field": "condition_both", "type": "quantitative" },
+                "opacity": {
+                    "value": 0,
+                    "condition": { "value": 0.3, "param": "hover", "empty": false }
+
+                },
+
+            },
+
+        },
+        {
+            "transform": [
+                { "fold": ["condition1", "condition2"] },
+                { "calculate": "{'condition1': 'Deckungsgrad', 'condition2': 'Tragbarkeit'}[datum.key]", "as": "key" }
+            ],
+            "mark": { "type": "line", "color": "orange" },
+            "encoding": {
+                "x": { "field": "price", "type": "quantitative" },
+                "y": { "field": "value", "type": "quantitative" },
+                "color": { "field": "key", "type": "nominal" }
+            },
+
+
+        },
+
+    ],
+    "config": {
+        "view": {
+            "strokeOpacity": 0
+        },
+        "axis": {
+            "grid": false,
+            "titleColor": "#fafbfb",
+            "domainColor": "#fafbfb",
+            "labelColor": "#fafbfb",
+            "tickColor": "#fafbfb"
+            },
+        "legend": {
+            "title": null,
+            "orient": "top", 
+            },
+    },
+    "background": "#073b4c"
+});
+```
 
 ## Condition 1: Equity ratio (*Belehnungsgrad*)
 
 As mentioned, the bank will provide you with maximum 80% of the money needed to buy the residential property. The remaining 20% must be available as "equity capital", of which at least 10% must be cash assets. The remaining 10% may be drawn from the pension fund (*Pensionskasse*). Cash assets is money can be money on a bank deposit, in a 3rd pillar (*3a Säule*) or a gift / inheritance. 
 
-```{python}
-def get_cash_assets1(price, pensionskasse):
-  pensionskasse_frac = pensionskasse/price
-  if pensionskasse_frac >= 0.1:
-    hard_cash = price*0.1
-  else:
-    hard_cash = (0.2-pensionskasse_frac)*price
-    
-  return(hard_cash)
 
-```
 
 
 ## Condition 2: Affordability (*Tragbarkeit*)
@@ -142,31 +229,48 @@ We can further simplify $\alpha$, the mortgage, as being the price ($\beta$), mi
 
 Now that we have solved it for the $\epsilon$, we can translate the formula into a python function:
 
-```{python}
 
-def get_cash_assets2(price, annual_gross_income, pensionskasse, deckungsgrad_limit = 0.33):
-  hard_cash = price - pensionskasse - (deckungsgrad_limit*annual_gross_income-0.01*price)/0.06
-  return(hard_cash)
+
+
+<!--
+
+I started implementint the above spec into the vega lite api. I'm keeping it here for future reference.
+
+
+```{ojs}
+
+viewof pk = Inputs.number([0, Infinity], {step: 5000, label: "Pension Fund", placeholder: "00000", value: 50000})
+viewof lohn = Inputs.number([10000, Infinity], {step: 10000, label: "Lohn", placeholder: "000000", value: 100000})
+
+
+// const myparams = vl.slider.input("range")
+// const pk = 50000
+// const income = 150000
+// const ratio = 0.20
+
+//viewof income = Range([20000, 200000], { step: 10000, value: 100000 })
+
+vl.markLine().data(vl.sequence(100000, 1000000, 50000).as("price"))
+    .width(700)
+    . params(
+        vl.param("ratio").value(0.33).bind(vl.slider(0.30, 0.40, 0.01)),
+        vl.param("pk").bind(viewof pk),
+        vl.param("lohn").bind(viewof lohn)
+        )
+    .transform(
+        vl.calculate("if(pk/datum.price>=0.1, datum.price*0.1,(0.2-(pk/datum.price))*datum.price)").as("condition1"),
+        vl.calculate("datum.price-pk-(ratio*lohn-0.01*datum.price)/0.06").as("condition_temp"),
+        vl.calculate("if(datum.condition_temp>0, datum.condition_temp, 0)").as("condition2"),
+        vl.calculate("max(datum.condition1, datum.condition2)").as("condition_both")
+    )
+    .encode(
+        vl.x().fieldQ("price"),
+        vl.y().fieldQ("condition1")
+        )
+
+    .render()
+
+
 ```
 
-
-## Bringing it together
-
-Since both conditions must be met, we can combine both functions into one, so that for any given situation, we know the minimum amount of hard cash necessary. 
-
-
-```{python}
-
-def get_cash_assets(price, annual_gross_income, pensionskasse, deckungsgrad_limit = 0.33):
-  hard_cash1 = get_cash_assets1(price, pensionskasse)
-  hard_cash2 = get_cash_assets2(price, annual_gross_income, pensionskasse, deckungsgrad_limit = deckungsgrad_limit)
-  return(max(hard_cash1, hard_cash2))
-
-```
-
-
-
-
-
-
-
+-->
