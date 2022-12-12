@@ -1,6 +1,6 @@
 ---
 title: "Real Estate in Switzerland"
-draft: false
+draft: true
 freeze: true
 filters:
   - shinylive
