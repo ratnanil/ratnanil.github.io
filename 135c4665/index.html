@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ratnaweera-XYZ - Ratnaweera XYZ</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Ratnaweera-XYZ - Ratnaweera XYZ">
+<meta property="og:description" content="You can find me on GitHub, Twitter, Mastodon and StackOverflow. Apropos StackOverflow, here is a live update of my Top Tags on Stack Overflow and gis.stackexchange.">
+<meta property="og:site-name" content="Ratnaweera-XYZ">
+<meta name="twitter:title" content="Ratnaweera-XYZ - Ratnaweera XYZ">
+<meta name="twitter:description" content="You can find me on GitHub, Twitter, Mastodon and StackOverflow. Apropos StackOverflow, here is a live update of my Top Tags on Stack Overflow and gis.stackexchange.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/mylogo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ratnaweera-XYZ</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./teaching.html">
+ <span class="menu-text">Teaching Materials</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="./github.com/ratnanil/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/NRatnaweera"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ratnaweera XYZ</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<style>
+h1{
+  display: none
+}
+
+/* body{
+  background-image: url("images/pexels-kasuma-134074.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+} */
+
+.emphasize{
+  /* text-align: center; */
+  color: #073642;
+  background-color: rgba(178,193,196, 0.6);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0 10px 0;
+}
+
+.emphasize a{
+  color: #ADB5BD;
+
+}
+
+</style>
+<div>
+<h3 style="text-align: center" class="anchored">
+Hi there 👋
+</h3>
+<div style="float: right; width: 150px">
+<p><img src="images/portrait.jpeg" style="max-width: 100px;   border-radius: 50%;"></p>
+</div>
+<p>
+My name is Nils Ratnaweera and I’m a Research Fellow at the Zurich University of Applied Sciences. I love my Data Scientist job of working with environmental data using mainly open source tools such as <code>R</code>, <code>python</code>, <code>gdal</code>, <code>ogr2ogr</code>, <code>PostgresSQL</code>, <code>PostGIS</code>.
+</p>
+</div>
+<!-- I understand something better once I try to explain it. This is one of my motivations to start blogging: to learn more on the topics I'm interested in.  -->
+<!-- Also, writing helps me complete the thought process of half baked ideas. And last but not least, I want to join the vibrant community of `R` users, open source enthusiasts, spatial people, python lovers, linux advocates and data scientists. -->
+<div class="emphasize">
+<strong>UPDATE</strong>: I’m intersted in collaborating on projects in and also outside my (part-time) day job. If you have a project that you think I can help with, please get in touch. I’m also available for short-term contract work. You can <a href="mailto:rata@zhaw.ch">email me</a> or directly book a slot 📆 <a href="https://calendly.com/rata-zhaw/30min">here</a>
+</div>
+<p>You can find me on <a href="https://github.com/ratnanil/">GitHub</a>, <a href="https://twitter.com/NRatnaweera">Twitter</a>, <a href="https://fosstodon.org/@ratnaweera">Mastodon</a> and <a href="https://stackoverflow.com/users/4139249/ratnanil">StackOverflow</a>. Apropos StackOverflow, here is a live update of my Top Tags on Stack Overflow and gis.stackexchange.com (created with <code>vega-lite</code> using the <a href="https://api.stackexchange.com">stackexchange API</a>):</p>
+<!-- https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow -->
+<!-- https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com -->
+<!-- 
+
+
+
+:::{.cell}
+
+```{.js .cell-code .hidden startFrom="67" source-offset="-0"}
+import {vl} from "@vega/vega-lite-api"
+embed = require("vega-embed@6")
+spec = ({
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Live update of my Top Tags on Stack Overflow","color": "#ADB5BD"},
+  "height": "200",
+  "width": "640",
+  "data": {
+    "url": "https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow",
+    "format": {"type": "json","property": "items"},
+    "name": "stack"
+    },
+  "mark":{"type": "bar","color": "#06d6a0","tooltip": true},
+  "transform": [
+    {"fold": ["question_score","answer_score"]},
+    {"filter": "datum.value > 8"},
+  ],
+  "encoding": {
+    "y": {"field": "tag_name","type": "nominal","sort":"-x","title":"","axis": {"labelColor": "#ADB5BD", "labelFont": "monospace"}},
+    "x": {"field": "value", "type": "quantitative","axis": {"title": "∑ of Score","titleColor": "#ADB5BD","labelColor": "#ADB5BD"},"aggregate": "sum"},
+    //"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}
+  },
+  "background": "#073b4c",
+  "padding": {"left": 20, "top": 20, "right": 20, "bottom": 20},
+  "config": {"autosize": "pad"}
+  })
+
+
+
+
+embed(spec)
+```
+
+:::{.cell-output .cell-output-display}
+
+:::{}
+
+:::{#ojs-cell-1-1 nodetype="declaration"}
+:::
+:::
+:::
+
+:::{.cell-output .cell-output-display}
+
+:::{}
+
+:::{#ojs-cell-1-2 nodetype="declaration"}
+:::
+:::
+:::
+
+:::{.cell-output .cell-output-display}
+
+:::{}
+
+:::{#ojs-cell-1-3 nodetype="declaration"}
+:::
+:::
+:::
+
+:::{.cell-output .cell-output-display}
+
+:::{}
+
+:::{#ojs-cell-1-4 nodetype="expression"}
+:::
+:::
+:::
+:::
+
+
+ -->
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="105" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 104;"><span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {vl} <span class="im">from</span> <span class="st">"@vega/vega-lite-api"</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>embed <span class="op">=</span> <span class="pp">require</span>(<span class="st">"vega-embed@6"</span>)</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>spec2 <span class="op">=</span> ({</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$schema"</span><span class="op">:</span> <span class="st">"https://vega.github.io/schema/vega-lite/v5.json"</span><span class="op">,</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    <span class="st">"height"</span><span class="op">:</span> <span class="st">"200"</span><span class="op">,</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>    <span class="st">"background"</span><span class="op">:</span> <span class="st">"#073b4c"</span><span class="op">,</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>    <span class="st">"padding"</span><span class="op">:</span> { <span class="st">"left"</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="st">"top"</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="st">"right"</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="st">"bottom"</span><span class="op">:</span> <span class="dv">20</span> }<span class="op">,</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>  <span class="st">"config"</span><span class="op">:</span> {<span class="st">"view"</span><span class="op">:</span> {<span class="st">"continuousHeight"</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span> <span class="st">"continuousWidth"</span><span class="op">:</span> <span class="dv">600</span>}}<span class="op">,</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>              <span class="st">"title"</span><span class="op">:</span> { <span class="st">"text"</span><span class="op">:</span> <span class="st">"Live update of my Top Tags"</span><span class="op">,</span> <span class="st">"color"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span> }<span class="op">,</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>    <span class="st">"vconcat"</span><span class="op">:</span> [</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>         {</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>              <span class="st">"title"</span><span class="op">:</span> { <span class="st">"text"</span><span class="op">:</span> <span class="st">"Stackoverflow"</span><span class="op">,</span> <span class="st">"color"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span> }<span class="op">,</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>        <span class="st">"data"</span><span class="op">:</span> {</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>            <span class="st">"url"</span><span class="op">:</span> <span class="st">"https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow"</span><span class="op">,</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>            <span class="st">"format"</span><span class="op">:</span> { <span class="st">"type"</span><span class="op">:</span> <span class="st">"json"</span><span class="op">,</span> <span class="st">"property"</span><span class="op">:</span> <span class="st">"items"</span> }<span class="op">,</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>            <span class="st">"name"</span><span class="op">:</span> <span class="st">"stack"</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mark"</span><span class="op">:</span> { <span class="st">"type"</span><span class="op">:</span> <span class="st">"bar"</span><span class="op">,</span> <span class="st">"color"</span><span class="op">:</span> <span class="st">"#06d6a0"</span><span class="op">,</span> <span class="st">"tooltip"</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>        <span class="st">"transform"</span><span class="op">:</span> [</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>            { <span class="st">"fold"</span><span class="op">:</span> [<span class="st">"question_score"</span><span class="op">,</span> <span class="st">"answer_score"</span>] }<span class="op">,</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>            { <span class="st">"filter"</span><span class="op">:</span> <span class="st">"datum.value &gt; 8"</span> }<span class="op">,</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>        <span class="st">"encoding"</span><span class="op">:</span> {</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>            <span class="st">"y"</span><span class="op">:</span> { <span class="st">"field"</span><span class="op">:</span> <span class="st">"tag_name"</span><span class="op">,</span> <span class="st">"type"</span><span class="op">:</span> <span class="st">"nominal"</span><span class="op">,</span> <span class="st">"sort"</span><span class="op">:</span> <span class="st">"-x"</span><span class="op">,</span> <span class="st">"title"</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span> <span class="st">"axis"</span><span class="op">:</span> { <span class="st">"labelColor"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span><span class="op">,</span> <span class="st">"labelFont"</span><span class="op">:</span> <span class="st">"monospace"</span> } }<span class="op">,</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>            <span class="st">"x"</span><span class="op">:</span> { <span class="st">"field"</span><span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> <span class="st">"type"</span><span class="op">:</span> <span class="st">"quantitative"</span><span class="op">,</span> <span class="st">"axis"</span><span class="op">:</span> { <span class="st">"title"</span><span class="op">:</span> <span class="st">"∑ of Score"</span><span class="op">,</span> <span class="st">"titleColor"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span><span class="op">,</span> <span class="st">"labelColor"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span> }<span class="op">,</span> <span class="st">"aggregate"</span><span class="op">:</span> <span class="st">"sum"</span> }<span class="op">,</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>            <span class="co">//"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>        <span class="st">"background"</span><span class="op">:</span> <span class="st">"#073b4c"</span><span class="op">,</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>        <span class="st">"padding"</span><span class="op">:</span> { <span class="st">"left"</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="st">"top"</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="st">"right"</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="st">"bottom"</span><span class="op">:</span> <span class="dv">20</span> }<span class="op">,</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>        <span class="st">"config"</span><span class="op">:</span> { <span class="st">"autosize"</span><span class="op">:</span> <span class="st">"pad"</span> }</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>            <span class="st">"title"</span><span class="op">:</span> { <span class="st">"text"</span><span class="op">:</span> <span class="st">"gis.stackexchange"</span><span class="op">,</span> <span class="st">"color"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span> }<span class="op">,</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>        <span class="st">"data"</span><span class="op">:</span> {</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>            <span class="st">"url"</span><span class="op">:</span> <span class="st">"https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com"</span><span class="op">,</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>            <span class="st">"format"</span><span class="op">:</span> { <span class="st">"type"</span><span class="op">:</span> <span class="st">"json"</span><span class="op">,</span> <span class="st">"property"</span><span class="op">:</span> <span class="st">"items"</span> }<span class="op">,</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>            <span class="st">"name"</span><span class="op">:</span> <span class="st">"gis"</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mark"</span><span class="op">:</span> { <span class="st">"type"</span><span class="op">:</span> <span class="st">"bar"</span><span class="op">,</span> <span class="st">"color"</span><span class="op">:</span> <span class="st">"#06d6a0"</span><span class="op">,</span> <span class="st">"tooltip"</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>        <span class="st">"transform"</span><span class="op">:</span> [</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>            { <span class="st">"fold"</span><span class="op">:</span> [<span class="st">"question_score"</span><span class="op">,</span> <span class="st">"answer_score"</span>] }<span class="op">,</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>            { <span class="st">"filter"</span><span class="op">:</span> <span class="st">"datum.value &gt; 8"</span> }<span class="op">,</span></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>        <span class="st">"encoding"</span><span class="op">:</span> {</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>            <span class="st">"y"</span><span class="op">:</span> { <span class="st">"field"</span><span class="op">:</span> <span class="st">"tag_name"</span><span class="op">,</span> <span class="st">"type"</span><span class="op">:</span> <span class="st">"nominal"</span><span class="op">,</span> <span class="st">"sort"</span><span class="op">:</span> <span class="st">"-x"</span><span class="op">,</span> <span class="st">"title"</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span> <span class="st">"axis"</span><span class="op">:</span> { <span class="st">"labelColor"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span><span class="op">,</span> <span class="st">"labelFont"</span><span class="op">:</span> <span class="st">"monospace"</span> } }<span class="op">,</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>            <span class="st">"x"</span><span class="op">:</span> { <span class="st">"field"</span><span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> <span class="st">"type"</span><span class="op">:</span> <span class="st">"quantitative"</span><span class="op">,</span> <span class="st">"axis"</span><span class="op">:</span> { <span class="st">"title"</span><span class="op">:</span> <span class="st">"∑ of Score"</span><span class="op">,</span> <span class="st">"titleColor"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span><span class="op">,</span> <span class="st">"labelColor"</span><span class="op">:</span> <span class="st">"#ADB5BD"</span> }<span class="op">,</span> <span class="st">"aggregate"</span><span class="op">:</span> <span class="st">"sum"</span> }<span class="op">,</span></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>            <span class="co">//"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="fu">embed</span>(spec2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"import {vl} from \"@vega/vega-lite-api\"\nembed = require(\"vega-embed@6\")\nspec = ({\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"title\": {\"text\": \"Live update of my Top Tags on Stack Overflow\",\"color\": \"#ADB5BD\"},\n  \"height\": \"200\",\n  \"width\": \"640\",\n  \"data\": {\n    \"url\": \"https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow\",\n    \"format\": {\"type\": \"json\",\"property\": \"items\"},\n    \"name\": \"stack\"\n    },\n  \"mark\":{\"type\": \"bar\",\"color\": \"#06d6a0\",\"tooltip\": true},\n  \"transform\": [\n    {\"fold\": [\"question_score\",\"answer_score\"]},\n    {\"filter\": \"datum.value > 8\"},\n  ],\n  \"encoding\": {\n    \"y\": {\"field\": \"tag_name\",\"type\": \"nominal\",\"sort\":\"-x\",\"title\":\"\",\"axis\": {\"labelColor\": \"#ADB5BD\", \"labelFont\": \"monospace\"}},\n    \"x\": {\"field\": \"value\", \"type\": \"quantitative\",\"axis\": {\"title\": \"∑ of Score\",\"titleColor\": \"#ADB5BD\",\"labelColor\": \"#ADB5BD\"},\"aggregate\": \"sum\"},\n    //\"color\": {\"field\": \"key\", \"type\": \"nominal\",\"scale\": {\"range\": [\"#06d6a0\",\"#ef476f\"]}}\n  },\n  \"background\": \"#073b4c\",\n  \"padding\": {\"left\": 20, \"top\": 20, \"right\": 20, \"bottom\": 20},\n  \"config\": {\"autosize\": \"pad\"}\n  })\n\n\n\n\nembed(spec)\n\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"import {vl} from \"@vega/vega-lite-api\"\nembed = require(\"vega-embed@6\")\nspec2 = ({\n    \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n    \"height\": \"200\",\n    \"background\": \"#073b4c\",\n    \"padding\": { \"left\": 20, \"top\": 20, \"right\": 20, \"bottom\": 20 },\n  \"config\": {\"view\": {\"continuousHeight\": 300, \"continuousWidth\": 600}},\n              \"title\": { \"text\": \"Live update of my Top Tags\", \"color\": \"#ADB5BD\" },\n    \"vconcat\": [\n      \n         {\n              \"title\": { \"text\": \"Stackoverflow\", \"color\": \"#ADB5BD\" },\n\n        \"data\": {\n            \"url\": \"https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow\",\n            \"format\": { \"type\": \"json\", \"property\": \"items\" },\n            \"name\": \"stack\"\n        },\n        \"mark\": { \"type\": \"bar\", \"color\": \"#06d6a0\", \"tooltip\": true },\n        \"transform\": [\n            { \"fold\": [\"question_score\", \"answer_score\"] },\n            { \"filter\": \"datum.value > 8\" },\n        ],\n        \"encoding\": {\n            \"y\": { \"field\": \"tag_name\", \"type\": \"nominal\", \"sort\": \"-x\", \"title\": \"\", \"axis\": { \"labelColor\": \"#ADB5BD\", \"labelFont\": \"monospace\" } },\n            \"x\": { \"field\": \"value\", \"type\": \"quantitative\", \"axis\": { \"title\": \"∑ of Score\", \"titleColor\": \"#ADB5BD\", \"labelColor\": \"#ADB5BD\" }, \"aggregate\": \"sum\" },\n            //\"color\": {\"field\": \"key\", \"type\": \"nominal\",\"scale\": {\"range\": [\"#06d6a0\",\"#ef476f\"]}}\n        },\n        \"background\": \"#073b4c\",\n        \"padding\": { \"left\": 20, \"top\": 20, \"right\": 20, \"bottom\": 20 },\n        \"config\": { \"autosize\": \"pad\" }\n    },\n      {\n            \"title\": { \"text\": \"gis.stackexchange\", \"color\": \"#ADB5BD\" },\n\n        \"data\": {\n            \"url\": \"https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com\",\n            \"format\": { \"type\": \"json\", \"property\": \"items\" },\n            \"name\": \"gis\"\n        },\n        \"mark\": { \"type\": \"bar\", \"color\": \"#06d6a0\", \"tooltip\": true },\n        \"transform\": [\n            { \"fold\": [\"question_score\", \"answer_score\"] },\n            { \"filter\": \"datum.value > 8\" },\n        ],\n        \"encoding\": {\n            \"y\": { \"field\": \"tag_name\", \"type\": \"nominal\", \"sort\": \"-x\", \"title\": \"\", \"axis\": { \"labelColor\": \"#ADB5BD\", \"labelFont\": \"monospace\" } },\n            \"x\": { \"field\": \"value\", \"type\": \"quantitative\", \"axis\": { \"title\": \"∑ of Score\", \"titleColor\": \"#ADB5BD\", \"labelColor\": \"#ADB5BD\" }, \"aggregate\": \"sum\" },\n            //\"color\": {\"field\": \"key\", \"type\": \"nominal\",\"scale\": {\"range\": [\"#06d6a0\",\"#ef476f\"]}}\n        }\n    }\n \n    ]\n\n})\n\nembed(spec2)\n\n"}]}
+</script>
+<script type="module">
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">“The time has come”, the Walrus said, “To talk of many things..” - From The Walrus and the Carpenter by Lewis Carroll</div>
+  </div>
+</footer>
+
+
+
+</body></html>

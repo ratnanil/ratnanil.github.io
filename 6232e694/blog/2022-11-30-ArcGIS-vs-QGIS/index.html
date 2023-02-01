@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Nils Ratnaweera">
+<meta name="dcterms.date" content="2022-11-20">
+<meta name="description" content="Every year we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data analysis and modelling. For each of these courses, we must decide on software with which to implement these concepts. As a publicly funded institution I feel an obligation to use Free and Open Source Software in the classroom. Also, I believe that it’s important to use software that runs on any of the major operating systems Windows, Linux and Mac. In this blogpost I want to make a case for using the Open Source Software QGIS and illustrate this with data gathered to compare the popularity of ArcGIS vs QGIS.">
+
+<title>Ratnaweera-XYZ - Teaching geospatial: ArcGIS or QGIS?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Ratnaweera-XYZ - Teaching geospatial: ArcGIS or QGIS?">
+<meta property="og:description" content="Every year we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data analysis and modelling.">
+<meta property="og:image" content="https://ratnaweera.xyz/blog/2022-11-30-ArcGIS-vs-QGIS/preview.png">
+<meta property="og:site-name" content="Ratnaweera-XYZ">
+<meta property="og:image:height" content="2480">
+<meta property="og:image:width" content="3720">
+<meta name="twitter:title" content="Ratnaweera-XYZ - Teaching geospatial: ArcGIS or QGIS?">
+<meta name="twitter:description" content="Every year we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data analysis and modelling.">
+<meta name="twitter:image" content="https://ratnaweera.xyz/blog/2022-11-30-ArcGIS-vs-QGIS/preview.png">
+<meta name="twitter:image-height" content="2480">
+<meta name="twitter:image-width" content="3720">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/mylogo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Ratnaweera-XYZ</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html">
+ <span class="menu-text">Teaching Materials</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../github.com/ratnanil/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/NRatnaweera"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Teaching geospatial: ArcGIS or QGIS?</h1>
+                  <div>
+        <div class="description">
+          <p>Every year we teach well over a hundred Bachelor and Master students basic and advanced concepts surrounding geospatial data analysis and modelling. For each of these courses, we must decide on software with which to implement these concepts. As a publicly funded institution I feel an obligation to use Free and Open Source Software in the classroom. Also, I believe that it’s important to use software that runs on any of the major operating systems Windows, Linux and Mac. In this blogpost I want to make a case for using the Open Source Software QGIS and illustrate this with data gathered to compare the popularity of ArcGIS vs QGIS.</p>
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Nils Ratnaweera </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 20, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Disclaimer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The opinions expressed in this post are my own and do not necessarily reflect those of my employer.</p>
+</div>
+</div>
+<p>ArcGIS was considered to be the “industry standard” for a long time. Therefore, our Uni started out using ESRI products when initially developing the first geospatial courses (I’m trying hard to <a href="https://twitter.com/edzerpebesma/status/1278447470226411525">omit the term GIS</a>). Since ESRI has implemented an attractive pricing model for universities and students, there is a low entry barrier to using their products in academia. However, using a commercial product has several downsides: Once students are done with their studies, they will pay the debt for the years of using ArcGIS for free. And I do not mean this strictly monetarily (even though the license fees are considerable): The proprietary nature of the software makes them dependent on ESRI for all updates, support, and fixes. The suite of ESRI products that are exclusively interoperable makes vendor lock-in a big issue, they become less flexible.</p>
+<p>On the other hand, using Free and OpenSource Software (FOSS) like QGIS has number of advantages: QGIS is maintained by the community, so bugs are usually discovered and fixed very quickly (if they aren’t one can hire a maintainer to do so). Similarly, new features can be implemented very easily, e.g.&nbsp;by creating a QGIS Plugin. QGIS invites tinkering with the software and peeking behind the scenes. There is <em>a lot</em> that speaks for using FOSS in general, and in an academic setting specifically (see <em>reproducibility</em>). I won’t go further into these reasons here; this blogpost is about something else. Instead, I will refer you to the articles written by Richard Stallman and the Free Software Foundation on <a href="https://www.gnu.org/education/" class="uri">https://www.gnu.org/education/</a></p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="button1.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="button2.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>My favorite software for geospatial are R (<code>sf</code>, <code>terra</code>, <code>stars</code>) and Python (<code>geopandas</code>, <code>rasterio</code>, <code>xarray</code>), which <a href="../../teaching.html">we teach on a bachelor and master level</a>. Depending on the audience, these script based tools can be overwhelming and the wrong tool for the job. In the last couple of years, we have started implementing QGIS in new courses or when overhauling existing ones. From the feedback I get from our students who used both software, they prefer working with QGIS. The main reasons being that in their view, QGIS runs more stable and they enjoy the prospect that they can use it after they’ve completed their studies.</p>
+<p>ArcGIS vs.&nbsp;QGIS is an ongoing debate on social media. In this discussion, many people make the valid point that you don’t have to choose and can use both software. Another point often made is that you should teach <em>concepts</em>, not <em>software.</em> I fully agree with both statements, however not choosing a specific software is a bit impractical in an education setting. In this blogpost I will therefore continue to focus on the ArcGIS vs.&nbsp;QGIS debate.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="button3.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="button4.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>The big <em>pro</em> argument for using ArcGIS seems to be <em>ArcGIS is the industry standard, therfore the students need to learn ArcGIS</em>. This seems to be a classical chicken-egg problem: Do we teach software <span class="math inline">\(X\)</span> because it’s the industry standard, or is software <span class="math inline">\(X\)</span> the industry standard because it’s what we teach? Be it as it may, I’ve started digging into this premise of this argument to find data to compare the popularity of ArcGIS vs.&nbsp;QGIS. So far, I’ve only found two datasets on this topic (if you have more, please get in touch (rata@zhaw.ch) or write into the comment section below).</p>
+<ol type="1">
+<li>The tags from questions on <a href="https://gis.stackexchange.com/">gis.stackexchange.com</a> (downloaded <a href="https://archive.org/details/stackexchange">here</a> on the 17.11.2022)</li>
+<li>Google Trends search data (downloaded <a href="https://trends.google.com/trends/explore?date=all&amp;geo=CH&amp;q=%2Fm%2F082gc5,QGIS">here</a> on the 17.11.2022)</li>
+</ol>
+<p>I’ve downloaded, processed and visualized this data with R. You can display the code for these steps below, or just look at the results.</p>
+<div class="cell">
+<details>
+<summary>Loading necessary libraries</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggfx")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfx)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ragg)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(colorspace)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The website gis.stackexchange.com is a community within the Stackexchange network, where questions surrounding GIS can be placed. Each question can be attributed with up to 5 tags to categorize the question and make it easier to find. To compare ArcGIS and QGIS, I counted the number of times a variant of the tag ArcGIS was used compared to the number of times a variant of the tag QGIS was used. There are 77 different tags containing ArcGIS, including <code>[arcgis-desktop]</code>, <code>[arcgis-10.0]</code>, <code>[arcgis-pro]</code> and so on. Since QGIS has less products, there are only 50 different tags containing QGIS, including <code>[qgis]</code>, <code>[pyqgis]</code>, <code>[qgis-3]</code> and others.</p>
+<div class="cell" data-file="extract_tags.R">
+<details>
+<summary>Extract tags from xml</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># https://archive.org/details/stackexchange</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>xml_posts <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>(<span class="st">"blog/2022-11-30-ArcGIS-vs-QGIS/posts/Posts.xml"</span>) </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># https://stackoverflow.com/questions/1390568/how-can-i-match-on-an-attribute-that-contains-a-certain-string</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>get_questions <span class="ot">&lt;-</span> <span class="cf">function</span>(tags, xml_posts, <span class="at">attrs =</span> <span class="fu">c</span>(<span class="st">"Id"</span>, <span class="st">"Tags"</span>, <span class="st">"AnswerCount"</span>,<span class="st">"AcceptedAnswerId"</span>, <span class="st">"PostTypeId"</span>, <span class="st">"CreationDate"</span>, <span class="st">"ViewCount"</span>, <span class="st">"Score"</span>)){</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">imap_dfr</span>(tags, <span class="cf">function</span>(tag, group){</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    children_filter <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">xml_find_all</span>(xml_posts, glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"//row[contains(@Tags, '{tag}')]"</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    out_df <span class="ot">&lt;-</span> <span class="fu">map</span>(attrs, <span class="cf">function</span>(attr_i){</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      xml2<span class="sc">::</span><span class="fu">xml_attr</span>(children_filter,<span class="at">attr =</span> attr_i)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    }) <span class="sc">%&gt;%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">set_names</span>(attrs) <span class="sc">%&gt;%</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">do.call</span>(cbind, .) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">searchtag =</span> tag,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">CreationDate =</span> <span class="fu">parse_datetime</span>(CreationDate),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">AnswerCount =</span> <span class="fu">as.integer</span>(AnswerCount),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">AcceptedAnswerId =</span> <span class="fu">as.integer</span>(AcceptedAnswerId),</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">PostTypeId =</span> <span class="fu">as.integer</span>(PostTypeId),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">group =</span> group</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>arcgis_qgis <span class="ot">&lt;-</span> <span class="fu">get_questions</span>(<span class="fu">c</span>(<span class="at">arcgis =</span> <span class="st">"arcgis"</span>, <span class="at">arcgis =</span> <span class="st">"arcpy"</span>, <span class="at">qgis =</span> <span class="st">"qgis"</span>),xml_posts)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(arcgis_qgis, <span class="st">"blog/2022-11-30-ArcGIS-vs-QGIS/gis.stackexchange-tags.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Preparing tags</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gis_stackexchange_tags <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"blog"</span>,<span class="st">"2022-11-30-ArcGIS-vs-QGIS"</span>, <span class="st">"gis.stackexchange-tags.csv"</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>arcgis_pa <span class="ot">&lt;-</span> gis_stackexchange_tags <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(CreationDate)) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&lt;</span> <span class="dv">2022</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, group) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>arcgis_qgis_roll <span class="ot">&lt;-</span> gis_stackexchange_tags <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">as.Date</span>(lubridate<span class="sc">::</span><span class="fu">round_date</span>(CreationDate, <span class="st">"month"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group, month) <span class="sc">|&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">|&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">roll =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(n, <span class="dv">12</span>, <span class="at">align =</span> <span class="st">"left"</span>, <span class="at">fill =</span> <span class="cn">NA</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(roll)) <span class="sc">|&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(group, month, <span class="at">fill =</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="dv">0</span>, <span class="at">roll =</span> <span class="dv">0</span>))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>arcgis_qgis_wide <span class="ot">&lt;-</span> arcgis_qgis_roll <span class="sc">|&gt;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">|&gt;</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(roll),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(roll),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">diff =</span> max <span class="sc">-</span> min,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> group[<span class="fu">which.max</span>(roll)]</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># https://coolors.co/palette/ef476f-ffd166-06d6a0-118ab2-073b4c</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">arcgis =</span> <span class="st">"#06d6a0"</span>, <span class="at">qgis =</span> <span class="st">"#ef476f"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>bgcol <span class="ot">&lt;-</span> <span class="st">"#073b4c"</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>get_first <span class="ot">&lt;-</span> <span class="cf">function</span>(vec, comp){</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  comps <span class="ot">&lt;-</span> vec <span class="sc">&gt;=</span> comp</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">any</span>(comps)){</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">length</span>(comps)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>{</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">min</span>(<span class="fu">which</span>(comps))</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>vlines <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">y =</span>  <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">600</span>, <span class="dv">100</span>), <span class="at">xend =</span> arcgis_qgis_roll<span class="sc">$</span>month[<span class="fu">map_int</span>(y, <span class="sc">~</span><span class="fu">get_first</span>(arcgis_qgis_roll<span class="sc">$</span>roll, .x))], <span class="at">x =</span> <span class="fu">rep</span>(<span class="fu">min</span>(arcgis_qgis_roll<span class="sc">$</span>month),<span class="fu">length</span>(y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>To take out some of the noise, I smoothed the monthly counts by taking the mean over a moving window of 1 year. The visualization technique is heavily inspired by Cedric Scherer’s <a href="https://www.cedricscherer.com/2021/05/09/contributions-30daychartchallenge-2021/">2021 #30DayChartChallenge (Day 4)</a>.</p>
+<div class="cell page-columns page-full">
+<details>
+<summary>Visualizing data from gis.stackexchange.com</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(arcgis_qgis_roll, <span class="fu">aes</span>(month, roll, <span class="at">color =</span> group)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> arcgis_qgis_wide,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">ymin =</span> min, <span class="at">ymax =</span> max, <span class="at">color =</span> group,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="fu">after_scale</span>(<span class="fu">darken</span>(<span class="fu">desaturate</span>(color, .<span class="dv">1</span>), .<span class="dv">4</span>, <span class="at">space =</span> <span class="st">"HLS"</span>))),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">7</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with_blur</span>(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(., group <span class="sc">==</span> <span class="st">"arcgis"</span>), </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> cols[<span class="dv">1</span>], <span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="fu">lighten</span>(cols[<span class="dv">1</span>], .<span class="dv">1</span>), <span class="at">sigma =</span> <span class="dv">3</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with_blur</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(., group <span class="sc">==</span> <span class="st">"qgis"</span>), </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> cols[<span class="dv">2</span>], <span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="fu">lighten</span>(cols[<span class="dv">2</span>], .<span class="dv">1</span>), <span class="at">sigma =</span> <span class="dv">3</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">+</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_richtext</span>(</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2015-06-01"</span>), <span class="at">y =</span> <span class="dv">700</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"Monthly &lt;span style='font-family:cinzel;'&gt;&lt;b style='color:{cols['arcgis']};font-size:30pt;'&gt;[ArcGIS]&lt;/b&gt; &amp; &lt;b style='color:{cols['qgis']};font-size:30pt;'&gt;[QGIS]&lt;/b&gt;&lt;/span&gt; Questions on gis.stackoverflow.com"</span>)),</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">size =</span> <span class="dv">7</span>, <span class="at">lineheight =</span> <span class="fl">1.5</span>, <span class="at">family =</span> <span class="st">"Work Sans"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"unique"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">label.color =</span> <span class="cn">NA</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">+</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2015-01-27"</span>), <span class="at">y =</span> <span class="dv">620</span>,<span class="at">vjust =</span> .<span class="dv">5</span>, <span class="at">hjust =</span> .<span class="dv">5</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="st">"ESRI realeases</span><span class="sc">\n</span><span class="st">ArcGIS Pro 1.0"</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>             <span class="at">family =</span> <span class="st">"Chivo"</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> cols[<span class="st">"arcgis"</span>],</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">3.8</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>             <span class="at">lineheight =</span> .<span class="dv">9</span>) <span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2015-01-27"</span>), <span class="at">xend =</span> <span class="fu">as.Date</span>(<span class="st">"2015-01-27"</span>), </span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> <span class="dv">530</span>, <span class="at">yend =</span> <span class="dv">600</span>),<span class="at">colour =</span> cols[<span class="st">"arcgis"</span>]) <span class="sc">+</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2016-10-15"</span>), <span class="at">y =</span> <span class="dv">620</span>,<span class="at">vjust =</span> .<span class="dv">5</span>, <span class="at">hjust =</span> .<span class="dv">5</span>,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="st">"No. of QGIS Tags</span><span class="sc">\n</span><span class="st">surpasses ArcGIS"</span>,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">family =</span> <span class="st">"Chivo"</span>,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> cols[<span class="st">"qgis"</span>],</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">3.8</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>             <span class="at">lineheight =</span> .<span class="dv">9</span>) <span class="sc">+</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2016-10-15"</span>), <span class="at">xend =</span> <span class="fu">as.Date</span>(<span class="st">"2016-10-15"</span>), </span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> <span class="dv">430</span>, <span class="at">yend =</span> <span class="dv">600</span>),<span class="at">colour =</span> cols[<span class="st">"qgis"</span>]) <span class="sc">+</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> vlines, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">xend =</span> xend, <span class="at">y =</span> y, <span class="at">yend =</span> y), <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,  <span class="at">color =</span> <span class="st">"grey50"</span>, <span class="at">linetype =</span> <span class="st">"13"</span>) <span class="sc">+</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> <span class="fu">filter</span>(arcgis_qgis_wide, <span class="fu">month</span>(month) <span class="sc">==</span> <span class="dv">1</span>), <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">xend =</span> month, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> min<span class="dv">-10</span>), <span class="at">color =</span> <span class="st">"grey50"</span>, <span class="at">linetype =</span> <span class="st">"13"</span>) <span class="sc">+</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"year"</span>, <span class="at">date_labels =</span> <span class="st">"%Y"</span>, <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))  <span class="sc">+</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> vlines<span class="sc">$</span>y) <span class="sc">+</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> cols) <span class="sc">+</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Data from gis.stackexchange.com | Visualisation by Nils Ratnaweera | ratnaweera.xyz"</span>) <span class="sc">+</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">color =</span> <span class="st">"transparent"</span>),</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> bgcol),</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Cinzel"</span>, <span class="at">color =</span> <span class="st">"grey80"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">6</span>)),</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">30</span>),</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Work Sans"</span>, <span class="at">color =</span> <span class="st">"grey50"</span>, <span class="at">size =</span> <span class="dv">8</span>,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>                                <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">30</span>, <span class="at">b =</span> <span class="dv">0</span>)),</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display column-page">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>The data from gis.stackexchange shows that both ArcGIS and QGIS have grown in popularity since 2011. ArcGIS hit a peak around 2014, 2015 with the release of ArcGIS pro and has since been on a decline. The number of QGIS questions has overtaken those of ArcGIS towards the end of 2016 and QGIS has been dominating the portal ever since.</p>
+<p>This data seems to clearly show that QGIS is more popular than ArcGIS. However, an argument can be made that the number of questions regarding a program does not reflect it’s popularity. On the contrary, more questions could be a sign of ambiguity: QGIS might provoke more questions in its use, while the use of ArcGIS is more straightforward. Or maybe, questions regarding ArcGIS are not posted on gis.stackexchange.com, but on a different platform, e.g.&nbsp;<a href="https://community.esri.com/">community.esri.com</a>.</p>
+<p>Therefore, I’ve additionally looked at a different data source, namely Google Trends. Google Trends provides access to a sample of search requests made to Google. This allows us to analyze interest in a particular topic worldwide or for a specific country. Google Trends normalizes search data from 0 to 100 to make comparisons between terms easier. Each data point is divided by the total searches in the selected geographic extent and time range to compare relative popularity.</p>
+<p>I downloaded these normalized values for the search terms <em>ArcGIS</em> and <em>QGIS</em> for the maximum time range (2004 to current) in the geographic extent <em>Switzerland.</em> As before, I smoothed the monthly values with a moving window of 1 year.</p>
+<div class="cell">
+<details>
+<summary>Visualizing data from Google Trends</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>google_trends_ch <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"blog"</span>,<span class="st">"2022-11-30-ArcGIS-vs-QGIS"</span>, <span class="st">"google-trends-CH.csv"</span>),<span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>google_trends_world <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"blog"</span>,<span class="st">"2022-11-30-ArcGIS-vs-QGIS"</span>, <span class="st">"google-trends-World.csv"</span>),<span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>google_trends_world<span class="sc">$</span><span class="st">`</span><span class="at">QGIS: (Worldwide)</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">parse_number</span>(google_trends_world<span class="sc">$</span><span class="st">`</span><span class="at">QGIS: (Worldwide)</span><span class="st">`</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>google_trends <span class="ot">&lt;-</span> <span class="fu">full_join</span>(google_trends_ch, google_trends_world) <span class="sc">|&gt;</span>  </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>Month) <span class="sc">|&gt;</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract</span>(name, <span class="fu">c</span>(<span class="st">"Software"</span>, <span class="st">"Region"</span>), <span class="at">regex =</span> <span class="st">"(</span><span class="sc">\\</span><span class="st">w+):</span><span class="sc">\\</span><span class="st">s</span><span class="sc">\\</span><span class="st">((</span><span class="sc">\\</span><span class="st">w+)</span><span class="sc">\\</span><span class="st">)"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Month =</span> <span class="fu">as.POSIXct</span>(<span class="fu">paste0</span>(Month,<span class="st">"-1"</span>), <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>google_trends_roll <span class="ot">&lt;-</span> google_trends <span class="sc">|&gt;</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Software, Region) <span class="sc">|&gt;</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">roll =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(value, <span class="dv">12</span>, <span class="at">align =</span> <span class="st">"left"</span>, <span class="at">fill =</span> <span class="cn">NA</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(roll)) <span class="sc">|&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(Software, Region, <span class="at">fill =</span> <span class="fu">list</span>(<span class="at">value =</span> <span class="dv">0</span>, <span class="at">roll =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell page-columns page-full">
+<details>
+<summary>Visualizing data from Google Trends</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">filter</span>(google_trends_roll, Region <span class="sc">==</span> <span class="st">"Switzerland"</span>), <span class="fu">aes</span>(Month, roll, <span class="at">color =</span> Software)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with_blur</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(., Software <span class="sc">==</span> <span class="st">"ArcGIS"</span>), </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> cols[<span class="dv">1</span>], <span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="fu">lighten</span>(cols[<span class="dv">1</span>], .<span class="dv">1</span>), <span class="at">sigma =</span> <span class="dv">3</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with_blur</span>(</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(., Software <span class="sc">==</span> <span class="st">"QGIS"</span>), </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> cols[<span class="dv">2</span>], <span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="fu">lighten</span>(cols[<span class="dv">2</span>], .<span class="dv">1</span>), <span class="at">sigma =</span> <span class="dv">3</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as.POSIXct</span>(<span class="st">"2019-10-01"</span>), <span class="at">y =</span> <span class="dv">42</span>,<span class="at">vjust =</span> .<span class="dv">5</span>, <span class="at">hjust =</span> .<span class="dv">5</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Probably Corona Dashboard searches"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Chivo"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> cols[<span class="st">"arcgis"</span>],</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">3.8</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">lineheight =</span> .<span class="dv">9</span>) <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.POSIXct</span>(<span class="st">"2019-12-01"</span>), <span class="at">xend =</span> <span class="fu">as.POSIXct</span>(<span class="st">"2019-12-01"</span>), </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> <span class="dv">40</span>, <span class="at">yend =</span> <span class="dv">35</span>),<span class="at">colour =</span> cols[<span class="st">"arcgis"</span>]) <span class="sc">+</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_richtext</span>(</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.POSIXct</span>(<span class="st">"2013-01-01"</span>), <span class="at">y =</span> <span class="dv">55</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"Google Trends for &lt;span style='font-family:cinzel;'&gt;&lt;b style='color:{cols['arcgis']};font-size:30pt;'&gt;[ArcGIS]&lt;/b&gt; &amp; &lt;b style='color:{cols['qgis']};font-size:30pt;'&gt;[QGIS]&lt;/b&gt;&lt;/span&gt; search terms in Switzerland"</span>)),</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">size =</span> <span class="dv">7</span>, <span class="at">lineheight =</span> <span class="fl">1.5</span>, <span class="at">family =</span> <span class="st">"Work Sans"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"unique"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">label.color =</span> <span class="cn">NA</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Data from Google Trends | Visualisation by Nils Ratnaweera | ratnaweera.xyz"</span>) <span class="sc">+</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">color =</span> <span class="st">"transparent"</span>),</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> bgcol),</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Cinzel"</span>, <span class="at">color =</span> <span class="st">"grey80"</span>,</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">6</span>)),</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">linetype =</span> <span class="dv">2</span>,<span class="at">colour =</span> <span class="st">"grey50"</span>),</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">30</span>),</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Work Sans"</span>, <span class="at">color =</span> <span class="st">"grey50"</span>, <span class="at">size =</span> <span class="dv">8</span>,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>                                <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">30</span>, <span class="at">b =</span> <span class="dv">0</span>)),</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display column-page">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<p>This data range back further than the data from gis.stackexchange.com. But similarly, both terms seem to have gained in popularity since around 2010 and <em>ArcGIS</em> hits a plateau around 2015. QGIS continues to gain in popularity and nearly catches up with the number of ArcGIS queries at the end of 2019. With the beginning of the pandemic, the search term ArcGIS spikes. I’m guessing this has to do with searches related to the ArcGIS Covid dashboard. Interestingly, in the most recent years QGIS seems to have overtaken ArcGIS in the number of times it was searched on Google.</p>
+<p>QGIS is evidently very popular in Switzerland. The worldwide data shows very similar trends, but the offset between ArcGIS and QGIS is larger.</p>
+<div class="cell page-columns page-full">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">filter</span>(google_trends_roll, Region <span class="sc">==</span> <span class="st">"Worldwide"</span>), <span class="fu">aes</span>(Month, roll, <span class="at">color =</span> Software)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with_blur</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(., Software <span class="sc">==</span> <span class="st">"ArcGIS"</span>), </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> cols[<span class="dv">1</span>], <span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="fu">lighten</span>(cols[<span class="dv">1</span>], .<span class="dv">1</span>), <span class="at">sigma =</span> <span class="dv">3</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with_blur</span>(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="sc">~</span><span class="fu">filter</span>(., Software <span class="sc">==</span> <span class="st">"QGIS"</span>), </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> cols[<span class="dv">2</span>], <span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="fu">lighten</span>(cols[<span class="dv">2</span>], .<span class="dv">1</span>), <span class="at">sigma =</span> <span class="dv">3</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as.POSIXct</span>(<span class="st">"2019-10-01"</span>), <span class="at">y =</span> <span class="dv">60</span>,<span class="at">vjust =</span> .<span class="dv">5</span>, <span class="at">hjust =</span> .<span class="dv">5</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Probably Corona Dashboard searches"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Chivo"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> cols[<span class="st">"arcgis"</span>],</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">3.8</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">lineheight =</span> .<span class="dv">9</span>) <span class="sc">+</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.POSIXct</span>(<span class="st">"2019-12-01"</span>), <span class="at">xend =</span> <span class="fu">as.POSIXct</span>(<span class="st">"2019-12-01"</span>), </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> <span class="dv">60</span>, <span class="at">yend =</span> <span class="dv">50</span>),<span class="at">colour =</span> cols[<span class="st">"arcgis"</span>]) <span class="sc">+</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_richtext</span>(</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.POSIXct</span>(<span class="st">"2013-01-01"</span>), <span class="at">y =</span> <span class="dv">70</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"Google Trends for &lt;span style='font-family:cinzel;'&gt;&lt;b style='color:{cols['arcgis']};font-size:30pt;'&gt;[ArcGIS]&lt;/b&gt; &amp; &lt;b style='color:{cols['qgis']};font-size:30pt;'&gt;[QGIS]&lt;/b&gt;&lt;/span&gt; search terms Worldwide"</span>)),</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">size =</span> <span class="dv">7</span>, <span class="at">lineheight =</span> <span class="fl">1.5</span>, <span class="at">family =</span> <span class="st">"Work Sans"</span>,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"unique"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">label.color =</span> <span class="cn">NA</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Data from Google Trends | Visualisation by Nils Ratnaweera | ratnaweera.xyz"</span>) <span class="sc">+</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">color =</span> <span class="st">"transparent"</span>),</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> bgcol),</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Cinzel"</span>, <span class="at">color =</span> <span class="st">"grey80"</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>                               <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">6</span>)),</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">linetype =</span> <span class="dv">2</span>,<span class="at">colour =</span> <span class="st">"grey50"</span>),</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">30</span>),</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Work Sans"</span>, <span class="at">color =</span> <span class="st">"grey50"</span>, <span class="at">size =</span> <span class="dv">8</span>,</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>                                <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">30</span>, <span class="at">b =</span> <span class="dv">0</span>)),</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display column-page">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<p>It must be said that neither data source can <em>accurately</em> reflect the real-world popularity of ArcGIS or QGIS. For instance, they do not show many users or companies use the respective software or how much money it generates. Nonetheless, the data has convinced me even more that the time is right to bet on QGIS and <del>exclusively</del> use FOSS in the classroom <em>preferably and whenever possible</em> (edited due to valid <a href="https://twitter.com/sfkeller/status/1599371466583117826?s=20&amp;t=QyTc6DnJ08v80AsN89jYng">feedback by @sfkeller</a>).</p>
+<p>I would like to finish off by providing you with a very insightful talk given by David Abernathy at the NC GIS Conference 2017. He talks about his university’s transition from ArcGIS to FOSS and makes several highly interesting points. If you’ve made it up to here, please watch his video!</p>
+<div class="youtube-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S8dei0PP9SU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+</div>
+<p><br> <br> <br></p>
+<p><strong>Edit (2022-12-07)</strong></p>
+<p>And lastly, since someone had do do it, a poem of the battle between ArcGIS and QGIS, written by <a href="https://openai.com">chatGPT from openai.com</a></p>
+<blockquote class="blockquote">
+In ArcGIS and QGIS, two titans of their trade,<br> A battle rages, with maps and data as their blade,<br> Each strives to outdo the other, to claim the victory,<br> And prove their worth to all who seek the truth in geography.<br> <br> ArcGIS, with its sleek design and user-friendly interface,<br> Makes mapping and analysis a breeze, and leaves no trace,<br> Of confusion or frustration, for its tools are intuitive,<br> And its functions diverse, enabling users to create maps that are creative.<br> <br> QGIS, on the other hand, is open-source and free,<br> A favorite among those who seek to break the mold,<br> Its capabilities are vast, and its potential immense,<br> And with its support for numerous plugins, it can be tailored to fit any role.<br> <br> But as the battle rages on, with each program giving its all,<br> It becomes clear that there can be only one winner, after all,<br> And in the end, the victor is not ArcGIS nor QGIS,<br> But rather the one who uses their tools with skill and expertise.<br> <br> So let us all embrace these powerful programs,<br> And use them wisely, to unlock the mysteries of the land,<br> For in the end, it is not the tool, but the user’s hand,<br> That shapes the world, and reveals its hidden secrets for all to understand.<br>
+</blockquote>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="ratnanil/ratnanil.github.io-utterances" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">“The time has come”, the Walrus said, “To talk of many things..” - From The Walrus and the Carpenter by Lewis Carroll</div>
+  </div>
+</footer>
+
+
+
+</body></html>
