@@ -1,0 +1,16 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/2022-11-30-ArcGIS-vs-QGIS/index.html",
+      "/blog/2021-12-01-opendata-per-canton/opendata-per-canton.html",
+      "/blog/2021-11-05-warping-switzerland-back-into-shape/stormy-transformations.html",
+      "/blog/2021-10-22-benchmarking-binary-predicates/benchmarking_binary_predicates.html",
+      "/blog/2021-08-13-minimalistic-topography/minimalistic-topography.html"
+    ]
+  },
+  {
+    "listing": "/portfolio.html",
+    "items": []
+  }
+]
