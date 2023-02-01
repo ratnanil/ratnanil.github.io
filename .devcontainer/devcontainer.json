@@ -17,9 +17,7 @@
           "reditorsupport.r",
           "rdebugger.r-debugger",
           "ritwickdey.LiveServer",
-          "quarto.quarto",
-          "sumneko.lua",
-          "ms-python.python"
+          "quarto.quarto"
         ]
       }
     }

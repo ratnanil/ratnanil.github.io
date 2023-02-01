@@ -8,42 +8,157 @@ h1{
   display: none
 }
 
-body{
+/* body{
   background-image: url("images/pexels-kasuma-134074.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-}
+} */
 
-#welcome {
-  text-align: center;
+.emphasize{
+  /* text-align: center; */
   color: #073642;
   background-color: rgba(178,193,196, 0.6);
   border-radius: 10px;
-  padding: 0 2px 2px 2px;
-  margin: 0 0 20px 0;
+  padding: 10px;
+  margin: 10px 0 10px 0;
+}
+
+.emphasize a{
+  color: #ADB5BD;
+
 }
 
 </style>
 
-<div id="welcome">
+<div>
 
-<h3> Hi there 👋  </h3>
+<h3 style="text-align: center"> Hi there 👋  </h3>
 
+<div style = "float: right; width: 150px">
+<img src = "images/portrait.jpeg" style = "max-width: 100px;   border-radius: 50%;">
+</div>
 <p>
-My Name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of Applied Sciences. I love my Data Scientist job of working with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
+My name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of Applied Sciences. I love my Data Scientist job of working with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
 </p>
 </div>
+
+
+
 
 <!-- I understand something better once I try to explain it. This is one of my motivations to start blogging: to learn more on the topics I'm interested in.  -->
 
 <!-- Also, writing helps me complete the thought process of half baked ideas. And last but not least, I want to join the vibrant community of `R` users, open source enthusiasts, spatial people, python lovers, linux advocates and data scientists. -->
 
 
-<div style = "text-align: center">
-<img src = "images/portrait.jpeg" style = "max-width: 200px;   border-radius: 50%;">
-</div>
+
+
+<div class="emphasize">**UPDATE**: I'm intersted in collaborating on projects in and also outside my (part-time) day job. If you have a project that you think I can help with, please get in touch. I'm also available for short-term contract work. You can [email me](mailto:rata@zhaw.ch) or directly book a slot 📆 [here](https://calendly.com/rata-zhaw/30min)</div>
+
+You can find me on [GitHub](https://github.com/ratnanil/), [Twitter](https://twitter.com/NRatnaweera), [Mastodon](https://fosstodon.org/@ratnaweera) and [StackOverflow](https://stackoverflow.com/users/4139249/ratnanil). Apropos StackOverflow, here is a live update of my Top Tags on Stack Overflow and gis.stackexchange.com (created with `vega-lite` using the [stackexchange API](https://api.stackexchange.com)):
 
 
 <!-- https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow -->
 <!-- https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com -->
+
+<!-- 
+```{ojs}
+//| echo: false
+import {vl} from "@vega/vega-lite-api"
+embed = require("vega-embed@6")
+spec = ({
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Live update of my Top Tags on Stack Overflow","color": "#ADB5BD"},
+  "height": "200",
+  "width": "640",
+  "data": {
+    "url": "https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow",
+    "format": {"type": "json","property": "items"},
+    "name": "stack"
+    },
+  "mark":{"type": "bar","color": "#06d6a0","tooltip": true},
+  "transform": [
+    {"fold": ["question_score","answer_score"]},
+    {"filter": "datum.value > 8"},
+  ],
+  "encoding": {
+    "y": {"field": "tag_name","type": "nominal","sort":"-x","title":"","axis": {"labelColor": "#ADB5BD", "labelFont": "monospace"}},
+    "x": {"field": "value", "type": "quantitative","axis": {"title": "∑ of Score","titleColor": "#ADB5BD","labelColor": "#ADB5BD"},"aggregate": "sum"},
+    //"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}
+  },
+  "background": "#073b4c",
+  "padding": {"left": 20, "top": 20, "right": 20, "bottom": 20},
+  "config": {"autosize": "pad"}
+  })
+
+
+
+
+embed(spec)
+
+```
+ -->
+
+
+```{ojs}
+//| echo: false
+import {vl} from "@vega/vega-lite-api"
+embed = require("vega-embed@6")
+spec2 = ({
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": "200",
+    "background": "#073b4c",
+    "padding": { "left": 20, "top": 20, "right": 20, "bottom": 20 },
+  "config": {"view": {"continuousHeight": 300, "continuousWidth": 600}},
+              "title": { "text": "Live update of my Top Tags", "color": "#ADB5BD" },
+    "vconcat": [
+      
+         {
+              "title": { "text": "Stackoverflow", "color": "#ADB5BD" },
+
+        "data": {
+            "url": "https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow",
+            "format": { "type": "json", "property": "items" },
+            "name": "stack"
+        },
+        "mark": { "type": "bar", "color": "#06d6a0", "tooltip": true },
+        "transform": [
+            { "fold": ["question_score", "answer_score"] },
+            { "filter": "datum.value > 8" },
+        ],
+        "encoding": {
+            "y": { "field": "tag_name", "type": "nominal", "sort": "-x", "title": "", "axis": { "labelColor": "#ADB5BD", "labelFont": "monospace" } },
+            "x": { "field": "value", "type": "quantitative", "axis": { "title": "∑ of Score", "titleColor": "#ADB5BD", "labelColor": "#ADB5BD" }, "aggregate": "sum" },
+            //"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}
+        },
+        "background": "#073b4c",
+        "padding": { "left": 20, "top": 20, "right": 20, "bottom": 20 },
+        "config": { "autosize": "pad" }
+    },
+      {
+            "title": { "text": "gis.stackexchange", "color": "#ADB5BD" },
+
+        "data": {
+            "url": "https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com",
+            "format": { "type": "json", "property": "items" },
+            "name": "gis"
+        },
+        "mark": { "type": "bar", "color": "#06d6a0", "tooltip": true },
+        "transform": [
+            { "fold": ["question_score", "answer_score"] },
+            { "filter": "datum.value > 8" },
+        ],
+        "encoding": {
+            "y": { "field": "tag_name", "type": "nominal", "sort": "-x", "title": "", "axis": { "labelColor": "#ADB5BD", "labelFont": "monospace" } },
+            "x": { "field": "value", "type": "quantitative", "axis": { "title": "∑ of Score", "titleColor": "#ADB5BD", "labelColor": "#ADB5BD" }, "aggregate": "sum" },
+            //"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}
+        }
+    }
+ 
+    ]
+
+})
+
+embed(spec2)
+
+```

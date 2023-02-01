@@ -19,6 +19,10 @@ PS: Unlike before, I completely omit using netlify, since this just creates addi
 
 All preview images should have an aspect ratio of 3:2 (width:height). When working with `ggplot2`, 15cm x 10cm is usually fine.
 
+They have a background color of "#073b4c"
+
+Text color: #ADB5BD
+
 ## Large Files 
 
 I've had too many repos that have become huge because I thoughlessly committed large files. Using `git lfs` as a workaround was not very satisfactory either, since it's not easy to free up the quota of `git lsf` my simply deleting files from the history (you have to delete the whole repo intead!). I'm still looking into this, I think good practice for now would be to simply put all large files in subdirectories containing a `.gitingore` file containing a `*`.
