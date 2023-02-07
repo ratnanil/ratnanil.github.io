@@ -141,11 +141,19 @@ ul.task-list li input[type="checkbox"] {
 <p>To make sure that no domains can be taken over, I’ve verified my domains on github using <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages">these instructions</a>.</p>
 <p>PS: Unlike before, I completely omit using netlify, since this just creates additional overhead without much gain.</p>
 </section>
-<section id="preview-images" class="level2">
-<h2 class="anchored" data-anchor-id="preview-images">Preview images</h2>
-<p>All preview images should have an aspect ratio of 3:2 (width:height). When working with <code>ggplot2</code>, 15cm x 10cm is usually fine.</p>
-<p>They have a background color of “#073b4c”</p>
-<p>Text color: #ADB5BD</p>
+<section id="preview-images-twitter-cards" class="level2">
+<h2 class="anchored" data-anchor-id="preview-images-twitter-cards">Preview images / Twitter cards</h2>
+<p>Preview images are used in the blog listing, but also as twitter cards (preview image when tweeting a like to a specific site)</p>
+<ul>
+<li>All preview images should have an aspect ratio of 3:2 (width:height). When working with <code>ggplot2</code>, 15cm x 10cm is usually fine.</li>
+<li>They have a background color of “#073b4c”</li>
+<li>Text color: #ADB5BD</li>
+<li>To publish a preview image to gh-pages, you need to add it in <code>resources</code>. You can then reference the full, <em>relative</em> path:</li>
+</ul>
+<pre><code>---
+image: /apps/geodienste-kantone/preview.png
+resources: preview.png
+---</code></pre>
 </section>
 <section id="large-files" class="level2">
 <h2 class="anchored" data-anchor-id="large-files">Large Files</h2>
