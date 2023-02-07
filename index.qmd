@@ -1,6 +1,8 @@
 ---
 title: "Ratnaweera XYZ"
 title-block-banner: false
+execute:
+  echo: false
 ---
 
 <style>
@@ -21,7 +23,7 @@ h1{
   background-color: rgba(178,193,196, 0.6);
   border-radius: 10px;
   padding: 10px;
-  margin: 10px 0 10px 0;
+  margin: 50px 0 50px 0;
 }
 
 .emphasize a{
@@ -53,112 +55,102 @@ My name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of
 
 
 
-<div class="emphasize">**UPDATE**: I'm intersted in collaborating on projects in and also outside my (part-time) day job. If you have a project that you think I can help with, please get in touch. I'm also available for short-term contract work. You can [email me](mailto:rata@zhaw.ch) or directly book a slot 📆 [here](https://calendly.com/rata-zhaw/30min)</div>
-
-You can find me on [GitHub](https://github.com/ratnanil/), [Twitter](https://twitter.com/NRatnaweera), [Mastodon](https://fosstodon.org/@ratnaweera) and [StackOverflow](https://stackoverflow.com/users/4139249/ratnanil). Apropos StackOverflow, here is a live update of my Top Tags on Stack Overflow and gis.stackexchange.com (created with `vega-lite` using the [stackexchange API](https://api.stackexchange.com)):
+<div class="emphasize">**UPDATE**: I'm interested in collaborating on projects in and also outside my (part-time) day job. If you have a project that you think I can help with, please get in touch. I'm also available for short-term contract work. You can [email me](mailto:rata@zhaw.ch) or directly book a slot 📆 [here](https://calendly.com/rata-zhaw/30min)</div>
 
 
-<!-- https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow -->
-<!-- https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com -->
 
-<!-- 
+You can find me on [GitHub](https://github.com/ratnanil/), [Twitter](https://twitter.com/NRatnaweera), [Mastodon](https://fosstodon.org/@ratnaweera) and [StackOverflow](https://stackoverflow.com/users/4139249/ratnanil). Apropos StackOverflow, here is a live updating visualization of my Top Tags:
+
+
+#### My Top Tags on stackoverflow.com and gis.stackexchange.com
+
+
 ```{ojs}
-//| echo: false
-import {vl} from "@vega/vega-lite-api"
-embed = require("vega-embed@6")
-spec = ({
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Live update of my Top Tags on Stack Overflow","color": "#ADB5BD"},
-  "height": "200",
-  "width": "640",
-  "data": {
-    "url": "https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow",
-    "format": {"type": "json","property": "items"},
-    "name": "stack"
-    },
-  "mark":{"type": "bar","color": "#06d6a0","tooltip": true},
-  "transform": [
-    {"fold": ["question_score","answer_score"]},
-    {"filter": "datum.value > 8"},
-  ],
-  "encoding": {
-    "y": {"field": "tag_name","type": "nominal","sort":"-x","title":"","axis": {"labelColor": "#ADB5BD", "labelFont": "monospace"}},
-    "x": {"field": "value", "type": "quantitative","axis": {"title": "∑ of Score","titleColor": "#ADB5BD","labelColor": "#ADB5BD"},"aggregate": "sum"},
-    //"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}
-  },
-  "background": "#073b4c",
-  "padding": {"left": 20, "top": 20, "right": 20, "bottom": 20},
-  "config": {"autosize": "pad"}
-  })
-
-
-
-
-embed(spec)
+dateTime = {
+  let current = new Date();
+  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()
+  let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds()
+  return(cDate + ' ' + cTime)
+}
 
 ```
- -->
+
+```{ojs}
+md`(live data from ${dateTime}, acquired with the [stackexchange API](https://api.stackexchange.com), visualized with *Observable Plot*)`
+```
 
 
 ```{ojs}
-//| echo: false
-import {vl} from "@vega/vega-lite-api"
-embed = require("vega-embed@6")
-spec2 = ({
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "height": "200",
-    "background": "#073b4c",
-    "padding": { "left": 20, "top": 20, "right": 20, "bottom": 20 },
-  "config": {"view": {"continuousHeight": 300, "continuousWidth": 600}},
-              "title": { "text": "Live update of my Top Tags", "color": "#ADB5BD" },
-    "vconcat": [
-      
-         {
-              "title": { "text": "Stackoverflow", "color": "#ADB5BD" },
+d3 = require("d3")
+```
 
-        "data": {
-            "url": "https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow",
-            "format": { "type": "json", "property": "items" },
-            "name": "stack"
-        },
-        "mark": { "type": "bar", "color": "#06d6a0", "tooltip": true },
-        "transform": [
-            { "fold": ["question_score", "answer_score"] },
-            { "filter": "datum.value > 8" },
-        ],
-        "encoding": {
-            "y": { "field": "tag_name", "type": "nominal", "sort": "-x", "title": "", "axis": { "labelColor": "#ADB5BD", "labelFont": "monospace" } },
-            "x": { "field": "value", "type": "quantitative", "axis": { "title": "∑ of Score", "titleColor": "#ADB5BD", "labelColor": "#ADB5BD" }, "aggregate": "sum" },
-            //"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}
-        },
-        "background": "#073b4c",
-        "padding": { "left": 20, "top": 20, "right": 20, "bottom": 20 },
-        "config": { "autosize": "pad" }
-    },
-      {
-            "title": { "text": "gis.stackexchange", "color": "#ADB5BD" },
+```{ojs}
+stackoverflow = await d3.json("https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow")
+//stackoverflow = FileAttachment("top-tags-stackoverflow.json").json()
+```
 
-        "data": {
-            "url": "https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com",
-            "format": { "type": "json", "property": "items" },
-            "name": "gis"
-        },
-        "mark": { "type": "bar", "color": "#06d6a0", "tooltip": true },
-        "transform": [
-            { "fold": ["question_score", "answer_score"] },
-            { "filter": "datum.value > 8" },
-        ],
-        "encoding": {
-            "y": { "field": "tag_name", "type": "nominal", "sort": "-x", "title": "", "axis": { "labelColor": "#ADB5BD", "labelFont": "monospace" } },
-            "x": { "field": "value", "type": "quantitative", "axis": { "title": "∑ of Score", "titleColor": "#ADB5BD", "labelColor": "#ADB5BD" }, "aggregate": "sum" },
-            //"color": {"field": "key", "type": "nominal","scale": {"range": ["#06d6a0","#ef476f"]}}
-        }
-    }
- 
-    ]
+```{ojs}
+//gis = FileAttachment("top-tags-gis-stackexchange.json").json()
+gis = await d3.json("https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com")
+```
 
+
+```{ojs}
+gis2 = gis.items.map(function(x){
+  return [
+    {source: "gis.stackexchange.com", type: "Answer", tag: x.tag_name, score: x.answer_score},
+    {source: "gis.stackexchange.com", type: "Question", tag: x.tag_name, score: x.question_score}
+  ]
+}).flat()
+```
+
+```{ojs}
+stackoverflow2 = stackoverflow.items.map(function(x){
+  return [
+    {source: "stackoverflow.com", type: "Answer", tag: x.tag_name, score: x.answer_score},
+    {source: "stackoverflow.com", type: "Question", tag: x.tag_name, score: x.question_score}
+  ]
+}).flat()
+```
+
+```{ojs}
+stackexchange = gis2.concat(stackoverflow2)
+```
+
+
+
+```{ojs}
+Plot.plot({
+  marginLeft: 100,
+  caption: html`<div>Live data from the stackexchange restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,
+  width: width,
+  y: {
+    label: "",
+  },
+  x: {
+    label: "Score"
+  },
+  color:{
+    legend: true
+  },
+  domain: {
+    color: ["question_score","answer_score"]
+  },
+  marks: [
+    Plot.barX(stackexchange, 
+    Plot.groupY({x: "sum"},{
+      y: "tag", 
+      x: "score", 
+      fill: "type",
+      sort: {y: "x", reverse: true},
+      filter: (i) => i.score > 8
+      })
+      ),
+  ],
+  style: {
+    backgroundColor: "#073b4c",
+    color: "#ADB5BD"
+  }
 })
-
-embed(spec2)
 
 ```
