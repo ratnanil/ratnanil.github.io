@@ -3,7 +3,7 @@ title: How Open Are Our Cantons?
 subtitle: Live updating visualisation of data availablity on geod
 execute:
     echo: false
-image: preview.png
+image: apps/geodienste-kantone/preview.png
 ---
 
 
