@@ -4,6 +4,7 @@ subtitle: Live updating visualisation of data availablity on geod
 execute:
     echo: false
 image: https://github.com/ratnanil/ratnanil.github.io/blob/master/apps/geodienste-kantone/preview.png
+resources: preview.png
 ---
 
 
