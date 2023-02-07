@@ -1,0 +1,207 @@
+---
+title: How Open Are Our Cantons?
+subtitle: Live updating visualisation of data availablity on geod
+execute:
+    echo: false
+image: preview.png
+---
+
+
+[Geodienste.ch](https://geodienste.ch/) is an excellent website to get cantonal geodata. The harmonization process not only simplifies the acquisition of the data, it also shows which cantons are not as open with their data as they could be. 
+
+This visualization is a *live updating* version of [a static chart](blog/2021-12-01-opendata-per-canton/opendata-per-canton.html) I created quite a while ago. I am particularly proud of the live updating functionality. The data you are seeing below is from the very minute you've visited this site, i.e.:
+ 
+```{ojs}
+html`<div style="text-align: center">${new Date(now).toString()}</div>`
+```
+
+
+```{r}
+#| echo: false
+#| eval: false
+library(rvest)
+library(tidyverse)
+services <- read_html("https://geodienste.ch/versions_overview") %>% 
+  html_elements(".topic-text a") %>% 
+  html_attr("href")
+```
+
+<!--
+av
+fixpunkte
+fruchtfolgeflaechen
+gefahrenkarten
+kantonale_ausnahmetransportrouten
+kataster_belasteter_standorte
+lwb_bewirtschaftungseinheit
+lwb_biodiversitaetsfoerderflaechen
+lwb_elemente_mit_landschaftsqualitaet
+lwb_nutzungsflaechen
+lwb_perimeter_ln_sf
+lwb_perimeter_terrassenreben
+lwb_rebbaukataster
+leitungskataster
+luftbild
+npl_laermempfindlichkeitsstufen
+naturereigniskataster
+npl_nutzungsplanung
+planerischer_gewaesserschutz
+revitalisierung_seen
+planungszonen
+richtplanung_erneuerbare_energien
+npl_waldgrenzen
+stromversorgungssicherheit_netzgebiete
+npl_waldabstandslinien
+waldreservate
+wildruhezonen
+-->
+
+
+<!-- AG AI AR BE BL BS FR GE GL GR JU LU NE NW OW SG SH SO SZ TG TI UR VD VS ZG ZH -->
+
+
+```{ojs}
+d3 = require('d3')
+```
+
+```{ojs}
+geodienste = await d3.json("https://www.geodienste.ch/info/services.json?base_topics=av%2Cfixpunkte%2Cfruchtfolgeflaechen%2Cgefahrenkarten%2Ckantonale_ausnahmetransportrouten%2Ckataster_belasteter_standorte%2Clwb_bewirtschaftungseinheit%2Clwb_biodiversitaetsfoerderflaechen%2Clwb_elemente_mit_landschaftsqualitaet%2Clwb_nutzungsflaechen%2Clwb_perimeter_ln_sf%2Clwb_perimeter_terrassenreben%2Clwb_rebbaukataster%2Cleitungskataster%2Cnpl_laermempfindlichkeitsstufen%2Cnpl_nutzungsplanung%2Cplanerischer_gewaesserschutz%2Crevitalisierung_seen%2Cplanungszonen%2Cnpl_waldgrenzen%2Cstromversorgungssicherheit_netzgebiete%2Cnpl_waldabstandslinien%2Cwaldreservate%2Cwildruhezonen&cantons=AG%2CAI%2CAR%2CBE%2CBL%2CBS%2CFR%2CGE%2CGL%2CGR%2CJU%2CLU%2CNE%2CNW%2COW%2CSG%2CSH%2CSO%2CSZ%2CTG%2CTI%2CUR%2CVD%2CVS%2CZG%2CZH&restricted_topics=true&language=de")
+//ignored the following datasets (since there is not data on these for most cantons)
+//luftbild
+//naturereigniskataster
+//richtplanung_erneuerbare_energien
+
+//the folowing character string determins a break: %2C
+```
+
+```{ojs}
+// sort the cantons by the most amount of datasets of type "frei erhältlich", then by Registrierung erforderlich and so on
+
+geodienste_canton_sort = {
+
+  let aggregated = Array()
+
+  let idx = -1
+  geodienste.services.forEach(i => {
+    idx +=1
+    const canton = i.canton
+    const publication_data = i.publication_data
+    const idx_canton = aggregated.map(x  => x.canton).indexOf(canton)
+    let score
+    if (publication_data == "Frei erhältlich") {
+      score = 1000000
+    } else if(publication_data == "Registrierung erforderlich"){
+      score = 10000
+    } else if(publication_data == "Freigabe erforderlich"){
+      score = 100
+    } else{
+      score = 1
+    }
+      
+    if(idx_canton == -1){
+
+      aggregated[idx] = {canton: canton, score: score}
+     
+    } else{
+      aggregated[idx_canton]["score"] += score 
+      
+    }
+  
+  });
+
+  return aggregated
+}
+
+```
+
+
+
+```{ojs}
+// from this sorted array, only extract the order
+kantone_order = geodienste_canton_sort.sort((a,b) => b.score - a.score).map(x => x.canton)
+```
+
+
+
+```{ojs}
+// group the array by canton
+groupedArray = geodienste.services.reduce((groups, item) => {
+  const group = groups.find(g => g.canton === item.canton);
+  if (!group) {
+    groups.push({
+      canton: item.canton,
+      items: [item],
+    });
+  } else {
+    group.items.push(item);
+  }
+  return groups;
+}, []);
+```
+
+```{ojs}
+// manually define the order of the datasets
+publication_data_order = ["Frei erhältlich", "Registrierung erforderlich", "Freigabe erforderlich", "Im Aufbau", "keine Daten"]
+```
+
+```{ojs}
+// sort the array within each canton by the publication data order
+sortedArray = groupedArray.map(group => {
+  return (group.items.sort((a, b) => publication_data_order.indexOf(a.publication_data) - publication_data_order.indexOf(b.publication_data)))
+});
+
+```
+
+
+```{ojs}
+// flatten the result again (ungroup)
+flattedArray = sortedArray.flat()
+```
+
+```{ojs}
+dateTime = {
+  let current = new Date();
+  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()
+  let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds()
+  return(cDate + ' ' + cTime)
+}
+
+```
+
+### Visualizing availability of geodata on geodienste.ch
+
+```{ojs}
+Plot.plot({
+  caption: html`<div>Live data from geodienste.ch restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,
+  width: width,
+  height: width,
+  y: {
+    domain: kantone_order,
+    label: "Kanton →",
+     },
+  x: {
+    label: "Anzahl Datensätze →"
+  },
+  color: {
+    range: ['#2b83ba','#abdda4','#ffffbf','#fdae61','#d7191c'],
+    legend: "swatches",
+    label: "Status",
+    domain: publication_data_order
+  },
+  style: {
+    backgroundColor: "#073b4c",
+    color: "#ADB5BD"
+  },
+  marks: [
+    Plot.barX(flattedArray, {
+      x: 1, 
+      y: "canton", 
+      fill: "publication_data",
+      stroke: "#073b4c", 
+      strokeWidth: 2
+    }),
+  ]
+})
+```
+
+

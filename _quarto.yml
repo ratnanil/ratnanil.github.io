@@ -17,10 +17,10 @@ website:
         file: blog.qmd
       - text: "Teaching Materials"
         file: teaching.qmd
-      #- text: "Apps"
-      #  menu:
-      #    - text: "Real Estate Calculator"
-      #      file: "apps/hypothek/index.qmd"
+      - text: "Apps"
+        menu:
+         - text: "Geodienste-Monitor"
+           file: "apps/geodienste-kantone/index.qmd"
     right: 
       - href: github.com/ratnanil/
         icon: github
