@@ -1,19 +1,18 @@
 ---
 title: How Open Are Our Cantons?
-subtitle: Live updating visualisation of data availablity on geod
+subtitle: Live updating visualisation of data availablity on geodienste.ch
 execute:
     echo: false
-image: https://github.com/ratnanil/ratnanil.github.io/blob/master/apps/geodienste-kantone/preview.png
+image: /apps/geodienste-kantone/preview.png
 resources: preview.png
 ---
 
 
 [Geodienste.ch](https://geodienste.ch/) is an excellent website to get cantonal geodata. The harmonization process not only simplifies the acquisition of the data, it also shows which cantons are not as open with their data as they could be. 
 
-This visualization is a *live updating* version of [a static chart](blog/2021-12-01-opendata-per-canton/opendata-per-canton.html) I created quite a while ago. I am particularly proud of the live updating functionality. The data you are seeing below is from the very minute you've visited this site, i.e.:
- 
+
 ```{ojs}
-html`<div style="text-align: center">${new Date(now).toString()}</div>`
+html`<p>This visualization is a *live updating* version of [a static chart](blog/2021-12-01-opendata-per-canton/opendata-per-canton.html) I created quite a while ago. I am particularly proud of the live updating functionality. The data you are seeing below is from the very minute you've visited this site, i.e.: <span style="background-color: black; padding: 3px;	font-family: mono; font-size:small; border-radius: 3px">${new Date(now).toString()}<span></p>`
 ```
 
 
