@@ -12,7 +12,7 @@ resources: preview.png
 
 
 ```{ojs}
-html`<p>This visualization is a *live updating* version of [a static chart](blog/2021-12-01-opendata-per-canton/opendata-per-canton.html) I created quite a while ago. I am particularly proud of the live updating functionality. The data you are seeing below is from the very minute you've visited this site, i.e.: <span style="background-color: black; padding: 3px;	font-family: mono; font-size:small; border-radius: 3px">${new Date(now).toString()}<span></p>`
+html`<p>This visualization is a *live updating* version of <a href="blog/2021-12-01-opendata-per-canton/opendata-per-canton.html">a static chart</a> I created quite a while ago. I am particularly proud of the live updating functionality. The data you are seeing below is from the very minute you've visited this site, i.e.: <span style="background-color: black; padding: 3px;	font-family: mono; font-size:small; border-radius: 3px">${new Date(now).toString()}<span></p>`
 ```
 
 
@@ -168,7 +168,7 @@ dateTime = {
 
 ```
 
-### Visualizing availability of geodata on geodienste.ch
+### Availability of Cantonal Geodata on Geodienste.ch
 
 ```{ojs}
 Plot.plot({

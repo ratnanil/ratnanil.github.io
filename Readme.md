@@ -15,13 +15,25 @@ To make sure that no domains can be taken over, I've verified my domains on gith
 PS: Unlike before, I completely omit using netlify, since this just creates additional overhead without much gain. 
 
 
-## Preview images
+## Preview images / Twitter cards
 
-All preview images should have an aspect ratio of 3:2 (width:height). When working with `ggplot2`, 15cm x 10cm is usually fine.
+Preview images are used in the blog listing, but also as twitter cards (preview image when tweeting a like to a specific site)
 
-They have a background color of "#073b4c"
+- Size and Ratio
+  - All preview images should have an aspect ratio of 3:2 (width:height). 
+  - When working with `ggplot2`, 15cm x 10cm is usually fine
+  - Twitter Cards apparently have an optimal size of 1500 x 500px
+- They have a background color of "#073b4c"
+- Text color: #ADB5BD
+- To publish a preview image to gh-pages, you need to add it in `resources`. You can then reference the full, *relative* path:
 
-Text color: #ADB5BD
+
+```
+---
+image: /apps/geodienste-kantone/preview.png
+resources: preview.png
+---
+```
 
 ## Large Files 
 
