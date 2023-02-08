@@ -168,6 +168,9 @@ dateTime = {
 
 ```
 
+<div style="text-align: center; border: 1px solid #ADB5BD">Please wait a couple of seconds till data data is loaded from the API</div>
+
+
 ### Availability of Cantonal Geodata on Geodienste.ch
 
 ```{ojs}
