@@ -8,7 +8,7 @@ resources: preview.png
 ---
 
 
-[Geodienste.ch](https://geodienste.ch/) is an excellent website to get cantonal geodata. The harmonization process not only simplifies the acquisition of the data, it also shows which cantons are not as open with their data as they could be. 
+[Geodienste.ch](https://geodienste.ch/) is an excellent website to get cantonal geodata. The ~~harmonization~~ aggregation process not only simplifies the acquisition of the data, it also shows which cantons are not as open with their data as they could be. 
 
 
 ```{ojs}
