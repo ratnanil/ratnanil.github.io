@@ -35,7 +35,7 @@ h1{
 I'm Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW). I love my job as a data scientist, with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
 
 <div class="emphasize">
-Since my job at ZHAW is only part-time, I work as a freelance Data Scientist on the side. If you have a project that you think I can help with, please get in touch. I'm also available for short-term contract work. You can [email me](mailto:rata@zhaw.ch) or directly book a slot 📆 [here](https://calendly.com/rata-zhaw/30min)
+Since my job at ZHAW is only part-time, I work as a freelance Data Scientist on the side. If you have a project that you think I can help with, please get in touch. I'm also available for short-term contract work. You can [email me](mailto:nils@ratnaweera.xyz) or directly book a slot 📆 [here](https://calendly.com/ratnaweera/60min)
 </div>
 
 
