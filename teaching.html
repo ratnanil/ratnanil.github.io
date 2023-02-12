@@ -39,6 +39,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,14 +64,15 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Ratnaweera-XYZ - Teaching Materials">
-<meta property="og:description" content="Most of our teaching materials are available online on github repos. Check them out!">
+<meta property="og:description" content="I’m significantly involved in teaching in the following courses, which are all awailable on github. Check them out!">
 <meta property="og:site-name" content="Ratnaweera-XYZ">
 <meta name="twitter:title" content="Ratnaweera-XYZ - Teaching Materials">
-<meta name="twitter:description" content="Most of our teaching materials are available online on github repos. Check them out!">
+<meta name="twitter:description" content="I’m significantly involved in teaching in the following courses, which are all awailable on github. Check them out!">
 <meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -90,27 +93,35 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html">
- <span class="menu-text">Home</span></a>
+ <span class="menu-text"><i class="fa-solid fa-house fa-fw" aria-label="house"></i> Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blog.html">
- <span class="menu-text">Blog</span></a>
+ <span class="menu-text"><i class="fa-solid fa-rss fa-fw" aria-label="rss"></i> Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./teaching.html" aria-current="page">
- <span class="menu-text">Teaching Materials</span></a>
+ <span class="menu-text"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Teaching</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-apps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Apps</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-tablet-screen-button--apps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-solid fa-tablet-screen-button" aria-label="tablet-screen-button"></i> Apps</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-apps">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-tablet-screen-button--apps">    
         <li>
     <a class="dropdown-item" href="./apps/geodienste-kantone/index.html">
  <span class="dropdown-text">Geodienste-Monitor</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./apps/stackexchange/index.html">
+ <span class="dropdown-text">StackExchange-Tags</span></a>
+  </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./CV.html">
+ <span class="menu-text"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> About</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -120,6 +131,16 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/NRatnaweera"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ratnaweera"><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://stackoverflow.com/users/4139249/ratnanil"><i class="bi bi-stack-overflow" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -154,43 +175,65 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Most of our teaching materials are available online on github repos. Check them out!</p>
+<style>
+.teaching-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 20px;
+  column-gap: 10px;
+}
 
-<table cellpadding="10" border="0">
-<tbody><tr>
-<td>
-<img src="images/arc2r.svg" width="120px">
-</td>
-<td>
-An introduction to Spatial R for ArcGIS users <br> <a href="https://arc2r.github.io/book">arc2r.github.io/book</a>
-</td></tr>
-<tr>
-<td>
-<img src="images/coding_in_GIS.png" width="120px">
-</td>
-<td>
-An introduction to GIS in Python for Environmental Scientists (Bachelor Students) <br> <a href="https://modul-agi.github.io/">modul-agi.github.io</a>
-</td>
-</tr>
-<tr>
-<td>
-<img src="images/research-methods.png" width="120px">
-</td>
-<td>
-Teaching R, the tidyverse, data processing, data visualization and statistics <br> <a href="https://researchmethods-zhaw.github.io/">researchmethods-zhaw.github.io</a>
-</td>
-</tr>
-<tr>
-<td>
-<img src="images/patterns-and-trends.png" width="120px">
-</td>
-<td>
-Computational Movement Analysis: Detecting Patterns and Trends in Environmental Data. A course taught by Prof.&nbsp;Dr.&nbsp;Patrick Laube, I was responsible for creating the R-exercises. <br> <a href="https://computationalmovementanalysis.github.io/">computationalmovementanalysis.github.io</a>
-</td>
-</tr>
+.teaching-item{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  column-gap: 20px;
+  box-shadow: 0 4px 8px 0;
+  height: 160px;
+  align-items: center;
+  justify-items: center;
+  padding: 15px;
+}
 
+.teaching-item:hover{
+  background-color: #073b4c;
+}
 
-</tbody></table>
+.teaching-item > img{
+  float: left;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  
+}
+
+</style>
+<p>I’m significantly involved in teaching in the following courses, which are all awailable on github. Check them out!</p>
+<div class="teaching-container">
+<div class="teaching-item">
+<img src="images/arc2r.svg">
+<div>
+<p>An introduction to Spatial R for ArcGIS users <br> <i class="fa-solid fa-link" aria-label="link"></i> <a href="https://arc2r.github.io/book" target="_blank">arc2r.github.io/book</a></p>
+</div>
+</div>
+<div class="teaching-item">
+<img src="images/coding_in_GIS2_fixed.png">
+<div>
+<p>An introduction to GIS in Python for Environmental Scientists (Bachelor Students)<br> <i class="fa-solid fa-link" aria-label="link"></i> <a href="https://modul-agi.github.io/" target="_blank">modul-agi.github.io</a></p>
+</div>
+</div>
+<div class="teaching-item">
+<img src="images/research-methods.png">
+<div>
+<p>Teaching R, data processing, data visualization and statistics<br> <i class="fa-solid fa-link" aria-label="link"></i> <a href="https://researchmethods-zhaw.github.io/" target="_blank">researchmethods-zhaw.github.io</a></p>
+</div>
+</div>
+<div class="teaching-item">
+<img src="images/patterns-and-trends2.png">
+<div>
+<p>Exercises for Computational Movement Analysis<br> <i class="fa-solid fa-link" aria-label="link"></i> <a href="https://computationalmovementanalysis.github.io/" target="_blank">computational-movementanalysis.github.io</a></p>
+</div>
+</div>
+</div>
 
 
 

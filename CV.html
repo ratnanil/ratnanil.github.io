@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ratnaweera-XYZ – portfolio</title>
+<title>Ratnaweera-XYZ – cv</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,42 +60,12 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: [],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 
 <div id="quarto-search-results"></div>
@@ -145,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./CV.html">
+    <a class="nav-link active" href="./CV.html" aria-current="page">
  <span class="menu-text"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> About</span></a>
   </li>  
 </ul>
@@ -177,27 +145,156 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 
+<style>
+
+
+.cv-wrapper{
+    display: grid;
+    grid-template-columns: 60% 40% ;
+}
+
+#formal-edu{
+    margin-top: 0rem 
+}
+
+#portrait{
+    width: 75%;
+    border-radius: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+#skills{
+    padding: 10px
+}
+
+#skills > ul{
+    list-style-type: "\2611 ";
+}
+
+#skills li{
+    padding-left: 10px
+}
 
 
 
+.cv-side{
+    background-color: #073b4c;
+    border-radius: 10px
+}
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
+.cv-container{
+    display: grid;
+    justify-content: start;
+    grid-template-columns: auto auto;
+    align-items: center;
+    row-gap: 20px;
+    column-gap: 20px;
+}
 
+.year{
+    text-align: center;
+    font-size: small;
+    line-height: 100%;
+}
+
+</style>
+<div class="cv-wrapper">
+<div>
+<h2 id="formal-edu" class="anchored">
+<i class="fa-solid fa-graduation-cap fa-fw" aria-label="graduation-cap"></i> Formal Education
+</h2>
+<div class="cv-container">
+<div class="year">
+2017<br>I<br>2014
 </div>
-<div class="listing-no-matching d-none">
-No matching items
+<div>
+Master of Science ZFH in Life Sciences, Specialisation in Natural Ressource Sciences @ ZHAW
 </div>
-</div></main> <!-- /main -->
+<div class="year">
+2013<br>I<br>2009
+</div>
+<div>
+Bachelor of Science in Natural Resource Sciences, Specialisation in Nature Management @ ZHAW
+</div>
+<div class="year">
+2006<br>I<br>2003
+</div>
+<div>
+Commercial apprenticeship (Kaufmännische Lehre mit Berufsmatura) @ AXA Winterthur
+</div>
+</div>
+<h2 class="anchored">
+<i class="fa-solid fa-building fa-fw" aria-label="building"></i> Employment
+</h2>
+<div class="cv-container">
+<div class="year">
+now<br>I<br>2019
+</div>
+<div>
+Research fellow @ ZHAW
+</div>
+<div class="year">
+2016<br>I<br>2019
+</div>
+<div>
+Research assistant @ ZHAW
+</div>
+<div class="year">
+2021<br>I<br>2013
+</div>
+<div>
+Deputy project lead (part time) @ Wiesel &amp; Co am Zimmerberg
+</div>
+<div class="year">
+2006<br>I<br>2008
+</div>
+<div>
+Cunsultant aviation insurances @ AXA Winterthur Aviation insurances
+</div>
+</div>
+</div>
+<div class="cv-side">
+<div style="text-align: center">
+<img id="portrait" src="images/rata_print-sw.jpg">
+</div>
+<div id="skills">
+<ul>
+<li>
+Geodata analysis, modelling and visualisation with R, Python, ArcGIS, QGIS, PostGIS, gdal, ogr2ogr
+</li>
+<li>
+Spatial-R: sf, terra, sp, raster
+</li>
+<li>
+Spatial-Py: geopandas, rasterio, gdal
+</li>
+<li>
+Project management in various roles (project lead, supervisor, collaborator)
+</li>
+<li>
+Reproducible reporting with RMarkdown, Jupyter Notebook, HTML, CSS, LaTeX
+</li>
+<li>
+Regex, Webscraping, Network analysis, git / GitHub, CI/CD, bash
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

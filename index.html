@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -102,6 +39,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -121,20 +60,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Ratnaweera-XYZ - Ratnaweera XYZ">
-<meta property="og:description" content="You can find me on GitHub, Twitter, Mastodon and StackOverflow. Apropos StackOverflow, here is a live updating visualization of my Top Tags:">
+<meta property="og:description" content="I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW).">
 <meta property="og:site-name" content="Ratnaweera-XYZ">
 <meta name="twitter:title" content="Ratnaweera-XYZ - Ratnaweera XYZ">
-<meta name="twitter:description" content="You can find me on GitHub, Twitter, Mastodon and StackOverflow. Apropos StackOverflow, here is a live updating visualization of my Top Tags:">
+<meta name="twitter:description" content="I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW).">
 <meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -155,27 +93,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page">
- <span class="menu-text">Home</span></a>
+ <span class="menu-text"><i class="fa-solid fa-house fa-fw" aria-label="house"></i> Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blog.html">
- <span class="menu-text">Blog</span></a>
+ <span class="menu-text"><i class="fa-solid fa-rss fa-fw" aria-label="rss"></i> Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./teaching.html">
- <span class="menu-text">Teaching Materials</span></a>
+ <span class="menu-text"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Teaching</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-apps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Apps</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-tablet-screen-button--apps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-solid fa-tablet-screen-button" aria-label="tablet-screen-button"></i> Apps</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-apps">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-tablet-screen-button--apps">    
         <li>
     <a class="dropdown-item" href="./apps/geodienste-kantone/index.html">
  <span class="dropdown-text">Geodienste-Monitor</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./apps/stackexchange/index.html">
+ <span class="dropdown-text">StackExchange-Tags</span></a>
+  </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./CV.html">
+ <span class="menu-text"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> About</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -185,6 +131,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/NRatnaweera"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ratnaweera"><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://stackoverflow.com/users/4139249/ratnanil"><i class="bi bi-stack-overflow" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -224,20 +180,17 @@ h1{
   display: none
 }
 
-/* body{
-  background-image: url("images/pexels-kasuma-134074.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-} */
+.emphasize>p{
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
 
 .emphasize{
-  /* text-align: center; */
-  color: #073642;
-  background-color: rgba(178,193,196, 0.6);
+  background-color: #073b4c;
   border-radius: 10px;
-  padding: 10px;
-  margin: 50px 0 50px 0;
+  padding: 10px;  
+  margin: 10px -10px 10px -10px;
+  box-shadow: 0 4px 8px 0;
 }
 
 .emphasize a{
@@ -246,160 +199,17 @@ h1{
 }
 
 </style>
-<div>
 <h3 style="text-align: center" class="anchored">
 Hi there 👋
 </h3>
-<div style="float: right; width: 150px">
-<p><img src="images/portrait.jpeg" style="max-width: 100px;   border-radius: 50%;"></p>
-</div>
-<p>
-My name is Nils Ratnaweera and I’m a Research Fellow at the Zurich University of Applied Sciences. I love my Data Scientist job of working with environmental data using mainly open source tools such as <code>R</code>, <code>python</code>, <code>gdal</code>, <code>ogr2ogr</code>, <code>PostgresSQL</code>, <code>PostGIS</code>.
-</p>
-</div>
-<!-- I understand something better once I try to explain it. This is one of my motivations to start blogging: to learn more on the topics I'm interested in.  -->
-<!-- Also, writing helps me complete the thought process of half baked ideas. And last but not least, I want to join the vibrant community of `R` users, open source enthusiasts, spatial people, python lovers, linux advocates and data scientists. -->
+<p>I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW). I love my job as a data scientist, with environmental data using mainly open source tools such as <code>R</code>, <code>python</code>, <code>gdal</code>, <code>ogr2ogr</code>, <code>PostgresSQL</code>, <code>PostGIS</code>.</p>
 <div class="emphasize">
-<strong>UPDATE</strong>: I’m interested in collaborating on projects in and also outside my (part-time) day job. If you have a project that you think I can help with, please get in touch. I’m also available for short-term contract work. You can <a href="mailto:rata@zhaw.ch">email me</a> or directly book a slot 📆 <a href="https://calendly.com/rata-zhaw/30min">here</a>
-</div>
-<p>You can find me on <a href="https://github.com/ratnanil/">GitHub</a>, <a href="https://twitter.com/NRatnaweera">Twitter</a>, <a href="https://fosstodon.org/@ratnaweera">Mastodon</a> and <a href="https://stackoverflow.com/users/4139249/ratnanil">StackOverflow</a>. Apropos StackOverflow, here is a live updating visualization of my Top Tags:</p>
-<section id="my-top-tags-on-stackoverflow.com-and-gis.stackexchange.com" class="level4">
-<h4 class="anchored" data-anchor-id="my-top-tags-on-stackoverflow.com-and-gis.stackexchange.com">My Top Tags on stackoverflow.com and gis.stackexchange.com</h4>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="68" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 67;"><span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>dateTime <span class="op">=</span> {</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> current <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> cDate <span class="op">=</span> current<span class="op">.</span><span class="fu">getFullYear</span>() <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> (current<span class="op">.</span><span class="fu">getMonth</span>() <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> current<span class="op">.</span><span class="fu">getDate</span>()</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> cTime <span class="op">=</span> current<span class="op">.</span><span class="fu">getHours</span>() <span class="op">+</span> <span class="st">":"</span> <span class="op">+</span> current<span class="op">.</span><span class="fu">getMinutes</span>() <span class="op">+</span> <span class="st">":"</span> <span class="op">+</span> current<span class="op">.</span><span class="fu">getSeconds</span>()</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span>(cDate <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> cTime)</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="78" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 77;"><span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="fu">md</span><span class="vs">`(live data from </span><span class="sc">${</span>dateTime<span class="sc">}</span><span class="vs">, acquired with the [stackexchange API](https://api.stackexchange.com), visualized with *Observable Plot*)`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-2" data-nodetype="expression">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="83" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 82;"><span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="87" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 86;"><span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>stackoverflow <span class="op">=</span> <span class="cf">await</span> d3<span class="op">.</span><span class="fu">json</span>(<span class="st">"https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow"</span>)</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co">//stackoverflow = FileAttachment("top-tags-stackoverflow.json").json()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-4" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="92" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 91;"><span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="co">//gis = FileAttachment("top-tags-gis-stackexchange.json").json()</span></span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>gis <span class="op">=</span> <span class="cf">await</span> d3<span class="op">.</span><span class="fu">json</span>(<span class="st">"https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-5" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="98" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 97;"><span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>gis2 <span class="op">=</span> gis<span class="op">.</span><span class="at">items</span><span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(x){</span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [</span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">source</span><span class="op">:</span> <span class="st">"gis.stackexchange.com"</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"Answer"</span><span class="op">,</span> <span class="dt">tag</span><span class="op">:</span> x<span class="op">.</span><span class="at">tag_name</span><span class="op">,</span> <span class="dt">score</span><span class="op">:</span> x<span class="op">.</span><span class="at">answer_score</span>}<span class="op">,</span></span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">source</span><span class="op">:</span> <span class="st">"gis.stackexchange.com"</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"Question"</span><span class="op">,</span> <span class="dt">tag</span><span class="op">:</span> x<span class="op">.</span><span class="at">tag_name</span><span class="op">,</span> <span class="dt">score</span><span class="op">:</span> x<span class="op">.</span><span class="at">question_score</span>}</span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">flat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-6" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="107" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 106;"><span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>stackoverflow2 <span class="op">=</span> stackoverflow<span class="op">.</span><span class="at">items</span><span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(x){</span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [</span>
-<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">source</span><span class="op">:</span> <span class="st">"stackoverflow.com"</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"Answer"</span><span class="op">,</span> <span class="dt">tag</span><span class="op">:</span> x<span class="op">.</span><span class="at">tag_name</span><span class="op">,</span> <span class="dt">score</span><span class="op">:</span> x<span class="op">.</span><span class="at">answer_score</span>}<span class="op">,</span></span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">source</span><span class="op">:</span> <span class="st">"stackoverflow.com"</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"Question"</span><span class="op">,</span> <span class="dt">tag</span><span class="op">:</span> x<span class="op">.</span><span class="at">tag_name</span><span class="op">,</span> <span class="dt">score</span><span class="op">:</span> x<span class="op">.</span><span class="at">question_score</span>}</span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">flat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-7" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="116" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 115;"><span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>stackexchange <span class="op">=</span> gis2<span class="op">.</span><span class="fu">concat</span>(stackoverflow2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-8" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="122" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>  <span class="dt">caption</span><span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Live data from the stackexchange restAPI, last update: </span><span class="sc">${</span>dateTime<span class="sc">}</span><span class="vs">&lt;br&gt;Visualized by Nils Ratnaweera&lt;/div&gt;`</span><span class="op">,</span></span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> width<span class="op">,</span></span>
-<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
-<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Score"</span></span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span>{</span>
-<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>  <span class="dt">domain</span><span class="op">:</span> {</span>
-<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> [<span class="st">"question_score"</span><span class="op">,</span><span class="st">"answer_score"</span>]</span>
-<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barX</span>(stackexchange<span class="op">,</span> </span>
-<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">groupY</span>({<span class="dt">x</span><span class="op">:</span> <span class="st">"sum"</span>}<span class="op">,</span>{</span>
-<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"tag"</span><span class="op">,</span> </span>
-<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"score"</span><span class="op">,</span> </span>
-<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"type"</span><span class="op">,</span></span>
-<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a>      <span class="dt">sort</span><span class="op">:</span> {<span class="dt">y</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
-<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>      <span class="dt">filter</span><span class="op">:</span> (i) <span class="kw">=&gt;</span> i<span class="op">.</span><span class="at">score</span> <span class="op">&gt;</span> <span class="dv">8</span></span>
-<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>      )<span class="op">,</span></span>
-<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
-<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {</span>
-<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a>    <span class="dt">backgroundColor</span><span class="op">:</span> <span class="st">"#073b4c"</span><span class="op">,</span></span>
-<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> <span class="st">"#ADB5BD"</span></span>
-<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-9" data-nodetype="expression">
-
-</div>
-</div>
+<p>Since my job at ZHAW is only part-time, I work as a freelance Data Scientist on the side. If you have a project that you think I can help with, please get in touch. I’m also available for short-term contract work. You can <a href="mailto:rata@zhaw.ch">email me</a> or directly book a slot 📆 <a href="https://calendly.com/rata-zhaw/30min">here</a></p>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
-<script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"dateTime = {\n  let current = new Date();\n  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()\n  let cTime = current.getHours() + \":\" + current.getMinutes() + \":\" + current.getSeconds()\n  return(cDate + ' ' + cTime)\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"md`(live data from ${dateTime}, acquired with the [stackexchange API](https://api.stackexchange.com), visualized with *Observable Plot*)`\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"d3 = require(\"d3\")\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"stackoverflow = await d3.json(\"https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow\")\n//stackoverflow = FileAttachment(\"top-tags-stackoverflow.json\").json()\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"//gis = FileAttachment(\"top-tags-gis-stackexchange.json\").json()\ngis = await d3.json(\"https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com\")\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"gis2 = gis.items.map(function(x){\n  return [\n    {source: \"gis.stackexchange.com\", type: \"Answer\", tag: x.tag_name, score: x.answer_score},\n    {source: \"gis.stackexchange.com\", type: \"Question\", tag: x.tag_name, score: x.question_score}\n  ]\n}).flat()\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"stackoverflow2 = stackoverflow.items.map(function(x){\n  return [\n    {source: \"stackoverflow.com\", type: \"Answer\", tag: x.tag_name, score: x.answer_score},\n    {source: \"stackoverflow.com\", type: \"Question\", tag: x.tag_name, score: x.question_score}\n  ]\n}).flat()\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"stackexchange = gis2.concat(stackoverflow2)\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"Plot.plot({\n  marginLeft: 100,\n  caption: html`<div>Live data from the stackexchange restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,\n  width: width,\n  y: {\n    label: \"\",\n  },\n  x: {\n    label: \"Score\"\n  },\n  color:{\n    legend: true\n  },\n  domain: {\n    color: [\"question_score\",\"answer_score\"]\n  },\n  marks: [\n    Plot.barX(stackexchange, \n    Plot.groupY({x: \"sum\"},{\n      y: \"tag\", \n      x: \"score\", \n      fill: \"type\",\n      sort: {y: \"x\", reverse: true},\n      filter: (i) => i.score > 8\n      })\n      ),\n  ],\n  style: {\n    backgroundColor: \"#073b4c\",\n    color: \"#ADB5BD\"\n  }\n})\n\n"}]}
-</script>
-<script type="module">
-window._ojs.paths.runtimeToDoc = "../..";
-window._ojs.paths.runtimeToRoot = "../..";
-window._ojs.paths.docToRoot = "";
-window._ojs.selfContained = false;
-window._ojs.runtime.interpretFromScriptTags();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

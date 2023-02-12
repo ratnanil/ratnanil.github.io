@@ -102,6 +102,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -142,6 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <body class="nav-fixed fullcontent">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
@@ -161,27 +164,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../index.html">
- <span class="menu-text">Home</span></a>
+ <span class="menu-text"><i class="fa-solid fa-house fa-fw" aria-label="house"></i> Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog.html">
- <span class="menu-text">Blog</span></a>
+ <span class="menu-text"><i class="fa-solid fa-rss fa-fw" aria-label="rss"></i> Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../teaching.html">
- <span class="menu-text">Teaching Materials</span></a>
+ <span class="menu-text"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Teaching</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-apps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Apps</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-tablet-screen-button--apps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-solid fa-tablet-screen-button" aria-label="tablet-screen-button"></i> Apps</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-apps">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-fa-tablet-screen-button--apps">    
         <li>
     <a class="dropdown-item" href="../../apps/geodienste-kantone/index.html">
  <span class="dropdown-text">Geodienste-Monitor</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../apps/stackexchange/index.html">
+ <span class="dropdown-text">StackExchange-Tags</span></a>
+  </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../CV.html">
+ <span class="menu-text"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> About</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -191,6 +202,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/NRatnaweera"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ratnaweera"><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://stackoverflow.com/users/4139249/ratnanil"><i class="bi bi-stack-overflow" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -413,34 +434,36 @@ Please wait a couple of seconds till data data is loaded from the API
 <div class="sourceCode cell-code hidden" id="cb11" data-startfrom="176" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 175;"><span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
 <span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a>  <span class="dt">caption</span><span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Live data from geodienste.ch restAPI, last update: </span><span class="sc">${</span>dateTime<span class="sc">}</span><span class="vs">&lt;br&gt;Visualized by Nils Ratnaweera&lt;/div&gt;`</span><span class="op">,</span></span>
 <span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> width<span class="op">,</span></span>
-<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> width<span class="op">,</span></span>
-<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> kantone_order<span class="op">,</span></span>
-<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Kanton →"</span><span class="op">,</span></span>
-<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>     }<span class="op">,</span></span>
-<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Anzahl Datensätze →"</span></span>
-<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
-<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>    <span class="dt">range</span><span class="op">:</span> [<span class="st">'#2b83ba'</span><span class="op">,</span><span class="st">'#abdda4'</span><span class="op">,</span><span class="st">'#ffffbf'</span><span class="op">,</span><span class="st">'#fdae61'</span><span class="op">,</span><span class="st">'#d7191c'</span>]<span class="op">,</span></span>
-<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="st">"swatches"</span><span class="op">,</span></span>
-<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Status"</span><span class="op">,</span></span>
-<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> publication_data_order</span>
-<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {</span>
-<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>    <span class="dt">backgroundColor</span><span class="op">:</span> <span class="st">"#073b4c"</span><span class="op">,</span></span>
-<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> <span class="st">"#ADB5BD"</span></span>
-<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barX</span>(flattedArray<span class="op">,</span> {</span>
-<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> </span>
-<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"canton"</span><span class="op">,</span> </span>
-<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"publication_data"</span><span class="op">,</span></span>
-<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#073b4c"</span><span class="op">,</span> </span>
-<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
-<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> width<span class="op">*</span><span class="fl">0.7</span><span class="op">,</span></span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> width<span class="op">*</span><span class="fl">0.2</span><span class="op">,</span></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginRight</span><span class="op">:</span> width<span class="op">*</span><span class="fl">0.2</span><span class="op">,</span></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> kantone_order<span class="op">,</span></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Kanton →"</span><span class="op">,</span></span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>     }<span class="op">,</span></span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Anzahl Datensätze →"</span></span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>    <span class="dt">range</span><span class="op">:</span> [<span class="st">'#2b83ba'</span><span class="op">,</span><span class="st">'#abdda4'</span><span class="op">,</span><span class="st">'#ffffbf'</span><span class="op">,</span><span class="st">'#fdae61'</span><span class="op">,</span><span class="st">'#d7191c'</span>]<span class="op">,</span></span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="st">"swatches"</span><span class="op">,</span></span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Status"</span><span class="op">,</span></span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> publication_data_order</span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {</span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a>    <span class="dt">backgroundColor</span><span class="op">:</span> <span class="st">"#073b4c"</span><span class="op">,</span></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> <span class="st">"#ADB5BD"</span></span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barX</span>(flattedArray<span class="op">,</span> {</span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> </span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"canton"</span><span class="op">,</span> </span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"publication_data"</span><span class="op">,</span></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#073b4c"</span><span class="op">,</span> </span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="expression">
 
@@ -453,7 +476,7 @@ Please wait a couple of seconds till data data is loaded from the API
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"html`<p>This visualization is a *live updating* version of <a href=\"blog/2021-12-01-opendata-per-canton/opendata-per-canton.html\">a static chart</a> I created quite a while ago. I am particularly proud of the live updating functionality. The data you are seeing below is from the very minute you've visited this site, i.e.: <span style=\"background-color: black; padding: 3px;\tfont-family: mono; font-size:small; border-radius: 3px\">${new Date(now).toString()}<span></p>`\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"d3 = require('d3')\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"geodienste = await d3.json(\"https://www.geodienste.ch/info/services.json?base_topics=av%2Cfixpunkte%2Cfruchtfolgeflaechen%2Cgefahrenkarten%2Ckantonale_ausnahmetransportrouten%2Ckataster_belasteter_standorte%2Clwb_bewirtschaftungseinheit%2Clwb_biodiversitaetsfoerderflaechen%2Clwb_elemente_mit_landschaftsqualitaet%2Clwb_nutzungsflaechen%2Clwb_perimeter_ln_sf%2Clwb_perimeter_terrassenreben%2Clwb_rebbaukataster%2Cleitungskataster%2Cnpl_laermempfindlichkeitsstufen%2Cnpl_nutzungsplanung%2Cplanerischer_gewaesserschutz%2Crevitalisierung_seen%2Cplanungszonen%2Cnpl_waldgrenzen%2Cstromversorgungssicherheit_netzgebiete%2Cnpl_waldabstandslinien%2Cwaldreservate%2Cwildruhezonen&cantons=AG%2CAI%2CAR%2CBE%2CBL%2CBS%2CFR%2CGE%2CGL%2CGR%2CJU%2CLU%2CNE%2CNW%2COW%2CSG%2CSH%2CSO%2CSZ%2CTG%2CTI%2CUR%2CVD%2CVS%2CZG%2CZH&restricted_topics=true&language=de\")\n//ignored the following datasets (since there is not data on these for most cantons)\n//luftbild\n//naturereigniskataster\n//richtplanung_erneuerbare_energien\n\n//the folowing character string determins a break: %2C\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"// sort the cantons by the most amount of datasets of type \"frei erhältlich\", then by Registrierung erforderlich and so on\n\ngeodienste_canton_sort = {\n\n  let aggregated = Array()\n\n  let idx = -1\n  geodienste.services.forEach(i => {\n    idx +=1\n    const canton = i.canton\n    const publication_data = i.publication_data\n    const idx_canton = aggregated.map(x  => x.canton).indexOf(canton)\n    let score\n    if (publication_data == \"Frei erhältlich\") {\n      score = 1000000\n    } else if(publication_data == \"Registrierung erforderlich\"){\n      score = 10000\n    } else if(publication_data == \"Freigabe erforderlich\"){\n      score = 100\n    } else{\n      score = 1\n    }\n      \n    if(idx_canton == -1){\n\n      aggregated[idx] = {canton: canton, score: score}\n     \n    } else{\n      aggregated[idx_canton][\"score\"] += score \n      \n    }\n  \n  });\n\n  return aggregated\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"// from this sorted array, only extract the order\nkantone_order = geodienste_canton_sort.sort((a,b) => b.score - a.score).map(x => x.canton)\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"// group the array by canton\ngroupedArray = geodienste.services.reduce((groups, item) => {\n  const group = groups.find(g => g.canton === item.canton);\n  if (!group) {\n    groups.push({\n      canton: item.canton,\n      items: [item],\n    });\n  } else {\n    group.items.push(item);\n  }\n  return groups;\n}, []);\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"// manually define the order of the datasets\npublication_data_order = [\"Frei erhältlich\", \"Registrierung erforderlich\", \"Freigabe erforderlich\", \"Im Aufbau\", \"keine Daten\"]\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"// sort the array within each canton by the publication data order\nsortedArray = groupedArray.map(group => {\n  return (group.items.sort((a, b) => publication_data_order.indexOf(a.publication_data) - publication_data_order.indexOf(b.publication_data)))\n});\n\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"// flatten the result again (ungroup)\nflattedArray = sortedArray.flat()\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"dateTime = {\n  let current = new Date();\n  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()\n  let cTime = current.getHours() + \":\" + current.getMinutes() + \":\" + current.getSeconds()\n  return(cDate + ' ' + cTime)\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"Plot.plot({\n  caption: html`<div>Live data from geodienste.ch restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,\n  width: width,\n  height: width,\n  y: {\n    domain: kantone_order,\n    label: \"Kanton →\",\n     },\n  x: {\n    label: \"Anzahl Datensätze →\"\n  },\n  color: {\n    range: ['#2b83ba','#abdda4','#ffffbf','#fdae61','#d7191c'],\n    legend: \"swatches\",\n    label: \"Status\",\n    domain: publication_data_order\n  },\n  style: {\n    backgroundColor: \"#073b4c\",\n    color: \"#ADB5BD\"\n  },\n  marks: [\n    Plot.barX(flattedArray, {\n      x: 1, \n      y: \"canton\", \n      fill: \"publication_data\",\n      stroke: \"#073b4c\", \n      strokeWidth: 2\n    }),\n  ]\n})\n"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"html`<p>This visualization is a *live updating* version of <a href=\"blog/2021-12-01-opendata-per-canton/opendata-per-canton.html\">a static chart</a> I created quite a while ago. I am particularly proud of the live updating functionality. The data you are seeing below is from the very minute you've visited this site, i.e.: <span style=\"background-color: black; padding: 3px;\tfont-family: mono; font-size:small; border-radius: 3px\">${new Date(now).toString()}<span></p>`\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"d3 = require('d3')\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"geodienste = await d3.json(\"https://www.geodienste.ch/info/services.json?base_topics=av%2Cfixpunkte%2Cfruchtfolgeflaechen%2Cgefahrenkarten%2Ckantonale_ausnahmetransportrouten%2Ckataster_belasteter_standorte%2Clwb_bewirtschaftungseinheit%2Clwb_biodiversitaetsfoerderflaechen%2Clwb_elemente_mit_landschaftsqualitaet%2Clwb_nutzungsflaechen%2Clwb_perimeter_ln_sf%2Clwb_perimeter_terrassenreben%2Clwb_rebbaukataster%2Cleitungskataster%2Cnpl_laermempfindlichkeitsstufen%2Cnpl_nutzungsplanung%2Cplanerischer_gewaesserschutz%2Crevitalisierung_seen%2Cplanungszonen%2Cnpl_waldgrenzen%2Cstromversorgungssicherheit_netzgebiete%2Cnpl_waldabstandslinien%2Cwaldreservate%2Cwildruhezonen&cantons=AG%2CAI%2CAR%2CBE%2CBL%2CBS%2CFR%2CGE%2CGL%2CGR%2CJU%2CLU%2CNE%2CNW%2COW%2CSG%2CSH%2CSO%2CSZ%2CTG%2CTI%2CUR%2CVD%2CVS%2CZG%2CZH&restricted_topics=true&language=de\")\n//ignored the following datasets (since there is not data on these for most cantons)\n//luftbild\n//naturereigniskataster\n//richtplanung_erneuerbare_energien\n\n//the folowing character string determins a break: %2C\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"// sort the cantons by the most amount of datasets of type \"frei erhältlich\", then by Registrierung erforderlich and so on\n\ngeodienste_canton_sort = {\n\n  let aggregated = Array()\n\n  let idx = -1\n  geodienste.services.forEach(i => {\n    idx +=1\n    const canton = i.canton\n    const publication_data = i.publication_data\n    const idx_canton = aggregated.map(x  => x.canton).indexOf(canton)\n    let score\n    if (publication_data == \"Frei erhältlich\") {\n      score = 1000000\n    } else if(publication_data == \"Registrierung erforderlich\"){\n      score = 10000\n    } else if(publication_data == \"Freigabe erforderlich\"){\n      score = 100\n    } else{\n      score = 1\n    }\n      \n    if(idx_canton == -1){\n\n      aggregated[idx] = {canton: canton, score: score}\n     \n    } else{\n      aggregated[idx_canton][\"score\"] += score \n      \n    }\n  \n  });\n\n  return aggregated\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"// from this sorted array, only extract the order\nkantone_order = geodienste_canton_sort.sort((a,b) => b.score - a.score).map(x => x.canton)\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"// group the array by canton\ngroupedArray = geodienste.services.reduce((groups, item) => {\n  const group = groups.find(g => g.canton === item.canton);\n  if (!group) {\n    groups.push({\n      canton: item.canton,\n      items: [item],\n    });\n  } else {\n    group.items.push(item);\n  }\n  return groups;\n}, []);\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"// manually define the order of the datasets\npublication_data_order = [\"Frei erhältlich\", \"Registrierung erforderlich\", \"Freigabe erforderlich\", \"Im Aufbau\", \"keine Daten\"]\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"// sort the array within each canton by the publication data order\nsortedArray = groupedArray.map(group => {\n  return (group.items.sort((a, b) => publication_data_order.indexOf(a.publication_data) - publication_data_order.indexOf(b.publication_data)))\n});\n\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"// flatten the result again (ungroup)\nflattedArray = sortedArray.flat()\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"dateTime = {\n  let current = new Date();\n  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()\n  let cTime = current.getHours() + \":\" + current.getMinutes() + \":\" + current.getSeconds()\n  return(cDate + ' ' + cTime)\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"Plot.plot({\n  caption: html`<div>Live data from geodienste.ch restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,\n  width: width,\n  height: width*0.7,\n  marginLeft: width*0.2,\n  marginRight: width*0.2,\n  y: {\n    domain: kantone_order,\n    label: \"Kanton →\",\n     },\n  x: {\n    label: \"Anzahl Datensätze →\"\n  },\n  color: {\n    range: ['#2b83ba','#abdda4','#ffffbf','#fdae61','#d7191c'],\n    legend: \"swatches\",\n    label: \"Status\",\n    domain: publication_data_order\n  },\n  style: {\n    backgroundColor: \"#073b4c\",\n    color: \"#ADB5BD\"\n  },\n  marks: [\n    Plot.barX(flattedArray, {\n      x: 1, \n      y: \"canton\", \n      fill: \"publication_data\",\n      stroke: \"#073b4c\", \n      strokeWidth: 2\n    }),\n  ]\n})\n"}]}
 </script>
 <script type="module">
 window._ojs.paths.runtimeToDoc = "../../apps/geodienste-kantone";
