@@ -1,0 +1,109 @@
+<style>
+
+
+.cv-wrapper{
+    display: grid;
+    grid-template-columns: 60% 40% ;
+}
+
+#formal-edu{
+    margin-top: 0rem 
+}
+
+#portrait{
+    width: 75%;
+    border-radius: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+#skills{
+    padding: 10px
+}
+
+#skills > ul{
+    list-style-type: "\2611 ";
+}
+
+#skills li{
+    padding-left: 10px
+}
+
+
+
+.cv-side{
+    background-color: #073b4c;
+    border-radius: 10px
+}
+
+.cv-container{
+    display: grid;
+    justify-content: start;
+    grid-template-columns: auto auto;
+    align-items: center;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+.year{
+    text-align: center;
+    font-size: small;
+    line-height: 100%;
+}
+
+</style>
+
+<div class="cv-wrapper">
+<div>
+
+<h2 id="formal-edu"> {{< fa graduation-cap size=fw >}} Formal Education</h2>
+
+
+
+<div class="cv-container">
+
+<div class="year">2017<br>I<br>2014</div>
+<div>Master of Science ZFH in Life Sciences, Specialisation in Natural Ressource Sciences @ ZHAW </div>
+<div class="year">2013<br>I<br>2009</div>   
+<div>Bachelor of Science in Natural Resource Sciences, Specialisation in Nature Management @ ZHAW </div>
+<div class="year">2006<br>I<br>2003</div>
+<div>Commercial apprenticeship (Kaufmännische Lehre mit Berufsmatura) @ AXA Winterthur</div>
+
+</div>
+
+
+
+
+<h2> {{< fa building size=fw >}} Employment</h2>
+
+<div class="cv-container">
+<div class="year">now<br>I<br>2019</div>
+<div>Research fellow @ ZHAW</div>
+<div class="year">2016<br>I<br>2019</div>
+<div>Research assistant @ ZHAW</div>
+<div class="year">2021<br>I<br>2013</div>
+<div>Deputy project lead (part time) @ Wiesel & Co am Zimmerberg</div>
+<div class="year">2006<br>I<br>2008</div>
+<div>Cunsultant aviation insurances @ AXA Winterthur Aviation insurances</div>
+</div>
+
+</div>
+
+<div class="cv-side">
+
+<div style="text-align: center"><img id="portrait" src="images/rata_print-sw.jpg"> </div>
+
+<div id="skills">
+<ul>
+<li>Geodata analysis, modelling and visualisation with R, Python, ArcGIS, QGIS, PostGIS, gdal, ogr2ogr</li>
+<li>Spatial-R: sf, terra, sp, raster</li>
+<li>Spatial-Py: geopandas, rasterio, gdal</li>
+<li>Project management in various roles (project lead, supervisor, collaborator)</li>
+<li>Reproducible reporting with RMarkdown, Jupyter Notebook, HTML, CSS, LaTeX</li>
+<li>Regex, Webscraping, Network analysis, git / GitHub, CI/CD, bash</li>
+</ul>
+
+</div>
+</div>
+
+</div>

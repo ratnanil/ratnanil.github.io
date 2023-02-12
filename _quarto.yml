@@ -11,21 +11,31 @@ website:
     logo: images/mylogo.png
     search: true
     left:
-      - text: "Home"
+      - text: "{{< fa house size=fw >}} Home"
         file: index.qmd
-      - text: "Blog"
+      - text: "{{< fa rss size=fw >}} Blog"
         file: blog.qmd
-      - text: "Teaching Materials"
+      - text: "{{< fa person-chalkboard >}} Teaching"
         file: teaching.qmd
-      - text: "Apps"
+      - text: "{{< fa tablet-screen-button >}} Apps"
         menu:
          - text: "Geodienste-Monitor"
-           file: "apps/geodienste-kantone/index.qmd"
+           file: apps/geodienste-kantone/index.qmd
+         - text: "StackExchange-Tags"
+           file: apps/stackexchange/index.qmd
+      - text: "{{< fa feather-pointed >}} About"
+        file: CV.qmd
+      # - text: "{{< fa hammer >}} Services"
+      #   file: "services.qmd"
     right: 
       - href: github.com/ratnanil/
         icon: github
       - href: https://twitter.com/NRatnaweera
         icon: twitter
+      - href: https://fosstodon.org/@ratnaweera
+        icon: mastodon
+      - href: https://stackoverflow.com/users/4139249/ratnanil
+        icon: stack-overflow
   page-footer: 
     center: '"The time has come", the Walrus said, "To talk of many things.." - From The Walrus and the Carpenter by Lewis Carroll'
     

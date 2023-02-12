@@ -3,38 +3,71 @@ title: "Teaching Materials"
 output: distill::distill_article
 ---
 
-Most of our teaching materials are available online on github repos. Check them out!
+<style>
+.teaching-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 20px;
+  column-gap: 10px;
+}
 
-<table cellpadding="10" border = "0">
-  <tr>
-    <td><img src = "images/arc2r.svg" width="120px"></td>
-    <td>
-    An introduction to Spatial R for ArcGIS users <br>
-    <a href="https://arc2r.github.io/book">arc2r.github.io/book</a>
-  </tr>
-  <tr>
-    <td><img src = "images/coding_in_GIS.png" width="120px"></td>
-    <td>
-    An introduction to GIS in Python for Environmental Scientists (Bachelor Students) <br>
-    <a href="https://modul-agi.github.io/">modul-agi.github.io</a>
-    </td> 
-  </tr>
-  <tr>
-    <td><img src = "images/research-methods.png" width="120px"></td>
-    <td>
-    Teaching R, the tidyverse, data processing, data visualization and statistics  <br>
-    <a href="https://researchmethods-zhaw.github.io/">researchmethods-zhaw.github.io</a>
-    </td> 
-  </tr>
+.teaching-item{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  column-gap: 20px;
+  box-shadow: 0 4px 8px 0;
+  height: 160px;
+  align-items: center;
+  justify-items: center;
+  padding: 15px;
+}
 
-  <tr>
-    <td><img src = "images/patterns-and-trends.png" width="120px"></td>
-    <td>
-    Computational Movement Analysis: Detecting Patterns and Trends in Environmental Data. A course taught by Prof. Dr. Patrick Laube, I was responsible for creating the R-exercises. <br>
-    <a href="https://computationalmovementanalysis.github.io/">computationalmovementanalysis.github.io</a>
-    </td> 
-  </tr>
-  </tr>
-</table>
+.teaching-item:hover{
+  background-color: #073b4c;
+}
 
+.teaching-item > img{
+  float: left;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  
+}
+
+</style>
+
+I'm significantly involved in teaching in the following courses, which are all awailable on github. Check them out!
+
+<div class="teaching-container">
+
+<div class="teaching-item">
+<img src = "images/arc2r.svg">
+<div>
+An introduction to Spatial R for ArcGIS users <br>
+{{< fa link >}} <a href="https://arc2r.github.io/book" target="_blank">arc2r.github.io/book</a>
+</div>
+</div>
+<div class="teaching-item">
+<img src = "images/coding_in_GIS2_fixed.png">
+<div>
+An introduction to GIS in Python for Environmental Scientists (Bachelor Students)<br>
+{{< fa link >}} <a href="https://modul-agi.github.io/" target="_blank">modul-agi.github.io</a>
+
+</div>
+</div>
+<div class="teaching-item">
+<img src = "images/research-methods.png">
+<div>
+Teaching R, data processing, data visualization and statistics<br>
+{{< fa link >}} <a href="https://researchmethods-zhaw.github.io/" target="_blank">researchmethods-zhaw.github.io</a>
+</div>
+</div>
+<div class="teaching-item">
+<img src = "images/patterns-and-trends2.png">
+<div>
+Exercises for Computational Movement Analysis<br>
+{{< fa link >}} <a href="https://computationalmovementanalysis.github.io/" target="_blank">computational-movementanalysis.github.io</a>
+</div>
+</div>
+</div>
 

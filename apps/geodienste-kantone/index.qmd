@@ -177,7 +177,9 @@ dateTime = {
 Plot.plot({
   caption: html`<div>Live data from geodienste.ch restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,
   width: width,
-  height: width,
+  height: width*0.7,
+  marginLeft: width*0.2,
+  marginRight: width*0.2,
   y: {
     domain: kantone_order,
     label: "Kanton →",

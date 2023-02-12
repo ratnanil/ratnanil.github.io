@@ -1,8 +1,6 @@
 ---
 title: "Ratnaweera XYZ"
 title-block-banner: false
-execute:
-  echo: false
 ---
 
 <style>
@@ -10,20 +8,17 @@ h1{
   display: none
 }
 
-/* body{
-  background-image: url("images/pexels-kasuma-134074.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-} */
+.emphasize>p{
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
 
 .emphasize{
-  /* text-align: center; */
-  color: #073642;
-  background-color: rgba(178,193,196, 0.6);
+  background-color: #073b4c;
   border-radius: 10px;
-  padding: 10px;
-  margin: 50px 0 50px 0;
+  padding: 10px;  
+  margin: 10px -10px 10px -10px;
+  box-shadow: 0 4px 8px 0;
 }
 
 .emphasize a{
@@ -33,124 +28,14 @@ h1{
 
 </style>
 
-<div>
 
 <h3 style="text-align: center"> Hi there 👋  </h3>
 
-<div style = "float: right; width: 150px">
-<img src = "images/portrait.jpeg" style = "max-width: 100px;   border-radius: 50%;">
+
+I'm Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW). I love my job as a data scientist, with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
+
+<div class="emphasize">
+Since my job at ZHAW is only part-time, I work as a freelance Data Scientist on the side. If you have a project that you think I can help with, please get in touch. I'm also available for short-term contract work. You can [email me](mailto:rata@zhaw.ch) or directly book a slot 📆 [here](https://calendly.com/rata-zhaw/30min)
 </div>
-<p>
-My name is Nils Ratnaweera and I'm a Research Fellow at the Zurich University of Applied Sciences. I love my Data Scientist job of working with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
-</p>
-</div>
 
 
-
-
-<!-- I understand something better once I try to explain it. This is one of my motivations to start blogging: to learn more on the topics I'm interested in.  -->
-
-<!-- Also, writing helps me complete the thought process of half baked ideas. And last but not least, I want to join the vibrant community of `R` users, open source enthusiasts, spatial people, python lovers, linux advocates and data scientists. -->
-
-
-
-
-<div class="emphasize">**UPDATE**: I'm interested in collaborating on projects in and also outside my (part-time) day job. If you have a project that you think I can help with, please get in touch. I'm also available for short-term contract work. You can [email me](mailto:rata@zhaw.ch) or directly book a slot 📆 [here](https://calendly.com/rata-zhaw/30min)</div>
-
-
-
-You can find me on [GitHub](https://github.com/ratnanil/), [Twitter](https://twitter.com/NRatnaweera), [Mastodon](https://fosstodon.org/@ratnaweera) and [StackOverflow](https://stackoverflow.com/users/4139249/ratnanil). Apropos StackOverflow, here is a live updating visualization of my Top Tags:
-
-
-#### My Top Tags on stackoverflow.com and gis.stackexchange.com
-
-
-```{ojs}
-dateTime = {
-  let current = new Date();
-  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()
-  let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds()
-  return(cDate + ' ' + cTime)
-}
-
-```
-
-```{ojs}
-md`(live data from ${dateTime}, acquired with the [stackexchange API](https://api.stackexchange.com), visualized with *Observable Plot*)`
-```
-
-
-```{ojs}
-d3 = require("d3")
-```
-
-```{ojs}
-stackoverflow = await d3.json("https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow")
-//stackoverflow = FileAttachment("top-tags-stackoverflow.json").json()
-```
-
-```{ojs}
-//gis = FileAttachment("top-tags-gis-stackexchange.json").json()
-gis = await d3.json("https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com")
-```
-
-
-```{ojs}
-gis2 = gis.items.map(function(x){
-  return [
-    {source: "gis.stackexchange.com", type: "Answer", tag: x.tag_name, score: x.answer_score},
-    {source: "gis.stackexchange.com", type: "Question", tag: x.tag_name, score: x.question_score}
-  ]
-}).flat()
-```
-
-```{ojs}
-stackoverflow2 = stackoverflow.items.map(function(x){
-  return [
-    {source: "stackoverflow.com", type: "Answer", tag: x.tag_name, score: x.answer_score},
-    {source: "stackoverflow.com", type: "Question", tag: x.tag_name, score: x.question_score}
-  ]
-}).flat()
-```
-
-```{ojs}
-stackexchange = gis2.concat(stackoverflow2)
-```
-
-
-
-```{ojs}
-Plot.plot({
-  marginLeft: 100,
-  caption: html`<div>Live data from the stackexchange restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,
-  width: width,
-  y: {
-    label: "",
-  },
-  x: {
-    label: "Score"
-  },
-  color:{
-    legend: true
-  },
-  domain: {
-    color: ["question_score","answer_score"]
-  },
-  marks: [
-    Plot.barX(stackexchange, 
-    Plot.groupY({x: "sum"},{
-      y: "tag", 
-      x: "score", 
-      fill: "type",
-      sort: {y: "x", reverse: true},
-      filter: (i) => i.score > 8
-      })
-      ),
-  ],
-  style: {
-    backgroundColor: "#073b4c",
-    color: "#ADB5BD"
-  }
-})
-
-```

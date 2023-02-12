@@ -1,0 +1,96 @@
+---
+title: My Top Tags on stackoverflow.com and gis.stackexchange.com
+execute:
+  echo: false
+---
+
+
+```{ojs}
+dateTime = {
+  let current = new Date();
+  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()
+  let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds()
+  return(cDate + ' ' + cTime)
+}
+
+```
+
+```{ojs}
+md`(live data from ${dateTime}, acquired with the [stackexchange API](https://api.stackexchange.com), visualized with *Observable Plot*)`
+```
+
+
+```{ojs}
+d3 = require("d3")
+```
+
+```{ojs}
+stackoverflow = await d3.json("https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow")
+//stackoverflow = FileAttachment("top-tags-stackoverflow.json").json()
+```
+
+```{ojs}
+//gis = FileAttachment("top-tags-gis-stackexchange.json").json()
+gis = await d3.json("https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com")
+```
+
+
+```{ojs}
+gis2 = gis.items.map(function(x){
+  return [
+    {source: "gis.stackexchange.com", type: "Answer", tag: x.tag_name, score: x.answer_score},
+    {source: "gis.stackexchange.com", type: "Question", tag: x.tag_name, score: x.question_score}
+  ]
+}).flat()
+```
+
+```{ojs}
+stackoverflow2 = stackoverflow.items.map(function(x){
+  return [
+    {source: "stackoverflow.com", type: "Answer", tag: x.tag_name, score: x.answer_score},
+    {source: "stackoverflow.com", type: "Question", tag: x.tag_name, score: x.question_score}
+  ]
+}).flat()
+```
+
+```{ojs}
+stackexchange = gis2.concat(stackoverflow2)
+```
+
+
+
+```{ojs}
+Plot.plot({
+  marginLeft: 100,
+  caption: html`<div>Live data from the stackexchange restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,
+  width: width,
+  y: {
+    label: "",
+  },
+  x: {
+    label: "Score"
+  },
+  color:{
+    legend: true
+  },
+  domain: {
+    color: ["question_score","answer_score"]
+  },
+  marks: [
+    Plot.barX(stackexchange, 
+    Plot.groupY({x: "sum"},{
+      y: "tag", 
+      x: "score", 
+      fill: "type",
+      sort: {y: "x", reverse: true},
+      filter: (i) => i.score > 8
+      })
+      ),
+  ],
+  style: {
+    backgroundColor: "#073b4c",
+    color: "#ADB5BD"
+  }
+})
+
+```
