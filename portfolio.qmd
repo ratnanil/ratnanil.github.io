@@ -55,7 +55,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
 
   <div>
     <img src="images/hermelin.png"> 
-    <p>Evaluationg Weasel Detections</p>
+    <p>Evaluating Weasel Detections</p>
     <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank"></a>
   </div>  
   <div>
