@@ -3,7 +3,14 @@
 
 .cv-wrapper{
     display: grid;
-    grid-template-columns: 60% 40% ;
+    grid-template-columns: minmax(300px, 2fr) minmax(200px, 1fr);
+    column-gap: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  .cv-wrapper {
+    grid-template-columns: 1fr;
+  }
 }
 
 #formal-edu{
@@ -12,6 +19,7 @@
 
 #portrait{
     width: 75%;
+    max-width: 200px;
     border-radius: 100%;
     text-align: center;
     padding: 20px;
@@ -41,8 +49,7 @@
     justify-content: start;
     grid-template-columns: auto auto;
     align-items: center;
-    row-gap: 20px;
-    column-gap: 20px;
+    grid-gap: 20px;
 }
 
 .year{
