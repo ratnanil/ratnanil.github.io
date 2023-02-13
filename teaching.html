@@ -125,22 +125,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="./github.com/ratnanil/"><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/NRatnaweera"><i class="bi bi-twitter" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://fosstodon.org/@ratnaweera"><i class="bi bi-mastodon" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://stackoverflow.com/users/4139249/ratnanil"><i class="bi bi-stack-overflow" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -178,12 +163,11 @@ ul.task-list li input[type="checkbox"] {
 <style>
 .teaching-container{
   display: grid;
-  grid-template-columns: 50% 50%;
-  row-gap: 20px;
-  column-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
 }
 
-.teaching-item{
+.teaching-container > *{
   display: grid;
   grid-template-columns: 30% 70%;
   column-gap: 20px;
@@ -191,11 +175,16 @@ ul.task-list li input[type="checkbox"] {
   height: 160px;
   align-items: center;
   justify-items: center;
-  padding: 15px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .teaching-item:hover{
   background-color: #073b4c;
+}
+
+.teaching-item:hover >img{
+    filter: blur(2px);
 }
 
 .teaching-item > img{
@@ -203,37 +192,42 @@ ul.task-list li input[type="checkbox"] {
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  
 }
 
 </style>
 <p>I’m significantly involved in teaching in the following courses, which are all awailable on github. Check them out!</p>
 <div class="teaching-container">
-<div class="teaching-item">
-<img src="images/arc2r.svg">
-<div>
-<p>An introduction to Spatial R for ArcGIS users <br> <i class="fa-solid fa-link" aria-label="link"></i> <a href="https://arc2r.github.io/book" target="_blank">arc2r.github.io/book</a></p>
+  <div class="teaching-item">
+      <img src="images/arc2r.svg">
+      <div>
+          An introduction to Spatial R for ArcGIS users <br>
+          <a href="https://arc2r.github.io/book" target="_blank">arc2r.github.io/book</a>
+      </div>
+  </div>
+  <div class="teaching-item">
+      <img src="images/coding_in_GIS2_fixed.png">
+      <div>
+          An introduction to GIS in Python for Environmental Scientists (Bachelor Students)<br>
+          <a href="https://modul-agi.github.io/" target="_blank">modul-agi.github.io</a>
+
+      </div>
+  </div>
+  <div class="teaching-item">
+      <img src="images/research-methods.png">
+      <div>
+          Teaching R, data processing, data visualization and statistics<br>
+          <a href="https://researchmethods-zhaw.github.io/" target="_blank">researchmethods-zhaw.github.io</a>
+      </div>
+  </div>
+  <div class="teaching-item">
+      <img src="images/patterns-and-trends2.png">
+      <div>
+          Exercises for Computational Movement Analysis<br>
+          <a href="https://computationalmovementanalysis.github.io/" target="_blank">computational-movementanalysis.github.io</a>
+      </div>
+  </div>
 </div>
-</div>
-<div class="teaching-item">
-<img src="images/coding_in_GIS2_fixed.png">
-<div>
-<p>An introduction to GIS in Python for Environmental Scientists (Bachelor Students)<br> <i class="fa-solid fa-link" aria-label="link"></i> <a href="https://modul-agi.github.io/" target="_blank">modul-agi.github.io</a></p>
-</div>
-</div>
-<div class="teaching-item">
-<img src="images/research-methods.png">
-<div>
-<p>Teaching R, data processing, data visualization and statistics<br> <i class="fa-solid fa-link" aria-label="link"></i> <a href="https://researchmethods-zhaw.github.io/" target="_blank">researchmethods-zhaw.github.io</a></p>
-</div>
-</div>
-<div class="teaching-item">
-<img src="images/patterns-and-trends2.png">
-<div>
-<p>Exercises for Computational Movement Analysis<br> <i class="fa-solid fa-link" aria-label="link"></i> <a href="https://computationalmovementanalysis.github.io/" target="_blank">computational-movementanalysis.github.io</a></p>
-</div>
-</div>
-</div>
+
 
 
 

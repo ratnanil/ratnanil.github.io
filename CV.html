@@ -119,22 +119,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="./github.com/ratnanil/"><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/NRatnaweera"><i class="bi bi-twitter" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://fosstodon.org/@ratnaweera"><i class="bi bi-mastodon" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://stackoverflow.com/users/4139249/ratnanil"><i class="bi bi-stack-overflow" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -159,7 +144,14 @@ ul.task-list li input[type="checkbox"] {
 
 .cv-wrapper{
     display: grid;
-    grid-template-columns: 60% 40% ;
+    grid-template-columns: minmax(300px, 2fr) minmax(200px, 1fr);
+    column-gap: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  .cv-wrapper {
+    grid-template-columns: 1fr;
+  }
 }
 
 #formal-edu{
@@ -168,6 +160,7 @@ ul.task-list li input[type="checkbox"] {
 
 #portrait{
     width: 75%;
+    max-width: 200px;
     border-radius: 100%;
     text-align: center;
     padding: 20px;
@@ -197,8 +190,7 @@ ul.task-list li input[type="checkbox"] {
     justify-content: start;
     grid-template-columns: auto auto;
     align-items: center;
-    row-gap: 20px;
-    column-gap: 20px;
+    grid-gap: 20px;
 }
 
 .year{
