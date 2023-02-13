@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ratnaweera-XYZ – portfolio</title>
+<title>Ratnaweera-XYZ - Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,42 +60,18 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: [],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Ratnaweera-XYZ - Portfolio">
+<meta property="og:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!">
+<meta property="og:site-name" content="Ratnaweera-XYZ">
+<meta name="twitter:title" content="Ratnaweera-XYZ - Portfolio">
+<meta name="twitter:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!">
+<meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 
 <div id="quarto-search-results"></div>
@@ -126,8 +100,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><i class="fa-solid fa-rss fa-fw" aria-label="rss"></i> Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html">
- <span class="menu-text"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Teaching</span></a>
+    <a class="nav-link active" href="./portfolio.html" aria-current="page">
+ <span class="menu-text"><i class="fa-solid fa-film" aria-label="film"></i> Portfolio</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-tablet-screen-button--apps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -162,27 +136,140 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Portfolio</h1>
 </div>
-<div class="listing-no-matching d-none">
-No matching items
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<style>
+
+.grid-research{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-gap: 20px;
+  text-align: center;
+  grid-auto-rows: 1fr;
+
+}
+
+.grid-research img{
+  width: 120px;
+  border-radius: 100%;
+
+}
+
+.grid-research > div{
+  box-shadow: 0 4px 8px 0;
+  border-radius: 20px;
+  padding-top: 10px;
+  position:relative;
+}
+
+
+.grid-research > div >a{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  display:flex;
+  justify-content:center;
+  align-items:center;"
+}
+
+
+
+</style>
+<p>Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!</p>
+
+<div class="grid-research">
+
+  <div>
+    <img src="images/hermelin.png"> 
+    <p>Evaluationg Weasel Detections</p>
+    <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/reh-strasse.png"> <!-- https://pixabay.com/photos/landscape-forest-trees-woods-road-2550393/ -->
+    <p>Forecasting Wildlife-Vehicle Collisions</p>
+    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/arc2r.svg"> 
+    <p>Spatial R for ArcGIS Users</p>
+    <a href="https://arc2r.github.io/book" target="_blank"></a>
+  </div>
+  <div>
+    <img src="images/coding_in_GIS2_fixed.png">
+    <p>Spatial Python for Bachelor Students</p>
+    <a href="https://modul-agi.github.io" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/research-methods.png">
+    <p>R for Master Students</p>
+    <a href="https://researchmethods-zhaw.github.io/" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/patterns-and-trends2.png">
+    <p>Spatial R for Master Students</p>
+    <a href="https://computationalmovementanalysis.github.io/" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/lidar.png">
+    <p>LIDAR to Detect Microhabitats</p>
+    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/tubecam_small.png">
+    <p>Detecting Weasels with "TubeCam"</p>
+    <a href="https://www.zhaw.ch/en/lsfm/institute-zentren/iunr/geooekologie/wildtiermanagement/referenzprojekte/tubecam/" target="_blank"></a>
+  </div>  
+    <div>
+    <img src="images/cantons.png">
+    <p>How open are our cantons?</p>
+    <a href="./apps/geodienste-kantone/" target="_blank"></a>
+  </div> 
+  <div>
+    <img src="images/arcgis-vs-qgis.png">
+    <p>ArcGIS vs QGIS for Education</p>
+    <a href="./blog/2022-11-30-ArcGIS-vs-QGIS/" target="_blank"></a>
+  </div> 
+  <div>
+    <img src="images/bookdown.png">
+    <p>Making a Case for Literate Programming</p>
+    <a href="./literate-programming-bookdown/" target="_blank"></a>
+  </div> 
+  <div>
+    <img src="images/geospatial-cloud.png">
+    <p>Geospatial Analysis in the Cloud</p>
+    <a href="https://remote-sensing-zhaw.github.io/google-earth-engine-intro/" target="_blank"></a>
+  </div> 
 </div>
-</div></main> <!-- /main -->
+
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

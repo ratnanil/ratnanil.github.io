@@ -56,18 +56,11 @@
     "text": "Formal Education\n\n\n\n2017I2014\n\n\nMaster of Science ZFH in Life Sciences, Specialisation in Natural Ressource Sciences @ ZHAW\n\n\n2013I2009\n\n\nBachelor of Science in Natural Resource Sciences, Specialisation in Nature Management @ ZHAW\n\n\n2006I2003\n\n\nCommercial apprenticeship (Kaufmännische Lehre mit Berufsmatura) @ AXA Winterthur\n\n\n\n Employment\n\n\n\nnowI2019\n\n\nResearch fellow @ ZHAW\n\n\n2016I2019\n\n\nResearch assistant @ ZHAW\n\n\n2021I2013\n\n\nDeputy project lead (part time) @ Wiesel & Co am Zimmerberg\n\n\n2006I2008\n\n\nCunsultant aviation insurances @ AXA Winterthur Aviation insurances\n\n\n\n\n\n\n\n\n\n\nGeodata analysis, modelling and visualisation with R, Python, ArcGIS, QGIS, PostGIS, gdal, ogr2ogr\n\n\nSpatial-R: sf, terra, sp, raster\n\n\nSpatial-Py: geopandas, rasterio, gdal\n\n\nProject management in various roles (project lead, supervisor, collaborator)\n\n\nReproducible reporting with RMarkdown, Jupyter Notebook, HTML, CSS, LaTeX\n\n\nRegex, Webscraping, Network analysis, git / GitHub, CI/CD, bash"
   },
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching Materials",
-    "section": "",
-    "text": "I’m significantly involved in teaching in the following courses, which are all awailable on github. Check them out!\n\n  \n      \n      \n          An introduction to Spatial R for ArcGIS users \n          arc2r.github.io/book\n      \n  \n  \n      \n      \n          An introduction to GIS in Python for Environmental Scientists (Bachelor Students)\n          modul-agi.github.io\n\n      \n  \n  \n      \n      \n          Teaching R, data processing, data visualization and statistics\n          researchmethods-zhaw.github.io\n      \n  \n  \n      \n      \n          Exercises for Computational Movement Analysis\n          computational-movementanalysis.github.io"
-  },
-  {
     "objectID": "portfolio.html",
     "href": "portfolio.html",
-    "title": "Ratnaweera-XYZ",
+    "title": "Portfolio",
     "section": "",
-    "text": "No matching items"
+    "text": "Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!\n\n\n\n  \n     \n    Evaluationg Weasel Detections\n    \n    \n  \n     \n    Forecasting Wildlife-Vehicle Collisions\n    \n    \n  \n     \n    Spatial R for ArcGIS Users\n    \n  \n  \n    \n    Spatial Python for Bachelor Students\n    \n    \n  \n    \n    R for Master Students\n    \n    \n  \n    \n    Spatial R for Master Students\n    \n    \n  \n    \n    LIDAR to Detect Microhabitats\n    \n    \n  \n    \n    Detecting Weasels with \"TubeCam\"\n    \n    \n    \n    \n    How open are our cantons?\n    \n   \n  \n    \n    ArcGIS vs QGIS for Education\n    \n   \n  \n    \n    Making a Case for Literate Programming\n    \n   \n  \n    \n    Geospatial Analysis in the Cloud"
   },
   {
     "objectID": "apps/geodienste-kantone/index.html",

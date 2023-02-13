@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ratnaweera-XYZ - Ratnaweera XYZ</title>
+<title>Ratnaweera-XYZ - Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,11 +63,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Ratnaweera-XYZ - Ratnaweera XYZ">
-<meta property="og:description" content="I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW).">
+<meta property="og:title" content="Ratnaweera-XYZ - Portfolio">
 <meta property="og:site-name" content="Ratnaweera-XYZ">
-<meta name="twitter:title" content="Ratnaweera-XYZ - Ratnaweera XYZ">
-<meta name="twitter:description" content="I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW).">
+<meta name="twitter:title" content="Ratnaweera-XYZ - Portfolio">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -92,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link" href="./index.html">
  <span class="menu-text"><i class="fa-solid fa-house fa-fw" aria-label="house"></i> Home</span></a>
   </li>  
   <li class="nav-item">
@@ -100,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><i class="fa-solid fa-rss fa-fw" aria-label="rss"></i> Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio.html">
+    <a class="nav-link" href="./teaching.qmd">
  <span class="menu-text"><i class="fa-solid fa-film" aria-label="film"></i> Portfolio</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -145,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ratnaweera XYZ</h1>
+<h1 class="title">Portfolio</h1>
 </div>
 
 
@@ -161,36 +159,98 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <style>
-h1{
-  display: none
+
+.grid-research{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-gap: 20px;
+  text-align: center;
+  grid-auto-rows: 1fr;
+
 }
 
-.emphasize>p{
-  margin-top: 1rem;
-  margin-bottom: 1rem
+.grid-research img{
+  width: 120px;
+  border-radius: 100%;
+
 }
 
-.emphasize{
-  background-color: #073b4c;
-  border-radius: 10px;
-  padding: 10px;  
-  margin: 10px -10px 10px -10px;
+.grid-research > div{
   box-shadow: 0 4px 8px 0;
+  border-radius: 20px;
+  padding-top: 10px;
+  position:relative;
 }
 
-.emphasize a{
-  color: #ADB5BD;
-
+.grid-research > div:hover{
+  transform: rotateY(180deg);
 }
 
+
+
+.grid-research > div >a{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  display:flex;
+  justify-content:center;
+  align-items:center;"
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
 </style>
-<h3 style="text-align: center" class="anchored">
-Hi there 👋
-</h3>
-<p>I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW). I love my job as a data scientist, with environmental data using mainly open source tools such as <code>R</code>, <code>python</code>, <code>gdal</code>, <code>ogr2ogr</code>, <code>PostgresSQL</code>, <code>PostGIS</code>.</p>
-<div class="emphasize">
-<p>Since my job at ZHAW is only part-time, I work as a freelance Data Scientist on the side. If you have a project that you think I can help with, please get in touch. I’m also available for short-term contract work. You can <a href="mailto:nils@ratnaweera.xyz">email me</a> or directly book a slot 📆 <a href="https://calendly.com/ratnaweera/60min">here</a></p>
+
+<div class="grid-research">
+
+  <div>
+    <img src="images/hermelin.png"> 
+    <p>Weasel Detection Rate</p>
+    <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/reh-strasse.png"> <!-- https://pixabay.com/photos/landscape-forest-trees-woods-road-2550393/ -->
+    <p>Wildlife-Vehicle Collisions</p>
+    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/arc2r.svg"> 
+    <p>Spatial R for ArcGIS users</p>
+    <a href="https://arc2r.github.io/book" target="_blank" class="spanning-link"></a>
+  </div>
+
+  <div>
+     <img src="images/coding_in_GIS2_fixed.png">
+    <p>Spatial Python for bachelor students<br><a>
+    </a><a href="https://modul-agi.github.io/" target="_blank" class="spanning-link"></a>
+  </p></div>  
+  <div>
+    <img src="images/research-methods.png">
+    <p>R for Master students</p>
+    <a href="https://researchmethods-zhaw.github.io/" target="_blank" class="spanning-link"></a>
+  </div>  
+  <div>
+    <img src="images/patterns-and-trends2.png">
+    <p>Spatial R for Master students</p>
+    <a href="https://computationalmovementanalysis.github.io/" target="_blank" class="spanning-link"></a>
+  </div>  
+  <div>
+    <img src="images/lidar.png">
+    <p>LIDAR for Small Mammals</p>
+    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank" class="spanning-link"></a>
+  </div>  
 </div>
+
 
 
 

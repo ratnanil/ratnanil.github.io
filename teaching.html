@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ratnaweera-XYZ - Teaching Materials</title>
+<title>Ratnaweera-XYZ - Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,11 +63,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Ratnaweera-XYZ - Teaching Materials">
-<meta property="og:description" content="I’m significantly involved in teaching in the following courses, which are all awailable on github. Check them out!">
+<meta property="og:title" content="Ratnaweera-XYZ - Portfolio">
 <meta property="og:site-name" content="Ratnaweera-XYZ">
-<meta name="twitter:title" content="Ratnaweera-XYZ - Teaching Materials">
-<meta name="twitter:description" content="I’m significantly involved in teaching in the following courses, which are all awailable on github. Check them out!">
+<meta name="twitter:title" content="Ratnaweera-XYZ - Portfolio">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -101,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./teaching.html" aria-current="page">
- <span class="menu-text"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Teaching</span></a>
+ <span class="menu-text"><i class="fa-solid fa-film" aria-label="film"></i> Portfolio</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-tablet-screen-button--apps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -145,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Teaching Materials</h1>
+<h1 class="title">Portfolio</h1>
 </div>
 
 
@@ -161,71 +159,87 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <style>
-.teaching-container{
+
+.grid-research{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-gap: 20px;
+  text-align: center;
+  grid-auto-rows: 1fr;
+
 }
 
-.teaching-container > *{
-  display: grid;
-  grid-template-columns: 30% 70%;
-  column-gap: 20px;
-  box-shadow: 0 4px 8px 0;
-  height: 160px;
-  align-items: center;
-  justify-items: center;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.teaching-item:hover{
-  background-color: #073b4c;
-}
-
-.teaching-item:hover >img{
-    filter: blur(2px);
-}
-
-.teaching-item > img{
-  float: left;
-  border-radius: 50%;
+.grid-research img{
   width: 120px;
-  height: 120px;
+  border-radius: 100%;
+
 }
 
-</style>
-<p>I’m significantly involved in teaching in the following courses, which are all awailable on github. Check them out!</p>
-<div class="teaching-container">
-  <div class="teaching-item">
-      <img src="images/arc2r.svg">
-      <div>
-          An introduction to Spatial R for ArcGIS users <br>
-          <a href="https://arc2r.github.io/book" target="_blank">arc2r.github.io/book</a>
-      </div>
-  </div>
-  <div class="teaching-item">
-      <img src="images/coding_in_GIS2_fixed.png">
-      <div>
-          An introduction to GIS in Python for Environmental Scientists (Bachelor Students)<br>
-          <a href="https://modul-agi.github.io/" target="_blank">modul-agi.github.io</a>
+.grid-research > div{
+  box-shadow: 0 4px 8px 0;
+  border-radius: 20px;
+  padding-top: 10px;
+  position:relative;
+}
 
-      </div>
+.grid-research > div:hover{
+  background-color: #073b4c;
+  filter: blur(2px)
+}
+
+
+
+.grid-research > div >a{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  display:flex;
+  justify-content:center;
+  align-items:center;"
+}
+</style>
+
+<div class="grid-research">
+
+  <div>
+    <img src="images/hermelin.png"> 
+    <p>Weasel Detection Rate</p>
+    <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/reh-strasse.png"> <!-- https://pixabay.com/photos/landscape-forest-trees-woods-road-2550393/ -->
+    <p>Wildlife-Vehicle Collisions</p>
+    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank"></a>
+  </div>  
+  <div>
+    <img src="images/arc2r.svg"> 
+    <p>Spatial R for ArcGIS users</p>
+    <a href="https://arc2r.github.io/book" target="_blank" class="spanning-link"></a>
   </div>
-  <div class="teaching-item">
-      <img src="images/research-methods.png">
-      <div>
-          Teaching R, data processing, data visualization and statistics<br>
-          <a href="https://researchmethods-zhaw.github.io/" target="_blank">researchmethods-zhaw.github.io</a>
-      </div>
-  </div>
-  <div class="teaching-item">
-      <img src="images/patterns-and-trends2.png">
-      <div>
-          Exercises for Computational Movement Analysis<br>
-          <a href="https://computationalmovementanalysis.github.io/" target="_blank">computational-movementanalysis.github.io</a>
-      </div>
-  </div>
+
+  <div>
+     <img src="images/coding_in_GIS2_fixed.png">
+    <p>Spatial Python for bachelor students<br><a>
+    </a><a href="https://modul-agi.github.io/" target="_blank" class="spanning-link"></a>
+  </p></div>  
+  <div>
+    <img src="images/research-methods.png">
+    <p>R for Master students</p>
+    <a href="https://researchmethods-zhaw.github.io/" target="_blank" class="spanning-link"></a>
+  </div>  
+  <div>
+    <img src="images/patterns-and-trends2.png">
+    <p>Spatial R for Master students</p>
+    <a href="https://computationalmovementanalysis.github.io/" target="_blank" class="spanning-link"></a>
+  </div>  
+  <div>
+    <img src="images/lidar.png">
+    <p>LIDAR for Small Mammals</p>
+    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank" class="spanning-link"></a>
+  </div>  
 </div>
 
 
