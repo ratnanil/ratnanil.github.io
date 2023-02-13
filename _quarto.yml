@@ -16,8 +16,8 @@ website:
         file: index.qmd
       - text: "{{< fa rss size=fw >}} Blog"
         file: blog.qmd
-      - text: "{{< fa person-chalkboard >}} Teaching"
-        file: teaching.qmd
+      - text: "{{< fa film >}} Portfolio"
+        file: portfolio.qmd
       - text: "{{< fa tablet-screen-button >}} Apps"
         menu:
          - text: "Geodienste-Monitor"
