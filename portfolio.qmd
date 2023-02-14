@@ -78,7 +78,7 @@ output: distill::distill_article
 </style>
 
 
-Here are some highlights of the projects I've worked in so far. It's a mix of private projects, teaching, and research I've done within my employment at ZHAW. Hover over a card for more details, click to learn even more!
+Here's an overview of some of the projects I've worked on so far. These include a mix of private projects, teaching, and research I've conducted as part of my employment at ZHAW. If you'd like to learn more about my work, simply hover over a card for additional details or click on a card to find out even more!
 
 ```{=html}
 
