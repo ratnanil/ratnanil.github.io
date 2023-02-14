@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </style>
+
+
+</head>
+
+<body>
+
+    <style>
+        .flip-card {
+
+            background-color: transparent;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 20px;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            border-radius: 20px;
+        }
+
+        .flip-card-back {
+            background-color: var(--bs-body-bg);
+            transform: rotateY(180deg);
+            border-radius: 20px;
+        }
+    </style>
+    <div class="grid-research">
+
+        <div>
+            <img src="images/hermelin.png">
+            <p>Evaluating Weasel Detections</p>
+            <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank" class="grid-external"></a>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/reh-strasse.png">
+                    <p>Forecasting Wildlife-Vehicle Collisions</p>
+                    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/"
+                        target="_blank" class="grid-external"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Developping a novel method to detect weasels <em>Mustela erminea</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/arc2r.svg">
+                    <p>Spatial R for ArcGIS Users</p>
+                    <a href="https://arc2r.github.io/book" target="_blank" class="grid-external"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Developping a novel method to detect weasels <em>Mustela erminea</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/coding_in_GIS2_fixed.png">
+                    <p>Spatial Python for Bachelor Students</p>
+                    <a href="https://modul-agi.github.io" target="_blank" class="grid-external"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Developping a novel method to detect weasels <em>Mustela erminea</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/research-methods.png">
+                    <p>R for Master Students</p>
+                    <a href="https://researchmethods-zhaw.github.io/" target="_blank" class="grid-external"></a>
+                </div>
+                </style>
+
+
+                <style>
+                    .flip-card {
+
+                        background-color: transparent;
+                        perspective: 1000px;
+                    }
+
+                    .flip-card-inner {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                        transition: transform 0.6s;
+                        transform-style: preserve-3d;
+                        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                        border-radius: 20px;
+                    }
+
+                    .flip-card:hover .flip-card-inner {
+                        transform: rotateY(180deg);
+                    }
+
+                    .flip-card-front,
+                    .flip-card-back {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        -webkit-backface-visibility: hidden;
+                        backface-visibility: hidden;
+                    }
+
+                    .flip-card-front {
+                        border-radius: 20px;
+                    }
+
+                    .flip-card-back {
+                        background-color: var(--bs-body-bg);
+                        transform: rotateY(180deg);
+                        border-radius: 20px;
+                    }
+                </style>
+                <div class="flip-card-back">
+                    <p>Developping a novel method to detect weasels <em>Mustela erminea</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/patterns-and-trends2.png">
+                    <p>Spatial R for Master Students</p>
+                    <a href="https://computationalmovementanalysis.github.io/" target="_blank"
+                        class="grid-external"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Developping a novel method to detect weasels <em>Mustela erminea</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/lidar.png">
+                    <p>LIDAR to Detect Microhabitats</p>
+                    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank"
+                        class="grid-external"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Developping a novel method to detect weasels <em>Mustela erminea</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/tubecam_small.png">
+                    <p>Detecting Weasels with "TubeCam"</p>
+                    <a href="https://www.zhaw.ch/en/lsfm/institute-zentren/iunr/geooekologie/wildtiermanagement/referenzprojekte/tubecam/"
+                        target="_blank" target="_blank" class="grid-external"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Developping a novel method to detect weasels <em>Mustela erminea</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/cantons.png">
+                    <p>How open are our cantons?</p>
+                    <a href="/apps/geodienste-kantone/" target="_blank"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Getting real time data from geodienste API to rank the openness of our cantons.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/arcgis-vs-qgis.png">
+                    <p>ArcGIS vs QGIS for Education</p>
+                    <a href="/blog/2022-11-30-ArcGIS-vs-QGIS/" target="_blank"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Making a case for using QGIS and FOSS in Education.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/bookdown.png">
+                    <p>Making a Case for Literate Programming</p>
+                    <a href="/literate-programming-bookdown/" target="_blank" class="grid-external"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>Making a case for literate programming in teaching and research</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="images/geospatial-cloud.png" alt="Avatar">
+                    <p>Geospatial Analysis in the Cloud</p>
+                    <a href="https://remote-sensing-zhaw.github.io/google-earth-engine-intro/" target="_blank"></a>
+                </div>
+                <div class="flip-card-back">
+                    <p>An introduction to Geospatial Analysis in the cloud using GoogleEarthEngine</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
