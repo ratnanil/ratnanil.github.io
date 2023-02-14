@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ratnaweera-XYZ - Portfolio</title>
+<title>Nils Ratnaweera, freelance data scientist - Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,11 +63,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Ratnaweera-XYZ - Portfolio">
-<meta property="og:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!">
-<meta property="og:site-name" content="Ratnaweera-XYZ">
-<meta name="twitter:title" content="Ratnaweera-XYZ - Portfolio">
-<meta name="twitter:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!">
+<meta property="og:title" content="Nils Ratnaweera, freelance data scientist - Portfolio">
+<meta property="og:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!">
+<meta property="og:image" content="https://ratnaweera.xyz/images/mylogo.png">
+<meta property="og:site-name" content="Nils Ratnaweera, freelance data scientist">
+<meta property="og:image:height" content="300">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Nils Ratnaweera, freelance data scientist - Portfolio">
+<meta name="twitter:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!">
 <meta name="twitter:image" content="https://ratnaweera.xyz/images/mylogo.png">
 <meta name="twitter:image-height" content="300">
 <meta name="twitter:image-width" content="500">
@@ -86,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
     <img src="./images/mylogo.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Ratnaweera-XYZ</span>
+    <span class="navbar-title">Nils Ratnaweera, freelance data scientist</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -123,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
   <li class="nav-item">
     <a class="nav-link" href="./CV.html">
- <span class="menu-text"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> About</span></a>
+ <span class="menu-text"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> CV</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -181,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 }
 
 .grid-research > div{
-  box-shadow: 0 4px 8px 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 20px;
   padding-top: 10px;
   position:relative;
@@ -195,57 +198,62 @@ ul.task-list li input[type="checkbox"] {
   top:0;
   left: 0;
   z-index: 1;
-  display:flex;
-  justify-content:center;
-  align-items:center;"
+  display:block;
+  text-align: right;
+}
+
+.grid-external:after{
+  content: "\f08e";
+  font: normal normal normal 14px/1 FontAwesome;
+  color: var(--bs-body-color);
 }
 
 
 
 </style>
-<p>Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!</p>
+<p>Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!</p>
 
 <div class="grid-research">
 
   <div>
     <img src="images/hermelin.png"> 
     <p>Evaluating Weasel Detections</p>
-    <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank"></a>
+    <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/reh-strasse.png"> <!-- https://pixabay.com/photos/landscape-forest-trees-woods-road-2550393/ -->
     <p>Forecasting Wildlife-Vehicle Collisions</p>
-    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank"></a>
+    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/arc2r.svg"> 
     <p>Spatial R for ArcGIS Users</p>
-    <a href="https://arc2r.github.io/book" target="_blank"></a>
+    <a href="https://arc2r.github.io/book" target="_blank" class="grid-external"></a>
   </div>
   <div>
     <img src="images/coding_in_GIS2_fixed.png">
     <p>Spatial Python for Bachelor Students</p>
-    <a href="https://modul-agi.github.io" target="_blank"></a>
+    <a href="https://modul-agi.github.io" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/research-methods.png">
     <p>R for Master Students</p>
-    <a href="https://researchmethods-zhaw.github.io/" target="_blank"></a>
+    <a href="https://researchmethods-zhaw.github.io/" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/patterns-and-trends2.png">
     <p>Spatial R for Master Students</p>
-    <a href="https://computationalmovementanalysis.github.io/" target="_blank"></a>
+    <a href="https://computationalmovementanalysis.github.io/" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/lidar.png">
     <p>LIDAR to Detect Microhabitats</p>
-    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank"></a>
+    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/tubecam_small.png">
     <p>Detecting Weasels with "TubeCam"</p>
-    <a href="https://www.zhaw.ch/en/lsfm/institute-zentren/iunr/geooekologie/wildtiermanagement/referenzprojekte/tubecam/" target="_blank"></a>
+    <a href="https://www.zhaw.ch/en/lsfm/institute-zentren/iunr/geooekologie/wildtiermanagement/referenzprojekte/tubecam/" target="_blank" class="grid-external"></a>
   </div>  
     <div>
     <img src="images/cantons.png">
@@ -260,12 +268,12 @@ ul.task-list li input[type="checkbox"] {
   <div>
     <img src="images/bookdown.png">
     <p>Making a Case for Literate Programming</p>
-    <a href="./literate-programming-bookdown/" target="_blank"></a>
+    <a href="./literate-programming-bookdown/" target="_blank" class="grid-external"></a>
   </div> 
   <div>
     <img src="images/geospatial-cloud.png">
     <p>Geospatial Analysis in the Cloud</p>
-    <a href="https://remote-sensing-zhaw.github.io/google-earth-engine-intro/" target="_blank"></a>
+    <a href="https://remote-sensing-zhaw.github.io/google-earth-engine-intro/" target="_blank" class="grid-external"></a>
   </div> 
 </div>
 

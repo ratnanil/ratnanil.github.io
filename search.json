@@ -44,14 +44,14 @@
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "Ratnaweera-XYZ",
+    "title": "Nils Ratnaweera, freelance data scientist",
     "section": "",
     "text": "Teaching geospatial: ArcGIS or QGIS?\n\n\n\n\n\nEvery year we teach well over a hundred Bachelor and Master students basic and advanced concepts…\n\n\n\n\n\n\nNov 20, 2022\n\n\nNils Ratnaweera\n\n\n\n\n\n\n  \n\n\n\n\nHow open are our cantons?\n\n\n\n\n\nFederalism at its best: How the open data policy is handled across cantons\n\n\n\n\n\n\nDec 1, 2021\n\n\nNils Ratnaweera\n\n\n\n\n\n\n  \n\n\n\n\nWarping Switzerland back into shape\n\n\n\n\n\nWhat changed when switching from Switzerland’s old coordinate system to the new one?\n\n\n\n\n\n\nNov 5, 2021\n\n\nNils Ratnaweera\n\n\n\n\n\n\n  \n\n\n\n\nBenchmarking binary predicates\n\n\n\n\n\nComparing the performance of different methods to do a “point in polygon operation” with sf.\n\n\n\n\n\n\nOct 22, 2021\n\n\nNils Ratnaweera\n\n\n\n\n\n\n  \n\n\n\n\nMinimalistic topography\n\n\n\n\n\nA beautiful way to visualize topography, inspired by Carla Martínez Sastre\n\n\n\n\n\n\nAug 13, 2021\n\n\nNils Ratnaweera\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "CV.html",
     "href": "CV.html",
-    "title": "Ratnaweera-XYZ",
+    "title": "Nils Ratnaweera, freelance data scientist",
     "section": "",
     "text": "Formal Education\n\n\n\n2017I2014\n\n\nMaster of Science ZFH in Life Sciences, Specialisation in Natural Ressource Sciences @ ZHAW\n\n\n2013I2009\n\n\nBachelor of Science in Natural Resource Sciences, Specialisation in Nature Management @ ZHAW\n\n\n2006I2003\n\n\nCommercial apprenticeship (Kaufmännische Lehre mit Berufsmatura) @ AXA Winterthur\n\n\n\n Employment\n\n\n\nnowI2019\n\n\nResearch fellow @ ZHAW\n\n\n2016I2019\n\n\nResearch assistant @ ZHAW\n\n\n2021I2013\n\n\nDeputy project lead (part time) @ Wiesel & Co am Zimmerberg\n\n\n2006I2008\n\n\nCunsultant aviation insurances @ AXA Winterthur Aviation insurances\n\n\n\n\n\n\n\n\n\n\nGeodata analysis, modelling and visualisation with R, Python, ArcGIS, QGIS, PostGIS, gdal, ogr2ogr\n\n\nSpatial-R: sf, terra, sp, raster\n\n\nSpatial-Py: geopandas, rasterio, gdal\n\n\nProject management in various roles (project lead, supervisor, collaborator)\n\n\nReproducible reporting with RMarkdown, Jupyter Notebook, HTML, CSS, LaTeX\n\n\nRegex, Webscraping, Network analysis, git / GitHub, CI/CD, bash"
   },
@@ -60,7 +60,7 @@
     "href": "portfolio.html",
     "title": "Portfolio",
     "section": "",
-    "text": "Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!\n\n\n\n  \n     \n    Evaluating Weasel Detections\n    \n    \n  \n     \n    Forecasting Wildlife-Vehicle Collisions\n    \n    \n  \n     \n    Spatial R for ArcGIS Users\n    \n  \n  \n    \n    Spatial Python for Bachelor Students\n    \n    \n  \n    \n    R for Master Students\n    \n    \n  \n    \n    Spatial R for Master Students\n    \n    \n  \n    \n    LIDAR to Detect Microhabitats\n    \n    \n  \n    \n    Detecting Weasels with \"TubeCam\"\n    \n    \n    \n    \n    How open are our cantons?\n    \n   \n  \n    \n    ArcGIS vs QGIS for Education\n    \n   \n  \n    \n    Making a Case for Literate Programming\n    \n   \n  \n    \n    Geospatial Analysis in the Cloud"
+    "text": "Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!\n\n\n\n  \n     \n    Evaluating Weasel Detections\n    \n    \n  \n     \n    Forecasting Wildlife-Vehicle Collisions\n    \n    \n  \n     \n    Spatial R for ArcGIS Users\n    \n  \n  \n    \n    Spatial Python for Bachelor Students\n    \n    \n  \n    \n    R for Master Students\n    \n    \n  \n    \n    Spatial R for Master Students\n    \n    \n  \n    \n    LIDAR to Detect Microhabitats\n    \n    \n  \n    \n    Detecting Weasels with \"TubeCam\"\n    \n    \n    \n    \n    How open are our cantons?\n    \n   \n  \n    \n    ArcGIS vs QGIS for Education\n    \n   \n  \n    \n    Making a Case for Literate Programming\n    \n   \n  \n    \n    Geospatial Analysis in the Cloud"
   },
   {
     "objectID": "apps/geodienste-kantone/index.html",
@@ -72,28 +72,35 @@
   {
     "objectID": "apps/stackexchange/index.html",
     "href": "apps/stackexchange/index.html",
-    "title": "My Top Tags on stackoverflow.com and gis.stackexchange.com",
+    "title": "My Top Tags on stackexchange",
     "section": "",
-    "text": "dateTime = {\n  let current = new Date();\n  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()\n  let cTime = current.getHours() + \":\" + current.getMinutes() + \":\" + current.getSeconds()\n  return(cDate + ' ' + cTime)\n}\n\n\n\n\n\n\n\nmd`(live data from ${dateTime}, acquired with the [stackexchange API](https://api.stackexchange.com), visualized with *Observable Plot*)`\n\n\n\n\n\n\n\nd3 = require(\"d3\")\n\n\n\n\n\n\n\nstackoverflow = await d3.json(\"https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow\")\n//stackoverflow = FileAttachment(\"top-tags-stackoverflow.json\").json()\n\n\n\n\n\n\n\n//gis = FileAttachment(\"top-tags-gis-stackexchange.json\").json()\ngis = await d3.json(\"https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com\")\n\n\n\n\n\n\n\ngis2 = gis.items.map(function(x){\n  return [\n    {source: \"gis.stackexchange.com\", type: \"Answer\", tag: x.tag_name, score: x.answer_score},\n    {source: \"gis.stackexchange.com\", type: \"Question\", tag: x.tag_name, score: x.question_score}\n  ]\n}).flat()\n\n\n\n\n\n\n\nstackoverflow2 = stackoverflow.items.map(function(x){\n  return [\n    {source: \"stackoverflow.com\", type: \"Answer\", tag: x.tag_name, score: x.answer_score},\n    {source: \"stackoverflow.com\", type: \"Question\", tag: x.tag_name, score: x.question_score}\n  ]\n}).flat()\n\n\n\n\n\n\n\nstackexchange = gis2.concat(stackoverflow2)\n\n\n\n\n\n\n\nPlot.plot({\n  marginLeft: 100,\n  caption: html`<div>Live data from the stackexchange restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,\n  width: width,\n  y: {\n    label: \"\",\n  },\n  x: {\n    label: \"Score\"\n  },\n  color:{\n    legend: true\n  },\n  domain: {\n    color: [\"question_score\",\"answer_score\"]\n  },\n  marks: [\n    Plot.barX(stackexchange, \n    Plot.groupY({x: \"sum\"},{\n      y: \"tag\", \n      x: \"score\", \n      fill: \"type\",\n      sort: {y: \"x\", reverse: true},\n      filter: (i) => i.score > 8\n      })\n      ),\n  ],\n  style: {\n    backgroundColor: \"#073b4c\",\n    color: \"#ADB5BD\"\n  }\n})"
+    "text": "I’m using the stackexchange API to visualize my activity on stackoverflow.com and gis.stackexchange.com in real time.\nEach question on these websites can have up to 5 tags. Questions as well as answers are rated, and the graph below shows the sum of scores from both websites per tag. I’m only showing tags with an associated rating of more than eight.\n\nmd` The data below is aquired in real time (from ${dateTime}) and visualized with Observable / Observable Plot`\n\n\n\n\n\n\n\ndateTime = {\n  let current = new Date();\n  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate()\n  let cTime = current.getHours() + \":\" + current.getMinutes() + \":\" + current.getSeconds()\n  return(cDate + ' ' + cTime)\n}\n\n\n\n\n\n\n\nd3 = require(\"d3\")\n\n\n\n\n\n\n\nstackoverflow = await d3.json(\"https://api.stackexchange.com/2.3/users/4139249/top-tags?site=stackoverflow\")\n//stackoverflow = FileAttachment(\"top-tags-stackoverflow.json\").json()\n\n\n\n\n\n\n\n//gis = FileAttachment(\"top-tags-gis-stackexchange.json\").json()\ngis = await d3.json(\"https://api.stackexchange.com/2.3/users/40929/top-tags?site=gis.stackexchange.com\")\n\n\n\n\n\n\n\ngis2 = gis.items.map(function(x){\n  return [\n    {source: \"gis.stackexchange.com\", type: \"Answer\", tag: x.tag_name, score: x.answer_score},\n    {source: \"gis.stackexchange.com\", type: \"Question\", tag: x.tag_name, score: x.question_score}\n  ]\n}).flat()\n\n\n\n\n\n\n\nstackoverflow2 = stackoverflow.items.map(function(x){\n  return [\n    {source: \"stackoverflow.com\", type: \"Answer\", tag: x.tag_name, score: x.answer_score},\n    {source: \"stackoverflow.com\", type: \"Question\", tag: x.tag_name, score: x.question_score}\n  ]\n}).flat()\n\n\n\n\n\n\n\nstackexchange = gis2.concat(stackoverflow2)\n\n\n\n\n\n\n\nPlot.plot({\n  marginLeft: 100,\n  caption: html`<div>Realtime data from the stackexchange restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,\n  width: width,\n  y: {\n    label: \"\",\n  },\n  x: {\n    label: \"Score\"\n  },\n  color:{\n    legend: true\n  },\n  domain: {\n    color: [\"question_score\",\"answer_score\"]\n  },\n  marks: [\n    Plot.barX(stackexchange, \n    Plot.groupY({x: \"sum\"},{\n      y: \"tag\", \n      x: \"score\", \n      fill: \"type\",\n      sort: {y: \"x\", reverse: true},\n      filter: (i) => i.score > 8\n      })\n      ),\n  ],\n  style: {\n    backgroundColor: \"#073b4c\",\n    color: \"#ADB5BD\"\n  }\n})"
   },
   {
     "objectID": "Readme.html",
     "href": "Readme.html",
-    "title": "Ratnaweera-XYZ",
+    "title": "Nils Ratnaweera, freelance data scientist",
     "section": "",
     "text": "This site has github pages activated via the gh-pages branch, and a CNAME entry pointing to www.ratnaweera.xyz (note the www.). To publish the website, I need to push the content of the _site/ folder to the gh-pages branch. This is automated with the quarto publish tool using the following command:\nquarto publish gh-pages --no-prompt\nAt my provider, I’ve created four A-Records pointing to 185.199.108.153-185.199.111.153 (see these instructions). This redirects EVERYTHING from ratnanil.github.io to ratnaweera.xyz (including pages of other repos that I’m the owner of). I’ve added an additional CNAME record for the www subdomain (www.ratnaweera.xyz, see here).\nTo make sure that no domains can be taken over, I’ve verified my domains on github using these instructions.\nPS: Unlike before, I completely omit using netlify, since this just creates additional overhead without much gain."
   },
   {
     "objectID": "Readme.html#preview-images-twitter-cards",
     "href": "Readme.html#preview-images-twitter-cards",
-    "title": "Ratnaweera-XYZ",
+    "title": "Nils Ratnaweera, freelance data scientist",
     "section": "Preview images / Twitter cards",
     "text": "Preview images / Twitter cards\nPreview images are used in the blog listing, but also as twitter cards (preview image when tweeting a like to a specific site)\n\nSize and Ratio\n\nAll preview images should have an aspect ratio of 3:2 (width:height).\nWhen working with ggplot2, 15cm x 10cm is usually fine\nTwitter Cards apparently have an optimal size of 1500 x 500px\n\nThey have a background color of “#073b4c”\nText color: #ADB5BD\nTo publish a preview image to gh-pages, you need to add it in resources. You can then reference the full, relative path:\n\n---\nimage: /apps/geodienste-kantone/preview.png\nresources: preview.png\n---"
   },
   {
+    "objectID": "Readme.html#styling",
+    "href": "Readme.html#styling",
+    "title": "Nils Ratnaweera, freelance data scientist",
+    "section": "Styling:",
+    "text": "Styling:\nAdd class external to URLS that refer to an external website. E.g: [Zurich University of Applied Sciences (ZHAW)](https://www.zhaw.ch/en/about-us/person/rata/){.external}"
+  },
+  {
     "objectID": "Readme.html#large-files",
     "href": "Readme.html#large-files",
-    "title": "Ratnaweera-XYZ",
+    "title": "Nils Ratnaweera, freelance data scientist",
     "section": "Large Files",
     "text": "Large Files\nI’ve had too many repos that have become huge because I thoughlessly committed large files. Using git lfs as a workaround was not very satisfactory either, since it’s not easy to free up the quota of git lsf my simply deleting files from the history (you have to delete the whole repo intead!). I’m still looking into this, I think good practice for now would be to simply put all large files in subdirectories containing a .gitingore file containing a *."
   },
@@ -102,6 +109,6 @@
     "href": "index.html",
     "title": "Ratnaweera XYZ",
     "section": "",
-    "text": "Hi there 👋\n\nI’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW). I love my job as a data scientist, with environmental data using mainly open source tools such as R, python, gdal, ogr2ogr, PostgresSQL, PostGIS.\n\nSince my job at ZHAW is only part-time, I work as a freelance Data Scientist on the side. If you have a project that you think I can help with, please get in touch. I’m also available for short-term contract work. You can email me or directly book a slot 📆 here"
+    "text": "Hi there 👋\n\nI’m Nils Ratnaweera, a freelance data scientist and researcher at the Zurich University of Applied Sciences (ZHAW). I enjoy using different programming languages to solve complex, real world problems. My tools of choice include R, python, gdal, ogr2ogr, PostgresSQL, PostGIS and more.\nIf you have a project that you think I can help with, please get in touch. I would love to hear from you!\n\n\n Email me\n\n\n Book a slot\n\n\nCheckout my  Portfolio and my  CV to know more about what I do and the tool sets I work with."
   }
 ]

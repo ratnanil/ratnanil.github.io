@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ratnaweera-XYZ - Ratnaweera XYZ</title>
+<title>Nils Ratnaweera, freelance data scientist - Ratnaweera XYZ</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,11 +63,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Ratnaweera-XYZ - Ratnaweera XYZ">
-<meta property="og:description" content="I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW).">
-<meta property="og:site-name" content="Ratnaweera-XYZ">
-<meta name="twitter:title" content="Ratnaweera-XYZ - Ratnaweera XYZ">
-<meta name="twitter:description" content="I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW).">
+<meta property="og:title" content="Nils Ratnaweera, freelance data scientist - Ratnaweera XYZ">
+<meta property="og:description" content="I’m Nils Ratnaweera, a freelance data scientist and researcher at the Zurich University of Applied Sciences (ZHAW). I enjoy using different programming languages to solve complex, real world problems.">
+<meta property="og:image" content="https://ratnaweera.xyz/images/mylogo.png">
+<meta property="og:site-name" content="Nils Ratnaweera, freelance data scientist">
+<meta property="og:image:height" content="300">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Nils Ratnaweera, freelance data scientist - Ratnaweera XYZ">
+<meta name="twitter:description" content="I’m Nils Ratnaweera, a freelance data scientist and researcher at the Zurich University of Applied Sciences (ZHAW). I enjoy using different programming languages to solve complex, real world problems.">
 <meta name="twitter:image" content="https://ratnaweera.xyz/images/mylogo.png">
 <meta name="twitter:image-height" content="300">
 <meta name="twitter:image-width" content="500">
@@ -86,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
     <img src="./images/mylogo.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Ratnaweera-XYZ</span>
+    <span class="navbar-title">Nils Ratnaweera, freelance data scientist</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -123,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
   <li class="nav-item">
     <a class="nav-link" href="./CV.html">
- <span class="menu-text"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> About</span></a>
+ <span class="menu-text"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> CV</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -168,32 +171,79 @@ h1{
   display: none
 }
 
-.emphasize>p{
-  margin-top: 1rem;
-  margin-bottom: 1rem
+.grid-contact{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(30px, 250px));
+  grid-gap: 1rem;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-.emphasize{
-  background-color: #073b4c;
+.grid-contact > div
+{
   border-radius: 10px;
-  padding: 10px;  
-  margin: 10px -10px 10px -10px;
-  box-shadow: 0 4px 8px 0;
-}
-
-.emphasize a{
+  background-color: #073b4c;
   color: #ADB5BD;
+  text-align: center;
+  padding: 5px;
+  position:relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.grid-contact > div:hover{
+  background-color: #157087;
+}
+
+.grid-contact > div >a{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  display:flex;
+  justify-content:center;
+  align-items:center;"
 
 }
+
+.menu-link{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 5px 7px 5px 7px;
+  border-radius: 5px;
+  /* background-color: #073b4c; */
+  color: #ADB5BD;
+  text-decoration: none;
+}
+
+.external{
+  text-decoration: none;
+}
+
+/* harmonize this with the portfolio css */
+a .external::after{
+  content: "\f08e";
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+
 
 </style>
 <h3 style="text-align: center" class="anchored">
 Hi there 👋
 </h3>
-<p>I’m Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW). I love my job as a data scientist, with environmental data using mainly open source tools such as <code>R</code>, <code>python</code>, <code>gdal</code>, <code>ogr2ogr</code>, <code>PostgresSQL</code>, <code>PostGIS</code>.</p>
-<div class="emphasize">
-<p>Since my job at ZHAW is only part-time, I work as a freelance Data Scientist on the side. If you have a project that you think I can help with, please get in touch. I’m also available for short-term contract work. You can <a href="mailto:nils@ratnaweera.xyz">email me</a> or directly book a slot 📆 <a href="https://calendly.com/ratnaweera/60min">here</a></p>
+<p>I’m Nils Ratnaweera, a freelance data scientist and researcher at the <a href="https://www.zhaw.ch/en/about-us/person/rata/" class="external">Zurich University of Applied Sciences (ZHAW)</a>. I enjoy using different programming languages to solve complex, real world problems. My tools of choice include <code>R</code>, <code>python</code>, <code>gdal</code>, <code>ogr2ogr</code>, <code>PostgresSQL</code>, <code>PostGIS</code> and more.</p>
+<p>If you have a project that you think I can help with, please get in touch. I would love to hear from you!</p>
+<div class="grid-contact">
+<div>
+<i class="fa-solid fa-envelope"></i> Email me<a href="mailto:nils@ratnaweera.xyz"></a>
 </div>
+<div>
+<i class="fa-solid fa-calendar-day"></i> Book a slot<a href="https://calendly.com/ratnaweera/60min"></a>
+</div>
+</div>
+<p>Checkout my <a href="./portfolio.html" class="menu-link"><i class="fa-solid fa-film" aria-label="film"></i> Portfolio</a> and my <a href="./cv.html" class="menu-link"><i class="fa-solid fa-feather-pointed" aria-label="feather-pointed"></i> CV</a> to know more about what I do and the tool sets I work with.</p>
 
 
 
