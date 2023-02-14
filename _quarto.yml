@@ -26,7 +26,7 @@ website:
            file: apps/geodienste-kantone/index.qmd
          - text: "StackExchange-Tags"
            file: apps/stackexchange/index.qmd
-      - text: "{{< fa feather-pointed >}} About"
+      - text: "{{< fa feather-pointed >}} CV"
         file: CV.qmd
     right:
       - href: https://twitter.com/NRatnaweera

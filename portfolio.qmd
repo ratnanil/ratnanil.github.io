@@ -37,12 +37,15 @@ output: distill::distill_article
   top:0;
   left: 0;
   z-index: 1;
-  display:flex;
-  justify-content:center;
-  align-items:center;"
+  display:block;
+  text-align: right;
 }
 
-
+.grid-external:after{
+  content: "\f08e";
+  font: normal normal normal 14px/1 FontAwesome;
+  color: var(--bs-body-color);
+}
 
 
 
@@ -58,42 +61,42 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
   <div>
     <img src="images/hermelin.png"> 
     <p>Evaluating Weasel Detections</p>
-    <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank"></a>
+    <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/reh-strasse.png"> <!-- https://pixabay.com/photos/landscape-forest-trees-woods-road-2550393/ -->
     <p>Forecasting Wildlife-Vehicle Collisions</p>
-    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank"></a>
+    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/arc2r.svg"> 
     <p>Spatial R for ArcGIS Users</p>
-    <a href="https://arc2r.github.io/book" target="_blank"></a>
+    <a href="https://arc2r.github.io/book" target="_blank" class="grid-external"></a>
   </div>
   <div>
     <img src="images/coding_in_GIS2_fixed.png">
     <p>Spatial Python for Bachelor Students</p>
-    <a href="https://modul-agi.github.io" target="_blank"></a>
+    <a href="https://modul-agi.github.io" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/research-methods.png">
     <p>R for Master Students</p>
-    <a href="https://researchmethods-zhaw.github.io/" target="_blank"></a>
+    <a href="https://researchmethods-zhaw.github.io/" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/patterns-and-trends2.png">
     <p>Spatial R for Master Students</p>
-    <a href="https://computationalmovementanalysis.github.io/" target="_blank"></a>
+    <a href="https://computationalmovementanalysis.github.io/" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/lidar.png">
     <p>LIDAR to Detect Microhabitats</p>
-    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank"></a>
+    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank" class="grid-external"></a>
   </div>  
   <div>
     <img src="images/tubecam_small.png">
     <p>Detecting Weasels with "TubeCam"</p>
-    <a href="https://www.zhaw.ch/en/lsfm/institute-zentren/iunr/geooekologie/wildtiermanagement/referenzprojekte/tubecam/" target="_blank"></a>
+    <a href="https://www.zhaw.ch/en/lsfm/institute-zentren/iunr/geooekologie/wildtiermanagement/referenzprojekte/tubecam/" target="_blank" target="_blank" class="grid-external"></a>
   </div>  
     <div>
     <img src="images/cantons.png">
@@ -108,12 +111,12 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
   <div>
     <img src="images/bookdown.png">
     <p>Making a Case for Literate Programming</p>
-    <a href="/literate-programming-bookdown/" target="_blank"></a>
+    <a href="/literate-programming-bookdown/" target="_blank" class="grid-external"></a>
   </div> 
   <div>
     <img src="images/geospatial-cloud.png">
     <p>Geospatial Analysis in the Cloud</p>
-    <a href="https://remote-sensing-zhaw.github.io/google-earth-engine-intro/" target="_blank"></a>
+    <a href="https://remote-sensing-zhaw.github.io/google-earth-engine-intro/" target="_blank" class="grid-external"></a>
   </div> 
 </div>
 
