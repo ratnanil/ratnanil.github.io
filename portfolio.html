@@ -64,13 +64,13 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Nils Ratnaweera, freelance data scientist - Portfolio">
-<meta property="og:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!">
+<meta property="og:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW.">
 <meta property="og:image" content="https://ratnaweera.xyz/images/mylogo.png">
 <meta property="og:site-name" content="Nils Ratnaweera, freelance data scientist">
 <meta property="og:image:height" content="300">
 <meta property="og:image:width" content="500">
 <meta name="twitter:title" content="Nils Ratnaweera, freelance data scientist - Portfolio">
-<meta name="twitter:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!">
+<meta name="twitter:description" content="Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW.">
 <meta name="twitter:image" content="https://ratnaweera.xyz/images/mylogo.png">
 <meta name="twitter:image-height" content="300">
 <meta name="twitter:image-width" content="500">
@@ -173,9 +173,11 @@ ul.task-list li input[type="checkbox"] {
   grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   grid-gap: 20px;
   text-align: center;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: 200px;
 
 }
+
+
 
 .grid-research img{
   width: 120px;
@@ -183,15 +185,7 @@ ul.task-list li input[type="checkbox"] {
 
 }
 
-.grid-research > div{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 20px;
-  padding-top: 10px;
-  position:relative;
-}
-
-
-.grid-research > div >a{
+.flip-card-front >a{
   position:absolute; 
   width:100%;
   height:100%;
@@ -202,79 +196,230 @@ ul.task-list li input[type="checkbox"] {
   text-align: right;
 }
 
-.grid-external:after{
-  content: "\f08e";
-  font: normal normal normal 14px/1 FontAwesome;
-  color: var(--bs-body-color);
+.flip-card {
+  /* background-color: transparent; */
+  perspective: 1000px;
 }
 
+.flip-card-back > p{
+    font-size: smaller;
+}
 
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+}
 
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* -webkit-backface-visibility: hidden; */
+  backface-visibility: hidden;
+  border-radius: 20px;
+  background-color: var(--bs-body-bg);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  padding: 10px;
+}
 </style>
-<p>Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW. Click on a card to learn more!</p>
+<p>Here are some highlights of the projects I’ve worked in so far. It’s a mix of private projects, teaching, and research I’ve done within my employment at ZHAW. Hover over a card for more details, click to learn even more!</p>
 
 <div class="grid-research">
 
-  <div>
-    <img src="images/hermelin.png"> 
-    <p>Evaluating Weasel Detections</p>
-    <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank" class="grid-external"></a>
-  </div>  
-  <div>
-    <img src="images/reh-strasse.png"> <!-- https://pixabay.com/photos/landscape-forest-trees-woods-road-2550393/ -->
-    <p>Forecasting Wildlife-Vehicle Collisions</p>
-    <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank" class="grid-external"></a>
-  </div>  
-  <div>
-    <img src="images/arc2r.svg"> 
-    <p>Spatial R for ArcGIS Users</p>
-    <a href="https://arc2r.github.io/book" target="_blank" class="grid-external"></a>
-  </div>
-  <div>
-    <img src="images/coding_in_GIS2_fixed.png">
-    <p>Spatial Python for Bachelor Students</p>
-    <a href="https://modul-agi.github.io" target="_blank" class="grid-external"></a>
-  </div>  
-  <div>
-    <img src="images/research-methods.png">
-    <p>R for Master Students</p>
-    <a href="https://researchmethods-zhaw.github.io/" target="_blank" class="grid-external"></a>
-  </div>  
-  <div>
-    <img src="images/patterns-and-trends2.png">
-    <p>Spatial R for Master Students</p>
-    <a href="https://computationalmovementanalysis.github.io/" target="_blank" class="grid-external"></a>
-  </div>  
-  <div>
-    <img src="images/lidar.png">
-    <p>LIDAR to Detect Microhabitats</p>
-    <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank" class="grid-external"></a>
-  </div>  
-  <div>
-    <img src="images/tubecam_small.png">
-    <p>Detecting Weasels with "TubeCam"</p>
-    <a href="https://www.zhaw.ch/en/lsfm/institute-zentren/iunr/geooekologie/wildtiermanagement/referenzprojekte/tubecam/" target="_blank" class="grid-external"></a>
-  </div>  
-    <div>
-    <img src="images/cantons.png">
-    <p>How open are our cantons?</p>
-    <a href="./apps/geodienste-kantone/" target="_blank"></a>
-  </div> 
-  <div>
-    <img src="images/arcgis-vs-qgis.png">
-    <p>ArcGIS vs QGIS for Education</p>
-    <a href="./blog/2022-11-30-ArcGIS-vs-QGIS/" target="_blank"></a>
-  </div> 
-  <div>
-    <img src="images/bookdown.png">
-    <p>Making a Case for Literate Programming</p>
-    <a href="./literate-programming-bookdown/" target="_blank" class="grid-external"></a>
-  </div> 
-  <div>
-    <img src="images/geospatial-cloud.png">
-    <p>Geospatial Analysis in the Cloud</p>
-    <a href="https://remote-sensing-zhaw.github.io/google-earth-engine-intro/" target="_blank" class="grid-external"></a>
-  </div> 
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/hermelin_150.png">
+                <p>Evaluating Weasel Detections</p>
+                <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank" class="grid-external"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    To determine the success of a weasel conservation project, I analyzed weasel detections and sightings.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/reh-strasse_150.png">
+                <p>Forecasting Wildlife-Vehicle Collisions</p>
+                <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank" class="grid-external"></a>
+
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    Based on numerous years of collecting incidents of wildlife-vehicle collisions, we created three different models to forecast such collisions for areas where no collision data is available.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/arc2r_150.png">
+                <p>Spatial R for ArcGIS Users</p>
+                <a href="https://arc2r.github.io/book" target="_blank" class="grid-external"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    An introduction to doing spatial analysis in R, targeted for people coming with an ArcGIS background.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/coding_in_GIS2_fixed_150.png">
+                <p>Spatial Python for Bachelor Students</p>
+                <a href="https://modul-agi.github.io" target="_blank" class="grid-external"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    In the bachelor course <em>Applied Geoinformatics</em> (ZHAW), I teach geospatial analysis in python.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/research-methods_150.png">
+                <p>R for Master Students</p>
+                <a href="https://researchmethods-zhaw.github.io/" target="_blank" class="grid-external"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    In the masters course <em>Research Methods</em> I teach data processing, visualization and analysis of spatial and non-spatial data.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/patterns-and-trends2_150.png">
+                <p>Spatial R for Master Students</p>
+                <a href="https://computationalmovementanalysis.github.io/" target="_blank" class="grid-external"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    In the masters course <em>Computational Movement Analysis</em> I teach processing, visualization and analysis of movement data.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/lidar.png">
+                <p>Detecting Microhabitats with LiDAR</p>
+                <a href="https://digitalcollection.zhaw.ch/handle/11475/22837" target="_blank" class="grid-external"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    Together with a bachelor student, we developed a simple method to detect microhabitats (i.e. wood piles) with countrywide available LiDAR data.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/tubecam_small.png">
+                <p>Detecting Weasels with "TubeCam"</p>
+                <a href="https://www.zhaw.ch/en/lsfm/institute-zentren/iunr/geooekologie/wildtiermanagement/referenzprojekte/tubecam/" target="_blank" class="grid-external"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    I initiated and lead a research project to develop a novel method to detect weasels <em>Mustela erminea</em> and least weasels <em>Mustela nivalis</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/cantons_150.png">
+                <p>How open are our cantons?</p>
+                <a href="./apps/geodienste-kantone/" target="_blank"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    I use the restAPI from geodienste.ch to determine how open the individual cantons are with their geodata on said portal.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/arcgis-vs-qgis_150.png">
+                <p>ArcGIS vs QGIS for Education</p>
+                <a href="./blog/2022-11-30-ArcGIS-vs-QGIS/" target="_blank"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    In this blogpost, I'm making a case for using QGIS (and FOSS in general) when teaching geospatial on a bachelor and master level.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/bookdown.png">
+                <p>Making a Case for Literate Programming</p>
+                <a href="./literate-programming-bookdown/" target="_blank" class="grid-external"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    In this talk I'm making a case for using literate programming tools (e.g. <code>rmarkdown</code> / <code>bookdown</code>) in research and teaching. 
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="images/geospatial-cloud.png" alt="Avatar">
+                <p>Geospatial Analysis in the Cloud</p>
+                <a href="https://remote-sensing-zhaw.github.io/google-earth-engine-intro/" target="_blank"></a>
+            </div>
+            <div class="flip-card-back">
+                <p>
+                    These are the slides to a quick introduction I give to bachelor students to introduce them to the possibilities of doing large scale geospatial analysis in the cloud.
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 
 
