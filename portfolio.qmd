@@ -85,7 +85,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="images/hermelin.png">
+                <img src="images/hermelin_150.png">
                 <p>Evaluating Weasel Detections</p>
                 <a href="https://erfolgskontrolle.wieselundco.ch/" target="_blank" class="grid-external"></a>
             </div>
@@ -101,7 +101,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="images/reh-strasse.png">
+                <img src="images/reh-strasse_150.png">
                 <p>Forecasting Wildlife-Vehicle Collisions</p>
                 <a href="https://www.zhaw.ch/de/lsfm/institute-zentren/iunr/geooekologie/geoinformatik/projekte/praevention-von-wildtierunfaellen-auf-verkehrsinfrastrukturen/" target="_blank" class="grid-external"></a>
 
@@ -117,7 +117,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="images/arc2r.svg">
+                <img src="images/arc2r_150.png">
                 <p>Spatial R for ArcGIS Users</p>
                 <a href="https://arc2r.github.io/book" target="_blank" class="grid-external"></a>
             </div>
@@ -132,7 +132,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="images/coding_in_GIS2_fixed.png">
+                <img src="images/coding_in_GIS2_fixed_150.png">
                 <p>Spatial Python for Bachelor Students</p>
                 <a href="https://modul-agi.github.io" target="_blank" class="grid-external"></a>
             </div>
@@ -147,7 +147,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="images/research-methods.png">
+                <img src="images/research-methods_150.png">
                 <p>R for Master Students</p>
                 <a href="https://researchmethods-zhaw.github.io/" target="_blank" class="grid-external"></a>
             </div>
@@ -162,7 +162,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="images/patterns-and-trends2.png">
+                <img src="images/patterns-and-trends2_150.png">
                 <p>Spatial R for Master Students</p>
                 <a href="https://computationalmovementanalysis.github.io/" target="_blank" class="grid-external"></a>
             </div>
@@ -209,7 +209,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="images/cantons.png">
+                <img src="images/cantons_150.png">
                 <p>How open are our cantons?</p>
                 <a href="/apps/geodienste-kantone/" target="_blank"></a>
             </div>
@@ -224,7 +224,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="images/arcgis-vs-qgis.png">
+                <img src="images/arcgis-vs-qgis_150.png">
                 <p>ArcGIS vs QGIS for Education</p>
                 <a href="/blog/2022-11-30-ArcGIS-vs-QGIS/" target="_blank"></a>
             </div>
@@ -245,7 +245,7 @@ Here are some highlights of the projects I've worked in so far. It's a mix of pr
             </div>
             <div class="flip-card-back">
                 <p>
-                    In this talk I'm making a case for using literate programming tools (e.g. rmarkdown / bookdown) in research and teaching. 
+                    In this talk I'm making a case for using literate programming tools (e.g. <code>rmarkdown</code> / <code>bookdown</code>) in research and teaching. 
                 </p>
             </div>
         </div>
