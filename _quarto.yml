@@ -7,9 +7,9 @@ website:
   site-url: https://ratnaweera.xyz
   description: "R, Python, Geodata and more!"
   twitter-card: 
-    image: "images/mylogo.png"
+    image: "images/mylogo_with_bg.png"
   open-graph: 
-    image: "images/mylogo.png"
+    image: "images/mylogo_with_bg.png"
   navbar:
     logo: images/mylogo.png
     search: true

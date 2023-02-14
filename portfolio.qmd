@@ -43,6 +43,7 @@ output: distill::distill_article
 .flip-card-back > p{
     font-size: smaller;
     text-align: justify;
+    hyphens: auto;
 }
 
 .flip-card-inner {
