@@ -1,8 +1,17 @@
 ---
-title: My Top Tags on stackoverflow.com and gis.stackexchange.com
+title: My Top Tags on stackexchange
 execute:
   echo: false
 ---
+
+I'm using the [stackexchange API](https://api.stackexchange.com) to visualize my activity on [stackoverflow.com](https://stackoverflow.com/users/4139249/ratnanil) and [gis.stackexchange.com](https://gis.stackexchange.com/users/40929/ratnanil) in real time.
+
+Each question on these websites can have up to 5 tags. Questions as well as answers are rated, and the graph below shows the sum of scores from both websites per tag. I'm only showing tags with an associated rating of more than eight.
+
+```{ojs}
+md` The data below is aquired in real time (from ${dateTime}) and visualized with Observable / Observable Plot`
+```
+
 
 
 ```{ojs}
@@ -15,9 +24,6 @@ dateTime = {
 
 ```
 
-```{ojs}
-md`(live data from ${dateTime}, acquired with the [stackexchange API](https://api.stackexchange.com), visualized with *Observable Plot*)`
-```
 
 
 ```{ojs}
@@ -62,7 +68,7 @@ stackexchange = gis2.concat(stackoverflow2)
 ```{ojs}
 Plot.plot({
   marginLeft: 100,
-  caption: html`<div>Live data from the stackexchange restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,
+  caption: html`<div>Realtime data from the stackexchange restAPI, last update: ${dateTime}<br>Visualized by Nils Ratnaweera</div>`,
   width: width,
   y: {
     label: "",

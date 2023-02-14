@@ -3,11 +3,13 @@ project:
   preview:
       port: 4200
 website:
-  title: "Ratnaweera-XYZ"
+  title: "Nils Ratnaweera, freelance data scientist"
   site-url: https://ratnaweera.xyz
-  description: "Nils' Blog on R, Python and spatial stuff"
-  twitter-card: true
-  open-graph: true
+  description: "R, Python, Geodata and more!"
+  twitter-card: 
+    image: "images/mylogo.png"
+  open-graph: 
+    image: "images/mylogo.png"
   navbar:
     logo: images/mylogo.png
     search: true
@@ -26,21 +28,9 @@ website:
            file: apps/stackexchange/index.qmd
       - text: "{{< fa feather-pointed >}} About"
         file: CV.qmd
-      # - text: "{{< fa link >}} Connect"
-      #   menu:
-      #     - text: "{{< fa brands github >}} Github"
-      #       href: https://github.com/ratnanil/
-      # - text: "{{< fa hammer >}} Services"
-      #   file: "services.qmd"
     right:
-      # - href: https://github.com/ratnanil/
-      #   icon: github
       - href: https://twitter.com/NRatnaweera
         icon: twitter
-      # - href: https://fosstodon.org/@ratnaweera
-      #   icon: mastodon
-      # - href: https://stackoverflow.com/users/4139249/ratnanil
-        # icon: stack-overflow
   page-footer: 
     center: '"The time has come", the Walrus said, "To talk of many things.." - From The Walrus and the Carpenter by Lewis Carroll'
     

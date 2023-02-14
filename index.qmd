@@ -8,23 +8,41 @@ h1{
   display: none
 }
 
-.emphasize>p{
-  margin-top: 1rem;
-  margin-bottom: 1rem
+.grid-contact{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(30px, 250px));
+  grid-gap: 1rem;
+  justify-content: space-evenly;
 }
 
-.emphasize{
-  background-color: #073b4c;
+.grid-contact > div
+{
   border-radius: 10px;
-  padding: 10px;  
-  margin: 10px -10px 10px -10px;
-  box-shadow: 0 4px 8px 0;
-}
-
-.emphasize a{
+  background-color: #073b4c;
   color: #ADB5BD;
-
+  text-align: center;
+  padding: 5px;
+  position:relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.grid-contact > div:hover{
+  background-color: #157087;
+}
+
+.grid-contact > div >a{
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  display:flex;
+  justify-content:center;
+  align-items:center;"
+}
+
+
 
 </style>
 
@@ -32,10 +50,16 @@ h1{
 <h3 style="text-align: center"> Hi there 👋  </h3>
 
 
-I'm Nils Ratnaweera, a Research Fellow at the Zurich University of Applied Sciences (ZHAW). I love my job as a data scientist, with environmental data using mainly open source tools such as `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS`.
+I'm Nils Ratnaweera, a freelance data scientist and researcher at the Zurich University of Applied Sciences (ZHAW). I enjoy using different programming languages to solve komplex, real world problems. My weapons of choice include `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS` and more.
 
-<div class="emphasize">
-Since my job at ZHAW is only part-time, I work as a freelance Data Scientist on the side. If you have a project that you think I can help with, please get in touch. I'm also available for short-term contract work. You can [email me](mailto:nils@ratnaweera.xyz) or directly book a slot 📆 [here](https://calendly.com/ratnaweera/60min)
+If you have a project that you think I can help with, please get in touch. I would love to hear from you!
+
+<div class="grid-contact"> 
+<div><i class="fa-solid fa-envelope"></i> Email me<a href="mailto:nils@ratnaweera.xyz"></a></div>
+<div><i class="fa-solid fa-calendar-day"></i> Book a slot<a href="https://calendly.com/ratnaweera/60min"></a></div>
 </div>
+
+
+
 
 

@@ -23,7 +23,7 @@ output: distill::distill_article
 }
 
 .grid-research > div{
-  box-shadow: 0 4px 8px 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 20px;
   padding-top: 10px;
   position:relative;
@@ -44,10 +44,12 @@ output: distill::distill_article
 
 
 
+
+
 </style>
 
 
-Here are some highlights of the projects I've worked in so far. It's a mix of private projects, teching, and research I've done within my employment at ZHAW. Click on a card to learn more!
+Here are some highlights of the projects I've worked in so far. It's a mix of private projects, teaching, and research I've done within my employment at ZHAW. Click on a card to learn more!
 
 ```{=html}
 
