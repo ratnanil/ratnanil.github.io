@@ -90,9 +90,9 @@ Checkout my [{{< fa film >}} Portfolio](/portfolio.html){.menu-link} and my [{{<
 
 <div class="grid-contact"> 
 <div><i class="fa-solid fa-envelope"></i> Email me<a href="mailto:nils@ratnaweera.xyz"></a></div>
-<div><i class="fa-solid fa-calendar-day"></i> Book a slot<a href="https://calendly.com/ratnaweera/60min"></a><i class="fa-sharp fa-regular fa-heart fa-xs" style="position:absolute; top: 0px; right: 0px;"></i></div>
-<div><i class="fa-brands fa-github"></i> GitHub<a href="https://calendly.com/ratnaweera/60min"></a></div>
-<div><i class="fa-brands fa-twitter"></i> Twitter<a href="https://calendly.com/ratnaweera/60min"></a></div>
+<div><i class="fa-solid fa-calendar-day"></i> Book a slot<a href="https://calendly.com/ratnaweera/lets-meet"></a><i class="fa-sharp fa-regular fa-heart fa-xs" style="position:absolute; top: 0px; right: 0px;"></i></div>
+<div><i class="fa-brands fa-github"></i> GitHub<a href="https://github.com/ratnanil"></a></div>
+<div><i class="fa-brands fa-twitter"></i> Twitter<a href="https://twitter.com/NRatnaweera"></a></div>
 
 </div>
 
