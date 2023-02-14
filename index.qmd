@@ -72,20 +72,20 @@ a .external::after{
 <h3 style="text-align: center"> Hi there!</h3>
 
 
-<div style="display: grid; grid-template-columns: auto auto;">
+<div>
+<img src="images/rata_print-sw.jpg" style="border-radius:100%; width: 150px; float: right;">
+
 <div>I'm Nils Ratnaweera, a freelance data scientist and researcher at the  [Zurich University of Applied Sciences (ZHAW)](https://www.zhaw.ch/en/about-us/person/rata/){.external}. I enjoy using different programming languages to solve complex, real world problems and answer interesting questions. My tools of choice include `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS` and more.
 
 If you have a project that you think I can help with, please get in touch. I would love to hear from you!
 Checkout my [{{< fa film >}} Portfolio](/portfolio.html){.menu-link} and my [{{< fa feather-pointed >}} CV](/cv.html){.menu-link} to know more about what I do and how I work. To contact me, you have the following options:
-</div>
+
 <div>
-<img src="images/rata_print-sw.jpg" style="border-radius:100%; width: 150px;">
+</div>
 </div>
 
+
 </div>
-
-
-
 
 
 <div class="grid-contact"> 
