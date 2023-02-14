@@ -98,7 +98,7 @@
 
 <div class="cv-side">
 
-<div style="text-align: center"><img id="portrait" src="images/rata_print-sw.jpg"> </div>
+<!-- <div style="text-align: center"><img id="portrait" src="images/rata_print-sw.jpg"> </div> -->
 
 <div id="skills">
 <ul>

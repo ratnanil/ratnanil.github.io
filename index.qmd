@@ -10,7 +10,7 @@ h1{
 
 .grid-contact{
   display: grid;
-  grid-template-columns: repeat(2, minmax(30px, 250px));
+  grid-template-columns: repeat(4, 1fr); /*repeat(2, minmax(30px, 250px)); */
   grid-gap: 1rem;
   justify-content: space-evenly;
   margin-top: 2rem;
@@ -69,19 +69,29 @@ a .external::after{
 </style>
 
 
-<h3 style="text-align: center"> Hi there 👋  </h3>
+<h3 style="text-align: center"> Hi there!</h3>
 
 
-I'm Nils Ratnaweera, a freelance data scientist and researcher at the  [Zurich University of Applied Sciences (ZHAW)](https://www.zhaw.ch/en/about-us/person/rata/){.external}. I enjoy using different programming languages to solve complex, real world problems. My tools of choice include `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS` and more.
+<div style="display: grid; grid-template-columns: auto auto;">
+<div>I'm Nils Ratnaweera, a freelance data scientist and researcher at the  [Zurich University of Applied Sciences (ZHAW)](https://www.zhaw.ch/en/about-us/person/rata/){.external}. I enjoy using different programming languages to solve complex, real world problems and answer interesting questions. My tools of choice include `R`, `python`, `gdal`, `ogr2ogr`, `PostgresSQL`, `PostGIS` and more.</div>
+<div>
+<img src="images/rata_print-sw.jpg" style="border-radius:100%; width: 150px;">
+</div>
+
+</div>
+
+<hr>
 
 If you have a project that you think I can help with, please get in touch. I would love to hear from you!
+Checkout my [{{< fa film >}} Portfolio](/portfolio.html){.menu-link} and my [{{< fa feather-pointed >}} CV](/cv.html){.menu-link} to know more about what I do and how I work. To contact me, you have the following options:
 
 <div class="grid-contact"> 
 <div><i class="fa-solid fa-envelope"></i> Email me<a href="mailto:nils@ratnaweera.xyz"></a></div>
-<div><i class="fa-solid fa-calendar-day"></i> Book a slot<a href="https://calendly.com/ratnaweera/60min"></a></div>
-</div>
+<div><i class="fa-solid fa-calendar-day"></i> Book a slot<a href="https://calendly.com/ratnaweera/60min"></a><i class="fa-sharp fa-regular fa-heart fa-xs" style="position:absolute; top: 0px; right: 0px;"></i></div>
+<div><i class="fa-brands fa-github"></i> GitHub<a href="https://calendly.com/ratnaweera/60min"></a></div>
+<div><i class="fa-brands fa-twitter"></i> Twitter<a href="https://calendly.com/ratnaweera/60min"></a></div>
 
-Checkout my [{{< fa film >}} Portfolio](/portfolio.html){.menu-link} and my [{{< fa feather-pointed >}} CV](/cv.html){.menu-link}  to know more about what I do and the tool sets I work with.
+</div>
 
 
 
